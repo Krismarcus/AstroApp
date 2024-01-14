@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AstroApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AstroApp"
+    Shell.FlyoutBehavior="Disabled"
+    Title="AstroApp">
+    <TabBar>
+        <Tab Title="Calendar" >
+            <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+        </Tab>
+        <Tab Title="Admin">
+            <ShellContent x:Name="Admin" ContentTemplate="{DataTemplate local:AdminPage}" Route="AdminPage"/>
+        </Tab>
+    </TabBar>
+</Shell>

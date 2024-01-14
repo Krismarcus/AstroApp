@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AstroApp.UI.Pages.EventDetailsPage"
+             xmlns:pages="clr-namespace:AstroApp.UI.Pages"
+             xmlns:controls="clr-namespace:AstroApp.UI.Controls"
+             xmlns:model="clr-namespace:AstroApp.Data.Models"
+             xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
+             x:DataType="model:AstroEvent"
+             Title="EventDetailsPage">
+    <ContentPage.Resources>
+        <converters:EnumToImageConverter x:Key="EnumToImageConverter"/>        
+        <converters:MoonDayIntToImageConverter x:Key="IntToImageConverter"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout >
+                <Button Text="Back" Clicked="OnPageTapped"/>
+                <Label Text="{Binding Date.Day}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" FontSize="50" FontAttributes="Bold" Margin="20"/>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Sun is in :" FontSize="Body" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Image Grid.Column="1" Source="{Binding SunInZodiac, Converter={StaticResource EnumToImageConverter}}" />
+                    </Grid>
+                    <Grid Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Moon is in :" FontSize="Body" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Image Grid.Column="1" Source="{Binding MoonInZodiac, Converter={StaticResource EnumToImageConverter}}" />
+                    </Grid>
+                </Grid>
+                <Image Grid.Column="0" Source="{Binding MoonDay.PreviousMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="100" HorizontalOptions="Center"/>
+                <Label Grid.Column="1" Text="{Binding MoonDay.TransitionTime, StringFormat='{0:HH:mm}'}" HorizontalOptions="Center" FontSize="Large"/>
+                <Image Grid.Column="2"  Source="{Binding MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="200" HorizontalOptions="Center"/>
+                <Label Text="{Binding EventText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="18" Margin="20"/>
+                <CollectionView Grid.Column="1" ItemsSource="{Binding PlanetEvents}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <controls:CalendarPlanetEventControl PlanetEventUnit="{Binding .}" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

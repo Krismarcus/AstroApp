@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AstroApp.UI.Controls.DayControl"
+             xmlns:controls="clr-namespace:AstroApp.UI.Controls"
+             xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
+             x:DataType="controls:DayControl">
+    <ContentView.Resources>
+        <converters:EnumToImageConverter x:Key="EnumToImageConverter"/>
+    </ContentView.Resources>
+    <Border Stroke="{StaticResource Secondary}" StrokeShape="RoundRectangle 10,10,10,10" Margin="2">
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnDayTapped" />
+        </Border.GestureRecognizers>
+        <VerticalStackLayout>
+            <Label Text="{Binding DayNumber}" TextColor="{StaticResource Primary}" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Grid Padding="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="{Binding DayAstroEvent.SunInZodiac, Converter={StaticResource EnumToImageConverter}}" WidthRequest="30" HeightRequest="30"/>
+                <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonInZodiac, Converter={StaticResource EnumToImageConverter}}" WidthRequest="30" HeightRequest="30" />
+                <Image Grid.Column="2" Source="{Binding DayAstroEvent.SunInZodiac, Converter={StaticResource EnumToImageConverter}}" WidthRequest="30" HeightRequest="30" />
+            </Grid>
+            <Grid Padding="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="{Binding DayAstroEvent.SunInZodiac, Converter={StaticResource EnumToImageConverter}}" WidthRequest="30" HeightRequest="30"/>
+                <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonInZodiac, Converter={StaticResource EnumToImageConverter}}" WidthRequest="30" HeightRequest="30" />
+                <Image Grid.Column="2" Source="{Binding DayAstroEvent.SunInZodiac, Converter={StaticResource EnumToImageConverter}}" WidthRequest="30" HeightRequest="30" />
+            </Grid>
+        </VerticalStackLayout>
+    </Border>
+</ContentView>
