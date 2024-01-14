@@ -46,7 +46,7 @@
                 <CollectionView Grid.Column="1" ItemsSource="{Binding PlanetEvents}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <controls:CalendarPlanetEventControl PlanetEventUnit="{Binding .}" />
+                            <controls:CalendarPlanetEventControl />
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

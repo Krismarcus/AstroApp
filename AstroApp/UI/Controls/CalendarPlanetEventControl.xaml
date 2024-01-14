@@ -2,22 +2,24 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AstroApp.UI.Controls.CalendarPlanetEventControl"
-             xmlns:controls="clr-namespace:AstroApp.UI.Controls"
+             xmlns:model="clr-namespace:AstroApp.Data.Models"
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
-             x:Name="PlanetEvents">
+             x:Name="PlanetEvents"
+             x:DataType="model:PlanetEvent"
+             >
     <ContentView.Resources>
         <converters:EnumToImageConverter x:Key="EnumToImageConverter"/>
     </ContentView.Resources>
-    <Grid HorizontalOptions="Center" HeightRequest="100" BindingContext="{x:Reference PlanetEvents}">
+    <Grid HorizontalOptions="Center" HeightRequest="100">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" Source="{Binding PlanetEventUnit.Planet1, Converter={StaticResource EnumToImageConverter}}" WidthRequest="150"/>
-            <Image Grid.Column="1" Source="{Binding PlanetEventUnit.AspectSymbol, Converter={StaticResource EnumToImageConverter}}" WidthRequest="80"/>
-            <Image Grid.Column="2" Source="{Binding PlanetEventUnit.Planet2, Converter={StaticResource EnumToImageConverter}}" WidthRequest="150"/>
+            <Image Grid.Column="0" Source="{Binding Planet1, Converter={StaticResource EnumToImageConverter}}" WidthRequest="150"/>
+            <Image Grid.Column="1" Source="{Binding AspectSymbol, Converter={StaticResource EnumToImageConverter}}" WidthRequest="80"/>
+            <Image Grid.Column="2" Source="{Binding Planet2, Converter={StaticResource EnumToImageConverter}}" WidthRequest="150"/>
         </Grid>
     </Grid>
 </ContentView>
