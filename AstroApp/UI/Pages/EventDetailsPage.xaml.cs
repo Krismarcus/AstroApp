@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace AstroApp.UI.Pages;
 
-public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
+public partial class EventDetailsPage : ContentPage
 {
     private AstroEvent dayAstroEvent;
 
@@ -31,10 +31,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     public EventDetailsPage()
     {
         InitializeComponent();
-
     }
-
-
 
     private async void OnPageTapped(object sender, EventArgs e)
     {

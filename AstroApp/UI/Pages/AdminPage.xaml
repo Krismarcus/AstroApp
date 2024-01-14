@@ -4,7 +4,9 @@
              x:Class="AstroApp.AdminPage"
              xmlns:views="clr-namespace:AstroApp.UI.Views"
              Title="AdminPage">
-    <VerticalStackLayout>
-        <views:EditPageView x:Name="CalendarView" IsVisible="True"/>
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout>
+            <views:EditPageView x:Name="CalendarView" IsVisible="True"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

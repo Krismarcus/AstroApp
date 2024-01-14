@@ -11,6 +11,6 @@ namespace AstroApp.Data.Models
     {
         public Planet Planet1 { get; set; }
         public Planet Planet2 { get; set; }
-        public AspectSymbol Aspect { get; set; }
+        public AspectSymbol AspectSymbol { get; set; }
     }
 }

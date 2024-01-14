@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AstroApp.UI.Tools.Converters
 {
-    public class MoonDayIntToStringConverter
+    public class MoonDayIntToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

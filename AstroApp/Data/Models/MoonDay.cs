@@ -31,7 +31,7 @@ namespace AstroApp.Data.Models
         public int PreviousMoonDay
         {
             get => previousMoonDay;
-            private set => previousMoonDay = value;
+            set => previousMoonDay = value;
         }
 
         public DateTime TransitionTime { get; set; }

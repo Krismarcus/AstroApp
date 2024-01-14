@@ -2,7 +2,6 @@ using AstroApp.Data.Models;
 using AstroApp.UI.Controls;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-
 namespace AstroApp.UI.Views;
 
 public partial class CalendarView : ContentView, INotifyPropertyChanged
@@ -36,12 +35,13 @@ public partial class CalendarView : ContentView, INotifyPropertyChanged
 		InitializeComponent();
         Initialize();
         BindingContext = this;
+
     }
 
     private async Task Initialize()
     {
-        //this.ActiveAstroEvents = await FetchAstroEvents();
-        this.ActiveAstroEvents = new List<AstroEvent>();
+        var appActions = new Services.AppActions();
+        this.ActiveAstroEvents = await appActions.LoadAstroEventsAsync();        
         if (this.ActiveAstroEvents.Count < 1)
         {
             this.ActiveAstroEvents.Add(new AstroEvent()
@@ -60,7 +60,7 @@ public partial class CalendarView : ContentView, INotifyPropertyChanged
                     {
                         Planet1 = Data.Enums.Planet.Jupiter,
                         Planet2 = Data.Enums.Planet.Venus,
-                        Aspect = Data.Enums.AspectSymbol.Opposition
+                        AspectSymbol = Data.Enums.AspectSymbol.Opposition
                     }
                 }
             });
@@ -80,7 +80,7 @@ public partial class CalendarView : ContentView, INotifyPropertyChanged
                     {
                         Planet1 = Data.Enums.Planet.Pluto,
                         Planet2 = Data.Enums.Planet.Neptune,
-                        Aspect = Data.Enums.AspectSymbol.Opposition
+                        AspectSymbol = Data.Enums.AspectSymbol.Opposition
                     }
                 }
             });
@@ -100,7 +100,7 @@ public partial class CalendarView : ContentView, INotifyPropertyChanged
                     {
                         Planet1 = Data.Enums.Planet.Venus,
                         Planet2 = Data.Enums.Planet.Neptune,
-                        Aspect = Data.Enums.AspectSymbol.Opposition
+                        AspectSymbol = Data.Enums.AspectSymbol.Opposition
 
                     }
                 }
@@ -108,12 +108,7 @@ public partial class CalendarView : ContentView, INotifyPropertyChanged
         }
 
         UpdateCalendar(DateTime.Now.Year, DateTime.Now.Month);
-    }
-
-    //private async Task<List<AstroEvent>> FetchAstroEvents()
-    //{
-    //    return await App.AppData.Server.GetAstroEvents() ?? new List<AstroEvent>();
-    //}
+    }    
 
     private void UpdateCalendar(int year, int month)
     {

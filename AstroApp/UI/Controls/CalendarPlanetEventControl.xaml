@@ -16,7 +16,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Image Grid.Column="0" Source="{Binding PlanetEventUnit.Planet1, Converter={StaticResource EnumToImageConverter}}" WidthRequest="150"/>
-            <Image Grid.Column="1" Source="{Binding PlanetEventUnit.Aspect, Converter={StaticResource EnumToImageConverter}}" WidthRequest="80"/>
+            <Image Grid.Column="1" Source="{Binding PlanetEventUnit.AspectSymbol, Converter={StaticResource EnumToImageConverter}}" WidthRequest="80"/>
             <Image Grid.Column="2" Source="{Binding PlanetEventUnit.Planet2, Converter={StaticResource EnumToImageConverter}}" WidthRequest="150"/>
         </Grid>
     </Grid>

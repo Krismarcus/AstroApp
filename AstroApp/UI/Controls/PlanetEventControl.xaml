@@ -17,7 +17,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Picker Grid.Column="0" x:Name="PlanetOnePicker" SelectedItem="{Binding Planet1, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />
-        <Picker Grid.Column="1" x:Name="AspectPicker" SelectedItem="{Binding Aspect, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />
+        <Picker Grid.Column="1" x:Name="AspectPicker" SelectedItem="{Binding AspectSymbol, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />
         <Picker Grid.Column="2" x:Name="PlanetTwoPicker" SelectedItem="{Binding Planet2, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />
     </Grid>
 </ContentView>

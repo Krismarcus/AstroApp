@@ -33,16 +33,16 @@ public partial class PlanetEventControl : ContentView, INotifyPropertyChanged
         }
     }
 
-    private Aspect aspect;
-    public Aspect Aspect
+    private AspectSymbol aspectsymbol;
+    public AspectSymbol AspectSymbol
     {
-        get { return aspect; }
+        get { return aspectsymbol; }
         set
         {
-            if (aspect != value)
+            if (aspectsymbol != value)
             {
-                aspect = value;
-                OnPropertyChanged(nameof(Aspect));
+                aspectsymbol = value;
+                OnPropertyChanged(nameof(AspectSymbol));
             }
         }
     }
@@ -69,7 +69,7 @@ public partial class PlanetEventControl : ContentView, INotifyPropertyChanged
             PlanetTwoPicker.Items.Add(planet.ToString());
         }
 
-        foreach (Aspect aspect in Enum.GetValues(typeof(Aspect)))
+        foreach (AspectSymbol aspect in Enum.GetValues(typeof(AspectSymbol)))
         {
             AspectPicker.Items.Add(aspect.ToString());
         }

@@ -61,7 +61,7 @@ public partial class EditDayControl : ContentView, INotifyPropertyChanged
         {
             Planet1 = Planet.Mars, // Default or user-selected value
             Planet2 = Planet.Venus, // Default or user-selected value
-            Aspect = AspectSymbol.Conjunction // Default or user-selected value
+            AspectSymbol = AspectSymbol.Conjunction // Default or user-selected value
         };
         DayAstroEvent.PlanetEvents.Add(newEvent);
         OnPropertyChanged(nameof(DayAstroEvent)); // Notify UI about the change

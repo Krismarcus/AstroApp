@@ -1,10 +1,11 @@
 using AstroApp.Data.Models;
 using AstroApp.UI.Controls;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace AstroApp.UI.Views;
 
-public partial class EditPageView : ContentView
+public partial class EditPageView : ContentView, INotifyPropertyChanged
 {
     private string monthName;
 
@@ -33,7 +34,8 @@ public partial class EditPageView : ContentView
 
     public async void Initialize()
     {
-       
+        var appActions = new Services.AppActions();
+        this.ActiveAstroEvents = await appActions.LoadAstroEventsAsync();
         UpdateList(DateTime.Now.Year, DateTime.Now.Month);
     }
 
@@ -79,11 +81,12 @@ public partial class EditPageView : ContentView
         UpdateList(year, month);
     }
 
-    //private async void SaveButton_Clicked(object sender, EventArgs e)
-    //{
-    //    App.AppData.Server.SavePage(ActiveAstroEvents);
-    //    await Application.Current.MainPage.DisplayAlert("Success", "Content saved succesfully", "OK");
-    //}
+    private async void SaveButton_Clicked(object sender, EventArgs e)
+    {
+        var appActions = new Services.AppActions();
+        appActions.SaveAstroEventsAsync(ActiveAstroEvents);
+        await Application.Current.MainPage.DisplayAlert("Success", "Content saved succesfully", "OK");
+    }
 
     private void PopulateList(int days)
     {
