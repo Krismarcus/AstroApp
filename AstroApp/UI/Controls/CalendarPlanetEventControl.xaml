@@ -10,16 +10,9 @@
     <ContentView.Resources>
         <converters:EnumToImageConverter x:Key="EnumToImageConverter"/>
     </ContentView.Resources>
-    <Grid HorizontalOptions="Center" HeightRequest="100">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" Source="{Binding Planet1, Converter={StaticResource EnumToImageConverter}}" WidthRequest="150"/>
-            <Image Grid.Column="1" Source="{Binding AspectSymbol, Converter={StaticResource EnumToImageConverter}}" WidthRequest="80"/>
-            <Image Grid.Column="2" Source="{Binding Planet2, Converter={StaticResource EnumToImageConverter}}" WidthRequest="150"/>
-        </Grid>
-    </Grid>
+    <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="100">      
+            <Image Source="{Binding Planet1, Converter={StaticResource EnumToImageConverter}}" />
+            <Image Source="{Binding AspectSymbol, Converter={StaticResource EnumToImageConverter}}" />
+            <Image Source="{Binding Planet2, Converter={StaticResource EnumToImageConverter}}" />       
+    </HorizontalStackLayout>
 </ContentView>
