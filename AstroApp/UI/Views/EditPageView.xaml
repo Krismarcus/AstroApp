@@ -12,10 +12,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" Text="{Binding MonthName}" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <VerticalStackLayout Grid.Row="1" x:Name="EventList"/>
-            <Grid Grid.Row="2">
+            </Grid.RowDefinitions>            
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -23,6 +21,8 @@
                 <Button Grid.Column="0" Text="Previous" Clicked="PrevButton_Clicked"/>
                 <Button Grid.Column="1" Text="Next" Clicked="NextButton_Clicked"/>
             </Grid>
+            <Label Grid.Row="1" Text="{Binding MonthName}" FontSize="Header" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <VerticalStackLayout Grid.Row="2" x:Name="EventList"/>
             <Grid Grid.Row="3">
                 <Button Text="Save" Clicked="SaveButton_Clicked"/>
             </Grid>
