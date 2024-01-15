@@ -44,7 +44,7 @@
 		<GenerateTestArtifacts>True</GenerateTestArtifacts>
 		<AppInstallerUri>d:/AstroappV2</AppInstallerUri>
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-		<PackageCertificateThumbprint>0FF6286FEEFCC69A56A35E9FF6224CC3B7CBDEDA</PackageCertificateThumbprint>
+		<PackageCertificateThumbprint>1AC0C8ECAEE6833C5CA16E6DB18DC07642374D76</PackageCertificateThumbprint>
 	</PropertyGroup>
 
 	<ItemGroup>
