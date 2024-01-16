@@ -16,6 +16,7 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
@@ -25,19 +26,21 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>                            
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="{Binding DayAstroEvent.Date.Day}" HorizontalOptions="Center" Padding="5"/>
                         <Picker x:Name="SunInZodiacPicker" Grid.Column="1" SelectedItem="{Binding DayAstroEvent.SunInZodiac, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />
-                        <Picker x:Name="MoonInZodiacPicker" Grid.Column="2" SelectedItem="{Binding DayAstroEvent.MoonInZodiac, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />
+                        <Picker x:Name="MoonInZodiacPicker" Grid.Column="2" SelectedItem="{Binding DayAstroEvent.MoonInZodiac, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />                        
                         <Picker x:Name="NewMoonDayPicker" Grid.Column="3" SelectedItem="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToStringConverter}, Mode=TwoWay}" />
                         <TimePicker Grid.Column="4" Time="{Binding DayAstroEvent.MoonDay.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"/>
-
                     </Grid>
-                    <Grid Grid.Row="1">
-                        <Editor Grid.Row="0" Text="{Binding DayAstroEvent.EventText}" AutoSize="TextChanges"/>
+                    <Grid Grid.Row="1" >
+                        <Editor Text="{Binding DayAstroEvent.MoonInZodiacInfo}" AutoSize="TextChanges"/>
                     </Grid>
-                    <Grid Grid.Row="2">
+                    <Grid Grid.Row="2">                        
+                        <Editor Text="{Binding DayAstroEvent.EventText}" AutoSize="TextChanges"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>

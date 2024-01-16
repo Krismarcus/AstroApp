@@ -28,7 +28,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="Sun is in :" FontSize="Body" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Image Grid.Column="1" Source="{Binding SunInZodiac, Converter={StaticResource EnumToImageConverter}}" />
+                        <Image Grid.Column="1" Source="{Binding SunInZodiac, Converter={StaticResource EnumToImageConverter}}" MaximumHeightRequest="200"/>
                     </Grid>
                     <Grid Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" >
                         <Grid.ColumnDefinitions>
@@ -36,7 +36,8 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="Moon is in :" FontSize="Body" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Image Grid.Column="1" Source="{Binding MoonInZodiac, Converter={StaticResource EnumToImageConverter}}" />
+                        <Image Grid.Column="1" Source="{Binding MoonInZodiac, Converter={StaticResource EnumToImageConverter}}" MaximumHeightRequest="200"/>
+                        <Label Grid.Column="1" Text="{Binding MoonInZodiacInfo}" VerticalOptions="End" HorizontalOptions="Center" FontSize="Medium"/>
                     </Grid>
                 </Grid>
                 <Image Source="{Binding MoonDay.PreviousMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="100" HorizontalOptions="Center"/>

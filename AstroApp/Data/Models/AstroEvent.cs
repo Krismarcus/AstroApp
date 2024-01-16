@@ -11,9 +11,10 @@ namespace AstroApp.Data.Models
     public class AstroEvent
     {
         public DateTime Date { get; set; }
-
-        public ZodiacSign MoonInZodiac { get; set; }
+                
         public ZodiacSign SunInZodiac { get; set; }
+        public ZodiacSign MoonInZodiac { get; set; }
+        public string MoonInZodiacInfo { get; set; }
         public MoonDay MoonDay { get; set; }
 
         public Planet PlanetRetrograde { get; set; }
