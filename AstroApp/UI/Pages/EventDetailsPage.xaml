@@ -16,33 +16,44 @@
         <ScrollView>
             <VerticalStackLayout >                
                 <Button Text="Back" Clicked="OnPageTapped"/>
-                <Label Text="{Binding Date.Day}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" FontSize="50" FontAttributes="Bold" Margin="20"/>
+                <Label Text="{Binding Date.Day}" HorizontalOptions="CenterAndExpand" FontSize="50" FontAttributes="Bold" />
+                <Label Text="{Binding Date, StringFormat='{0:MMMM}'}" HorizontalOptions="CenterAndExpand" />
+                <Grid ColumnDefinitions="*,auto,*" Margin="20,0">
+                    <Image Grid.Column="0" Source="{Binding MoonDay.PreviousMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="200" HorizontalOptions="Center"/>
+                    <Label Grid.Column="1" Text="{Binding MoonDay.TransitionTime, StringFormat='{0:HH:mm}'}" HorizontalOptions="Center" VerticalOptions="End" FontSize="30" Margin="10,0"/>
+                    <Image Grid.Column="2" Source="{Binding MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="200" HorizontalOptions="Center"/>                </Grid>
+                <Grid ColumnDefinitions="*,*" Margin="60,0,60,-35">
+                    <Label Grid.Column="0" Text="00:00" HorizontalOptions="Start" VerticalOptions="End"/>                    
+                    <Label Grid.Column="1" Text="23:59" HorizontalOptions="End" VerticalOptions="End"/>
+                </Grid>
+                <Grid ColumnDefinitions="auto,*,auto">
+                    <Label Grid.Column="0" Text="1" FontSize="60" Margin="10,0"/>
+                    <Image Grid.Column="1" Source="line2.png" />
+                    <Label Grid.Column="2" Text="2" FontSize="60" Margin="10,0"/>
+                </Grid>
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="Sun is in :" FontSize="Body" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Image Grid.Column="1" Source="{Binding SunInZodiac, Converter={StaticResource EnumToImageConverter}}" MaximumHeightRequest="200"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Source="sun.png" MaximumHeightRequest="200"/>
+                        <Image Grid.Row="1" Source="{Binding SunInZodiac, Converter={StaticResource EnumToImageConverter}}" MaximumHeightRequest="200"/>
                     </Grid>
                     <Grid Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="Moon is in :" FontSize="Body" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Image Grid.Column="1" Source="{Binding MoonInZodiac, Converter={StaticResource EnumToImageConverter}}" MaximumHeightRequest="200"/>
-                        <Label Grid.Column="1" Text="{Binding MoonInZodiacInfo}" VerticalOptions="End" HorizontalOptions="Center" FontSize="Medium"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Source="moon.png" MaximumHeightRequest="200"/>
+                        <Image Grid.Row="1" Source="{Binding SunInZodiac, Converter={StaticResource EnumToImageConverter}}" MaximumHeightRequest="200"/>
+                        <Label Grid.Row="1" Text="{Binding MoonInZodiacInfo}" VerticalOptions="End" HorizontalOptions="Center" FontSize="15"/>
                     </Grid>
-                </Grid>
-                <Image Source="{Binding MoonDay.PreviousMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="100" HorizontalOptions="Center"/>
-                <Label Text="{Binding MoonDay.TransitionTime, StringFormat='{0:HH:mm}'}" HorizontalOptions="Center" FontSize="Large"/>
-                <Image Source="{Binding MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="200" HorizontalOptions="Center"/>
+                </Grid>                                     
                 <Label Text="{Binding EventText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="18" Margin="20"/>
                 <CollectionView ItemsSource="{Binding PlanetEvents}">
                     <CollectionView.ItemTemplate>

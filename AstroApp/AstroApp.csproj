@@ -90,6 +90,8 @@
 	  <None Remove="Resources\Images\leo.png" />
 	  <None Remove="Resources\Images\leopard.png" />
 	  <None Remove="Resources\Images\libra.png" />
+	  <None Remove="Resources\Images\line.png" />
+	  <None Remove="Resources\Images\line2.png" />
 	  <None Remove="Resources\Images\lotus.png" />
 	  <None Remove="Resources\Images\mars.png" />
 	  <None Remove="Resources\Images\mercury.png" />
