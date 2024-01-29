@@ -31,7 +31,7 @@ public partial class EditDayControl : ContentView, INotifyPropertyChanged
 
     internal void AddAstroEvent(AstroEvent astroEventForDate)
     {
-        this.DayAstroEvent = astroEventForDate;
+        this.DayAstroEvent = astroEventForDate;        
     }
 
     public void PopulatePickers()

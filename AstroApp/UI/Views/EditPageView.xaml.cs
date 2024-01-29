@@ -111,10 +111,14 @@ public partial class EditPageView : ContentView, INotifyPropertyChanged
             else
             {
                 astroEventForDate = new AstroEvent() { Date = currentDate, EventText = "", MoonDay = new MoonDay() { NewMoonDay = 0, TransitionTime = new DateTime() } };
+                astroEventForDate.PlanetInZodiacs = new ObservableCollection<PlanetInZodiac> {
+                     new PlanetInZodiac() { Planet = Data.Enums.Planet.Jupiter, ZodiacSign = Data.Enums.ZodiacSign.None},
+                     new PlanetInZodiac() { Planet = Data.Enums.Planet.Venus, ZodiacSign = Data.Enums.ZodiacSign.None},
+                     new PlanetInZodiac() { Planet = Data.Enums.Planet.Saturn, ZodiacSign = Data.Enums.ZodiacSign.None}
+                    };
                 this.ActiveAstroEvents.Add(astroEventForDate);
                 editDayCard.AddAstroEvent(astroEventForDate);
             }
-
             this.EventList.Add(editDayCard);
         }
     }

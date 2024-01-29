@@ -25,20 +25,85 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>                            
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="{Binding DayAstroEvent.Date.Day}" HorizontalOptions="Center" Padding="5"/>
-                        <Picker x:Name="SunInZodiacPicker" Grid.Column="1" SelectedItem="{Binding DayAstroEvent.SunInZodiac, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />
-                        <Picker x:Name="MoonInZodiacPicker" Grid.Column="2" SelectedItem="{Binding DayAstroEvent.MoonInZodiac, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />                        
-                        <Picker x:Name="NewMoonDayPicker" Grid.Column="3" SelectedItem="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToStringConverter}, Mode=TwoWay}" />
-                        <TimePicker Grid.Column="4" Time="{Binding DayAstroEvent.MoonDay.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"/>
-                    </Grid>
-                    <Grid Grid.Row="1" >
-                        <Editor Text="{Binding DayAstroEvent.MoonInZodiacInfo}" AutoSize="TextChanges"/>
-                    </Grid>
-                    <Grid Grid.Row="2">                        
-                        <Editor Text="{Binding DayAstroEvent.EventText}" AutoSize="TextChanges"/>
+                        <Label Grid.Column="0" Text="{Binding DayAstroEvent.Date.Day}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="5"/>
+                        <Grid Grid.Column="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="Sun In Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            
+                            <Picker Grid.Row="1" x:Name="SunInZodiacPicker" SelectedItem="{Binding DayAstroEvent.SunInZodiac, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />
+                            </Grid>
+                        </Grid>                        
+                        <Grid Grid.Column="2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="Moon In Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Picker Grid.Row="1" x:Name="MoonInZodiacPicker" SelectedItem="{Binding DayAstroEvent.MoonInZodiac, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />
+                            </Grid>                            
+                        </Grid>                        
+                        <CollectionView Grid.Column="3" ItemsSource="{Binding DayAstroEvent.PlanetInZodiacs}" ItemsLayout="HorizontalList">
+                                <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <HorizontalStackLayout>
+                                        <controls:PlanetInZodiacControl />
+                                    </HorizontalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Grid Grid.Column="4">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="Moon Trans Time" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <TimePicker Grid.Row="1" Time="{Binding DayAstroEvent.MoonDay.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="5">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="Moon Day" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Picker Grid.Row="1" x:Name="NewMoonDayPicker" SelectedItem="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToStringConverter}, Mode=TwoWay}" />
+                            </Grid>
+                        </Grid>                       
+                    </Grid>                    
+                    <Grid Grid.Row="2">
+                        <Grid>                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>                        
+                        <Grid Grid.Row="0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0" ColumnDefinitions="*,4*">
+                                        <Label Grid.Column="0" Text="Moon In Zodiac Info" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Editor Grid.Column="1" Text="{Binding DayAstroEvent.MoonInZodiacInfo}" AutoSize="TextChanges" VerticalOptions="Center" />
+                                    </Grid>
+                                    <Grid Grid.Column="1" ColumnDefinitions="*,4*">
+                                        <Label Grid.Column="0" Text="Day Info" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Editor Grid.Column="1" Text="{Binding DayAstroEvent.EventText}" AutoSize="TextChanges" VerticalOptions="Center" />
+                                    </Grid>                                                                  
+                                </Grid>
+                            </Grid>
+                        </Grid>
                     </Grid>
                     <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>

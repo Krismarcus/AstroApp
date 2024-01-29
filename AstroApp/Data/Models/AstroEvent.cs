@@ -15,9 +15,8 @@ namespace AstroApp.Data.Models
         public ZodiacSign SunInZodiac { get; set; }
         public ZodiacSign MoonInZodiac { get; set; }
         public string MoonInZodiacInfo { get; set; }
-        public MoonDay MoonDay { get; set; }
-
-        public Planet PlanetRetrograde { get; set; }
+        public ObservableCollection<PlanetInZodiac> PlanetInZodiacs { get; set; } = new ObservableCollection<PlanetInZodiac>();
+        public MoonDay MoonDay { get; set; }        
         public ObservableCollection<PlanetEvent> PlanetEvents { get; set; } = new ObservableCollection<PlanetEvent>();
         public bool SunEclipse { get; set; }
         public bool MoonEclipse { get; set; }
