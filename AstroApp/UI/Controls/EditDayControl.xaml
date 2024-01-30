@@ -22,36 +22,13 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>                            
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="{Binding DayAstroEvent.Date.Day}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="5"/>
-                        <Grid Grid.Column="1">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Text="Sun In Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
-                            
-                            <Picker Grid.Row="1" x:Name="SunInZodiacPicker" SelectedItem="{Binding DayAstroEvent.SunInZodiac, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />
-                            </Grid>
-                        </Grid>                        
-                        <Grid Grid.Column="2">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Text="Moon In Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Picker Grid.Row="1" x:Name="MoonInZodiacPicker" SelectedItem="{Binding DayAstroEvent.MoonInZodiac, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />
-                            </Grid>                            
-                        </Grid>                        
-                        <CollectionView Grid.Column="3" ItemsSource="{Binding DayAstroEvent.PlanetInZodiacs}" ItemsLayout="HorizontalList">
+                        <Label Grid.Column="0" Text="{Binding DayAstroEvent.Date.Day}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="5"/>                           
+                        <CollectionView Grid.Column="1" ItemsSource="{Binding DayAstroEvent.PlanetInZodiacs}" ItemsLayout="HorizontalList">
                                 <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <HorizontalStackLayout>
@@ -60,7 +37,7 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                        <Grid Grid.Column="4">
+                        <Grid Grid.Column="2">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
@@ -70,7 +47,7 @@
                                 <TimePicker Grid.Row="1" Time="{Binding DayAstroEvent.MoonDay.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                             </Grid>
                         </Grid>
-                        <Grid Grid.Column="5">
+                        <Grid Grid.Column="3">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>

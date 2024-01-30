@@ -1,20 +1,22 @@
 using AstroApp.Data.Enums;
+using AstroApp.Data.Models;
+using System.Collections.ObjectModel;
 
 namespace AstroApp.UI.Controls;
 
 public partial class PlanetInZodiacControl : ContentView
-{
+{    
 	public PlanetInZodiacControl()
 	{
 		InitializeComponent();
-        this.PopulatePicker();
-	}
+        PopulatePicker();
+    }
 
     public void PopulatePicker()
     {
-        foreach (ZodiacSign zodiac in Enum.GetValues(typeof(ZodiacSign)))
+        foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
         {
-            PlanetInZodiacPicker.Items.Add(zodiac.ToString());           
-        }        
+            this.PlanetInZodiacPicker.Items.Add(zodiacSign.ToString());
+        }
     }
 }

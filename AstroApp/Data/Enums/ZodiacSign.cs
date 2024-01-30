@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace AstroApp.Data.Enums
 {
     public enum ZodiacSign
-    {
-        None,
+    {        
         Aries,
         Taurus,
         Gemini,

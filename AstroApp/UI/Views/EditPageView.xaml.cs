@@ -25,17 +25,19 @@ public partial class EditPageView : ContentView, INotifyPropertyChanged
     private int month, year;
     public List<AstroEvent> ActiveAstroEvents { get; set; }
 
+    public ObservableCollection<PlanetInZodiac> PlanetInZodiacsDetails { get; set; }
+
     public EditPageView()
 	{
-		InitializeComponent();
+		InitializeComponent();        
         Initialize();
         this.BindingContext = this;
-    }
+    }  
 
     public async void Initialize()
     {
-        var appActions = new Services.AppActions();
-        this.ActiveAstroEvents = await appActions.LoadAstroEventsAsync();
+        var appActions = new Services.AppActions();        
+        this.ActiveAstroEvents = await appActions.LoadAstroEventsAsync();        
         UpdateList(DateTime.Now.Year, DateTime.Now.Month);
     }
 
@@ -82,10 +84,31 @@ public partial class EditPageView : ContentView, INotifyPropertyChanged
     }
 
     private async void SaveButton_Clicked(object sender, EventArgs e)
-    {
-        var appActions = new Services.AppActions();
+    {        
+
+        var appActions = new Services.AppActions();        
+        this.PlanetInZodiacsDetails = await appActions.LoadPlanetInZodiacsDetailsAsync();
+
+        // Iterate through each AstroEvent in ActiveAstroEvents
+        foreach (var astroEvent in ActiveAstroEvents)
+        {
+            // For each AstroEvent, iterate through its PlanetInZodiacs
+            foreach (var planetInZodiac in astroEvent.PlanetInZodiacs)
+            {
+                // Find the matching PlanetInZodiac in PlanetInZodiacsDetails
+                var matchingDetail = PlanetInZodiacsDetails.FirstOrDefault(
+                    p => p.Planet == planetInZodiac.Planet && p.ZodiacSign == planetInZodiac.ZodiacSign);
+
+                // If a match is found, update the PlanetInZodiacInfo
+                if (matchingDetail != null)
+                {
+                    planetInZodiac.PlanetInZodiacInfo = matchingDetail.PlanetInZodiacInfo;
+                }
+            }
+        }
+
         appActions.SaveAstroEventsAsync(ActiveAstroEvents);
-        await Application.Current.MainPage.DisplayAlert("Success", "Content saved succesfully", "OK");
+        await Application.Current.MainPage.DisplayAlert("Success", "Calendar data saved succesfully", "OK");
     }
 
     private void PopulateList(int days)
@@ -112,9 +135,11 @@ public partial class EditPageView : ContentView, INotifyPropertyChanged
             {
                 astroEventForDate = new AstroEvent() { Date = currentDate, EventText = "", MoonDay = new MoonDay() { NewMoonDay = 0, TransitionTime = new DateTime() } };
                 astroEventForDate.PlanetInZodiacs = new ObservableCollection<PlanetInZodiac> {
-                     new PlanetInZodiac() { Planet = Data.Enums.Planet.Jupiter, ZodiacSign = Data.Enums.ZodiacSign.None},
-                     new PlanetInZodiac() { Planet = Data.Enums.Planet.Venus, ZodiacSign = Data.Enums.ZodiacSign.None},
-                     new PlanetInZodiac() { Planet = Data.Enums.Planet.Saturn, ZodiacSign = Data.Enums.ZodiacSign.None}
+                     new PlanetInZodiac() { },
+                     new PlanetInZodiac() { },
+                     new PlanetInZodiac() { },
+                     new PlanetInZodiac() { },
+                     new PlanetInZodiac() { }
                     };
                 this.ActiveAstroEvents.Add(astroEventForDate);
                 editDayCard.AddAstroEvent(astroEventForDate);

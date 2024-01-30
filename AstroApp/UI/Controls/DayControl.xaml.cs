@@ -38,6 +38,37 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
         }
     }
 
+    private PlanetInZodiac sunInZodiac;
+
+    public PlanetInZodiac SunInZodiac
+    {
+        get { return sunInZodiac; }
+        set
+        {
+            if (sunInZodiac != value)
+            {
+                sunInZodiac = value;
+                OnPropertyChanged(nameof(SunInZodiac));
+
+            }
+        }
+    }
+
+    private PlanetInZodiac moonInZodiac;
+
+    public PlanetInZodiac MoonInZodiac
+    {
+        get { return moonInZodiac; }
+        set
+        {
+            if (moonInZodiac != value)
+            {
+                moonInZodiac = value;
+                OnPropertyChanged(nameof(MoonInZodiac));
+
+            }
+        }
+    }
     public event PropertyChangedEventHandler PropertyChanged;
 
     protected virtual void OnPropertyChanged(string propertyName)
@@ -47,9 +78,16 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
 
     public DayControl()
     {
-        InitializeComponent();
+        InitializeComponent();        
         BindingContext = this;
+        //SunMoonZodiacsInitialize();
     }
+
+    //private void SunMoonZodiacsInitialize()
+    //{
+    //    this.SunInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Sun);
+    //    this.MoonInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Moon);
+    //}
 
     public void AddAstroEvent(AstroEvent astroEventForDate)
     {

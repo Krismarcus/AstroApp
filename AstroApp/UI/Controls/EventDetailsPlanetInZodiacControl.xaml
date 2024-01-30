@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AstroApp.UI.Controls.EventDetailsPlanetInZodiacControl"
+             xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
+             xmlns:model="clr-namespace:AstroApp.Data.Models"
+             x:DataType="model:PlanetInZodiac">
+    <ContentView.Resources>
+        <converters:EnumToImageConverter x:Key="EnumToImageConverter"/>
+    </ContentView.Resources>
+    <HorizontalStackLayout Margin="50,0">
+        <Image Source="{Binding Planet, Converter={StaticResource EnumToImageConverter}}" WidthRequest="100" >
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+            </Image.GestureRecognizers>
+            <!--<Image.Triggers>
+            <DataTrigger TargetType="Image" Binding="{Binding Planet}" Value="Sun">
+                <Setter Property="WidthRequest" Value="200"/>
+            </DataTrigger>
+            <DataTrigger TargetType="Image" Binding="{Binding Planet}" Value="Moon">
+                    <Setter Property="WidthRequest" Value="200"/>
+            </DataTrigger>--><!--
+        </Image.Triggers>-->
+    </Image>
+        <Image Source="{Binding ZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="100" >
+        <!--<Image.Triggers>
+            <DataTrigger TargetType="Image" Binding="{Binding Planet}" Value="Sun">
+                    <Setter Property="WidthRequest" Value="200"/>
+            </DataTrigger>
+            <DataTrigger TargetType="Image" Binding="{Binding Planet}" Value="Moon">
+                    <Setter Property="WidthRequest" Value="200"/>
+            </DataTrigger>
+        </Image.Triggers>-->
+    </Image>
+        <Label x:Name="hoverLabel" Text="{Binding PlanetInZodiacInfo}" IsVisible="False" BackgroundColor="White" Opacity="0.8" 
+               HorizontalOptions="Center" VerticalOptions="Center"/>
+    </HorizontalStackLayout>
+</ContentView>

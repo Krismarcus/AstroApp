@@ -36,12 +36,6 @@ public partial class EditDayControl : ContentView, INotifyPropertyChanged
 
     public void PopulatePickers()
     {
-        foreach (ZodiacSign sign in Enum.GetValues(typeof(ZodiacSign)))
-        {
-            this.SunInZodiacPicker.Items.Add(sign.ToString());
-            this.MoonInZodiacPicker.Items.Add(sign.ToString());
-        }
-
         foreach (MoonDaySymbol moonDay in Enum.GetValues(typeof(MoonDaySymbol)))
         {
             this.NewMoonDayPicker.Items.Add(moonDay.ToString());

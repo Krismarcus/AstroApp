@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AstroApp"
+    xmlns:pages="clr-namespace:AstroApp.UI.Pages"
     Shell.FlyoutBehavior="Disabled"
     Title="AstroApp">
     <TabBar>
@@ -12,6 +13,9 @@
         </Tab>
         <Tab Title="Admin">
             <ShellContent x:Name="Admin" ContentTemplate="{DataTemplate local:AdminPage}" Route="AdminPage"/>
+        </Tab>
+        <Tab Title="Events">
+            <ShellContent x:Name="EventsEdit" ContentTemplate="{DataTemplate pages:EventsEditPage}" Route="EventsEditPage"/>
         </Tab>
     </TabBar>
 </Shell>

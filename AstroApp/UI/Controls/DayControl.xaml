@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AstroApp.UI.Controls.DayControl"
              xmlns:controls="clr-namespace:AstroApp.UI.Controls"
+             xmlns:models="clr-namespace:AstroApp.Data.Models"
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
              x:DataType="controls:DayControl">
     <ContentView.Resources>
@@ -15,12 +16,23 @@
         </Border.GestureRecognizers>
         <VerticalStackLayout >
             <Label Text="{Binding DayNumber}" TextColor="{StaticResource Primary}" FontAttributes="Bold" HorizontalOptions="Center" />
-            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                <Image Grid.Column="0" Source="{Binding DayAstroEvent.SunInZodiac, Converter={StaticResource EnumToImageConverter}}" WidthRequest="40" Margin="-10"/>
-                <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonInZodiac, Converter={StaticResource EnumToImageConverter}}" WidthRequest="40" Margin="-10"/>
-            </HorizontalStackLayout>
-            <Grid Padding="5" HorizontalOptions="Center" VerticalOptions="Start">
-                
+            <CollectionView ItemsSource="{Binding DayAstroEvent.PlanetInZodiacs}" ItemsLayout="HorizontalList" Margin="0,-10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:PlanetInZodiac">
+                        <Image x:Name="planetImage" Source="{Binding ZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="40" Margin="-10" IsVisible="False">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{Binding Planet}" Value="Sun">
+                                    <Setter Property="IsVisible" Value="True"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image" Binding="{Binding Planet}" Value="Moon">
+                                    <Setter Property="IsVisible" Value="True"/>
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Grid Padding="5" HorizontalOptions="Center" VerticalOptions="Start">                
                 <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" WidthRequest="30" HeightRequest="30"/>                
             </Grid>
         </VerticalStackLayout>
