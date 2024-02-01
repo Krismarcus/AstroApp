@@ -2,17 +2,16 @@
 <Shell
     x:Class="AstroApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:AstroApp"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
     xmlns:pages="clr-namespace:AstroApp.UI.Pages"
     Shell.FlyoutBehavior="Disabled"
     Title="AstroApp">
     <TabBar>
         <Tab Title="Calendar" >
-            <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+            <ShellContent Title="Home" ContentTemplate="{DataTemplate pages:MainPage}" Route="MainPage" />
         </Tab>
         <Tab Title="Admin">
-            <ShellContent x:Name="Admin" ContentTemplate="{DataTemplate local:AdminPage}" Route="AdminPage"/>
+            <ShellContent x:Name="Admin" ContentTemplate="{DataTemplate pages:AdminPage}" Route="AdminPage"/>
         </Tab>
         <Tab Title="Events">
             <ShellContent x:Name="EventsEdit" ContentTemplate="{DataTemplate pages:EventsEditPage}" Route="EventsEditPage"/>

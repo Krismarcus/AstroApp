@@ -1,17 +1,17 @@
 ﻿using AstroApp.Data.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace AstroApp.Data.Models
 {
-    public class PlanetInZodiac
+    public partial class PlanetInZodiac : ObservableObject
     {
-        public Planet Planet { get; set; }
-        public ZodiacSign ZodiacSign { get; set; }
-        public string PlanetInZodiacInfo { get; set; }
-        public bool IsRetrograde { get; set; }
+        [ObservableProperty]
+        private Planet planet;
+        [ObservableProperty]
+        private ZodiacSign zodiacSign;
+        [ObservableProperty]
+        private string planetInZodiacInfo;
+        [ObservableProperty]
+        private bool isRetrograde;
     }
 }

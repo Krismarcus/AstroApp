@@ -40,99 +40,98 @@ namespace AstroApp.Services
         //        return (List<AstroEvent>)serializer.Deserialize(reader);
         //    }
         //}
+        public async Task<AppDB> LoadDBAsync()
+        {
+            try
+            {
+                var localFolderPath = FileSystem.AppDataDirectory;
+                var filePath = Path.Combine(localFolderPath, "astrodb.json");
 
-        public async Task SaveAstroEventsAsync(List<AstroEvent> astroEventsList)
+                if (!File.Exists(filePath))
+                    return new AppDB();
+
+                var jsonString = await File.ReadAllTextAsync(filePath);
+
+                var appDB = JsonSerializer.Deserialize<AppDB>(jsonString);
+                return appDB;
+            }
+            catch (Exception ex)
+            {
+                return new AppDB();
+            }
+        }
+
+        public async Task SaveAstroEventsDBAsync(AppDB astroDB)
         {
             try
             {
                 var localFolderPath = FileSystem.AppDataDirectory; // Gets the local app data folder
-                var filePath = Path.Combine(localFolderPath, "astroEvents.json");
+                var filePath = Path.Combine(localFolderPath, "astrodb.json");
 
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                var jsonString = JsonSerializer.Serialize(astroEventsList, options);
-
-                await File.WriteAllTextAsync(filePath, jsonString);
-            }
-            catch (Exception ex)
-            {
-                // Handle or log the exception as needed
-            }
-        }
-
-        public async Task<List<AstroEvent>> LoadAstroEventsAsync()
-        {
-            var localFolderPath = FileSystem.AppDataDirectory;
-            var filePath = Path.Combine(localFolderPath, "astroEvents.json");
-
-            if (!File.Exists(filePath))
-                return new List<AstroEvent>();
-
-            var jsonString = await File.ReadAllTextAsync(filePath);
-            return JsonSerializer.Deserialize<List<AstroEvent>>(jsonString);
-        }
-
-        public async Task SavePlanetinZodiacsAsync(ObservableCollection<PlanetInZodiac> astroEventsList)
-        {
-            try
-            {
-                var localFolderPath = FileSystem.AppDataDirectory; // Gets the local app data folder
-                var filePath = Path.Combine(localFolderPath, "planetinzodiacs.json");
-
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                var jsonString = JsonSerializer.Serialize(astroEventsList, options);
-
-                await File.WriteAllTextAsync(filePath, jsonString);
-            }
-            catch (Exception ex)
-            {
-                // Handle or log the exception as needed
-            }
-        }
-
-        public async Task<ObservableCollection<PlanetInZodiac>> LoadPlanetInZodiacsDetailsAsync()
-        {
-            var localFolderPath = FileSystem.AppDataDirectory;
-            var filePath = Path.Combine(localFolderPath, "planetinzodiacs.json");
-
-            if (!File.Exists(filePath))
-            {
-                var planetInZodiacsDetails = new ObservableCollection<PlanetInZodiac>();
-
-                // Iterate over each value in the Planet enum
-                foreach (Planet planet in Enum.GetValues(typeof(Planet)))
+                // Read the existing data
+                AppDB existingData = null;
+                if (File.Exists(filePath))
                 {
-                    // Iterate over each value in the ZodiacSign enum
-                    foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
-                    {
-                        // Create a new PlanetInZodiac and add it to the collection
-                        planetInZodiacsDetails.Add(new PlanetInZodiac
-                        {
-                            Planet = planet,
-                            ZodiacSign = zodiacSign,
-                            PlanetInZodiacInfo = "",                            
-                        });
-                    }
+                    string existingJson = await File.ReadAllTextAsync(filePath);
+                    existingData = JsonSerializer.Deserialize<AppDB>(existingJson);
                 }
-                return planetInZodiacsDetails;
-            }
 
-            else 
+                // Update AstroEvents only
+                if (existingData != null)
+                {
+                    existingData.AstroEventsDB = astroDB.AstroEventsDB;
+                }
+                else
+                {
+                    existingData = astroDB; // In case there was no existing data
+                }
+
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                var jsonString = JsonSerializer.Serialize(existingData, options);
+
+                await File.WriteAllTextAsync(filePath, jsonString);
+            }
+            catch (Exception ex)
             {
-            var jsonString = await File.ReadAllTextAsync(filePath);
-            return JsonSerializer.Deserialize<ObservableCollection<PlanetInZodiac>>(jsonString);
+                // Handle or log the exception as needed
             }
-        }
+        }        
 
-        internal async Task<ObservableCollection<MoonDay>> LoadMoonDaysAsync()
+        public async Task SavePlanetinZodiacsAsync(ObservableCollection<PlanetInZodiac> planetInZodiacs)
         {
-            var localFolderPath = FileSystem.AppDataDirectory;
-            var filePath = Path.Combine(localFolderPath, "moondays.json");
+            try
+            {
+                var localFolderPath = FileSystem.AppDataDirectory; // Gets the local app data folder
+                var filePath = Path.Combine(localFolderPath, "astrodb.json");
 
-            if (!File.Exists(filePath))
-                return new ObservableCollection<MoonDay>();
+                // Read the existing data
+                AppDB existingData = null;
+                if (File.Exists(filePath))
+                {
+                    string existingJson = await File.ReadAllTextAsync(filePath);
+                    existingData = JsonSerializer.Deserialize<AppDB>(existingJson);
+                }
 
-            var jsonString = await File.ReadAllTextAsync(filePath);
-            return JsonSerializer.Deserialize<ObservableCollection<MoonDay>>(jsonString);
-        }
+                // Update PlanetInZodiac only
+                if (existingData != null)
+                {
+                    existingData.PlanetInZodiacsDB = planetInZodiacs;
+                }
+                else
+                {
+                    existingData = new AppDB();
+                    existingData.PlanetInZodiacsDB = planetInZodiacs; // In case there was no existing data
+                }
+
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                var jsonString = JsonSerializer.Serialize(existingData, options);
+
+                await File.WriteAllTextAsync(filePath, jsonString);
+            }
+            catch (Exception ex)
+            {
+                // Handle or log the exception as needed
+            }
+        }        
     }    
 }
