@@ -13,8 +13,11 @@
         <Tab Title="Admin">
             <ShellContent x:Name="Admin" ContentTemplate="{DataTemplate pages:AdminPage}" Route="AdminPage"/>
         </Tab>
-        <Tab Title="Events">
-            <ShellContent x:Name="EventsEdit" ContentTemplate="{DataTemplate pages:EventsEditPage}" Route="EventsEditPage"/>
+        <Tab Title="Planet In Zodiacs">
+            <ShellContent x:Name="PlanetInZodiacEdit" ContentTemplate="{DataTemplate pages:PlanetInZodiacEventsEditPage}" Route="PlanetInZodiacEventsEditPage"/>
+        </Tab>
+        <Tab Title="Moon Days">
+            <ShellContent x:Name="MoonDayEdit" ContentTemplate="{DataTemplate pages:MoonDaysEditPage}" Route="MoonDaysEditPage"/>
         </Tab>
     </TabBar>
 </Shell>

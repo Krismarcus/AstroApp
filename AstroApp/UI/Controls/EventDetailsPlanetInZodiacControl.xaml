@@ -32,7 +32,7 @@
             </DataTrigger>
         </Image.Triggers>-->
     </Image>
-        <Label x:Name="hoverLabel" Text="{Binding PlanetInZodiacInfo}" IsVisible="False" BackgroundColor="White" Opacity="0.8" 
+        <Label x:Name="hoverLabel" Text="{Binding PlanetInZodiacInfo}" IsVisible="True" BackgroundColor="White" Opacity="0.8" 
                HorizontalOptions="Center" VerticalOptions="Center"/>
     </HorizontalStackLayout>
 </ContentView>

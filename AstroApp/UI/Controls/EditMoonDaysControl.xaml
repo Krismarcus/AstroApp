@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
+             xmlns:controls="clr-namespace:AstroApp.UI.Controls"
+             x:Class="AstroApp.UI.Controls.EditMoonDaysControl"
+             x:DataType="controls:EditMoonDaysControl">
+    <ContentView.Resources>
+        <converters:MoonDayIntToStringConverter x:Key="EnumConverter"/>
+    </ContentView.Resources>
+    <Grid ColumnDefinitions="Auto,*">
+        <Label Grid.Column="0" Text="{Binding MoonDay.NewMoonDay, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />        
+        <Editor Grid.Column="1" Text="{Binding MoonDay.MoonDayInfo, Mode=TwoWay}" VerticalOptions="Center" AutoSize="TextChanges" Margin="10,0"/>
+    </Grid>
+</ContentView>

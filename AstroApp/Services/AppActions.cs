@@ -132,6 +132,43 @@ namespace AstroApp.Services
             {
                 // Handle or log the exception as needed
             }
-        }        
+        }
+
+        public async Task SavePlanetinZodiacsAsync(ObservableCollection<MoonDay> moonDays)
+        {
+            try
+            {
+                var localFolderPath = FileSystem.AppDataDirectory; // Gets the local app data folder
+                var filePath = Path.Combine(localFolderPath, "astrodb.json");
+
+                // Read the existing data
+                AppDB existingData = null;
+                if (File.Exists(filePath))
+                {
+                    string existingJson = await File.ReadAllTextAsync(filePath);
+                    existingData = JsonSerializer.Deserialize<AppDB>(existingJson);
+                }
+
+                // Update PlanetInZodiac only
+                if (existingData != null)
+                {
+                    existingData.MoonDaysDB = moonDays;
+                }
+                else
+                {
+                    existingData = new AppDB();
+                    existingData.MoonDaysDB = moonDays; // In case there was no existing data
+                }
+
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                var jsonString = JsonSerializer.Serialize(existingData, options);
+
+                await File.WriteAllTextAsync(filePath, jsonString);
+            }
+            catch (Exception ex)
+            {
+                // Handle or log the exception as needed
+            }
+        }
     }    
 }

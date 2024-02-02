@@ -140,8 +140,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="UI\Pages\EventsEditPage.xaml.cs">
-	    <DependentUpon>EventsEditPage.xaml</DependentUpon>
+	  <Compile Update="UI\Pages\PlanetinZodiacEventsEditPage.xaml.cs">
+	    <DependentUpon>PlanetInZodiacEventsEditPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -153,6 +153,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UI\Controls\EditDayControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\EditMoonDaysControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UI\Controls\EditPlanetInZodiacControl.xaml">
@@ -173,7 +176,10 @@
 	  <MauiXaml Update="UI\Pages\EventDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="UI\Pages\EventsEditPage.xaml">
+	  <MauiXaml Update="UI\Pages\MoonDaysEditPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Pages\PlanetInZodiacEventsEditPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

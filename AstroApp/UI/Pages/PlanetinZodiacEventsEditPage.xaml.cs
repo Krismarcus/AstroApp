@@ -5,12 +5,11 @@ using System.Collections.ObjectModel;
 
 namespace AstroApp.UI.Pages;
 
-public partial class EventsEditPage : ContentPage
+public partial class PlanetInZodiacEventsEditPage : ContentPage
 {
-    public ObservableCollection<PlanetInZodiac> PlanetInZodiacs { get; set; }
-    public ObservableCollection<MoonDay> MoonDays { get; set; }
+    public ObservableCollection<PlanetInZodiac> PlanetInZodiacs { get; set; }    
 
-    public EventsEditPage()
+    public PlanetInZodiacEventsEditPage()
 	{
 		InitializeComponent();
         Initialize();
