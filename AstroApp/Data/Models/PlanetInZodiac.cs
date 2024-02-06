@@ -7,11 +7,48 @@ namespace AstroApp.Data.Models
     {
         [ObservableProperty]
         private Planet planet;
+
+        private ZodiacSign newZodiacSign;
+        private ZodiacSign previousZodiacSign;
+
+        public ZodiacSign NewZodiacSign
+        {
+            get => newZodiacSign;
+            set
+            {
+                newZodiacSign = value;
+                UpdatePreviousZodiacSign();
+            }
+        }
+
+        public ZodiacSign PreviousZodiacSign
+        {
+            get => previousZodiacSign;
+            private set => previousZodiacSign = value;
+        }
+
+        private void UpdatePreviousZodiacSign()
+        {
+            if (newZodiacSign == ZodiacSign.Aries)
+            {
+                previousZodiacSign = ZodiacSign.Pisces;
+            }
+            else
+            {
+                previousZodiacSign = (ZodiacSign)(newZodiacSign - 1);
+            }
+        }
+
         [ObservableProperty]
-        private ZodiacSign zodiacSign;
+        private bool isZodiacTransitioning;
+
+        [ObservableProperty]
+        private DateTime transitionTime;        
+
         [ObservableProperty]
         private string planetInZodiacInfo;
+
         [ObservableProperty]
-        private bool isRetrograde;
+        private bool isRetrograde;       
     }
 }

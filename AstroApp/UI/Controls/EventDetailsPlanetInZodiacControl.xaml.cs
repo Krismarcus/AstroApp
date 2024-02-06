@@ -4,6 +4,7 @@ namespace AstroApp.UI.Controls;
 
 public partial class EventDetailsPlanetInZodiacControl : ContentView
 {	
+
 	public EventDetailsPlanetInZodiacControl()
 	{
 		InitializeComponent();

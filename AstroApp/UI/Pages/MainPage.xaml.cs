@@ -51,9 +51,7 @@ namespace AstroApp.UI.Pages
                 [
                     new AstroEvent()
                     {
-                        Date = DateTime.Now,
-                        MoonInZodiac = Data.Enums.ZodiacSign.Capricorn,
-                        SunInZodiac = Data.Enums.ZodiacSign.Cancer,
+                        Date = DateTime.Now,                        
                         MoonDay = new MoonDay() { NewMoonDay = 8, TransitionTime = DateTime.Now },
                         EventText = "Bandomasis tekstas",
                         MoonEclipse = false,
@@ -70,9 +68,7 @@ namespace AstroApp.UI.Pages
                     },
                     new AstroEvent()
                     {
-                        Date = DateTime.Now.AddDays(1),
-                        MoonInZodiac = Data.Enums.ZodiacSign.Virgo,
-                        SunInZodiac = Data.Enums.ZodiacSign.Cancer,
+                        Date = DateTime.Now.AddDays(1),                       
                         MoonDay = new MoonDay() { NewMoonDay = 3, TransitionTime = DateTime.Now },
                         EventText = "Bandomasis tekstas",
                         MoonEclipse = false,
@@ -89,9 +85,7 @@ namespace AstroApp.UI.Pages
                     },
                     new AstroEvent()
                     {
-                        Date = DateTime.Now.AddMonths(-1),
-                        MoonInZodiac = Data.Enums.ZodiacSign.Leo,
-                        SunInZodiac = Data.Enums.ZodiacSign.Cancer,
+                        Date = DateTime.Now.AddMonths(-1),                        
                         MoonDay = new MoonDay() { NewMoonDay = 4, TransitionTime = DateTime.Now },
                         EventText = "Bandomasis tekstas",
                         MoonEclipse = false,

@@ -22,7 +22,7 @@
             </DataTrigger>--><!--
         </Image.Triggers>-->
     </Image>
-        <Image Source="{Binding ZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="100" >
+        <Image Source="{Binding NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="100" >
         <!--<Image.Triggers>
             <DataTrigger TargetType="Image" Binding="{Binding Planet}" Value="Sun">
                     <Setter Property="WidthRequest" Value="200"/>

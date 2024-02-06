@@ -10,7 +10,7 @@
     </ContentView.Resources>    
     <Grid ColumnDefinitions="Auto,Auto,*">
         <Label Grid.Column="0" Text="{Binding PlanetInZodiac.Planet}" VerticalOptions="Center"/>
-        <Label Grid.Column="1" Text="{Binding PlanetInZodiac.ZodiacSign}" VerticalOptions="Center"/>
+        <Label Grid.Column="1" Text="{Binding PlanetInZodiac.NewZodiacSign}" VerticalOptions="Center"/>
         <Editor Grid.Column="2" Text="{Binding PlanetInZodiac.PlanetInZodiacInfo}" VerticalOptions="Center" AutoSize="TextChanges" Margin="10,0"/>
     </Grid>
 </ContentView>

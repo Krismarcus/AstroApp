@@ -19,7 +19,39 @@ public partial class EventDetailsPage : ContentPage
 
             }
         }
-    }    
+    }
+
+    private PlanetInZodiac sunInZodiac;
+
+    public PlanetInZodiac SunInZodiac
+    {
+        get { return sunInZodiac; }
+        set
+        {
+            if (sunInZodiac != value)
+            {
+                sunInZodiac = value;
+                OnPropertyChanged(nameof(SunInZodiac));
+
+            }
+        }
+    }
+
+    private PlanetInZodiac moonInZodiac;
+
+    public PlanetInZodiac MoonInZodiac
+    {
+        get { return moonInZodiac; }
+        set
+        {
+            if (moonInZodiac != value)
+            {
+                moonInZodiac = value;
+                OnPropertyChanged(nameof(MoonInZodiac));
+
+            }
+        }
+    }
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -42,6 +74,8 @@ public partial class EventDetailsPage : ContentPage
     {        
         DayAstroEvent = astroEvent;
         UpdateDayEventInfoList();
+        this.SunInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Sun);
+        this.MoonInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Moon);
         BindingContext = DayAstroEvent;
     }
 
@@ -53,7 +87,7 @@ public partial class EventDetailsPage : ContentPage
         foreach (var planetInZodiac in DayAstroEvent.PlanetInZodiacs)
         {
             var infoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(
-                p => p.Planet == planetInZodiac.Planet && p.ZodiacSign == planetInZodiac.ZodiacSign);
+                p => p.Planet == planetInZodiac.Planet && p.NewZodiacSign == planetInZodiac.NewZodiacSign);
 
             if (infoSourceItem != null)
             {

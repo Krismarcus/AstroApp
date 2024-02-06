@@ -69,6 +69,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
             }
         }
     }
+
     public event PropertyChangedEventHandler PropertyChanged;
 
     protected virtual void OnPropertyChanged(string propertyName)
@@ -80,18 +81,14 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
     {
         InitializeComponent();        
         BindingContext = this;
-        //SunMoonZodiacsInitialize();
+        
     }
-
-    //private void SunMoonZodiacsInitialize()
-    //{
-    //    this.SunInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Sun);
-    //    this.MoonInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Moon);
-    //}
 
     public void AddAstroEvent(AstroEvent astroEventForDate)
     {
         this.DayAstroEvent = astroEventForDate;
+        this.SunInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Sun);
+        this.MoonInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Moon);
     }
 
     public void AddDayCardDayNumber(int dayNumber)

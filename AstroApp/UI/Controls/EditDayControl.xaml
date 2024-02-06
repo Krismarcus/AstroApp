@@ -22,9 +22,9 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>                            
+                            <ColumnDefinition Width="Auto"/>                            
+                            <ColumnDefinition Width="8*"/>
                             <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="{Binding DayAstroEvent.Date.Day}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="5"/>                           
@@ -43,7 +43,7 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Text="Moon Trans Time" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Grid.Row="0" Text="MoonDay Trans Time" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 <TimePicker Grid.Row="1" Time="{Binding DayAstroEvent.MoonDay.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                             </Grid>
                         </Grid>
@@ -69,12 +69,8 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
+                                    </Grid.ColumnDefinitions>                                  
                                     <Grid Grid.Column="0" ColumnDefinitions="*,4*">
-                                        <Label Grid.Column="0" Text="Moon In Zodiac Info" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                        <Editor Grid.Column="1" Text="{Binding DayAstroEvent.MoonInZodiacInfo}" AutoSize="TextChanges" VerticalOptions="Center" />
-                                    </Grid>
-                                    <Grid Grid.Column="1" ColumnDefinitions="*,4*">
                                         <Label Grid.Column="0" Text="Day Info" HorizontalOptions="Center" VerticalOptions="Center"/>
                                         <Editor Grid.Column="1" Text="{Binding DayAstroEvent.EventText}" AutoSize="TextChanges" VerticalOptions="Center" />
                                     </Grid>                                                                  

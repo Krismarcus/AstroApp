@@ -39,7 +39,7 @@ public partial class PlanetInZodiacEventsEditPage : ContentPage
                     this.PlanetInZodiacs.Add(new PlanetInZodiac
                     {
                         Planet = planet,
-                        ZodiacSign = zodiacSign,
+                        NewZodiacSign = zodiacSign,
                         PlanetInZodiacInfo = "",
                     });
                 }

@@ -7,13 +7,19 @@
              x:DataType="models:PlanetInZodiac">
     <ContentView.Resources>
         <converters:EnumToStringConverter x:Key="EnumConverter"/>
+        <converters:DateTimeToTimeSpanConverter x:Key="DateTimeToTimeSpanConverter"/>
     </ContentView.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>           
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Text="{Binding Planet}" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Picker Grid.Row="1" x:Name="PlanetInZodiacPicker" SelectedItem="{Binding ZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />
+        <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
+            <Picker Grid.Column="0" x:Name="PlanetInZodiacPicker" SelectedItem="{Binding NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Switch Grid.Column="1" IsToggled="{Binding IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+        <TimePicker Grid.Row="2"  Time="{Binding TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding IsZodiacTransitioning}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
     </Grid>
 </ContentView>
