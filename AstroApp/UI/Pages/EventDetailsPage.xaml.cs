@@ -1,3 +1,4 @@
+using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
 using System.ComponentModel;
 
@@ -76,7 +77,7 @@ public partial class EventDetailsPage : ContentPage
         UpdateDayEventInfoList();
         this.SunInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Sun);
         this.MoonInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Moon);
-        BindingContext = DayAstroEvent;
+        BindingContext = this;
     }
 
     private void UpdateDayEventInfoList()
@@ -109,4 +110,19 @@ public partial class EventDetailsPage : ContentPage
             }
         }
     }
+
+    private void TapSunInZodiac_Tapped(object sender, TappedEventArgs e)
+    {
+        Application.Current.MainPage.DisplayAlert("Sun in " + SunInZodiac.NewZodiacSign + " Details", SunInZodiac.PlanetInZodiacInfo, "OK");
+    }
+
+    private void TapMoonInZodiac_Tapped(object sender, TappedEventArgs e)
+    {
+        Application.Current.MainPage.DisplayAlert("Moon in "+ MoonInZodiac.NewZodiacSign + " Details", MoonInZodiac.PlanetInZodiacInfo, "OK");
+    }
+
+    private void TapNewMoonDay_Tapped(object sender, TappedEventArgs e)
+    {
+        Application.Current.MainPage.DisplayAlert("Details about " + (MoonDaySymbol)DayAstroEvent.MoonDay.NewMoonDay + " Day", DayAstroEvent.MoonDay.MoonDayInfo, "OK");
+    }   
 }
