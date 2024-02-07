@@ -6,7 +6,7 @@ namespace AstroApp.UI.Pages;
 
 public partial class EventDetailsPage : ContentPage
 {
-    private AstroEvent dayAstroEvent; 
+    private AstroEvent dayAstroEvent;
 
     public AstroEvent DayAstroEvent
     {
@@ -54,6 +54,54 @@ public partial class EventDetailsPage : ContentPage
         }
     }
 
+    private PlanetInZodiac venusInZodiac;
+
+    public PlanetInZodiac VenusInZodiac
+    {
+        get { return venusInZodiac; }
+        set
+        {
+            if (venusInZodiac != value)
+            {
+                venusInZodiac = value;
+                OnPropertyChanged(nameof(VenusInZodiac));
+
+            }
+        }
+    }
+
+    private PlanetInZodiac marsInZodiac;
+
+    public PlanetInZodiac MarsInZodiac
+    {
+        get { return marsInZodiac; }
+        set
+        {
+            if (marsInZodiac != value)
+            {
+                marsInZodiac = value;
+                OnPropertyChanged(nameof(MarsInZodiac));
+
+            }
+        }
+    }
+
+    private PlanetInZodiac mercuryInZodiac;
+
+    public PlanetInZodiac MercuryInZodiac
+    {
+        get { return mercuryInZodiac; }
+        set
+        {
+            if (mercuryInZodiac != value)
+            {
+                mercuryInZodiac = value;
+                OnPropertyChanged(nameof(MercuryInZodiac));
+
+            }
+        }
+    }
+
     public event PropertyChangedEventHandler PropertyChanged;
 
     protected virtual void OnPropertyChanged(string propertyName)
@@ -62,9 +110,9 @@ public partial class EventDetailsPage : ContentPage
     }
 
     public EventDetailsPage()
-    {        
-        InitializeComponent();        
-    }   
+    {
+        InitializeComponent();
+    }
 
     private async void OnPageTapped(object sender, EventArgs e)
     {
@@ -72,11 +120,14 @@ public partial class EventDetailsPage : ContentPage
     }
 
     public async Task InitializeDataAsync(AstroEvent astroEvent)
-    {        
+    {
         DayAstroEvent = astroEvent;
         UpdateDayEventInfoList();
         this.SunInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Sun);
         this.MoonInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Moon);
+        this.VenusInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Venus);
+        this.MarsInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Mars);
+        this.MercuryInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Mercury);
         BindingContext = this;
     }
 
@@ -111,6 +162,11 @@ public partial class EventDetailsPage : ContentPage
         }
     }
 
+    private void TapNewMoonDay_Tapped(object sender, TappedEventArgs e)
+    {
+        Application.Current.MainPage.DisplayAlert("Details about " + (MoonDaySymbol)DayAstroEvent.MoonDay.NewMoonDay + " Day", DayAstroEvent.MoonDay.MoonDayInfo, "OK");
+    }
+
     private void TapSunInZodiac_Tapped(object sender, TappedEventArgs e)
     {
         Application.Current.MainPage.DisplayAlert("Sun in " + SunInZodiac.NewZodiacSign + " Details", SunInZodiac.PlanetInZodiacInfo, "OK");
@@ -118,11 +174,22 @@ public partial class EventDetailsPage : ContentPage
 
     private void TapMoonInZodiac_Tapped(object sender, TappedEventArgs e)
     {
-        Application.Current.MainPage.DisplayAlert("Moon in "+ MoonInZodiac.NewZodiacSign + " Details", MoonInZodiac.PlanetInZodiacInfo, "OK");
+        Application.Current.MainPage.DisplayAlert("Moon in " + MoonInZodiac.NewZodiacSign + " Details", MoonInZodiac.PlanetInZodiacInfo, "OK");
     }
 
-    private void TapNewMoonDay_Tapped(object sender, TappedEventArgs e)
+
+    private void TapVenusInZodiac_Tapped(object sender, TappedEventArgs e)
     {
-        Application.Current.MainPage.DisplayAlert("Details about " + (MoonDaySymbol)DayAstroEvent.MoonDay.NewMoonDay + " Day", DayAstroEvent.MoonDay.MoonDayInfo, "OK");
-    }   
+        Application.Current.MainPage.DisplayAlert("Venus in " + VenusInZodiac.NewZodiacSign + " Details", MoonInZodiac.PlanetInZodiacInfo, "OK");
+    }
+
+    private void TapMarsInZodiac_Tapped(object sender, TappedEventArgs e)
+    {
+        Application.Current.MainPage.DisplayAlert("Mars in " + MarsInZodiac.NewZodiacSign + " Details", MoonInZodiac.PlanetInZodiacInfo, "OK");
+    }
+
+    private void TapMercuryInZodiac_Tapped(object sender, TappedEventArgs e)
+    {
+        Application.Current.MainPage.DisplayAlert("Mercury in " + MercuryInZodiac.NewZodiacSign + " Details", MoonInZodiac.PlanetInZodiacInfo, "OK");
+    }
 }
