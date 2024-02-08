@@ -20,87 +20,7 @@ public partial class EventDetailsPage : ContentPage
 
             }
         }
-    }
-
-    private PlanetInZodiac sunInZodiac;
-
-    public PlanetInZodiac SunInZodiac
-    {
-        get { return sunInZodiac; }
-        set
-        {
-            if (sunInZodiac != value)
-            {
-                sunInZodiac = value;
-                OnPropertyChanged(nameof(SunInZodiac));
-
-            }
-        }
-    }
-
-    private PlanetInZodiac moonInZodiac;
-
-    public PlanetInZodiac MoonInZodiac
-    {
-        get { return moonInZodiac; }
-        set
-        {
-            if (moonInZodiac != value)
-            {
-                moonInZodiac = value;
-                OnPropertyChanged(nameof(MoonInZodiac));
-
-            }
-        }
-    }
-
-    private PlanetInZodiac venusInZodiac;
-
-    public PlanetInZodiac VenusInZodiac
-    {
-        get { return venusInZodiac; }
-        set
-        {
-            if (venusInZodiac != value)
-            {
-                venusInZodiac = value;
-                OnPropertyChanged(nameof(VenusInZodiac));
-
-            }
-        }
-    }
-
-    private PlanetInZodiac marsInZodiac;
-
-    public PlanetInZodiac MarsInZodiac
-    {
-        get { return marsInZodiac; }
-        set
-        {
-            if (marsInZodiac != value)
-            {
-                marsInZodiac = value;
-                OnPropertyChanged(nameof(MarsInZodiac));
-
-            }
-        }
-    }
-
-    private PlanetInZodiac mercuryInZodiac;
-
-    public PlanetInZodiac MercuryInZodiac
-    {
-        get { return mercuryInZodiac; }
-        set
-        {
-            if (mercuryInZodiac != value)
-            {
-                mercuryInZodiac = value;
-                OnPropertyChanged(nameof(MercuryInZodiac));
-
-            }
-        }
-    }
+    }    
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -122,43 +42,47 @@ public partial class EventDetailsPage : ContentPage
     public async Task InitializeDataAsync(AstroEvent astroEvent)
     {
         DayAstroEvent = astroEvent;
-        UpdateDayEventInfoList();
-        this.SunInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Sun);
-        this.MoonInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Moon);
-        this.VenusInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Venus);
-        this.MarsInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Mars);
-        this.MercuryInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Mercury);
+        UpdateDayEventInfoList();        
         BindingContext = this;
     }
 
     private void UpdateDayEventInfoList()
     {
-        if (DayAstroEvent?.PlanetInZodiacs == null || App.AppData.AppDB.PlanetInZodiacsDB == null)
+        if (App.AppData.AppDB.PlanetInZodiacsDB == null || DayAstroEvent == null)
             return;
 
-        foreach (var planetInZodiac in DayAstroEvent.PlanetInZodiacs)
+        UpdatePlanetInZodiacInfo(DayAstroEvent.SunInZodiac);
+        UpdatePlanetInZodiacInfo(DayAstroEvent.MoonInZodiac);
+        UpdatePlanetInZodiacInfo(DayAstroEvent.VenusInZodiac);
+        UpdatePlanetInZodiacInfo(DayAstroEvent.MarsInZodiac);
+        UpdatePlanetInZodiacInfo(DayAstroEvent.MercuryInZodiac);
+        UpdateMoonDayInfo();
+    }
+
+    private void UpdatePlanetInZodiacInfo(PlanetInZodiac planetInZodiac)
+    {
+        if (planetInZodiac == null) return;
+
+        var infoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
+            p.Planet == planetInZodiac.Planet && p.NewZodiacSign == planetInZodiac.NewZodiacSign);
+
+        if (infoSourceItem != null)
         {
-            var infoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(
-                p => p.Planet == planetInZodiac.Planet && p.NewZodiacSign == planetInZodiac.NewZodiacSign);
-
-            if (infoSourceItem != null)
-            {
-                planetInZodiac.PlanetInZodiacInfo = infoSourceItem.PlanetInZodiacInfo;
-            }
+            planetInZodiac.PlanetInZodiacInfo = infoSourceItem.PlanetInZodiacInfo;
         }
+    }
 
+    private void UpdateMoonDayInfo()
+    {
         if (DayAstroEvent?.MoonDay == null || App.AppData.AppDB.MoonDaysDB == null)
             return;
 
-        else
-        {
-            var infoSourceItem = App.AppData.AppDB.MoonDaysDB.FirstOrDefault(
-                 m => m.NewMoonDay == DayAstroEvent.MoonDay.NewMoonDay);
+        var infoSourceItem = App.AppData.AppDB.MoonDaysDB.FirstOrDefault(m =>
+            m.NewMoonDay == DayAstroEvent.MoonDay.NewMoonDay);
 
-            if (infoSourceItem != null)
-            {
-                DayAstroEvent.MoonDay.MoonDayInfo = infoSourceItem.MoonDayInfo;
-            }
+        if (infoSourceItem != null)
+        {
+            DayAstroEvent.MoonDay.MoonDayInfo = infoSourceItem.MoonDayInfo;
         }
     }
 
@@ -169,27 +93,27 @@ public partial class EventDetailsPage : ContentPage
 
     private void TapSunInZodiac_Tapped(object sender, TappedEventArgs e)
     {
-        Application.Current.MainPage.DisplayAlert("Sun in " + SunInZodiac.NewZodiacSign + " Details", SunInZodiac.PlanetInZodiacInfo, "OK");
+        Application.Current.MainPage.DisplayAlert("Sun in " + DayAstroEvent.SunInZodiac.NewZodiacSign + " Details", DayAstroEvent.SunInZodiac.PlanetInZodiacInfo, "OK");
     }
 
     private void TapMoonInZodiac_Tapped(object sender, TappedEventArgs e)
     {
-        Application.Current.MainPage.DisplayAlert("Moon in " + MoonInZodiac.NewZodiacSign + " Details", MoonInZodiac.PlanetInZodiacInfo, "OK");
+        Application.Current.MainPage.DisplayAlert("Moon in " + DayAstroEvent.MoonInZodiac.NewZodiacSign + " Details", DayAstroEvent.MoonInZodiac.PlanetInZodiacInfo, "OK");
     }
 
 
     private void TapVenusInZodiac_Tapped(object sender, TappedEventArgs e)
     {
-        Application.Current.MainPage.DisplayAlert("Venus in " + VenusInZodiac.NewZodiacSign + " Details", MoonInZodiac.PlanetInZodiacInfo, "OK");
+        Application.Current.MainPage.DisplayAlert("Venus in " + DayAstroEvent.VenusInZodiac.NewZodiacSign + " Details", DayAstroEvent.VenusInZodiac.PlanetInZodiacInfo, "OK");
     }
 
     private void TapMarsInZodiac_Tapped(object sender, TappedEventArgs e)
     {
-        Application.Current.MainPage.DisplayAlert("Mars in " + MarsInZodiac.NewZodiacSign + " Details", MoonInZodiac.PlanetInZodiacInfo, "OK");
+        Application.Current.MainPage.DisplayAlert("Mars in " + DayAstroEvent.MarsInZodiac.NewZodiacSign + " Details", DayAstroEvent.MarsInZodiac.PlanetInZodiacInfo, "OK");
     }
 
     private void TapMercuryInZodiac_Tapped(object sender, TappedEventArgs e)
     {
-        Application.Current.MainPage.DisplayAlert("Mercury in " + MercuryInZodiac.NewZodiacSign + " Details", MoonInZodiac.PlanetInZodiacInfo, "OK");
+        Application.Current.MainPage.DisplayAlert("Mercury in " + DayAstroEvent.MercuryInZodiac.NewZodiacSign + " Details", DayAstroEvent.MercuryInZodiac.PlanetInZodiacInfo, "OK");
     }
 }

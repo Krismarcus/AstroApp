@@ -27,16 +27,74 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="{Binding DayAstroEvent.Date.Day}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="5"/>                           
-                        <CollectionView Grid.Column="1" ItemsSource="{Binding DayAstroEvent.PlanetInZodiacs}" ItemsLayout="HorizontalList">
-                                <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <HorizontalStackLayout>
-                                        <controls:PlanetInZodiacControl />
-                                    </HorizontalStackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
+                        <Label Grid.Column="0" Text="{Binding DayAstroEvent.Date.Day}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="5"/>
+                        <Grid Grid.Column="1" ColumnDefinitions="*,*,*,*,*">
+                            <Grid Grid.Column="0"> <!--Sun-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{Binding DayAstroEvent.SunInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
+                                    <Picker Grid.Column="0" x:Name="SunInZodiacPicker" SelectedItem="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" />
+                                    <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.SunInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Grid>
+                                <TimePicker Grid.Row="2"  Time="{Binding DayAstroEvent.SunInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.SunInZodiac.IsZodiacTransitioning}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+                            <Grid Grid.Column="1"> <!--Moon-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{Binding DayAstroEvent.MoonInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
+                                    <Picker Grid.Column="0" x:Name="MoonInZodiacPicker" SelectedItem="{Binding DayAstroEvent.MoonInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" />
+                                    <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Grid>
+                                <TimePicker Grid.Row="2"  Time="{Binding DayAstroEvent.MoonInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+                            <Grid Grid.Column="2"> <!--Venus-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{Binding DayAstroEvent.VenusInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
+                                    <Picker Grid.Column="0" x:Name="VenusInZodiacPicker" SelectedItem="{Binding DayAstroEvent.VenusInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" />
+                                    <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Grid>
+                                <TimePicker Grid.Row="2"  Time="{Binding DayAstroEvent.VenusInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+                            <Grid Grid.Column="3"> <!--Mars-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{Binding DayAstroEvent.MarsInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
+                                    <Picker Grid.Column="0" x:Name="MarsInZodiacPicker" SelectedItem="{Binding DayAstroEvent.MarsInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" />
+                                    <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Grid>
+                                <TimePicker Grid.Row="2"  Time="{Binding DayAstroEvent.MarsInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+                            <Grid Grid.Column="4"> <!--Mercury-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{Binding DayAstroEvent.MercuryInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
+                                    <Picker Grid.Column="0" x:Name="MercuryInZodiacPicker" SelectedItem="{Binding DayAstroEvent.MercuryInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" />
+                                    <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Grid>
+                                <TimePicker Grid.Row="2"  Time="{Binding DayAstroEvent.MercuryInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+                        </Grid>
                         <Grid Grid.Column="2">
                             <Grid>
                                 <Grid.RowDefinitions>

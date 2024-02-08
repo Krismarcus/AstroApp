@@ -86,9 +86,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
 
     public void AddAstroEvent(AstroEvent astroEventForDate)
     {
-        this.DayAstroEvent = astroEventForDate;
-        this.SunInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Sun);
-        this.MoonInZodiac = DayAstroEvent.PlanetInZodiacs.Single(i => i.Planet == Data.Enums.Planet.Moon);
+        this.DayAstroEvent = astroEventForDate;        
     }
 
     public void AddDayCardDayNumber(int dayNumber)

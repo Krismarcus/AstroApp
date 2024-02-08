@@ -10,8 +10,12 @@ namespace AstroApp.Data.Models
 {
     public class AstroEvent
     {
-        public DateTime Date { get; set; }        
-        public ObservableCollection<PlanetInZodiac> PlanetInZodiacs { get; set; } = new ObservableCollection<PlanetInZodiac>();
+        public DateTime Date { get; set; }
+        public PlanetInZodiac SunInZodiac {  get; set; }
+        public PlanetInZodiac MoonInZodiac { get; set; }
+        public PlanetInZodiac VenusInZodiac { get; set; }
+        public PlanetInZodiac MarsInZodiac { get; set; }
+        public PlanetInZodiac MercuryInZodiac { get; set; }
         public MoonDay MoonDay { get; set; }        
         public ObservableCollection<PlanetEvent> PlanetEvents { get; set; } = new ObservableCollection<PlanetEvent>();
         public bool SunEclipse { get; set; }
