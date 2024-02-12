@@ -30,6 +30,7 @@ public partial class AdminPage : ContentPage
     public AdminPage()
 	{
 		InitializeComponent();
+        PopulatePickers();
         Initialize();
         this.BindingContext = this;
     }
@@ -171,4 +172,51 @@ public partial class AdminPage : ContentPage
         return ZodiacSign.Capricorn;
 
     }
+
+    public void PopulatePickers()
+    {
+        //foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
+        //{
+        //    this.SunInZodiacPicker.Items.Add(zodiacSign.ToString());
+        //}
+
+        foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
+        {
+            this.MoonInZodiacPicker.Items.Add(zodiacSign.ToString());
+        }
+
+        //foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
+        //{
+        //    this.VenusInZodiacPicker.Items.Add(zodiacSign.ToString());
+        //}
+
+        //foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
+        //{
+        //    this.MarsInZodiacPicker.Items.Add(zodiacSign.ToString());
+        //}
+
+        //foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
+        //{
+        //    this.MercuryInZodiacPicker.Items.Add(zodiacSign.ToString());
+        //}
+    }
+
+    private void ZodiacSignPicker_OnSelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (MoonInZodiacPicker.SelectedIndex == -1)
+            return;
+
+        var selectedZodiacSign = (ZodiacSign)(MoonInZodiacPicker.SelectedIndex + 1); // Assuming enum starts at 1
+
+        foreach (var eventDay in ActiveAstroEvents)
+        {
+            // Assuming you want to change the SunInZodiac for demonstration
+            eventDay.MoonInZodiac.NewZodiacSign = selectedZodiacSign;
+        }
+
+        // Refresh the list to reflect changes
+        UpdateList(year, month);
+    }
+
+
 }

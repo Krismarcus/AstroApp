@@ -13,6 +13,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
@@ -22,9 +23,10 @@
                     <Button Grid.Column="0" Text="Previous" Clicked="PrevButton_Clicked"/>
                     <Button Grid.Column="1" Text="Next" Clicked="NextButton_Clicked"/>
                 </Grid>
-                <Label Grid.Row="1" Text="{Binding MonthName}" FontSize="Header" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <VerticalStackLayout Grid.Row="2" x:Name="EventList"/>
-                <Grid Grid.Row="3">
+                <Label Grid.Row="1" Text="{Binding MonthName}" FontSize="Header" HorizontalOptions="Center" VerticalOptions="Center"/>           
+                <Picker Grid.Row="2" x:Name="MoonInZodiacPicker" Title="Moon Zodiac" SelectedIndexChanged="ZodiacSignPicker_OnSelectedIndexChanged"/>           
+                <VerticalStackLayout Grid.Row="3" x:Name="EventList"/>
+                <Grid Grid.Row="4">
                     <Button Text="Save" Clicked="SaveButton_Clicked"/>
                 </Grid>
             </Grid>
