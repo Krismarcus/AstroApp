@@ -23,6 +23,24 @@ public partial class AdminPage : ContentPage
     }
 
     private int month, year;
+
+    private int dayIndex;
+
+    public int DayIndex
+    {
+        get => dayIndex;
+        set
+        {
+            if (dayIndex != value)
+            {
+                dayIndex = value;
+                OnPropertyChanged(nameof(DayIndex));
+            }
+        }
+    }
+
+    public int SelectedMoonDay {  get; set; }
+
     public List<AstroEvent> ActiveAstroEvents { get; set; }
 
     public ObservableCollection<PlanetInZodiac> PlanetInZodiacsDetails { get; set; }
@@ -174,49 +192,82 @@ public partial class AdminPage : ContentPage
     }
 
     public void PopulatePickers()
-    {
-        //foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
-        //{
-        //    this.SunInZodiacPicker.Items.Add(zodiacSign.ToString());
-        //}
+    {        
+        var zodiacSigns = Enum.GetValues(typeof(ZodiacSign));
 
-        foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
+        foreach (ZodiacSign zodiacSign in zodiacSigns)
         {
-            this.MoonInZodiacPicker.Items.Add(zodiacSign.ToString());
+            VenusInZodiacPicker.Items.Add(zodiacSign.ToString());
+            MarsInZodiacPicker.Items.Add(zodiacSign.ToString());
+            MercuryInZodiacPicker.Items.Add(zodiacSign.ToString());
         }
 
-        //foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
-        //{
-        //    this.VenusInZodiacPicker.Items.Add(zodiacSign.ToString());
-        //}
-
-        //foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
-        //{
-        //    this.MarsInZodiacPicker.Items.Add(zodiacSign.ToString());
-        //}
-
-        //foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
-        //{
-        //    this.MercuryInZodiacPicker.Items.Add(zodiacSign.ToString());
-        //}
+        foreach (MoonDaySymbol moonDay in Enum.GetValues(typeof(MoonDaySymbol)))
+        {
+            this.MoonDayPicker.Items.Add(moonDay.ToString());
+        }
     }
 
     private void ZodiacSignPicker_OnSelectedIndexChanged(object sender, EventArgs e)
     {
-        if (MoonInZodiacPicker.SelectedIndex == -1)
-            return;
-
-        var selectedZodiacSign = (ZodiacSign)(MoonInZodiacPicker.SelectedIndex + 1); // Assuming enum starts at 1
-
-        foreach (var eventDay in ActiveAstroEvents)
+        if (sender is Picker picker && picker.SelectedIndex != -1)
         {
-            // Assuming you want to change the SunInZodiac for demonstration
-            eventDay.MoonInZodiac.NewZodiacSign = selectedZodiacSign;
-        }
+            var selectedZodiacSign = (ZodiacSign)picker.SelectedIndex +1; // Adjusted assuming enum starts at 1
 
-        // Refresh the list to reflect changes
-        UpdateList(year, month);
+            if (picker == VenusInZodiacPicker)
+            {
+                foreach (var eventDay in ActiveAstroEvents)
+                {                    
+                    eventDay.VenusInZodiac.NewZodiacSign = selectedZodiacSign;
+                }
+            }
+            else if (picker == MarsInZodiacPicker)
+            {
+                foreach (var eventDay in ActiveAstroEvents)
+                {
+                    eventDay.MarsInZodiac.NewZodiacSign = selectedZodiacSign;
+                }
+            }
+            else if (picker == MercuryInZodiacPicker)
+            {
+                foreach (var eventDay in ActiveAstroEvents)
+                {
+                    eventDay.MercuryInZodiac.NewZodiacSign = selectedZodiacSign;
+                }
+            }
+            
+        }
     }
 
+    private void Button_Clicked(object sender, EventArgs e)
+    {        
+        int currentMoonDayValue = SelectedMoonDay; // Initial moon day value to start incrementing from
+        int skipDay = DayIndex;
 
+        // Continue the loop from the beginning of your list to the startIndex
+        for (int i = 0; i < ActiveAstroEvents.Count; i++)
+        {
+            ActiveAstroEvents[i].MoonDay.NewMoonDay = currentMoonDayValue;
+            // Pass skipDay (DayIndex) as a parameter to IncrementMoonDay
+            currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, skipDay);
+        }
+
+
+        UpdateList(year, month); // Assume this updates your list display
+    }
+
+    private int IncrementMoonDay(int currentMoonDay, int skipDay)
+    {
+        // Increment moon day by 1, reset to 1 if it was 30
+        int nextMoonDay = currentMoonDay == 30 ? 1 : currentMoonDay + 1;
+
+        // Check if the next moon day is the day to skip
+        if (nextMoonDay == skipDay)
+        {
+            // Skip the specified day by incrementing again, check for wrap-around
+            nextMoonDay = nextMoonDay == 30 ? 1 : nextMoonDay + 1;
+        }
+
+        return nextMoonDay;
+    }
 }

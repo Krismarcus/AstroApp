@@ -76,19 +76,32 @@ public partial class EventDetailsPage : ContentPage
     {
         if (DayAstroEvent?.MoonDay == null || App.AppData.AppDB.MoonDaysDB == null)
             return;
-
+        
         var infoSourceItem = App.AppData.AppDB.MoonDaysDB.FirstOrDefault(m =>
             m.NewMoonDay == DayAstroEvent.MoonDay.NewMoonDay);
-
         if (infoSourceItem != null)
         {
-            DayAstroEvent.MoonDay.MoonDayInfo = infoSourceItem.MoonDayInfo;
+            DayAstroEvent.MoonDay.NewMoonDayInfo = infoSourceItem.NewMoonDayInfo;
         }
+
+        // Find and apply PreviousMoonDayInfo
+        var previousMoonDayItem = App.AppData.AppDB.MoonDaysDB.FirstOrDefault(m =>
+            m.NewMoonDay == DayAstroEvent.MoonDay.PreviousMoonDay);
+        if (previousMoonDayItem != null)
+        {
+            // Assuming the PreviousMoonDay's NewMoonDayInfo should be applied
+            // to the current MoonDay's PreviousMoonDayInfo
+            DayAstroEvent.MoonDay.PreviousMoonDayInfo = previousMoonDayItem.NewMoonDayInfo;
+        }
+    }
+    private void TapPreviousMoonDay_Tapped(object sender, TappedEventArgs e)
+    {
+        Application.Current.MainPage.DisplayAlert("Details about " + (MoonDaySymbol)DayAstroEvent.MoonDay.PreviousMoonDay + " Day", DayAstroEvent.MoonDay.PreviousMoonDayInfo, "OK");
     }
 
     private void TapNewMoonDay_Tapped(object sender, TappedEventArgs e)
     {
-        Application.Current.MainPage.DisplayAlert("Details about " + (MoonDaySymbol)DayAstroEvent.MoonDay.NewMoonDay + " Day", DayAstroEvent.MoonDay.MoonDayInfo, "OK");
+        Application.Current.MainPage.DisplayAlert("Details about " + (MoonDaySymbol)DayAstroEvent.MoonDay.NewMoonDay + " Day", DayAstroEvent.MoonDay.NewMoonDayInfo, "OK");
     }
 
     private void TapSunInZodiac_Tapped(object sender, TappedEventArgs e)
@@ -115,5 +128,5 @@ public partial class EventDetailsPage : ContentPage
     private void TapMercuryInZodiac_Tapped(object sender, TappedEventArgs e)
     {
         Application.Current.MainPage.DisplayAlert("Mercury in " + DayAstroEvent.MercuryInZodiac.NewZodiacSign + " Details", DayAstroEvent.MercuryInZodiac.PlanetInZodiacInfo, "OK");
-    }
+    }    
 }

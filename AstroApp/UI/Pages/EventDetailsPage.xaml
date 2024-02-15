@@ -20,7 +20,11 @@
                 <Label Text="{Binding DayAstroEvent.Date.Day}" HorizontalOptions="CenterAndExpand" FontSize="50" FontAttributes="Bold" />
                 <Label Text="{Binding DayAstroEvent.Date, StringFormat='{0:MMMM}'}" HorizontalOptions="CenterAndExpand" />
                 <Grid ColumnDefinitions="*,auto,*" Margin="20,0">
-                    <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonDay.PreviousMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="200" HorizontalOptions="Center"/>
+                    <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonDay.PreviousMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="200" HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapPreviousMoonDay_Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                     <Label Grid.Column="1" Text="{Binding DayAstroEvent.MoonDay.TransitionTime, StringFormat='{0:HH:mm}'}" HorizontalOptions="Center" VerticalOptions="End" FontSize="30" Margin="10,0"/>
                     <Image Grid.Column="2" Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="200" HorizontalOptions="Center">
                         <Image.GestureRecognizers>

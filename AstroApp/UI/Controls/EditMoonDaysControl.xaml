@@ -10,6 +10,6 @@
     </ContentView.Resources>
     <Grid ColumnDefinitions="Auto,*">
         <Label Grid.Column="0" Text="{Binding MoonDay.NewMoonDay, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />        
-        <Editor Grid.Column="1" Text="{Binding MoonDay.MoonDayInfo, Mode=TwoWay}" VerticalOptions="Center" AutoSize="TextChanges" Margin="10,0"/>
+        <Editor Grid.Column="1" Text="{Binding MoonDay.NewMoonDayInfo, Mode=TwoWay}" VerticalOptions="Center" AutoSize="TextChanges" Margin="10,0"/>
     </Grid>
 </ContentView>
