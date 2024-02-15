@@ -242,21 +242,19 @@ public partial class AdminPage : ContentPage
     private void Button_Clicked(object sender, EventArgs e)
     {        
         int currentMoonDayValue = SelectedMoonDay; // Initial moon day value to start incrementing from
-        int skipDay = DayIndex;
+        int skipDay = DayIndex - 1;
 
         // Continue the loop from the beginning of your list to the startIndex
         for (int i = 0; i < ActiveAstroEvents.Count; i++)
         {
-            ActiveAstroEvents[i].MoonDay.NewMoonDay = currentMoonDayValue;            
-
-            if (ActiveAstroEvents[i].Date.Day == skipDay)
+            ActiveAstroEvents[i].MoonDay.NewMoonDay = currentMoonDayValue;
+            if (ActiveAstroEvents[i].Date.Day == DayIndex)
             {
-                // Set IsTripleMoonDay to true for this specific moon day
                 ActiveAstroEvents[i].MoonDay.IsTripleMoonDay = true;
             }
 
             // Pass skipDay (DayIndex) as a parameter to IncrementMoonDay
-            currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, skipDay);
+            currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, ActiveAstroEvents[i].Date.Day, skipDay);
 
             
         }
@@ -265,13 +263,13 @@ public partial class AdminPage : ContentPage
         UpdateList(year, month); // Assume this updates your list display
     }
 
-    private int IncrementMoonDay(int currentMoonDay, int skipDay)
+    private int IncrementMoonDay(int currentMoonDay,int date, int skipDay)
     {
         // Increment moon day by 1, reset to 1 if it was 30
         int nextMoonDay = currentMoonDay == 30 ? 1 : currentMoonDay + 1;
 
         // Check if the next moon day is the day to skip
-        if (nextMoonDay == skipDay)
+        if (date == skipDay)
         {
             // Skip the specified day by incrementing again, check for wrap-around
             nextMoonDay = nextMoonDay == 30 ? 1 : nextMoonDay + 1;

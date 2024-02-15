@@ -56,6 +56,7 @@ public partial class EventDetailsPage : ContentPage
         UpdatePlanetInZodiacInfo(DayAstroEvent.VenusInZodiac);
         UpdatePlanetInZodiacInfo(DayAstroEvent.MarsInZodiac);
         UpdatePlanetInZodiacInfo(DayAstroEvent.MercuryInZodiac);
+
         UpdateMoonDayInfo();
     }
 
@@ -93,10 +94,25 @@ public partial class EventDetailsPage : ContentPage
             // to the current MoonDay's PreviousMoonDayInfo
             DayAstroEvent.MoonDay.PreviousMoonDayInfo = previousMoonDayItem.NewMoonDayInfo;
         }
+
+        if (DayAstroEvent.MoonDay.IsTripleMoonDay == true)
+        {
+            var middleMoonDayItem = App.AppData.AppDB.MoonDaysDB.FirstOrDefault(m =>
+            m.NewMoonDay == DayAstroEvent.MoonDay.MiddleMoonDay);
+            
+            if (middleMoonDayItem != null)
+            {
+                DayAstroEvent.MoonDay.MiddleMoonDayInfo = middleMoonDayItem.NewMoonDayInfo;
+            }
+        }
     }
     private void TapPreviousMoonDay_Tapped(object sender, TappedEventArgs e)
     {
         Application.Current.MainPage.DisplayAlert("Details about " + (MoonDaySymbol)DayAstroEvent.MoonDay.PreviousMoonDay + " Day", DayAstroEvent.MoonDay.PreviousMoonDayInfo, "OK");
+    }
+    private void TapMiddleMoonDay_Tapped(object sender, TappedEventArgs e)
+    {
+        Application.Current.MainPage.DisplayAlert("Details about " + (MoonDaySymbol)DayAstroEvent.MoonDay.MiddleMoonDay + " Day", DayAstroEvent.MoonDay.MiddleMoonDayInfo, "OK");
     }
 
     private void TapNewMoonDay_Tapped(object sender, TappedEventArgs e)

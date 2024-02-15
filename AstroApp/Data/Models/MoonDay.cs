@@ -31,8 +31,7 @@ namespace AstroApp.Data.Models
                 {
                     previousMoonDay = newMoonDay - 1;
                 }
-
-                // Adjust the days when IsTripleMoonDay is set and NewMoonDay is updated
+                
                 AdjustDaysForTripleMoonDay();
             }
         }
@@ -50,9 +49,11 @@ namespace AstroApp.Data.Models
         }
 
         public string PreviousMoonDayInfo { get; set; }
+        public string MiddleMoonDayInfo { get; set; }
         public string NewMoonDayInfo { get; set; }
 
         public DateTime TransitionTime { get; set; }
+        public DateTime MiddleMoonDayTransitionTime { get; set; }
 
         private void AdjustDaysForTripleMoonDay()
         {

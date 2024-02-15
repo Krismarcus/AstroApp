@@ -102,10 +102,13 @@
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0" Text="MoonDay Trans Time" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <TimePicker Grid.Row="1" Time="{Binding DayAstroEvent.MoonDay.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <TimePicker Grid.Row="1" Time="{Binding DayAstroEvent.MoonDay.MiddleMoonDayTransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.MoonDay.IsTripleMoonDay}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <TimePicker Grid.Row="2" Time="{Binding DayAstroEvent.MoonDay.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                
                             </Grid>
                         </Grid>
                         <Grid Grid.Column="3">
