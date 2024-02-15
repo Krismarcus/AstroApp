@@ -9,7 +9,13 @@ namespace AstroApp.Data.Models
     public class MoonDay
     {
         private int newMoonDay;
+        private int middleMoonDay;
         private int previousMoonDay;
+        public bool IsTripleMoonDay
+        {
+            get;
+            set;
+        }
 
         public int NewMoonDay
         {
@@ -25,19 +31,52 @@ namespace AstroApp.Data.Models
                 {
                     previousMoonDay = newMoonDay - 1;
                 }
+
+                // Adjust the days when IsTripleMoonDay is set and NewMoonDay is updated
+                AdjustDaysForTripleMoonDay();
             }
+        }
+
+        public int MiddleMoonDay
+        {
+            get => middleMoonDay;
+            private set => middleMoonDay = value;
         }
 
         public int PreviousMoonDay
         {
             get => previousMoonDay;
-            set => previousMoonDay = value;
+            private set => previousMoonDay = value;
         }
 
         public string PreviousMoonDayInfo { get; set; }
         public string NewMoonDayInfo { get; set; }
 
         public DateTime TransitionTime { get; set; }
+
+        private void AdjustDaysForTripleMoonDay()
+        {
+            // Check if it is a Triple Moon Day to adjust the moon days accordingly
+            if (IsTripleMoonDay)
+            {
+                // Set middleMoonDay as the current previousMoonDay
+                MiddleMoonDay = PreviousMoonDay;
+
+                // Adjust previousMoonDay to be newMoonDay - 2, considering edge cases
+                if (NewMoonDay == 1)
+                {
+                    PreviousMoonDay = 29; // Assuming a 30-day cycle
+                }
+                else if (NewMoonDay == 2)
+                {
+                    PreviousMoonDay = 30; // Assuming a 30-day cycle
+                }
+                else
+                {
+                    PreviousMoonDay = NewMoonDay - 2;
+                }
+            }
+        }
     }
 }
 

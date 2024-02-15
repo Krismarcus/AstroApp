@@ -247,9 +247,18 @@ public partial class AdminPage : ContentPage
         // Continue the loop from the beginning of your list to the startIndex
         for (int i = 0; i < ActiveAstroEvents.Count; i++)
         {
-            ActiveAstroEvents[i].MoonDay.NewMoonDay = currentMoonDayValue;
+            ActiveAstroEvents[i].MoonDay.NewMoonDay = currentMoonDayValue;            
+
+            if (ActiveAstroEvents[i].Date.Day == skipDay)
+            {
+                // Set IsTripleMoonDay to true for this specific moon day
+                ActiveAstroEvents[i].MoonDay.IsTripleMoonDay = true;
+            }
+
             // Pass skipDay (DayIndex) as a parameter to IncrementMoonDay
             currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, skipDay);
+
+            
         }
 
 
