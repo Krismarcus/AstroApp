@@ -40,6 +40,7 @@ public partial class AdminPage : ContentPage
     }
 
     public int SelectedMoonDay {  get; set; }
+    public bool Is29MoonDayCycle { get; set; }
 
     public List<AstroEvent> ActiveAstroEvents { get; set; }
 
@@ -240,11 +241,10 @@ public partial class AdminPage : ContentPage
     }
 
     private void Button_Clicked(object sender, EventArgs e)
-    {        
+    {
         int currentMoonDayValue = SelectedMoonDay; // Initial moon day value to start incrementing from
-        int skipDay = DayIndex - 1;
+        int skipDay = DayIndex - 1;        
 
-        // Continue the loop from the beginning of your list to the startIndex
         for (int i = 0; i < ActiveAstroEvents.Count; i++)
         {
             ActiveAstroEvents[i].MoonDay.NewMoonDay = currentMoonDayValue;
@@ -253,26 +253,26 @@ public partial class AdminPage : ContentPage
                 ActiveAstroEvents[i].MoonDay.IsTripleMoonDay = true;
             }
 
-            // Pass skipDay (DayIndex) as a parameter to IncrementMoonDay
-            currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, ActiveAstroEvents[i].Date.Day, skipDay);
-
-            
+            // Now also passing is29DayCycle to the method
+            currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, ActiveAstroEvents[i].Date.Day, skipDay, Is29MoonDayCycle);
         }
-
 
         UpdateList(year, month); // Assume this updates your list display
     }
 
-    private int IncrementMoonDay(int currentMoonDay,int date, int skipDay)
+    private int IncrementMoonDay(int currentMoonDay, int date, int skipDay, bool is29DayCycle)
     {
-        // Increment moon day by 1, reset to 1 if it was 30
-        int nextMoonDay = currentMoonDay == 30 ? 1 : currentMoonDay + 1;
+        // Determine the max day based on whether it's a 29-day cycle
+        int maxDay = is29DayCycle ? 29 : 30;
+
+        // Increment moon day by 1, reset to 1 if it reached the max day
+        int nextMoonDay = currentMoonDay == maxDay ? 1 : currentMoonDay + 1;
 
         // Check if the next moon day is the day to skip
         if (date == skipDay)
         {
             // Skip the specified day by incrementing again, check for wrap-around
-            nextMoonDay = nextMoonDay == 30 ? 1 : nextMoonDay + 1;
+            nextMoonDay = nextMoonDay == maxDay ? 1 : nextMoonDay + 1;
         }
 
         return nextMoonDay;
