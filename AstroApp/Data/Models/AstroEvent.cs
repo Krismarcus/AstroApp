@@ -1,4 +1,5 @@
 ﻿using AstroApp.Data.Enums;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,18 +9,32 @@ using System.Threading.Tasks;
 
 namespace AstroApp.Data.Models
 {
-    public class AstroEvent
+    public partial class AstroEvent : ObservableObject
     {
-        public DateTime Date { get; set; }
-        public PlanetInZodiac SunInZodiac {  get; set; }
-        public PlanetInZodiac MoonInZodiac { get; set; }
-        public PlanetInZodiac VenusInZodiac { get; set; }
-        public PlanetInZodiac MarsInZodiac { get; set; }
-        public PlanetInZodiac MercuryInZodiac { get; set; }
-        public MoonDay MoonDay { get; set; }        
+        [ObservableProperty]
+        private DateTime date;
+        [ObservableProperty]
+        private PlanetInZodiac sunInZodiac;
+        [ObservableProperty]
+        private PlanetInZodiac moonInZodiac;
+        [ObservableProperty]
+        private PlanetInZodiac venusInZodiac; 
+        [ObservableProperty]
+        private PlanetInZodiac marsInZodiac;
+        [ObservableProperty]
+        private PlanetInZodiac mercuryInZodiac;
+        [ObservableProperty]
+        private MoonDay moonDay;
+        [ObservableProperty]
+        private int moonPhase;
         public ObservableCollection<PlanetEvent> PlanetEvents { get; set; } = new ObservableCollection<PlanetEvent>();
-        public bool SunEclipse { get; set; }
-        public bool MoonEclipse { get; set; }
-        public string EventText { get; set; }
+        [ObservableProperty]
+        private bool sunEclipse;
+        [ObservableProperty]
+        private bool moonEclipse;
+        public ObservableCollection<ActivitySymbol> GoodDay {  get; set; } = new ObservableCollection<ActivitySymbol>();
+        public ObservableCollection<ActivitySymbol> BadDay { get; set; } = new ObservableCollection<ActivitySymbol>();
+        [ObservableProperty]
+        private string eventText;
     }
 }

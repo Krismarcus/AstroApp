@@ -100,4 +100,31 @@ public partial class EditDayControl : ContentView, INotifyPropertyChanged
             OnPropertyChanged(nameof(DayAstroEvent));
         }
     }
+
+    private void MercuryRetrograde_Tapped(object sender, TappedEventArgs e)
+    {
+        DayAstroEvent.MercuryInZodiac.IsRetrograde = !DayAstroEvent.MercuryInZodiac.IsRetrograde;
+    }
+
+    private void VenusRetrograde_Tapped(object sender, TappedEventArgs e)
+    {
+        DayAstroEvent.VenusInZodiac.IsRetrograde = !DayAstroEvent.VenusInZodiac.IsRetrograde;
+    }
+
+    private void MarsRetrograde_Tapped(object sender, TappedEventArgs e)
+    {
+        DayAstroEvent.MarsInZodiac.IsRetrograde = !DayAstroEvent.MarsInZodiac.IsRetrograde;
+    }
+
+    private void MoonDayTitle_Tapped(object sender, TappedEventArgs e)
+    {        
+        if (DayAstroEvent.MoonPhase >= 4)
+        {
+            DayAstroEvent.MoonPhase = 1;
+        }
+        else
+        {            
+            DayAstroEvent.MoonPhase += 1;
+        }
+    }
 }

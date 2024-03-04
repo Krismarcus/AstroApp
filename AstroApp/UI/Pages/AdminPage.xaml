@@ -9,6 +9,7 @@
              Title="AdminPage">
     <ContentPage.Resources>
         <converters:MoonDayIntToStringConverter x:Key="IntToStringConverter"/>
+        <converters:MoonPhaseIntToStringConverter x:Key="MoonPhaseIntToStringConverter"/>
     </ContentPage.Resources>
         <ScrollView>
             <Grid>
@@ -18,8 +19,10 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
+                    <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ActivityIndicator Grid.Row="0" x:Name="loadingIndicator" IsRunning="False" IsVisible="False"/>
+            <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -27,15 +30,15 @@
                     <Button Grid.Column="0" Text="Previous" Clicked="PrevButton_Clicked"/>
                     <Button Grid.Column="1" Text="Next" Clicked="NextButton_Clicked"/>
                 </Grid>
-                <Label Grid.Row="1" Text="{Binding MonthName}" FontSize="Header" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*" >
+            <Label Grid.Row="2" Text="{Binding MonthName}" FontSize="Header" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*" >
             <Picker Grid.Column="0" x:Name="VenusInZodiacPicker" Title="Venus Zodiac" SelectedIndexChanged="ZodiacSignPicker_OnSelectedIndexChanged" Margin="5,0"/>
                 <Picker Grid.Column="1" x:Name="MarsInZodiacPicker" Title="Mars Zodiac" SelectedIndexChanged="ZodiacSignPicker_OnSelectedIndexChanged" Margin="5,0"/>
-                <Picker Grid.Column="2" x:Name="MercuryInZodiacPicker" Title="Mercury Zodiac" SelectedIndexChanged="ZodiacSignPicker_OnSelectedIndexChanged" Margin="5,0"/>
+                <Picker Grid.Column="2" x:Name="MercuryInZodiacPicker" Title="Mercury Zodiac" SelectedIndexChanged="ZodiacSignPicker_OnSelectedIndexChanged" Margin="5,0"/>                                
                 <Grid Grid.Column="3" ColumnDefinitions="*,3*,*">
                     <Grid Grid.Column="0" RowDefinitions="*,*">
-                        <Label Grid.Row="0" Text="Skip Day"/>
-                        <Entry Grid.Row="1" Text="{Binding DayIndex, Mode=TwoWay}" Keyboard="Numeric" />
+                        <Label Grid.Row="0" Text="New Moon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Entry Grid.Row="1" Text="{Binding SkipDayIndex, Mode=TwoWay}" Keyboard="Numeric" />
                     </Grid>
                     <Grid Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" ColumnDefinitions="*,*" RowDefinitions="*,*">
                         <Label Grid.Column="0" Grid.Row="0" Text="29 Days" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0"/>
@@ -43,11 +46,10 @@
                         <Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="MoonDayPicker" SelectedItem="{Binding SelectedMoonDay, Converter={StaticResource IntToStringConverter}, Mode=TwoWay}" />
                     </Grid>
                     <Button Text="Reload" Grid.Column="3" Clicked="Button_Clicked"></Button>
-                </Grid>
-               
+                </Grid>               
             </Grid>
-            <VerticalStackLayout Grid.Row="3" x:Name="EventList"/>
-                <Grid Grid.Row="4">
+            <VerticalStackLayout Grid.Row="4" x:Name="EventList"/>
+                <Grid Grid.Row="5">
                     <Button Text="Save" Clicked="SaveButton_Clicked"/>
                 </Grid>
             </Grid>

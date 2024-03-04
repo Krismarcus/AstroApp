@@ -9,6 +9,7 @@
         <converters:EnumToStringConverter x:Key="EnumConverter"/>
         <converters:MoonDayIntToStringConverter x:Key="IntToStringConverter"/>
         <converters:DateTimeToTimeSpanConverter x:Key="DateTimeToTimeSpanConverter"/>
+        <converters:MoonPhaseEditIconToIntConverter x:Key="MoonPhaseEditIconToIntConverter"/>
     </ContentView.Resources>
     <Border Stroke="{StaticResource Primary}" >
         <VerticalStackLayout>
@@ -62,7 +63,14 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Text="{Binding DayAstroEvent.VenusInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+                                <Grid Grid.Row="0" ColumnDefinitions="auto,auto" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Label Grid.Column="0" Text="{Binding DayAstroEvent.VenusInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="VenusRetrograde_Tapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Label Grid.Column="1" Text="R" FontAttributes="Bold" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsRetrograde}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Grid>
                                 <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
                                     <Picker Grid.Column="0" x:Name="VenusInZodiacPicker" SelectedItem="{Binding DayAstroEvent.VenusInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" Margin="10"/>
                                     <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
@@ -76,7 +84,14 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Text="{Binding DayAstroEvent.MarsInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+                                <Grid Grid.Row="0" ColumnDefinitions="auto,auto" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Label Grid.Column="0" Text="{Binding DayAstroEvent.MarsInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="MarsRetrograde_Tapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Label Grid.Column="1" Text="R" FontAttributes="Bold" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsRetrograde}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Grid>
                                 <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
                                     <Picker Grid.Column="0" x:Name="MarsInZodiacPicker" SelectedItem="{Binding DayAstroEvent.MarsInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" Margin="10"/>
                                     <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
@@ -90,8 +105,15 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Text="{Binding DayAstroEvent.MercuryInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
-                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
+                                <Grid Grid.Row="0" ColumnDefinitions="auto,auto" HorizontalOptions="Center" VerticalOptions="Center">                                     
+                                    <Label Grid.Column="0" Text="{Binding DayAstroEvent.MercuryInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="MercuryRetrograde_Tapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Label Grid.Column="1" Text="R" FontAttributes="Bold" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsRetrograde}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Grid>                                
+                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >                                    
                                     <Picker Grid.Column="0" x:Name="MercuryInZodiacPicker" SelectedItem="{Binding DayAstroEvent.MercuryInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" Margin="10"/>
                                     <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
                                 </Grid>
@@ -117,7 +139,14 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Text="Moon Day" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Grid Grid.Row="0" ColumnDefinitions="auto,auto" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Label Grid.Column="0" Text="Moon Day" HorizontalOptions="Center" VerticalOptions="Center">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="MoonDayTitle_Tapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonPhase, Converter={StaticResource MoonPhaseEditIconToIntConverter}}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="15" Margin="5,0"/>
+                                </Grid>
                                 <Picker Grid.Row="1" x:Name="NewMoonDayPicker" SelectedItem="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToStringConverter}, Mode=TwoWay}" />
                             </Grid>
                         </Grid>                       

@@ -82,7 +82,9 @@
 	  <None Remove="Resources\Images\eagle.png" />
 	  <None Remove="Resources\Images\earth.png" />
 	  <None Remove="Resources\Images\elephant.png" />
+	  <None Remove="Resources\Images\firstquarter.png" />
 	  <None Remove="Resources\Images\fountain.png" />
+	  <None Remove="Resources\Images\fullmoon.png" />
 	  <None Remove="Resources\Images\gemini.png" />
 	  <None Remove="Resources\Images\grapes.png" />
 	  <None Remove="Resources\Images\horse.png" />
@@ -99,6 +101,7 @@
 	  <None Remove="Resources\Images\monkey.png" />
 	  <None Remove="Resources\Images\moon.png" />
 	  <None Remove="Resources\Images\neptune.png" />
+	  <None Remove="Resources\Images\newmoon.png" />
 	  <None Remove="Resources\Images\none.png" />
 	  <None Remove="Resources\Images\octopus.png" />
 	  <None Remove="Resources\Images\opposition.png" />
@@ -120,6 +123,7 @@
 	  <None Remove="Resources\Images\sun.png" />
 	  <None Remove="Resources\Images\swan.png" />
 	  <None Remove="Resources\Images\taurus.png" />
+	  <None Remove="Resources\Images\thirdquarter.png" />
 	  <None Remove="Resources\Images\toad.png" />
 	  <None Remove="Resources\Images\tortoise.png" />
 	  <None Remove="Resources\Images\tree.png" />

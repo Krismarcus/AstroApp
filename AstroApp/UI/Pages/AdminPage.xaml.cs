@@ -24,22 +24,38 @@ public partial class AdminPage : ContentPage
 
     private int month, year;
 
-    private int dayIndex;
+    private int skipDayIndex;
 
-    public int DayIndex
+    public int SkipDayIndex
     {
-        get => dayIndex;
+        get => skipDayIndex;
         set
         {
-            if (dayIndex != value)
+            if (skipDayIndex != value)
             {
-                dayIndex = value;
-                OnPropertyChanged(nameof(DayIndex));
+                skipDayIndex = value;
+                OnPropertyChanged(nameof(SkipDayIndex));
+            }
+        }
+    }
+
+    private int moonPhaseDayIndex;
+
+    public int MoonPhaseDayIndex
+    {
+        get => moonPhaseDayIndex;
+        set
+        {
+            if (moonPhaseDayIndex != value)
+            {
+                moonPhaseDayIndex = value;
+                OnPropertyChanged(nameof(MoonPhaseDayIndex));
             }
         }
     }
 
     public int SelectedMoonDay {  get; set; }
+    public int SelectedMoonPhase { get; set; }
     public bool Is29MoonDayCycle { get; set; }
 
     public List<AstroEvent> ActiveAstroEvents { get; set; }
@@ -114,10 +130,11 @@ public partial class AdminPage : ContentPage
         await Application.Current.MainPage.DisplayAlert("Success", "Calendar data saved succesfully", "OK");
     }
 
-    private void PopulateList(int days)
+    private async void PopulateList(int days)
     {
 
         this.EventList.Clear();
+
 
         for (int i = 1; i <= days; i++)
         {
@@ -206,7 +223,7 @@ public partial class AdminPage : ContentPage
         foreach (MoonDaySymbol moonDay in Enum.GetValues(typeof(MoonDaySymbol)))
         {
             this.MoonDayPicker.Items.Add(moonDay.ToString());
-        }
+        }        
     }
 
     private void ZodiacSignPicker_OnSelectedIndexChanged(object sender, EventArgs e)
@@ -242,23 +259,26 @@ public partial class AdminPage : ContentPage
 
     private void Button_Clicked(object sender, EventArgs e)
     {
+
         int currentMoonDayValue = SelectedMoonDay; // Initial moon day value to start incrementing from
-        int skipDay = DayIndex - 1;        
+        int newMoonDay = SkipDayIndex;
+        int skipDay = SkipDayIndex - 1;       
 
         for (int i = 0; i < ActiveAstroEvents.Count; i++)
         {
             ActiveAstroEvents[i].MoonDay.NewMoonDay = currentMoonDayValue;
-            if (ActiveAstroEvents[i].Date.Day == DayIndex)
+            if (ActiveAstroEvents[i].Date.Day == SkipDayIndex)
             {
                 ActiveAstroEvents[i].MoonDay.IsTripleMoonDay = true;
             }
-
             // Now also passing is29DayCycle to the method
             currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, ActiveAstroEvents[i].Date.Day, skipDay, Is29MoonDayCycle);
+
+            ActiveAstroEvents[i].MoonPhase = CalculatePhaseForDay(ActiveAstroEvents[i].Date, newMoonDay);
         }
 
         UpdateList(year, month); // Assume this updates your list display
-    }
+    }    
 
     private int IncrementMoonDay(int currentMoonDay, int date, int skipDay, bool is29DayCycle)
     {
@@ -276,5 +296,38 @@ public partial class AdminPage : ContentPage
         }
 
         return nextMoonDay;
+    }
+
+    private int CalculatePhaseForDay(DateTime currentDay, int newMoonDay)
+    {
+        int dayOfMonth = (currentDay.Day - newMoonDay + 30) % 29;
+        MoonPhaseSymbol phase;
+
+        if (dayOfMonth >= 1 && dayOfMonth < 7)
+        {
+            phase = MoonPhaseSymbol.NewMoon;
+        }
+        else if (dayOfMonth >= 7 && dayOfMonth < 15)
+        {
+            phase = MoonPhaseSymbol.FirstQuarter;
+        }
+        else if (dayOfMonth >= 15 && dayOfMonth < 22)
+        {
+            phase = MoonPhaseSymbol.FullMoon;
+        }
+        else if (dayOfMonth >= 22 && dayOfMonth <= 31) // Adjust according to lunar cycle length
+        {
+            phase = MoonPhaseSymbol.ThirdQuarter;
+        }
+        else
+        {
+            // This is a simplification. The exact phase might need more nuanced calculation
+            // especially for days close to the transition between phases or for handling lunar cycles
+            // slightly shorter or longer than 29 days.
+            phase = MoonPhaseSymbol.None; // Or some logic to handle edge cases
+        }
+
+        return (int)phase;
+
     }
 }
