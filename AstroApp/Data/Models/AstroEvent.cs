@@ -32,8 +32,16 @@ namespace AstroApp.Data.Models
         private bool sunEclipse;
         [ObservableProperty]
         private bool moonEclipse;
-        public ObservableCollection<ActivitySymbol> GoodDay {  get; set; } = new ObservableCollection<ActivitySymbol>();
-        public ObservableCollection<ActivitySymbol> BadDay { get; set; } = new ObservableCollection<ActivitySymbol>();
+        [ObservableProperty]
+        private ActivityQuality gardening;
+        [ObservableProperty]
+        private ActivityQuality buystuff;
+        [ObservableProperty]
+        private ActivityQuality ideas;
+        [ObservableProperty]
+        private ActivityQuality tech;
+        [ObservableProperty]
+        private ActivityQuality love;        
         [ObservableProperty]
         private string eventText;
     }

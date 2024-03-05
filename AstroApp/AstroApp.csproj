@@ -72,6 +72,7 @@
 	  <None Remove="Resources\Images\bat.png" />
 	  <None Remove="Resources\Images\bear.png" />
 	  <None Remove="Resources\Images\bowl.png" />
+	  <None Remove="Resources\Images\buystuff.png" />
 	  <None Remove="Resources\Images\calendaricon.png" />
 	  <None Remove="Resources\Images\cancer.png" />
 	  <None Remove="Resources\Images\capricorn.png" />
@@ -88,6 +89,7 @@
 	  <None Remove="Resources\Images\gemini.png" />
 	  <None Remove="Resources\Images\grapes.png" />
 	  <None Remove="Resources\Images\horse.png" />
+	  <None Remove="Resources\Images\ideas.png" />
 	  <None Remove="Resources\Images\jupiter.png" />
 	  <None Remove="Resources\Images\lantern.png" />
 	  <None Remove="Resources\Images\leo.png" />
@@ -96,6 +98,7 @@
 	  <None Remove="Resources\Images\line.png" />
 	  <None Remove="Resources\Images\line2.png" />
 	  <None Remove="Resources\Images\lotus.png" />
+	  <None Remove="Resources\Images\love.png" />
 	  <None Remove="Resources\Images\mars.png" />
 	  <None Remove="Resources\Images\mercury.png" />
 	  <None Remove="Resources\Images\monkey.png" />
@@ -108,6 +111,7 @@
 	  <None Remove="Resources\Images\other.png" />
 	  <None Remove="Resources\Images\phoenix.png" />
 	  <None Remove="Resources\Images\pisces.png" />
+	  <None Remove="Resources\Images\plant.png" />
 	  <None Remove="Resources\Images\pluto.png" />
 	  <None Remove="Resources\Images\rainbow.png" />
 	  <None Remove="Resources\Images\rooster.png" />
@@ -123,6 +127,7 @@
 	  <None Remove="Resources\Images\sun.png" />
 	  <None Remove="Resources\Images\swan.png" />
 	  <None Remove="Resources\Images\taurus.png" />
+	  <None Remove="Resources\Images\tech.png" />
 	  <None Remove="Resources\Images\thirdquarter.png" />
 	  <None Remove="Resources\Images\toad.png" />
 	  <None Remove="Resources\Images\tortoise.png" />
@@ -155,6 +160,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UI\Controls\DayControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\EditDayActivitiesControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UI\Controls\EditDayControl.xaml">

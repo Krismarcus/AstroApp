@@ -127,4 +127,61 @@ public partial class EditDayControl : ContentView, INotifyPropertyChanged
             DayAstroEvent.MoonPhase += 1;
         }
     }
+
+    private void CycleActivityQuality(Func<ActivityQuality> getQuality, Action<ActivityQuality> setQuality)
+    {
+        var currentQuality = getQuality();
+
+        
+        var nextQuality = (int)currentQuality + 1;
+
+        
+        if (nextQuality > (int)ActivityQuality.Bad)
+        {
+            nextQuality = (int)ActivityQuality.Neutral;
+        }
+
+        
+        setQuality((ActivityQuality)nextQuality);
+    }
+
+    private void GardeningIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.Gardening, 
+            (quality) => dayAstroEvent.Gardening = quality 
+        );
+    }
+
+    private void LoveIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.Love, 
+            (quality) => dayAstroEvent.Love = quality 
+        );
+    }
+
+    private void BuyStuffIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.Buystuff, 
+            (quality) => dayAstroEvent.Buystuff = quality 
+        );
+    }
+
+    private void TechIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.Tech, 
+            (quality) => dayAstroEvent.Tech = quality 
+        );
+    }
+
+    private void IdeasIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.Ideas, 
+            (quality) => dayAstroEvent.Ideas = quality 
+        );
+    }
 }

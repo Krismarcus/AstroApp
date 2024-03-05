@@ -62,6 +62,8 @@ public partial class AdminPage : ContentPage
 
     public ObservableCollection<PlanetInZodiac> PlanetInZodiacsDetails { get; set; }
 
+    public ObservableCollection<EditDayControl> TempDayList { get; set; }
+
     public AdminPage()
 	{
 		InitializeComponent();
@@ -132,41 +134,72 @@ public partial class AdminPage : ContentPage
 
     private async void PopulateList(int days)
     {
-
-        this.EventList.Clear();
-
-
-        for (int i = 1; i <= days; i++)
+        Device.BeginInvokeOnMainThread(() =>
         {
-            EditDayControl editDayCard = new EditDayControl();
+            loadingIndicator.IsRunning = true;
+            loadingIndicator.IsVisible = true;
+        });
 
-            // Find the AstroEvent for the current date
-            DateTime currentDate = new DateTime(year, month, i);
-
-            AstroEvent astroEventForDate = ActiveAstroEvents.FirstOrDefault(e => e.Date.Date == currentDate.Date);
-
-            // If an astro event exists for the current date, set the ZodiacSign
-            if (astroEventForDate != null)
+        await Task.Run(() =>
+        {
+            if (TempDayList == null)
             {
-                editDayCard.AddAstroEvent(astroEventForDate); // You can choose which ZodiacSign property to use
+                TempDayList = new ObservableCollection<EditDayControl>();
+            }
+            TempDayList.Clear();  
+
+            for (int i = 1; i <= days; i++)
+            {
+                // Assuming EditDayControl can be instantiated in background thread; if not, adjust accordingly.
+                EditDayControl editDayCard = new EditDayControl();
+
+                DateTime currentDate = new DateTime(year, month, i);
+                AstroEvent astroEventForDate = ActiveAstroEvents.FirstOrDefault(e => e.Date.Date == currentDate.Date);
+
+                if (astroEventForDate != null)
+                {
+                    // Since this might update UI, ensure it runs on UI thread if necessary
+                    Device.BeginInvokeOnMainThread(() => editDayCard.AddAstroEvent(astroEventForDate));
+                }
+                else
+                {
+                    astroEventForDate = new AstroEvent()
+                    {
+                        Date = currentDate,
+                        SunInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Sun, NewZodiacSign = SunZodiacSignYearlyCalendar(currentDate), TransitionTime = new DateTime() },
+                        MoonInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Moon, TransitionTime = new DateTime() },
+                        VenusInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Venus, TransitionTime = new DateTime() },
+                        MarsInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mars, TransitionTime = new DateTime() },
+                        MercuryInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
+                        Gardening = ActivityQuality.Good, Love = ActivityQuality.Bad, 
+                        EventText = "",
+                        MoonDay = new MoonDay() { NewMoonDay = 0, TransitionTime = new DateTime() }
+                    };
+                    
+                    // This might need to run on the UI thread too
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        ActiveAstroEvents.Add(astroEventForDate);
+                        editDayCard.AddAstroEvent(astroEventForDate);
+                    });
+                }
+                TempDayList.Add(editDayCard);
             }
 
-            else
+            // Update the main list on UI thread
+            Device.BeginInvokeOnMainThread(() =>
             {
-                astroEventForDate = new AstroEvent() {
-                    Date = currentDate,
-                    SunInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Sun, NewZodiacSign = SunZodiacSignYearlyCalendar(currentDate),  TransitionTime = new DateTime() },
-                    MoonInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Moon, TransitionTime = new DateTime() }, 
-                    VenusInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Venus, TransitionTime = new DateTime() }, 
-                    MarsInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mars, TransitionTime = new DateTime() }, 
-                    MercuryInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() }, 
-                    EventText = "", 
-                    MoonDay = new MoonDay() { NewMoonDay = 0, TransitionTime = new DateTime() } };
-                this.ActiveAstroEvents.Add(astroEventForDate);
-                editDayCard.AddAstroEvent(astroEventForDate);
-            }
-            this.EventList.Add(editDayCard);
-        }
+                this.EventList.Clear();
+                foreach (var item in TempDayList)
+                {
+                    this.EventList.Add(item);
+                }
+
+                // Hide loading indicator
+                loadingIndicator.IsRunning = false;
+                loadingIndicator.IsVisible = false;
+            });
+        });
     }
 
     public ZodiacSign SunZodiacSignYearlyCalendar(DateTime date)
