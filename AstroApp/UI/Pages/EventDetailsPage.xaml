@@ -12,6 +12,8 @@
         <converters:EnumToImageConverter x:Key="EnumToImageConverter"/>        
         <converters:MoonDayIntToImageConverter x:Key="IntToImageConverter"/>
         <converters:DateTimeToTimeSpanConverter x:Key="DateTimeToTimeSpanConverter"/>
+        <converters:ActivityQualityToColorConverter x:Key="ActivityQualityToColor"/>
+        <converters:ActivityQualityToVisibilityConverter x:Key="ActivityQualityToVisibilityConverter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
@@ -139,6 +141,13 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <HorizontalStackLayout >
+                    <Image Source="plant.png" Background="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
+                    <Image Source="love.png" Background="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
+                    <Image Source="tech.png" Background="{Binding DayAstroEvent.Tech, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Tech, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
+                    <Image Source="ideas.png" Background="{Binding DayAstroEvent.Ideas, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Ideas, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
+                    <Image Source="buystuff.png" Background="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
+                </HorizontalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
     </ContentPage.Content>

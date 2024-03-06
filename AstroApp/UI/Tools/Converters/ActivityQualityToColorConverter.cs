@@ -18,9 +18,9 @@ namespace AstroApp.UI.Tools.Converters
             switch (quality)
             {
                 case ActivityQuality.Good:
-                    return Colors.Green;
+                    return Colors.LightGreen;
                 case ActivityQuality.Bad:
-                    return Colors.Red;
+                    return Colors.IndianRed;
                 case ActivityQuality.Neutral:
                     return Colors.Transparent; // Or any color you deem appropriate for "Neutral"
                 default:
