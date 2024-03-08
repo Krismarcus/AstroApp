@@ -14,40 +14,59 @@
         <converters:DateTimeToTimeSpanConverter x:Key="DateTimeToTimeSpanConverter"/>
         <converters:ActivityQualityToColorConverter x:Key="ActivityQualityToColor"/>
         <converters:ActivityQualityToVisibilityConverter x:Key="ActivityQualityToVisibilityConverter"/>
+        <converters:MoonPhaseImageToIntConverter x:Key="MoonPhaseImageToIntConverter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
             <VerticalStackLayout >                
-                <Button Text="Back" Clicked="OnPageTapped"/>
-                <Label Text="{Binding DayAstroEvent.Date.Day}" HorizontalOptions="CenterAndExpand" FontSize="50" FontAttributes="Bold" />
+                <Button Text="Back" Clicked="OnPageTapped"/>                    
+                <Label Text="{Binding DayAstroEvent.Date.Day}" HorizontalOptions="CenterAndExpand" FontSize="50" FontAttributes="Bold" />                
                 <Label Text="{Binding DayAstroEvent.Date, StringFormat='{0:MMMM}'}" HorizontalOptions="CenterAndExpand" />
+                <Image Source="{Binding DayAstroEvent.MoonPhase, Converter={StaticResource MoonPhaseImageToIntConverter}}" HeightRequest="100" Margin="-20"/>
                 <Grid ColumnDefinitions="*,auto,auto,auto,*" Margin="20,0">
                     <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonDay.PreviousMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="200" HorizontalOptions="Center">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapPreviousMoonDay_Tapped"/>
                         </Image.GestureRecognizers>
-                    </Image>
-                    <Label Grid.Column="1" Text="{Binding DayAstroEvent.MoonDay.MiddleMoonDayTransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MoonDay.IsTripleMoonDay}" HorizontalOptions="Center" VerticalOptions="End" FontSize="30" Margin="10,0"/>
+                    </Image>                    
                     <Image Grid.Column="2" Source="{Binding DayAstroEvent.MoonDay.MiddleMoonDay, Converter={StaticResource IntToImageConverter}}" IsVisible="{Binding DayAstroEvent.MoonDay.IsTripleMoonDay}" HeightRequest="150" HorizontalOptions="Center">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapMiddleMoonDay_Tapped"/>
                         </Image.GestureRecognizers>
                     </Image>
-                    <Label Grid.Column="3" Text="{Binding DayAstroEvent.MoonDay.TransitionTime, StringFormat='{0:HH:mm}'}" HorizontalOptions="Center" VerticalOptions="End" FontSize="30" Margin="10,0"/>                    
+                    <!--<Label Grid.Column="3" Text="{Binding DayAstroEvent.MoonDay.TransitionTime, StringFormat='{0:HH:mm}'}" HorizontalOptions="Center" VerticalOptions="End" FontSize="30" Margin="10,0"/>-->                    
                     <Image Grid.Column="4" Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="200" HorizontalOptions="Center">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapNewMoonDay_Tapped"/>
                         </Image.GestureRecognizers>
                     </Image>
-                </Grid>
-                <Grid ColumnDefinitions="*,*" Margin="60,0,60,-35">
-                    <Label Grid.Column="0" Text="00:00" HorizontalOptions="Start" VerticalOptions="End"/>                    
-                    <Label Grid.Column="1" Text="23:59" HorizontalOptions="End" VerticalOptions="End"/>
-                </Grid>
-                <Grid ColumnDefinitions="auto,*,auto">
-                    <Label Grid.Column="0" Text="1" FontSize="60" Margin="10,0"/>
-                    <Image Grid.Column="1" Source="line2.png" />
-                    <Label Grid.Column="2" Text="2" FontSize="60" Margin="10,0"/>
+                </Grid>                
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- The horizontal line -->
+                    <Line Stroke="Black" X1="0" Y1="0" X2="{Binding Path=Width, Source={RelativeSource Self}}" Y2="0" StrokeThickness="5" StrokeLineCap="Square"/>
+
+                    <!-- The marker, assuming you'll position it dynamically in code-behind -->
+                    <AbsoluteLayout x:Name="layout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <!-- Marker -->
+                        <Image x:Name="marker" Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" 
+             HeightRequest="40"/>
+                        <!-- Time Label -->
+                        <Label x:Name="timeLabel" Text="00:00"
+           AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
+           AbsoluteLayout.LayoutFlags="PositionProportional"
+                               IsVisible="False"/>
+                        <Image x:Name="secondMarker" Source="{Binding DayAstroEvent.MoonDay.MiddleMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="40" IsVisible="{Binding DayAstroEvent.MoonDay.IsTripleMoonDay}"/>
+
+                        <!-- Second label for the middle moon day time -->
+                        <Label x:Name="secondTimeLabel" Text="00:00"
+       AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
+       AbsoluteLayout.LayoutFlags="PositionProportional"
+       IsVisible="False"/>
+                    </AbsoluteLayout>
                 </Grid>
                 <Grid ColumnDefinitions="*,*">
                     <Grid Grid.Column="0" ColumnDefinitions="*,*">
@@ -142,12 +161,13 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 <HorizontalStackLayout >
-                    <Image Source="plant.png" Background="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
+                    <Image Source="plant.png" Background="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
                     <Image Source="love.png" Background="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
                     <Image Source="tech.png" Background="{Binding DayAstroEvent.Tech, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Tech, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
                     <Image Source="ideas.png" Background="{Binding DayAstroEvent.Ideas, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Ideas, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
-                    <Image Source="buystuff.png" Background="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
+                    <Image Source="buystuff.png" Background="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>                    
                 </HorizontalStackLayout>
+                <Button Text="test" Clicked="Button_Clicked"/>
             </VerticalStackLayout>
         </ScrollView>
     </ContentPage.Content>

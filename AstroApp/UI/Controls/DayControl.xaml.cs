@@ -6,7 +6,7 @@ namespace AstroApp.UI.Controls;
 
 public partial class DayControl : ContentView, INotifyPropertyChanged
 {
-    private int dayNumber { get; set; }
+    private int dayNumber;
 
     public int DayNumber
     {

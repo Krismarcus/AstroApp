@@ -37,25 +37,9 @@ public partial class AdminPage : ContentPage
                 OnPropertyChanged(nameof(SkipDayIndex));
             }
         }
-    }
+    }   
 
-    private int moonPhaseDayIndex;
-
-    public int MoonPhaseDayIndex
-    {
-        get => moonPhaseDayIndex;
-        set
-        {
-            if (moonPhaseDayIndex != value)
-            {
-                moonPhaseDayIndex = value;
-                OnPropertyChanged(nameof(MoonPhaseDayIndex));
-            }
-        }
-    }
-
-    public int SelectedMoonDay {  get; set; }
-    public int SelectedMoonPhase { get; set; }
+    public int SelectedMoonDay {  get; set; }    
     public bool Is29MoonDayCycle { get; set; }
 
     public List<AstroEvent> ActiveAstroEvents { get; set; }
