@@ -154,8 +154,7 @@ public partial class AdminPage : ContentPage
                         MoonInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Moon, TransitionTime = new DateTime() },
                         VenusInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Venus, TransitionTime = new DateTime() },
                         MarsInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mars, TransitionTime = new DateTime() },
-                        MercuryInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
-                        Gardening = ActivityQuality.Good, Love = ActivityQuality.Bad, 
+                        MercuryInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },                        
                         EventText = "",
                         MoonDay = new MoonDay() { NewMoonDay = 0, TransitionTime = new DateTime() }
                     };

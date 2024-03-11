@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AstroApp.Data.Enums
 {
     public enum ActivityQuality
-    {
+    {        
         Neutral,
         Good,
         Bad

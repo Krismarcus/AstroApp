@@ -9,8 +9,13 @@
     <ContentView.Resources>
         <converters:EnumToImageConverter x:Key="EnumToImageConverter"/>
         <converters:MoonDayIntToImageConverter x:Key="IntToImageConverter"/>
+        <converters:ActivityQualityToColorConverter x:Key="ActivityQualityToColorConverter"/>
+        <converters:ActivityQualityToStrokeThicknessConverter x:Key="ActivityQualityToStrokeThicknessConverter"/>        
     </ContentView.Resources>
-    <Border Stroke="{StaticResource Secondary}" StrokeShape="RoundRectangle 10,10,10,10" Margin="2">
+    <Border Stroke="{Binding ActivityProfile, Converter={StaticResource ActivityQualityToColorConverter}}" StrokeShape="RoundRectangle 10,10,10,10" Margin="2">
+        <Border.Shadow>
+            <Shadow Brush="{Binding ActivityProfile, Converter={StaticResource ActivityQualityToColorConverter}}" Opacity="0.8"/>
+        </Border.Shadow>
         <Border.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnDayTapped" />
         </Border.GestureRecognizers>

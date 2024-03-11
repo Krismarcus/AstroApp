@@ -1,4 +1,5 @@
 ﻿using AstroApp.Data;
+using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
 using AstroApp.UI.Controls;
 using System.Collections.ObjectModel;
@@ -6,7 +7,7 @@ using System.ComponentModel;
 
 namespace AstroApp.UI.Pages
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
         private string monthName;
 
@@ -24,9 +25,41 @@ namespace AstroApp.UI.Pages
         }
 
         private int month, year;
-        public List<AstroEvent> ActiveAstroEvents { get; set; }
+        public List<AstroEvent> ActiveAstroEvents { get; set; }        
+
+        private string activityProfile;
+
+        public string ActivityProfile
+        {
+            get => activityProfile;
+            set
+            {
+                if (activityProfile != value)
+                {
+                    activityProfile = value;
+                    OnPropertyChanged(nameof(ActivityProfile));
+                    UpdateBackgroundColors();
+                }
+            }
+        }
+        public Color NoPresetBackgroundColor { get; set; } = Colors.Orange;
+        public Color GardeningBackgroundColor { get; set; } = Colors.Transparent;
+        public Color LoveBackgroundColor { get; set; } = Colors.Transparent;
+
+        private void UpdateBackgroundColors()
+        {
+            GardeningBackgroundColor = ActivityProfile == "gardening" ? Colors.Orange : Colors.Transparent;
+            LoveBackgroundColor = ActivityProfile == "love" ? Colors.Orange : Colors.Transparent;
+            NoPresetBackgroundColor = ActivityProfile == "nopreset" ? Colors.Orange : Colors.Transparent;
+
+            // Notify the UI to update
+            OnPropertyChanged(nameof(GardeningBackgroundColor));
+            OnPropertyChanged(nameof(LoveBackgroundColor));
+            OnPropertyChanged(nameof(NoPresetBackgroundColor));
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -41,6 +74,7 @@ namespace AstroApp.UI.Pages
 
         private async Task Initialize()
         {
+            ActivityProfile = "nopreset";
             App.AppData = new AppData();
             var appActions = new Services.AppActions();
             App.AppData.AppDB = await appActions.LoadDBAsync();           
@@ -128,22 +162,22 @@ namespace AstroApp.UI.Pages
             for (int day = 1; day <= days; day++)
             {
                 DayControl dayCard = new DayControl();
-                dayCard.AddDayCardDayNumber(day);
+                dayCard.AddDayCardDayNumber(day);                
                 DateTime currentDate = new DateTime(year, month, day);
                 AstroEvent astroEventForDate = ActiveAstroEvents.FirstOrDefault(e => e.Date.Date == currentDate.Date);
 
                 if (astroEventForDate != null)
                 {
-                    dayCard.AddAstroEvent(astroEventForDate);
+                    dayCard.AddAstroEvent(astroEventForDate);                    
                 }
 
-                CalendarGrid.Add(dayCard, column, row);
-
+                CalendarGrid.Add(dayCard, column, row);                
                 column = (column + 1) % 7;
                 if (column == 0)
                 {
                     row++;
                 }
+                dayCard.SetBorderColor(ActivityProfile);
             }
         }
 
@@ -176,6 +210,24 @@ namespace AstroApp.UI.Pages
                 month++;
             }
 
+            UpdateCalendar(year, month);
+        }               
+
+        private void GardeningRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            ActivityProfile = "gardening";
+            UpdateCalendar(year, month);
+        }
+
+        private void LoveRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            ActivityProfile = "love";
+            UpdateCalendar(year, month);
+        }
+
+        private void NoPresetRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            ActivityProfile = "nopreset";
             UpdateCalendar(year, month);
         }
 

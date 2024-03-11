@@ -1,5 +1,6 @@
 using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace AstroApp.UI.Pages;
@@ -20,7 +21,9 @@ public partial class EventDetailsPage : ContentPage
 
             }
         }
-    }    
+    }
+
+    public ObservableCollection<MoonDaySlide> MoonDaysCarousel { get; set; }
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,8 +33,20 @@ public partial class EventDetailsPage : ContentPage
     }
 
     public EventDetailsPage()
-    {        
+    {       
         InitializeComponent();        
+    }
+
+    private void GenerateCarousel()
+    {
+        MoonDaysCarousel = new ObservableCollection<MoonDaySlide>();
+        MoonDaysCarousel.Add(new MoonDaySlide { MoonDay = DayAstroEvent.MoonDay.PreviousMoonDay, MoonDayInfo = DayAstroEvent.MoonDay.PreviousMoonDayInfo, });
+        if (DayAstroEvent.MoonDay.IsTripleMoonDay == true)
+        {
+            MoonDaysCarousel.Add(new MoonDaySlide { MoonDay = DayAstroEvent.MoonDay.MiddleMoonDay, MoonDayInfo = DayAstroEvent.MoonDay.MiddleMoonDayInfo, TransitionTime = DayAstroEvent.MoonDay.MiddleMoonDayTransitionTime });
+        }
+        
+        MoonDaysCarousel.Add(new MoonDaySlide { MoonDay = DayAstroEvent.MoonDay.NewMoonDay, MoonDayInfo = DayAstroEvent.MoonDay.NewMoonDayInfo, TransitionTime = DayAstroEvent.MoonDay.TransitionTime });
     }
 
     protected override async void OnAppearing()
@@ -44,43 +59,53 @@ public partial class EventDetailsPage : ContentPage
     private void AnimateMarkerToPosition(MoonDay moonDay)
     {
         MainThread.BeginInvokeOnMainThread(async () =>
-        {
-            if (layout.Width <= 0) return; // Ensure the layout has been laid out
+{
+    if (layout.Width <= 0) return; // Ensure the layout has been laid out
 
-            // First Marker and Label Animation
-            var totalMinutesInDay = 24 * 60 - 1;
-            var transitionMinutes = moonDay.TransitionTime.Hour * 60 + moonDay.TransitionTime.Minute;
-            var positionRatio = (double)transitionMinutes / totalMinutesInDay;
-            var adjustedWidth = layout.Width - this.marker.WidthRequest;
-            var targetPositionX = adjustedWidth * positionRatio;
+    var totalMinutesInDay = 24 * 60; // Total minutes in a day
 
-            timeLabel.Text = moonDay.TransitionTime.ToString("HH:mm");
-            timeLabel.TranslationX = targetPositionX - (timeLabel.Width / 2);
-            timeLabel.TranslationY = -20; // Adjust based on your UI needs
-            timeLabel.IsVisible = false; // Start with the label hidden
+    // Adjusted width to account for the static image on one side
+    var offsetForStaticImage = 40; // Width of the static image taking up space
+    var availableWidth = layout.Width - offsetForStaticImage - newMoonDayMarker.Width; // Adjust for the image width on both ends
 
-            uint animationDuration = 200; // Duration for animation
+    // Calculate position for the New Moon marker
+    var newMoonTransitionMinutes = moonDay.TransitionTime.Hour * 60 + moonDay.TransitionTime.Minute;
+    var newPositionRatio = (double)newMoonTransitionMinutes / totalMinutesInDay;
+    var newMoonTargetPositionX = availableWidth * newPositionRatio + offsetForStaticImage; // Offset added to the target position
 
-            await marker.TranslateTo(targetPositionX, 0, animationDuration, Easing.Linear);
-            timeLabel.IsVisible = true;
+    // Update and show the label for New Moon
+    timeLabel.Text = moonDay.TransitionTime.ToString("HH:mm");
+    var labelXPosition = newMoonTargetPositionX - (timeLabel.Width / 2);
+    labelXPosition = Math.Max(labelXPosition, offsetForStaticImage); // Adjust for offset
+    labelXPosition = Math.Min(labelXPosition, layout.Width - timeLabel.Width - offsetForStaticImage); // Prevent overflow beyond the available width
 
-            // Second Marker and Label Animation for Triple Moon Day
-            if (moonDay.IsTripleMoonDay)
-            {
-                var middleTransitionMinutes = moonDay.MiddleMoonDayTransitionTime.Hour * 60 + moonDay.MiddleMoonDayTransitionTime.Minute;
-                var middlePositionRatio = (double)middleTransitionMinutes / totalMinutesInDay;
-                var middleTargetPositionX = adjustedWidth * middlePositionRatio;
+    timeLabel.TranslationX = labelXPosition;
+    timeLabel.TranslationY = -20;
+    timeLabel.IsVisible = true;
 
-                secondTimeLabel.Text = moonDay.MiddleMoonDayTransitionTime.ToString("HH:mm");
-                secondTimeLabel.TranslationX = middleTargetPositionX - (secondTimeLabel.Width / 2);
-                secondTimeLabel.TranslationY = -20; // Adjust based on your UI needs
-                secondTimeLabel.IsVisible = false; // Initially hidden
+    uint animationDuration = 200; // Animation duration in milliseconds
+    await newMoonDayMarker.TranslateTo(newMoonTargetPositionX, 0, animationDuration, Easing.Linear);
 
-                secondTimeLabel.IsVisible = true;
-                await secondMarker.TranslateTo(middleTargetPositionX, 0, animationDuration, Easing.Linear);
-                
-            }
-        });
+    // Repeat similar calculations for the Middle Moon marker if applicable
+    if (moonDay.IsTripleMoonDay)
+    {
+        var middleMoonTransitionMinutes = moonDay.MiddleMoonDayTransitionTime.Hour * 60 + moonDay.MiddleMoonDayTransitionTime.Minute;
+        var middlePositionRatio = (double)middleMoonTransitionMinutes / totalMinutesInDay;
+        var middleTargetPositionX = availableWidth * middlePositionRatio + offsetForStaticImage; // Adjusted for the static image
+
+        // Update and show the label for Middle Moon
+        secondTimeLabel.Text = moonDay.MiddleMoonDayTransitionTime.ToString("HH:mm");
+        var middleLabelXPosition = middleTargetPositionX - (secondTimeLabel.Width / 2);
+        middleLabelXPosition = Math.Max(middleLabelXPosition, offsetForStaticImage); // Ensure label stays within bounds
+        middleLabelXPosition = Math.Min(middleLabelXPosition, layout.Width - secondTimeLabel.Width - offsetForStaticImage); // Prevent overflow
+
+        secondTimeLabel.TranslationX = middleLabelXPosition;
+        secondTimeLabel.TranslationY = -20;
+        secondTimeLabel.IsVisible = true;
+
+        await middleMoonDayMarker.TranslateTo(middleTargetPositionX, 0, animationDuration, Easing.Linear);
+    }
+});
     }
 
     private async void OnPageTapped(object sender, EventArgs e)
@@ -91,13 +116,14 @@ public partial class EventDetailsPage : ContentPage
     public async Task InitializeDataAsync(AstroEvent astroEvent)
     {
         DayAstroEvent = astroEvent;
-        UpdateDayEventInfoList();        
+        UpdateDayEventInfoList();
+        GenerateCarousel();
         BindingContext = this;
     }
 
     private void UpdateDayEventInfoList()
     {
-        if (App.AppData.AppDB.PlanetInZodiacsDB == null || DayAstroEvent == null)
+        if (App.AppData.AppDB.MoonDaysDB == null || App.AppData.AppDB.PlanetInZodiacsDB == null || DayAstroEvent == null)
             return;
 
         UpdatePlanetInZodiacInfo(DayAstroEvent.SunInZodiac);
@@ -210,18 +236,59 @@ public partial class EventDetailsPage : ContentPage
 
         // Animate marker to the target position
         uint animationDuration = 3000; // Adjust based on your preference
-        marker.TranslateTo(targetPositionX, 0, animationDuration, Easing.Linear);
+        newMoonDayMarker.TranslateTo(targetPositionX, 0, animationDuration, Easing.Linear);
 
         // Assuming the label should be directly above the marker, calculate an offset if needed
         var labelYOffset = 20; // Adjust as needed
                                 // Make sure to adjust the X translation if you need the label to precisely follow the marker's center
         timeLabel.TranslateTo(targetPositionX, timeLabel.TranslationY, animationDuration, Easing.Linear);
+    }   
+
+    private async void ShowNewMoonDayCarousel()
+    {
+        // Ensure the view is positioned off-screen initially for the slide-in effect
+        MoonDayCarousel.TranslationX = -this.Width;
+        MoonDayCarousel.IsVisible = true;
+
+        MoonDayCarousel.Position = 1;
+
+        // Animate the view to slide in from the left
+        await MoonDayCarousel.TranslateTo(0, 0, 250, Easing.SinInOut);
     }
 
-    private void AnimateMarkerToPosition(double targetPositionX)
+    private async void ShowPreviousMoonDayCarousel()
     {
-        // Use TranslateTo for animation, adjust duration and easing as needed
-        var animationDuration = 1000; // Duration in milliseconds, adjust based on your preference
-        this.marker.TranslateTo(targetPositionX, 0, (uint)animationDuration, Easing.Linear);
+        // Ensure the view is positioned off-screen initially for the slide-in effect
+        MoonDayCarousel.TranslationX = -this.Width;
+        MoonDayCarousel.IsVisible = true;
+
+        MoonDayCarousel.Position = 0;
+
+        // Animate the view to slide in from the left
+        await MoonDayCarousel.TranslateTo(0, 0, 250, Easing.SinInOut);
+    }
+
+    private async void HideMoonDayCarousel()
+    {
+        // Animate the view to slide out to the left
+        await MoonDayCarousel.TranslateTo(-this.Width, 0, 250, Easing.SinInOut);
+
+        // After animation completes, hide the view
+        MoonDayCarousel.IsVisible = false;
+    }
+
+    private void ShowNewMoonDayRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        ShowNewMoonDayCarousel();
+    }
+
+    private void CloseMoonInfoRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        HideMoonDayCarousel();
+    }
+
+    private void ShowPreviousMoonDayRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        ShowPreviousMoonDayCarousel();
     }
 }

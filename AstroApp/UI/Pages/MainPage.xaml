@@ -33,13 +33,27 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
             </Grid>
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Button  Grid.Column="0" Text="Previuous Month" Clicked="PrevButton_Clicked"/>
-                <Button Grid.Column="1" Text="Next Month" Clicked="NextButton_Clicked"/>
+            <Grid Grid.Row="2" ColumnDefinitions="4*,*,*,*,4*">
+                <Button Grid.Column="0" Text="Previous Month" Clicked="PrevButton_Clicked"/>
+                <Frame Grid.Column="1" BackgroundColor="{Binding GardeningBackgroundColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GardeningRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="plant.png" HeightRequest="20" Margin="-10"/>
+                </Frame>
+                <Frame Grid.Column="2" BackgroundColor="{Binding LoveBackgroundColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LoveRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="love.png" HeightRequest="20" Margin="-10"/>
+                </Frame>
+                <Frame Grid.Column="3" BackgroundColor="{Binding NoPresetBackgroundColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="NoPresetRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="tech.png" HeightRequest="20" Margin="-10"/>
+                </Frame>
+                <Button Grid.Column="4" Text="Next Month" Clicked="NextButton_Clicked"/>
             </Grid>
         </Grid>
     </FlexLayout>
