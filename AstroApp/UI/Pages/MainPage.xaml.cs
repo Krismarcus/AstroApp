@@ -142,8 +142,7 @@ namespace AstroApp.UI.Pages
         }
 
         private void UpdateCalendar(int year, int month)
-        {
-            CalendarGrid.Clear();
+        {            
             InitializeWeekdayLabels();
 
             this.year = year;
@@ -157,27 +156,37 @@ namespace AstroApp.UI.Pages
 
         private void PopulateCalendar(int days, int startColumn)
         {
-            int row = 1, column = startColumn; //skip first row for weekdays
-
+            CalendarGrid.Children.Clear();
+            CalendarGrid.RowDefinitions.Clear();
+            // Add row definitions based on need, at least 6 for the days and possibly one for day names
+            for (int i = 0; i < 7; i++) // 6 for days + 1 for day names
+            {
+                CalendarGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            }
+            
             for (int day = 1; day <= days; day++)
             {
-                DayControl dayCard = new DayControl();
-                dayCard.AddDayCardDayNumber(day);                
-                DateTime currentDate = new DateTime(year, month, day);
-                AstroEvent astroEventForDate = ActiveAstroEvents.FirstOrDefault(e => e.Date.Date == currentDate.Date);
+                var currentDate = new DateTime(year, month, day);
+                var astroEventForDate = ActiveAstroEvents.FirstOrDefault(e => e.Date.Date == currentDate);
 
-                if (astroEventForDate != null)
+                DayControl dayCard = new DayControl
                 {
-                    dayCard.AddAstroEvent(astroEventForDate);                    
-                }
+                    // Initialize with relevant data
+                    DayAstroEvent = astroEventForDate,
+                    DayNumber = day
+                };
+                dayCard.LocateDayCardGrid(currentDate);
 
-                CalendarGrid.Add(dayCard, column, row);                
-                column = (column + 1) % 7;
-                if (column == 0)
+                // Assuming LocateDayCardGrid correctly updates CalendarRow and CalendarColumn
+                Grid.SetRow(dayCard, dayCard.CalendarRow);
+                Grid.SetColumn(dayCard, dayCard.CalendarColumn);
+
+                if (!CalendarGrid.Children.Contains(dayCard))
                 {
-                    row++;
+                    CalendarGrid.Children.Add(dayCard);
                 }
                 dayCard.SetBorderColor(ActivityProfile);
+                // Update property or trigger binding refresh if necessary                
             }
         }
 

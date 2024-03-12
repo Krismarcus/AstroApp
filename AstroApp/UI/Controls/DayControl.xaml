@@ -17,7 +17,7 @@
             <Shadow Brush="{Binding ActivityProfile, Converter={StaticResource ActivityQualityToColorConverter}}" Opacity="0.8"/>
         </Border.Shadow>
         <Border.GestureRecognizers>
-            <TapGestureRecognizer Tapped="OnDayTapped" />
+            <TapGestureRecognizer Tapped="OnDayTapped"  />
         </Border.GestureRecognizers>
         <VerticalStackLayout >
             <Label Text="{Binding DayNumber}" TextColor="{StaticResource Primary}" FontAttributes="Bold" HorizontalOptions="Center" />

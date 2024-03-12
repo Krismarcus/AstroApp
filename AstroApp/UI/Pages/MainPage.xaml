@@ -13,7 +13,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Text="{Binding MonthName}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Grid Grid.Row="1" x:Name="CalendarGrid">
+            <Grid Grid.Row="1" x:Name="CalendarGrid" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"/>
                     <RowDefinition Height="Auto"/>
@@ -32,6 +32,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                 
             </Grid>
             <Grid Grid.Row="2" ColumnDefinitions="4*,*,*,*,4*">
                 <Button Grid.Column="0" Text="Previous Month" Clicked="PrevButton_Clicked"/>
