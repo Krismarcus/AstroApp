@@ -144,7 +144,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
         InitializeComponent();        
         BindingContext = this;
         
-    }
+    }    
 
     public void AddAstroEvent(AstroEvent astroEventForDate)
     {
