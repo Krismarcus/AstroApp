@@ -73,7 +73,7 @@
 	  <None Remove="Resources\Images\bear.png" />
 	  <None Remove="Resources\Images\bowl.png" />
 	  <None Remove="Resources\Images\buystuff.png" />
-	  <None Remove="Resources\Images\calendaricon.png" />
+	  <None Remove="Resources\Images\calendar.png" />
 	  <None Remove="Resources\Images\cancer.png" />
 	  <None Remove="Resources\Images\capricorn.png" />
 	  <None Remove="Resources\Images\conjunction.png" />
@@ -92,6 +92,7 @@
 	  <None Remove="Resources\Images\ideas.png" />
 	  <None Remove="Resources\Images\jupiter.png" />
 	  <None Remove="Resources\Images\lantern.png" />
+	  <None Remove="Resources\Images\left_arrow.png" />
 	  <None Remove="Resources\Images\leo.png" />
 	  <None Remove="Resources\Images\leopard.png" />
 	  <None Remove="Resources\Images\libra.png" />
@@ -114,6 +115,7 @@
 	  <None Remove="Resources\Images\plant.png" />
 	  <None Remove="Resources\Images\pluto.png" />
 	  <None Remove="Resources\Images\rainbow.png" />
+	  <None Remove="Resources\Images\right_arrow.png" />
 	  <None Remove="Resources\Images\rooster.png" />
 	  <None Remove="Resources\Images\sagittarius.png" />
 	  <None Remove="Resources\Images\saturn.png" />
