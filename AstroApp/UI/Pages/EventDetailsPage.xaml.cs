@@ -2,40 +2,77 @@ using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AstroApp.UI.Pages;
 
-public partial class EventDetailsPage : ContentPage
+public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 {
+
+    private DateTime currentDate;
+
+    public DateTime CurrentDate
+    {
+        get => currentDate;
+        set
+        {
+            if (currentDate != value)
+            {
+                currentDate = value;
+                OnPropertyChanged(nameof(CurrentDate));
+                // Trigger the update and animation each time the date changes
+                Task.Run(() => InitializeDataAsync(currentDate));
+            }
+        }
+    }
+
     private AstroEvent dayAstroEvent;
 
     public AstroEvent DayAstroEvent
     {
-        get { return dayAstroEvent; }
+        get => dayAstroEvent;
         set
         {
             if (dayAstroEvent != value)
             {
                 dayAstroEvent = value;
                 OnPropertyChanged(nameof(DayAstroEvent));
-
             }
         }
     }
 
+    public ObservableCollection<AstroEvent> AstroEvents { get; set; } = new ObservableCollection<AstroEvent>();
     public ObservableCollection<MoonDaySlide> MoonDaysCarousel { get; set; }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
 
     public EventDetailsPage()
     {
         InitializeComponent();
+        BindingContext = this;
     }
+
+    protected override void OnAppearing()
+    {        
+        base.OnAppearing();
+        // It's crucial not to await in OnAppearing directly, hence using Task.Run
+        Task.Run(() => InitializeDataAsync(currentDate));
+    }
+
+    public async Task InitializeDataAsync(DateTime date)
+    {
+        CurrentDate = date;
+        DayAstroEvent = AstroEvents.FirstOrDefault(e => e.Date == date);
+
+        // Ensure UI operations happen on the main thread
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            timeLabel.Opacity = 0;
+            UpdateDayEventInfoList();
+            GenerateCarousel();
+            // Delay the animation slightly to ensure UI elements are ready
+            Task.Delay(200).ContinueWith(t => AnimateMarkerToPosition(DayAstroEvent.MoonDay));
+        });
+    }
+
 
     private void GenerateCarousel()
     {
@@ -48,63 +85,33 @@ public partial class EventDetailsPage : ContentPage
         }
     }
 
-    protected override async void OnAppearing()
+    private async void AnimateMarkerToPosition(MoonDay moonDay)
     {
-        base.OnAppearing();
-        await Task.Delay(200); // Increase the delay slightly
-        AnimateMarkerToPosition(dayAstroEvent.MoonDay);
-    }
+        await MainThread.InvokeOnMainThreadAsync(async () =>
+        {
+            if (layout.Width <= 0) return; // Ensures the layout is ready
 
-    private void AnimateMarkerToPosition(MoonDay moonDay)
-    {
-        MainThread.BeginInvokeOnMainThread(async () =>
-{
-    if (layout.Width <= 0) return; // Ensure the layout has been laid out
+            var totalMinutesInDay = 24 * 60;
+            // Calculate the starting X position as the width of the previousMoonDayMarker image or any fixed offset if known
+            var startOffset = previousMoonDayMarker.Width + timeLine.Margin.Left; // Assume this is the width or use a fixed offset if the image width is dynamic
+            var availableWidth = layout.Width - startOffset - newMoonDayMarker.Width; // Adjust available width for animation
 
-    var totalMinutesInDay = 24 * 60; // Total minutes in a day
+            var newMoonTransitionMinutes = moonDay.TransitionTime.Hour * 60 + moonDay.TransitionTime.Minute;
+            var newPositionRatio = (double)newMoonTransitionMinutes / totalMinutesInDay;
+            // Calculate the target X position, ensuring it aligns with the start of the line for a 0:00 TransitionTime
+            var gridTargetPositionX = startOffset + (availableWidth * newPositionRatio);
 
-    // Adjusted width to account for the static image on one side
-    var offsetForStaticImage = 40; // Width of the static image taking up space
-    var availableWidth = layout.Width - offsetForStaticImage - newMoonDayMarker.Width; // Adjust for the image width on both ends
+            // Initially set the timeLabel's opacity to 0 to ensure it's not visible during the animation
+            timeLabel.Opacity = 0;
 
-    // Calculate position for the New Moon marker
-    var newMoonTransitionMinutes = moonDay.TransitionTime.Hour * 60 + moonDay.TransitionTime.Minute;
-    var newPositionRatio = (double)newMoonTransitionMinutes / totalMinutesInDay;
-    var newMoonTargetPositionX = availableWidth * newPositionRatio + offsetForStaticImage; // Offset added to the target position
+            // Animate the grid to its target position
+            uint animationDuration = 200;
+            await newMoonDayMarkerGrid.TranslateTo(gridTargetPositionX - newMoonDayMarker.Width / 2, 0, animationDuration, Easing.Linear);
 
-    // Update and show the label for New Moon
-    timeLabel.Text = moonDay.TransitionTime.ToString("HH:mm");
-    var labelXPosition = newMoonTargetPositionX - (timeLabel.Width / 2);
-    labelXPosition = Math.Max(labelXPosition, offsetForStaticImage); // Adjust for offset
-    labelXPosition = Math.Min(labelXPosition, layout.Width - timeLabel.Width - offsetForStaticImage); // Prevent overflow beyond the available width
-
-    timeLabel.TranslationX = labelXPosition +2;
-    timeLabel.TranslationY = 40;
-    timeLabel.IsVisible = true;
-
-    uint animationDuration = 200; // Animation duration in milliseconds
-    await newMoonDayMarker.TranslateTo(newMoonTargetPositionX, 0, animationDuration, Easing.Linear);
-
-    // Repeat similar calculations for the Middle Moon marker if applicable
-    if (moonDay.IsTripleMoonDay)
-    {
-        var middleMoonTransitionMinutes = moonDay.MiddleMoonDayTransitionTime.Hour * 60 + moonDay.MiddleMoonDayTransitionTime.Minute;
-        var middlePositionRatio = (double)middleMoonTransitionMinutes / totalMinutesInDay;
-        var middleTargetPositionX = availableWidth * middlePositionRatio + offsetForStaticImage; // Adjusted for the static image
-
-        // Update and show the label for Middle Moon
-        secondTimeLabel.Text = moonDay.MiddleMoonDayTransitionTime.ToString("HH:mm");
-        var middleLabelXPosition = middleTargetPositionX - (secondTimeLabel.Width / 2);
-        middleLabelXPosition = Math.Max(middleLabelXPosition, offsetForStaticImage); // Ensure label stays within bounds
-        middleLabelXPosition = Math.Min(middleLabelXPosition, layout.Width - secondTimeLabel.Width - offsetForStaticImage); // Prevent overflow
-
-        secondTimeLabel.TranslationX = middleLabelXPosition;
-        secondTimeLabel.TranslationY = 40;
-        secondTimeLabel.IsVisible = true;
-
-        await middleMoonDayMarker.TranslateTo(middleTargetPositionX, 0, animationDuration, Easing.Linear);
-    }
-});
+            // Make the timeLabel appear after 0.5 sec delay once the grid has reached its target position
+            await Task.Delay(500); // Delay for 0.5 sec
+            await timeLabel.FadeTo(1, 200); // Fade in the label after the delay
+        });
     }
 
     private async void OnPageTapped(object sender, EventArgs e)
@@ -112,13 +119,24 @@ public partial class EventDetailsPage : ContentPage
         await Navigation.PopModalAsync(); // Close the modal page
     }
 
-
-    public async Task InitializeDataAsync(AstroEvent astroEvent)
+    public async Task InitializeAstroEventList()
     {
-        DayAstroEvent = astroEvent;
-        UpdateDayEventInfoList();
-        GenerateCarousel();
-        BindingContext = this;
+        this.AstroEvents = App.AppData.AppDB.AstroEventsDB;        
+    }    
+
+    private async void PrevDateButton_Clicked(object sender, EventArgs e)
+    {
+        timeLabel.Opacity = 0;
+        // Adjust the date to the previous day        
+        CurrentDate = CurrentDate.AddDays(-1);
+        await InitializeDataAsync(CurrentDate);
+    }
+
+    private async void NextDateButton_Clicked(object sender, EventArgs e)
+    {        
+        // Adjust the date to the next day        
+        CurrentDate = CurrentDate.AddDays(1);
+        await InitializeDataAsync(CurrentDate);
     }
 
     private void UpdateDayEventInfoList()

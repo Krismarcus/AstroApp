@@ -5,7 +5,7 @@ namespace AstroApp.Data.Models
 {
     public class AppDB
     {
-        public List<AstroEvent> AstroEventsDB { get; set; }
+        public ObservableCollection<AstroEvent> AstroEventsDB { get; set; }
         public ObservableCollection<PlanetInZodiac> PlanetInZodiacsDB { get; set; }
         public ObservableCollection<MoonDay> MoonDaysDB { get; set; }
     }

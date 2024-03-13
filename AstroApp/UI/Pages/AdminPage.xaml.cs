@@ -42,7 +42,7 @@ public partial class AdminPage : ContentPage
     public int SelectedMoonDay {  get; set; }    
     public bool Is29MoonDayCycle { get; set; }
 
-    public List<AstroEvent> ActiveAstroEvents { get; set; }
+    public ObservableCollection<AstroEvent> ActiveAstroEvents { get; set; }
 
     public ObservableCollection<PlanetInZodiac> PlanetInZodiacsDetails { get; set; }
 
@@ -61,7 +61,7 @@ public partial class AdminPage : ContentPage
         this.ActiveAstroEvents = App.AppData.AppDB.AstroEventsDB;
         if (this.ActiveAstroEvents == null)
         {
-            this.ActiveAstroEvents = new List<AstroEvent> { };
+            this.ActiveAstroEvents = new ObservableCollection<AstroEvent> { };
         }
         UpdateList(DateTime.Now.Year, DateTime.Now.Month);
     }
@@ -282,6 +282,7 @@ public partial class AdminPage : ContentPage
 
         for (int i = 0; i < ActiveAstroEvents.Count; i++)
         {
+            ActiveAstroEvents[i].MoonDay.IsTripleMoonDay = false;
             ActiveAstroEvents[i].MoonDay.NewMoonDay = currentMoonDayValue;
             if (ActiveAstroEvents[i].Date.Day == SkipDayIndex)
             {

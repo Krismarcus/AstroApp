@@ -25,7 +25,7 @@ namespace AstroApp.UI.Pages
         }
 
         private int month, year;
-        public List<AstroEvent> ActiveAstroEvents { get; set; }        
+        public ObservableCollection<AstroEvent> ActiveAstroEvents { get; set; }        
 
         private string activityProfile;
 
@@ -185,7 +185,7 @@ namespace AstroApp.UI.Pages
                 {
                     CalendarGrid.Children.Add(dayCard);
                 }
-                dayCard.SetBorderColor(ActivityProfile);
+                dayCard.SetBorderColor(ActivityProfile);                
                 // Update property or trigger binding refresh if necessary                
             }
         }

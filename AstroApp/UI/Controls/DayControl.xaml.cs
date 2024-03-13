@@ -1,6 +1,7 @@
 using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
 using AstroApp.UI.Pages;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
 
@@ -69,6 +70,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
             }
         }
     }
+    
 
     private PlanetInZodiac sunInZodiac;
 
@@ -130,7 +132,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
                 OnPropertyChanged(nameof(IsProfileActivated));
             }
         }
-    }
+    }    
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -150,7 +152,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
     {
         this.DayAstroEvent = astroEventForDate;
     }
-
+   
     public void AddDayCardDayNumber(int dayNumber)
     {
         this.DayNumber = dayNumber;
@@ -195,7 +197,8 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
         if (DayAstroEvent != null)
         {
             var eventDetailsPage = new EventDetailsPage();
-            await eventDetailsPage.InitializeDataAsync(DayAstroEvent);
+            await eventDetailsPage.InitializeAstroEventList();
+            await eventDetailsPage.InitializeDataAsync(DayAstroEvent.Date);            
             await Navigation.PushModalAsync(eventDetailsPage);
 
         }
