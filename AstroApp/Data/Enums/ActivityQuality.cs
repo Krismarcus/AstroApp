@@ -10,6 +10,7 @@ namespace AstroApp.Data.Enums
     {        
         Neutral,
         Good,
-        Bad
+        Bad,
+        None
     }
 }

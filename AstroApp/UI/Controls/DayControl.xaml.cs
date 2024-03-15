@@ -228,5 +228,10 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
                 ActivityProfile = (ActivityQuality)value;
             }
         }
+
+        else
+        {
+            ActivityProfile = ActivityQuality.None;
+        }
     }
 }

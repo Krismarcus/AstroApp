@@ -45,6 +45,7 @@
 		<AppInstallerUri>d:/AstroappV2</AppInstallerUri>
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
 		<PackageCertificateThumbprint>1AC0C8ECAEE6833C5CA16E6DB18DC07642374D76</PackageCertificateThumbprint>
+		<Configurations>Debug;Release;Admin</Configurations>
 	</PropertyGroup>
 
 	<ItemGroup>

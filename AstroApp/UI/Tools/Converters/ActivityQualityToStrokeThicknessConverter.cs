@@ -18,9 +18,9 @@ namespace AstroApp.UI.Tools.Converters
                 {
                     case ActivityQuality.Good:
                     case ActivityQuality.Bad:
-                        return 3; // Example thickness for "Good" or "Bad"
+                        return 1; // Example thickness for "Good" or "Bad"
                     default:
-                        return 1; // Default thickness
+                        return 0; // Default thickness
                 }
             }
             return 1; // Return a default value if the conversion fails

@@ -22,7 +22,9 @@ namespace AstroApp.UI.Tools.Converters
                 case ActivityQuality.Bad:
                     return Colors.IndianRed;
                 case ActivityQuality.Neutral:
-                    return Colors.Orange; // Or any color you deem appropriate for "Neutral"
+                    return Colors.Grey; // Or any color you deem appropriate for "Neutral"
+                case ActivityQuality.None:
+                    return Colors.Orange;
                 default:
                     return Colors.Transparent; // Fallback color
             }

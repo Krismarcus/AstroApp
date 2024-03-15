@@ -4,20 +4,20 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
     xmlns:pages="clr-namespace:AstroApp.UI.Pages"
-    Shell.FlyoutBehavior="Disabled"    
+    Shell.FlyoutBehavior="Disabled"
     Title="AstroApp">
     <TabBar>
         <Tab Title="Calendar" >
-            <ShellContent Title="Home" ContentTemplate="{DataTemplate pages:MainPage}" Route="MainPage" />
+            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}" Route="MainPage" />
         </Tab>
-        <Tab Title="Admin">
-            <ShellContent x:Name="Admin" ContentTemplate="{DataTemplate pages:AdminPage}" Route="AdminPage"/>
+        <Tab Title="Admin" >
+            <ShellContent x:Name="Admin" ContentTemplate="{DataTemplate pages:AdminPage}" Route="AdminPage" IsVisible="{Binding IsAdmin}"/>
         </Tab>
         <Tab Title="Planet In Zodiacs">
-            <ShellContent x:Name="PlanetInZodiacEdit" ContentTemplate="{DataTemplate pages:PlanetInZodiacEventsEditPage}" Route="PlanetInZodiacEventsEditPage"/>
+            <ShellContent x:Name="PlanetInZodiacEdit" ContentTemplate="{DataTemplate pages:PlanetInZodiacEventsEditPage}" Route="PlanetInZodiacEventsEditPage" IsVisible="{Binding IsAdmin}"/>
         </Tab>
         <Tab Title="Moon Days">
-            <ShellContent x:Name="MoonDayEdit" ContentTemplate="{DataTemplate pages:MoonDaysEditPage}" Route="MoonDaysEditPage"/>
+            <ShellContent x:Name="MoonDayEdit" ContentTemplate="{DataTemplate pages:MoonDaysEditPage}" Route="MoonDaysEditPage" IsVisible="{Binding IsAdmin}"/>
         </Tab>
     </TabBar>
 </Shell>
