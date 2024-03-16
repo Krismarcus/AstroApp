@@ -272,30 +272,32 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
     {
         if (sender is Picker picker && picker.SelectedIndex != -1)
         {
-            var selectedZodiacSign = (ZodiacSign)picker.SelectedIndex +1; // Adjusted assuming enum starts at 1
+            var selectedZodiacSign = (ZodiacSign)picker.SelectedIndex + 1; // Adjusted assuming enum starts at 1
+
+            // Filter ActiveAstroEvents for the current month and year before applying changes
+            var eventsInCurrentMonth = ActiveAstroEvents.Where(eventDay => eventDay.Date.Month == this.Month && eventDay.Date.Year == this.Year);
 
             if (picker == VenusInZodiacPicker)
             {
-                foreach (var eventDay in ActiveAstroEvents)
-                {                    
+                foreach (var eventDay in eventsInCurrentMonth)
+                {
                     eventDay.VenusInZodiac.NewZodiacSign = selectedZodiacSign;
                 }
             }
             else if (picker == MarsInZodiacPicker)
             {
-                foreach (var eventDay in ActiveAstroEvents)
+                foreach (var eventDay in eventsInCurrentMonth)
                 {
                     eventDay.MarsInZodiac.NewZodiacSign = selectedZodiacSign;
                 }
             }
             else if (picker == MercuryInZodiacPicker)
             {
-                foreach (var eventDay in ActiveAstroEvents)
+                foreach (var eventDay in eventsInCurrentMonth)
                 {
                     eventDay.MercuryInZodiac.NewZodiacSign = selectedZodiacSign;
                 }
             }
-            
         }
     }
 
