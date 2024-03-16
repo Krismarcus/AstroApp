@@ -2,10 +2,11 @@ using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
 using AstroApp.UI.Controls;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace AstroApp.UI.Pages;
 
-public partial class AdminPage : ContentPage
+public partial class AdminPage : ContentPage, INotifyPropertyChanged
 {
     private string monthName;
 
@@ -23,6 +24,31 @@ public partial class AdminPage : ContentPage
     }
 
     private int month, year;
+
+    public int Month
+    {
+        get => month;
+        set
+        {
+            if (month != value)
+            {
+                month = value;
+                OnPropertyChanged(nameof(Month));
+            }
+        }
+    }
+    public int Year
+    {
+        get => year;
+        set
+        {
+            if (year != value)
+            {
+                year = value;
+                OnPropertyChanged(nameof(Year));
+            }
+        }
+    }
 
     private int skipDayIndex;
 
@@ -278,20 +304,24 @@ public partial class AdminPage : ContentPage
 
         int currentMoonDayValue = SelectedMoonDay; // Initial moon day value to start incrementing from
         int newMoonDay = SkipDayIndex;
-        int skipDay = SkipDayIndex - 1;       
+        int skipDay = SkipDayIndex - 1;
 
-        for (int i = 0; i < ActiveAstroEvents.Count; i++)
+        foreach (var astroEvent in ActiveAstroEvents)
         {
-            ActiveAstroEvents[i].MoonDay.IsTripleMoonDay = false;
-            ActiveAstroEvents[i].MoonDay.NewMoonDay = currentMoonDayValue;
-            if (ActiveAstroEvents[i].Date.Day == SkipDayIndex)
+            // Check if the event is in the current month and year before updating.
+            if (astroEvent.Date.Month == month && astroEvent.Date.Year == year)
             {
-                ActiveAstroEvents[i].MoonDay.IsTripleMoonDay = true;
-            }
-            // Now also passing is29DayCycle to the method
-            currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, ActiveAstroEvents[i].Date.Day, skipDay, Is29MoonDayCycle);
+                astroEvent.MoonDay.IsTripleMoonDay = false;
+                astroEvent.MoonDay.NewMoonDay = currentMoonDayValue;
+                if (astroEvent.Date.Day == SkipDayIndex)
+                {
+                    astroEvent.MoonDay.IsTripleMoonDay = true;
+                }
+                // Now also passing is29DayCycle to the method.
+                currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, astroEvent.Date.Day, skipDay, Is29MoonDayCycle);
 
-            ActiveAstroEvents[i].MoonPhase = CalculatePhaseForDay(ActiveAstroEvents[i].Date, newMoonDay);
+                astroEvent.MoonPhase = CalculatePhaseForDay(astroEvent.Date, newMoonDay);
+            }
         }
 
         UpdateList(year, month); // Assume this updates your list display

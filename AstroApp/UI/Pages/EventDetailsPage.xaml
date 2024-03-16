@@ -118,7 +118,7 @@
                                     <TapGestureRecognizer Tapped="TapSunInZodiac_Tapped"/>
                                 </Grid.GestureRecognizers>
                                 <Image Grid.Column="0" Source="sun.png" HeightRequest="150" Margin="-50"/>
-                                <Image Grid.Column="1" Source="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HeightRequest="90" Margin="-30"/>
+                                <Image Grid.Column="1" Source="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HeightRequest="90" Margin="-15,-30,-30,-30"/>
                             </Grid>
                             <Grid Grid.Column="1" ColumnDefinitions="*,*"  HorizontalOptions="Center" VerticalOptions="Center">
                                 <Grid.GestureRecognizers>
@@ -197,21 +197,24 @@
                         </Grid>
                     </Grid>
                 </Frame>
-                <Label Text="{Binding DayAstroEvent.EventText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="18" Margin="20"/>                
+                <Frame Padding="0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10,10">
+                    <Label Text="{Binding DayAstroEvent.EventText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="18" Margin="20"/>                                        
+                </Frame>
+                <HorizontalStackLayout >
+                    <Frame CornerRadius="10" Padding="0" BackgroundColor="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToVisibilityConverter}}">
+                    <Label Text="Gardening" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10" FontAttributes="Bold" FontAutoScalingEnabled="True"/>
+                    </Frame>
+                    <Frame CornerRadius="10" Padding="0" BackgroundColor="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToVisibilityConverter}}">
+                        <Label Text="Love" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10" FontAttributes="Bold" FontAutoScalingEnabled="True"/>
+                    </Frame>
+                </HorizontalStackLayout>
                 <CollectionView ItemsSource="{Binding DayAstroEvent.PlanetEvents}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <controls:CalendarPlanetEventControl />
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-                </CollectionView>
-                <HorizontalStackLayout >                    
-                    <Image Source="plant.png" Background="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
-                    <Image Source="love.png" Background="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
-                    <Image Source="tech.png" Background="{Binding DayAstroEvent.Tech, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Tech, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
-                    <Image Source="ideas.png" Background="{Binding DayAstroEvent.Ideas, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Ideas, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>
-                    <Image Source="buystuff.png" Background="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToColor}}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToVisibilityConverter}}" HeightRequest="30"/>                    
-                </HorizontalStackLayout>                
+                </CollectionView>                          
             </VerticalStackLayout>
         </ScrollView>
     </ContentPage.Content>

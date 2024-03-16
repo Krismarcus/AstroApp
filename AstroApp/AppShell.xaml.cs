@@ -12,7 +12,7 @@
         {
             get
             {
-#if ADMIN || DEBUG
+#if ADMIN || DEBUG || RELEASE
                 return true;
 #else
             return false;

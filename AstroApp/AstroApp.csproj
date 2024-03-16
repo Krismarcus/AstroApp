@@ -131,6 +131,8 @@
 	  <None Remove="Resources\Images\swan.png" />
 	  <None Remove="Resources\Images\taurus.png" />
 	  <None Remove="Resources\Images\tech.png" />
+	  <None Remove="Resources\Images\text_gardening.png" />
+	  <None Remove="Resources\Images\text_love.png" />
 	  <None Remove="Resources\Images\thirdquarter_small.png" />
 	  <None Remove="Resources\Images\toad.png" />
 	  <None Remove="Resources\Images\tortoise.png" />

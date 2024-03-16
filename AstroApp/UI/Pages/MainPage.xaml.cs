@@ -143,8 +143,6 @@ namespace AstroApp.UI.Pages
 
         private void UpdateCalendar(int year, int month)
         {            
-            InitializeWeekdayLabels();
-
             this.year = year;
             this.month = month;
             DateTime startOfMonth = new DateTime(year, month, 1);
@@ -152,18 +150,22 @@ namespace AstroApp.UI.Pages
             int days = DateTime.DaysInMonth(year, month);
             int dayOfWeek = ((int)startOfMonth.DayOfWeek + 6) % 7;
             PopulateCalendar(days, dayOfWeek);
+            InitializeWeekdayLabels();
         }
 
         private void PopulateCalendar(int days, int startColumn)
         {
             CalendarGrid.Children.Clear();
-            CalendarGrid.RowDefinitions.Clear();
-            // Add row definitions based on need, at least 6 for the days and possibly one for day names
-            for (int i = 0; i < 7; i++) // 6 for days + 1 for day names
+            // Assuming you have already called InitializeWeekdayLabels elsewhere and it properly sets up the first row for weekday labels
+            // Start adding row definitions for days, assuming the first row is reserved for weekday labels
+            for (int i = 0; i < 6; i++) // 6 rows for days
             {
                 CalendarGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             }
-            
+
+            int currentRow = 1; // Start from row 1 to leave space for weekday labels at row 0
+            int currentColumn = startColumn; // Start column based on the first day of the month
+
             for (int day = 1; day <= days; day++)
             {
                 var currentDate = new DateTime(year, month, day);
@@ -185,8 +187,22 @@ namespace AstroApp.UI.Pages
                 {
                     CalendarGrid.Children.Add(dayCard);
                 }
-                dayCard.SetBorderColor(ActivityProfile);                
-                // Update property or trigger binding refresh if necessary                
+                dayCard.SetBorderColor(ActivityProfile);
+                // Update property or trigger binding refresh if necessary
+
+                // Move to the next cell
+                currentColumn++;
+                if (currentColumn > 6) // End of the week, move to next row
+                {
+                    currentColumn = 0;
+                    currentRow++;
+                }
+            }
+
+            // Ensure there's enough row definitions based on how many days and start day
+            while (CalendarGrid.RowDefinitions.Count < currentRow + 1)
+            {
+                CalendarGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             }
         }
 
