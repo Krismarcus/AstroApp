@@ -10,6 +10,7 @@
     <ContentPage.Resources>
         <converters:MoonDayIntToStringConverter x:Key="IntToStringConverter"/>
         <converters:MoonPhaseIntToStringConverter x:Key="MoonPhaseIntToStringConverter"/>
+        <converters:EnumToStringConverter x:Key="EnumToStringConverter"/>
     </ContentPage.Resources>
         <ScrollView>
             <Grid>
@@ -32,9 +33,9 @@
                 </Grid>
             <Label Grid.Row="2" Text="{Binding MonthName}" FontSize="Header" HorizontalOptions="Center" VerticalOptions="Center"/>
             <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*" >
-            <Picker Grid.Column="0" x:Name="VenusInZodiacPicker" Title="Venus Zodiac" SelectedIndexChanged="ZodiacSignPicker_OnSelectedIndexChanged"/>
-                <Picker Grid.Column="1" x:Name="MarsInZodiacPicker" Title="Mars Zodiac" SelectedIndexChanged="ZodiacSignPicker_OnSelectedIndexChanged"/>
-                <Picker Grid.Column="2" x:Name="MercuryInZodiacPicker" Title="Mercury Zodiac" SelectedIndexChanged="ZodiacSignPicker_OnSelectedIndexChanged"/>                                
+            <Picker Grid.Column="0" x:Name="VenusInZodiacPicker" Title="Venus Zodiac" SelectedItem="{Binding SelectedVenusZodiac, Converter={StaticResource EnumToStringConverter}}"/>
+                <Picker Grid.Column="1" x:Name="MarsInZodiacPicker" Title="Mars Zodiac" SelectedItem="{Binding SelectedMarsZodiac, Converter={StaticResource EnumToStringConverter}}"/>
+                <Picker Grid.Column="2" x:Name="MercuryInZodiacPicker" Title="Mercury Zodiac" SelectedItem="{Binding SelectedMercuryZodiac, Converter={StaticResource EnumToStringConverter}}"/>                                
                 <Grid Grid.Column="3" ColumnDefinitions="*,3*,*">
                     <Grid Grid.Column="0" RowDefinitions="*,*">
                         <Label Grid.Row="0" Text="New Moon" HorizontalOptions="Center" VerticalOptions="Center"/>

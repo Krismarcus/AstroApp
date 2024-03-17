@@ -68,6 +68,10 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
     public int SelectedMoonDay {  get; set; }    
     public bool Is29MoonDayCycle { get; set; }
 
+    public ZodiacSign SelectedVenusZodiac {  get; set; }
+    public ZodiacSign SelectedMarsZodiac { get; set; }
+    public ZodiacSign SelectedMercuryZodiac { get; set; }
+
     public ObservableCollection<AstroEvent> ActiveAstroEvents { get; set; }
 
     public ObservableCollection<PlanetInZodiac> PlanetInZodiacsDetails { get; set; }
@@ -313,6 +317,21 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
             // Check if the event is in the current month and year before updating.
             if (astroEvent.Date.Month == month && astroEvent.Date.Year == year)
             {
+                if (SelectedMarsZodiac != 0)
+                {
+                    astroEvent.MarsInZodiac.NewZodiacSign = SelectedMarsZodiac;
+                }
+
+                if (SelectedVenusZodiac != 0)
+                {
+                    astroEvent.VenusInZodiac.NewZodiacSign = SelectedVenusZodiac;
+                }
+
+                if (SelectedMercuryZodiac != 0)
+                {
+                    astroEvent.MercuryInZodiac.NewZodiacSign = SelectedMercuryZodiac;
+                }
+
                 astroEvent.MoonDay.IsTripleMoonDay = false;
                 astroEvent.MoonDay.NewMoonDay = currentMoonDayValue;
                 if (astroEvent.Date.Day == SkipDayIndex)
