@@ -92,7 +92,7 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
         if (this.ActiveAstroEvents == null)
         {
             this.ActiveAstroEvents = new ObservableCollection<AstroEvent> { };
-        }
+        }        
         UpdateList(DateTime.Now.Year, DateTime.Now.Month);
     }
 
@@ -257,13 +257,12 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
 
     public void PopulatePickers()
     {        
-        var zodiacSigns = Enum.GetValues(typeof(ZodiacSign));
-
-        foreach (ZodiacSign zodiacSign in zodiacSigns)
+        
+        foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
         {
-            VenusInZodiacPicker.Items.Add(zodiacSign.ToString());
-            MarsInZodiacPicker.Items.Add(zodiacSign.ToString());
-            MercuryInZodiacPicker.Items.Add(zodiacSign.ToString());
+            this.VenusInZodiacPicker.Items.Add(zodiacSign.ToString());
+            this.MarsInZodiacPicker.Items.Add(zodiacSign.ToString());
+            this.MercuryInZodiacPicker.Items.Add(zodiacSign.ToString());
         }
 
         foreach (MoonDaySymbol moonDay in Enum.GetValues(typeof(MoonDaySymbol)))
