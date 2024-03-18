@@ -208,7 +208,7 @@ namespace AstroApp.UI.Pages
 
         private void InitializeWeekdayLabels()
         {
-            string[] weekdays = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+            string[] weekdays = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
             for (int i = 0; i < 7; i++)
             {
                 Label label = new Label
@@ -216,7 +216,7 @@ namespace AstroApp.UI.Pages
                     Text = weekdays[i],
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
-                    FontSize = 8,
+                    FontSize = 14,
                     TextColor = Color.FromRgb(214, 137, 16)
                 };
                 CalendarGrid.Add(label, i, 0);

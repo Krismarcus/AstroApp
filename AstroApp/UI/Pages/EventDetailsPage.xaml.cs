@@ -60,62 +60,64 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     public EventDetailsPage()
     {
         InitializeComponent();
-        BindingContext = this;        
-    }    
+        BindingContext = this;
+    }
 
     public async Task InitializeDataAsync(DateTime date)
-    {                
+    {
         CurrentDate = date;
         DayAstroEvent = AstroEvents.FirstOrDefault(e => e.Date == date);
 
         // Ensure UI operations happen on the main thread
         MainThread.BeginInvokeOnMainThread(() =>
         {
-            timeLabel.Opacity = 0;            
+            timeLabel.Opacity = 0;
             UpdateMoonDayInfo();
             Task.Delay(50).ContinueWith(t => AnimateMarkerToPosition(DayAstroEvent.MoonDay));
         });
-    }    
+    }
 
     private async void AnimateMarkerToPosition(MoonDay moonDay)
     {
         await MainThread.InvokeOnMainThreadAsync(async () =>
         {
-            if (layout.Width <= 0) return; // Ensures the layout is ready
+            if (newMoonDayMarkerGrid.Width <= 0) return; // Ensures the layout is ready
 
             var totalMinutesInDay = 24 * 60;
-            var startOffset = previousMoonDayMarker.Width + timeLine.Margin.Left;
-            var availableWidth = layout.Width - startOffset - newMoonDayMarker.Width;
+            var startImageWidth = 60;
+            var startOffset = 5 + startImageWidth; // Adjust based on the left margin of the gradient line.
+            var endOffset = -startImageWidth - 10; // Adjust based on the right margin of the gradient line.
+            var lineWidthAdjustment = 10; // Adjustment for the marker's width to align with the line start/end.
+
+            var availableWidth = timeLine.Width - (startOffset + endOffset) - lineWidthAdjustment;
 
             // Animate Middle Moon Day Marker if it's a Triple Moon Day
             if (moonDay.IsTripleMoonDay)
             {
-                var middleMoonTransitionMinutes = moonDay.MiddleMoonDayTransitionTime.Hour * 60 + moonDay.MiddleMoonDayTransitionTime.Minute;
-                var middlePositionRatio = (double)middleMoonTransitionMinutes / totalMinutesInDay;
-                var middleGridTargetPositionX = startOffset + (availableWidth * middlePositionRatio);
-
-                secondTimeLabel.Opacity = 0; // Initially set the secondTimeLabel's opacity to 0
-
-                uint middleAnimationDuration = 200;
-                await middleMoonDayMarkerGrid.TranslateTo(middleGridTargetPositionX - middleMoonDayMarker.Width / 2, 0, middleAnimationDuration, Easing.Linear);
-
-                await Task.Delay(300); // Delay for 0.5 sec
-                await secondTimeLabel.FadeTo(1, 200); // Fade in the second label after the delay
+                var middleMoonPosition = CalculateMarkerPosition(moonDay.MiddleMoonDayTransitionTime, totalMinutesInDay, startOffset, availableWidth);
+                await AnimateMarker(middleMoonDayMarkerGrid, middleMoonPosition, secondTimeLabel);
             }
 
             // Continue with New Moon Day Marker animation
-            var newMoonTransitionMinutes = moonDay.TransitionTime.Hour * 60 + moonDay.TransitionTime.Minute;
-            var newPositionRatio = (double)newMoonTransitionMinutes / totalMinutesInDay;
-            var gridTargetPositionX = startOffset + (availableWidth * newPositionRatio);
-
-            timeLabel.Opacity = 0; // Initially set the timeLabel's opacity to 0
-
-            uint animationDuration = 200;
-            await newMoonDayMarkerGrid.TranslateTo(gridTargetPositionX - newMoonDayMarker.Width / 2, 0, animationDuration, Easing.Linear);
-
-            await Task.Delay(300); // Delay for 0.5 sec
-            await timeLabel.FadeTo(1, 200); // Fade in the label after the delay
+            var newMoonPosition = CalculateMarkerPosition(moonDay.TransitionTime, totalMinutesInDay, startOffset, availableWidth);
+            await AnimateMarker(newMoonDayMarkerGrid, newMoonPosition, timeLabel);
         });
+    }
+
+    private double CalculateMarkerPosition(DateTime transitionDateTime, int totalMinutesInDay, double startOffset, double availableWidth)
+    {
+        var transitionMinutes = transitionDateTime.TimeOfDay.TotalMinutes; // Use TotalMinutes of TimeOfDay
+        var positionRatio = transitionMinutes / totalMinutesInDay;
+        return startOffset + (availableWidth * positionRatio);
+    }
+
+    private async Task AnimateMarker(Grid markerGrid, double targetPositionX, Label label)
+    {
+        uint animationDuration = 200;
+        await markerGrid.TranslateTo(targetPositionX - (markerGrid.Width / 2), 0, animationDuration, Easing.Linear);
+
+        await Task.Delay(300); // Delay for visibility transition
+        await label.FadeTo(1, 200); // Fade in the label after the delay
     }
 
     private async void OnPageTapped(object sender, TappedEventArgs e)
@@ -132,8 +134,8 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
     public async Task InitializeAstroEventList()
     {
-        this.AstroEvents = App.AppData.AppDB.AstroEventsDB;        
-    }    
+        this.AstroEvents = App.AppData.AppDB.AstroEventsDB;
+    }
 
     private async void PrevDateButton_Clicked(object sender, TappedEventArgs e)
     {
@@ -250,38 +252,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     private void TapMercuryInZodiac_Tapped(object sender, TappedEventArgs e)
     {
         Application.Current.MainPage.DisplayAlert("Mercury in " + DayAstroEvent.MercuryInZodiac.NewZodiacSign + " Details", DayAstroEvent.MercuryInZodiac.PlanetInZodiacInfo, "OK");
-    }
-
-    private async void MoonDayRecognizer_Tapped(object sender, TappedEventArgs e)
-    {
-        if (sender == middleMoonDayMarkerGrid)
-        {
-            if (MoonDayConteiner == null)
-            {
-                MoonDayConteiner = new MoonDaySlide();
-            }
-
-            this.MoonDayConteiner.MoonDay = DayAstroEvent.MoonDay.MiddleMoonDay;
-            this.MoonDayConteiner.MoonDayInfo = DayAstroEvent.MoonDay.MiddleMoonDayInfo;
-            MoonDayInfoGrid.IsVisible = true;
-            MoonDayInfoGrid.Opacity = 0; // Ensure it's fully transparent initially
-            await MoonDayInfoGrid.FadeTo(1, 250); // 250ms for fade in
-
-        }
-        else if (sender == newMoonDayMarkerGrid)
-        {
-            if (MoonDayConteiner == null)
-            {
-                MoonDayConteiner = new MoonDaySlide();
-            }
-
-            this.MoonDayConteiner.MoonDay = DayAstroEvent.MoonDay.NewMoonDay;
-            this.MoonDayConteiner.MoonDayInfo = DayAstroEvent.MoonDay.NewMoonDayInfo;
-            MoonDayInfoGrid.IsVisible = true;
-            MoonDayInfoGrid.Opacity = 0; // Ensure it's fully transparent initially
-            await MoonDayInfoGrid.FadeTo(1, 250); // 250ms for fade in
-        }
-    }
+    }    
 
     private async void PreviuosMoonDayRecognizer_Tapped(object sender, TappedEventArgs e)
     {
@@ -297,10 +268,39 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         await MoonDayInfoGrid.FadeTo(1, 250); // 250ms for fade in
     }
 
+    private async void MiddleMoonDayRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        if (MoonDayConteiner == null)
+        {
+            MoonDayConteiner = new MoonDaySlide();
+        }
+
+        this.MoonDayConteiner.MoonDay = DayAstroEvent.MoonDay.MiddleMoonDay;
+        this.MoonDayConteiner.MoonDayInfo = DayAstroEvent.MoonDay.MiddleMoonDayInfo;
+        MoonDayInfoGrid.IsVisible = true;
+        MoonDayInfoGrid.Opacity = 0; // Ensure it's fully transparent initially
+        await MoonDayInfoGrid.FadeTo(1, 250); // 250ms for fade in
+    }
+
+    private async void NewMoonDayRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        if (MoonDayConteiner == null)
+        {
+            MoonDayConteiner = new MoonDaySlide();
+        }
+
+        this.MoonDayConteiner.MoonDay = DayAstroEvent.MoonDay.NewMoonDay;
+        this.MoonDayConteiner.MoonDayInfo = DayAstroEvent.MoonDay.NewMoonDayInfo;
+        MoonDayInfoGrid.IsVisible = true;
+        MoonDayInfoGrid.Opacity = 0; // Ensure it's fully transparent initially
+        await MoonDayInfoGrid.FadeTo(1, 250); // 250ms for fade in
+    }
+
     private async void MoonDayInfoContainerHideRecognizer_Tapped(object sender, TappedEventArgs e)
     {
         await MoonDayInfoGrid.FadeTo(0, 250); // 250ms for fade out
         MoonDayInfoGrid.IsVisible = false;
     }
-    
 }
+
+
