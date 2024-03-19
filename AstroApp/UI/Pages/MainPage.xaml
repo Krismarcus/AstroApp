@@ -3,8 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:AstroApp.UI.Pages"
              x:DataType="pages:MainPage"
-             x:Class="AstroApp.UI.Pages.MainPage"
-             >    
+             x:Class="AstroApp.UI.Pages.MainPage"             
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <LinearGradientBrush x:Key="PageBackgroundGradient"
+                                 StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource LightOrangeBackground}" Offset="0.1"/>
+                <GradientStop Color="{StaticResource SecondaryBackground}" Offset="1.0"/>
+            </LinearGradientBrush>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="{StaticResource LightOrangeBackground}" Offset="0.1"/>
+            <GradientStop Color="{StaticResource SecondaryBackground}" Offset="1.0"/>
+    </LinearGradientBrush>
+    </ContentPage.Background>
     <FlexLayout>
         <Grid>
             <Grid.RowDefinitions>
@@ -13,7 +28,26 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Text="{Binding MonthName}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />                    
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Padding="40,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PrevMonth_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <Image x:Name="leftArrow" Source="left_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
+                </Grid>
+                <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{StaticResource Secondary}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" FontAttributes="Bold" />                
+                <Grid Grid.Column="2" Padding="40,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="NextMonth_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <Image x:Name="rightArrow" Source="right_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
+                </Grid>
+            </Grid>
             <Grid Grid.Row="1" x:Name="CalendarGrid" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"/>
@@ -32,30 +66,27 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                 
+                </Grid.ColumnDefinitions>                 
             </Grid>
-            <Grid Grid.Row="2" ColumnDefinitions="4*,*,*,*,4*">
-                <Button Grid.Column="0" Text="Previous Month" Clicked="PrevButton_Clicked"/>
-                <Frame Grid.Column="1" BackgroundColor="{Binding GardeningBackgroundColor}">
+            <Grid Grid.Row="2" ColumnDefinitions="*,*,*">                
+                <Frame Grid.Column="0" BackgroundColor="{Binding GardeningBackgroundColor}">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="GardeningRecognizer_Tapped"/>
                     </Frame.GestureRecognizers>
                     <Image Source="plant.png" HeightRequest="20" Margin="-10"/>
                 </Frame>
-                <Frame Grid.Column="2" BackgroundColor="{Binding LoveBackgroundColor}">
+                <Frame Grid.Column="1" BackgroundColor="{Binding LoveBackgroundColor}">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="LoveRecognizer_Tapped"/>
                     </Frame.GestureRecognizers>
                     <Image Source="love.png" HeightRequest="20" Margin="-10"/>
                 </Frame>
-                <Frame Grid.Column="3" BackgroundColor="{Binding NoPresetBackgroundColor}">
+                <Frame Grid.Column="2" BackgroundColor="{Binding NoPresetBackgroundColor}">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="NoPresetRecognizer_Tapped"/>
                     </Frame.GestureRecognizers>
                     <Image Source="tech.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-                <Button Grid.Column="4" Text="Next Month" Clicked="NextButton_Clicked"/>
+                </Frame>                
             </Grid>
         </Grid>
     </FlexLayout>

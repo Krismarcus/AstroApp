@@ -1,8 +1,9 @@
 using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
+using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Runtime.CompilerServices;
 
 namespace AstroApp.UI.Pages;
 
@@ -56,6 +57,9 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             }
         }
     }
+    
+    private Image currentlyEnlargedMoonImage;
+    private bool isMoonImageEnlarged = false;
 
     public EventDetailsPage()
     {
@@ -64,18 +68,19 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     }
 
     public async Task InitializeDataAsync(DateTime date)
-    {
+    {        
         CurrentDate = date;
         DayAstroEvent = AstroEvents.FirstOrDefault(e => e.Date == date);
 
         // Ensure UI operations happen on the main thread
         MainThread.BeginInvokeOnMainThread(() =>
-        {
+        {            
             timeLabel.Opacity = 0;
+            ResetToDefaultState();
             UpdateMoonDayInfo();
             Task.Delay(50).ContinueWith(t => AnimateMarkerToPosition(DayAstroEvent.MoonDay));
         });
-    }
+    }    
 
     private async void AnimateMarkerToPosition(MoonDay moonDay)
     {
@@ -84,7 +89,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             if (newMoonDayMarkerGrid.Width <= 0) return; // Ensures the layout is ready
 
             var totalMinutesInDay = 24 * 60;
-            var startImageWidth = 60;
+            var startImageWidth = 80;
             var startOffset = 5 + startImageWidth; // Adjust based on the left margin of the gradient line.
             var endOffset = -startImageWidth - 10; // Adjust based on the right margin of the gradient line.
             var lineWidthAdjustment = 10; // Adjustment for the marker's width to align with the line start/end.
@@ -252,20 +257,6 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     private void TapMercuryInZodiac_Tapped(object sender, TappedEventArgs e)
     {
         Application.Current.MainPage.DisplayAlert("Mercury in " + DayAstroEvent.MercuryInZodiac.NewZodiacSign + " Details", DayAstroEvent.MercuryInZodiac.PlanetInZodiacInfo, "OK");
-    }    
-
-    private async void PreviuosMoonDayRecognizer_Tapped(object sender, TappedEventArgs e)
-    {
-        if (MoonDayConteiner == null)
-        {
-            MoonDayConteiner = new MoonDaySlide();
-        }
-
-        this.MoonDayConteiner.MoonDay = DayAstroEvent.MoonDay.PreviousMoonDay;
-        this.MoonDayConteiner.MoonDayInfo = DayAstroEvent.MoonDay.PreviousMoonDayInfo;
-        MoonDayInfoGrid.IsVisible = true;
-        MoonDayInfoGrid.Opacity = 0; // Ensure it's fully transparent initially
-        await MoonDayInfoGrid.FadeTo(1, 250); // 250ms for fade in
     }
 
     private async void MiddleMoonDayRecognizer_Tapped(object sender, TappedEventArgs e)
@@ -300,6 +291,136 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     {
         await MoonDayInfoGrid.FadeTo(0, 250); // 250ms for fade out
         MoonDayInfoGrid.IsVisible = false;
+    }
+
+    private async Task ToggleMoonImageAnimation(Image moonImage, string moonDayInfo)
+    {
+        // If there's a previously enlarged image and it's not the same as the current, shrink it
+        if (currentlyEnlargedMoonImage != null && currentlyEnlargedMoonImage != moonImage && isMoonImageEnlarged)
+        {
+            await currentlyEnlargedMoonImage.ScaleTo(1, 200, Easing.CubicIn);
+            await HideMoonDayInfo(); // Make sure to hide (fade out) the chat bubble before updating content
+        }
+
+        // Update the chat bubble content in the appropriate place based on your logic here
+
+        // Now handle the current image
+        if (currentlyEnlargedMoonImage != moonImage || !isMoonImageEnlarged)
+        {
+            await moonImage.ScaleTo(1.5, 400, Easing.CubicOut);
+            isMoonImageEnlarged = true;
+            currentlyEnlargedMoonImage = moonImage;
+
+            // Since the chat bubble is already invisible or fading out, now update the content
+            // This should happen right before you start fading it back in
+            UpdateChatBubbleContent(moonDayInfo); // Placeholder for where you'd update the content
+
+            // Show the chat bubble with the updated info
+            await ShowMoonDayInfo();
+        }
+        else
+        {
+            await moonImage.ScaleTo(1, 400, Easing.CubicIn);
+            isMoonImageEnlarged = false;
+            // Optionally, hide the chat bubble if the same image is clicked again
+            await HideMoonDayInfo();
+        }
+    }
+
+
+
+    private async void MoonImage_Tapped(object sender, EventArgs e)
+    {
+        if (MoonDayConteiner == null)
+        {
+            MoonDayConteiner = new MoonDaySlide();
+        }
+
+        if (sender == previousMoonDayImage)
+        {
+            var previousMoonImage = this.previousMoonDayImage.Children.OfType<Image>().FirstOrDefault();
+            if (previousMoonImage != null)
+            {   
+                string moonDayInfo = DayAstroEvent.MoonDay.PreviousMoonDayInfo;
+                await ToggleMoonImageAnimation(previousMoonImage, moonDayInfo);
+                
+            }
+        }
+        else if (sender == newMoonDayImage)
+        {
+            var newMoonDayImage = this.newMoonDayImage.Children.OfType<Image>().FirstOrDefault();
+            if (newMoonDayImage != null)
+            {
+                string moonDayInfo = DayAstroEvent.MoonDay.NewMoonDayInfo;
+                await ToggleMoonImageAnimation(newMoonDayImage, moonDayInfo);                
+            }
+        }
+    }
+
+    private async Task ShowMoonDayInfo()
+    {
+        // Fade out existing content quickly if it's already visible
+        if (chatBubble.IsVisible)
+        {
+            await chatBubble.FadeTo(0, 200, Easing.CubicIn);
+        }
+
+        // Assuming chatBubble.Text is updated elsewhere in the MoonImage_Tapped handler
+        chatBubble.Opacity = 0;
+        chatBubble.Scale = 0.5;
+        chatBubble.IsVisible = true;
+
+        // Fade in new content
+        var fadeAnimation = chatBubble.FadeTo(1, 200, Easing.CubicOut);
+        var scaleAnimation = chatBubble.ScaleTo(1, 200, Easing.CubicOut);
+        await Task.WhenAll(fadeAnimation, scaleAnimation);
+    }
+
+    private async Task HideMoonDayInfo()
+    {
+        // Initiate fade out
+        await chatBubble.FadeTo(0, 200, Easing.CubicIn);
+
+        // Scale down and hide
+        var scaleAnimation = chatBubble.ScaleTo(0.5, 200, Easing.CubicIn);
+        await Task.WhenAll(scaleAnimation);
+        chatBubble.IsVisible = false;
+    }
+
+    private void UpdateChatBubbleContent(string newContent)
+    {
+        // Directly update the chat bubble's text here
+        MoonDayConteiner.MoonDayInfo = newContent;
+    }
+
+    private async Task ResetToDefaultState()
+    {
+        // Check if any moon image is currently enlarged and reset its scale if necessary
+        if (isMoonImageEnlarged && currentlyEnlargedMoonImage != null)
+        {
+            await currentlyEnlargedMoonImage.ScaleTo(1, 400, Easing.CubicIn);
+            isMoonImageEnlarged = false;
+            currentlyEnlargedMoonImage = null; // Reset the reference to the currently enlarged moon image
+        }
+
+        // Hide the chat bubble with animation and then reset its properties
+        await HideMoonDayInfo();
+
+        // After the chat bubble is hidden, reset its text and other properties to default        
+        chatBubble.Opacity = 1; // Reset opacity back to fully opaque
+        chatBubble.Scale = 1; // Reset scale to its original size
+        chatBubble.IsVisible = false; // Ensure it's hidden
+
+        // Reset any other states or properties related to your UI or data here
+        // For example, if you have a container or model that needs to be reset
+        // MoonDayConteiner.MoonDayInfo = null; // Reset or clear as appropriate for your application
+    }
+
+    private async void CloseChatBubble_Clicked(object sender, EventArgs e)
+    {
+        // Call the method to reset the UI elements to their original state
+        // This includes hiding the chat bubble and resetting any enlarged images
+        await ResetToDefaultState();
     }
 }
 

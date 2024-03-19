@@ -48,9 +48,9 @@ namespace AstroApp.UI.Pages
 
         private void UpdateBackgroundColors()
         {
-            GardeningBackgroundColor = ActivityProfile == "gardening" ? Colors.Orange : Colors.Transparent;
-            LoveBackgroundColor = ActivityProfile == "love" ? Colors.Orange : Colors.Transparent;
-            NoPresetBackgroundColor = ActivityProfile == "nopreset" ? Colors.Orange : Colors.Transparent;
+            GardeningBackgroundColor = ActivityProfile == "gardening" ? Color.FromRgba(245, 197, 120, 255) : Colors.Transparent;
+            LoveBackgroundColor = ActivityProfile == "love" ? Color.FromRgba(245, 197, 120, 255) : Colors.Transparent;
+            NoPresetBackgroundColor = ActivityProfile == "nopreset" ? Color.FromRgba(245, 197, 120, 255) : Colors.Transparent;
 
             // Notify the UI to update
             OnPropertyChanged(nameof(GardeningBackgroundColor));
@@ -217,13 +217,13 @@ namespace AstroApp.UI.Pages
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
                     FontSize = 14,
-                    TextColor = Color.FromRgb(214, 137, 16)
+                    TextColor = Color.FromRgba(54, 130, 181, 255)
                 };
                 CalendarGrid.Add(label, i, 0);
             }
         }
 
-        private void NextButton_Clicked(object sender, EventArgs e)
+        private void NextMonth_Clicked(object sender, TappedEventArgs e)
         {
             if (month == 12)
             {
@@ -256,7 +256,7 @@ namespace AstroApp.UI.Pages
             UpdateCalendar(year, month);
         }
 
-        private void PrevButton_Clicked(object sender, EventArgs e)
+        private void PrevMonth_Clicked(object sender, TappedEventArgs e)
         {
             if (month == 1)
             {

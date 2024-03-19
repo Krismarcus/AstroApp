@@ -12,6 +12,8 @@
     <Color x:Key="PrimaryDarkText">#242424</Color>
     <Color x:Key="PrimaryBackground">#fcf9f2</Color>
     <Color x:Key="SecondaryBackground">#bad8e9</Color>
+    <Color x:Key="LightOrangeBackground">#fae4bd</Color>
+    <Color x:Key="LightBlueBackground">#c3e9f8</Color>
     <Color x:Key="Secondary">#3682b5</Color>
     <Color x:Key="SecondaryDarkText">#9880e5</Color>
     <Color x:Key="Tertiary">#2B0B98</Color>
