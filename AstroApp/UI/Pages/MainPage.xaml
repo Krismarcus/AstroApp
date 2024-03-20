@@ -40,7 +40,7 @@
                     </Grid.GestureRecognizers>
                     <Image x:Name="leftArrow" Source="left_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
                 </Grid>
-                <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{StaticResource Secondary}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" FontAttributes="Bold" />                
+                <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{Binding MonthNameColor}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" FontAttributes="Bold" />                
                 <Grid Grid.Column="2" Padding="40,0">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="NextMonth_Clicked"/>
@@ -88,15 +88,18 @@
                     <Image Source="tech.png" HeightRequest="20" Margin="-10"/>
                 </Frame>                
             </Grid>
-            <Grid Grid.Row="3" RowDefinitions="*,*">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Entry x:Name="hexColorEntry" Grid.Column="0" Placeholder="Enter HEX color code" HorizontalOptions="FillAndExpand"/>
-                <Button Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked"/>
-                <Entry Grid.Row="1" x:Name="hexColorEntry2" Grid.Column="0" Placeholder="Enter HEX color code" HorizontalOptions="FillAndExpand"/>
-                <Button Grid.Row="1" Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked2"/>
+            <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*,*">
+                
+                <Entry x:Name="hexColorEntry" Grid.Row="0" Grid.Column="0" Placeholder="Backgroud1" HorizontalOptions="FillAndExpand"/>
+                <Button Grid.Row="0" Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked" BackgroundColor="Transparent"/>
+                <Entry Grid.Row="0" Grid.Column="2" x:Name="hexColorEntry2" Placeholder="Background2" HorizontalOptions="FillAndExpand"/>
+                <Button Grid.Row="0" Grid.Column="3" Text="Apply" Clicked="ApplyBackgroundColor_Clicked2" BackgroundColor="Transparent"/>
+                <Entry Grid.Row="1" x:Name="hexColorEntry3" Grid.Column="0" Placeholder="Month" HorizontalOptions="FillAndExpand"/>
+                <Button Grid.Row="1" Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked3" BackgroundColor="Transparent"/>
+                <Entry Grid.Row="1" x:Name="hexColorEntry4" Grid.Column="2" Placeholder="Weekdays" HorizontalOptions="FillAndExpand"/>
+                <Button Grid.Row="1" Grid.Column="3" Text="Apply" Clicked="ApplyBackgroundColor_Clicked4" BackgroundColor="Transparent"/>
+                <Entry Grid.Row="2" x:Name="hexColorEntry5" Grid.Column="0" Placeholder="Activity" HorizontalOptions="FillAndExpand"/>
+                <Button Grid.Row="2" Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked5" BackgroundColor="Transparent"/>
             </Grid>
         </Grid>
     </FlexLayout>

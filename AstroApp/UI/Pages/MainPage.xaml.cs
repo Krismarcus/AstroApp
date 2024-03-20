@@ -42,7 +42,21 @@ namespace AstroApp.UI.Pages
                 }
             }
         }
-        public Color NoPresetBackgroundColor { get; set; } = Colors.Orange;
+        private Color noPresetBackgroundColor;
+
+        public Color NoPresetBackgroundColor
+        {
+            get => noPresetBackgroundColor;
+            set
+            {
+                if (noPresetBackgroundColor != value)
+                {
+                    noPresetBackgroundColor = value;
+                    OnPropertyChanged(nameof(NoPresetBackgroundColor));
+                }
+            }
+        }
+        
         public Color GardeningBackgroundColor { get; set; } = Colors.Transparent;
         public Color LoveBackgroundColor { get; set; } = Colors.Transparent;
 
@@ -76,11 +90,57 @@ namespace AstroApp.UI.Pages
             }
         }
 
+        private Color monthNameColor = Colors.Blue; // Default color
+
+        public Color MonthNameColor
+        {
+            get => monthNameColor;
+            set
+            {
+                if (monthNameColor != value)
+                {
+                    monthNameColor = value;
+                    OnPropertyChanged(nameof(MonthNameColor));
+                }
+            }
+        }
+
+        private Color weekdaysColor = Colors.Orange; // Default color
+
+        public Color WeekdaysColor
+        {
+            get => weekdaysColor;
+            set
+            {
+                if (weekdaysColor != value)
+                {
+                    weekdaysColor = value;
+                    OnPropertyChanged(nameof(WeekdaysColor));
+                }
+            }
+        }
+
+        private Color activityColor = Colors.Orange; // Default color
+
+        public Color ActivityColor
+        {
+            get => activityColor;
+            set
+            {
+                if (activityColor != value)
+                {
+                    activityColor = value;
+                    OnPropertyChanged(nameof(ActivityColor));
+                }
+            }
+        }
+
+
         private void UpdateBackgroundColors()
         {
-            GardeningBackgroundColor = ActivityProfile == "gardening" ? Color.FromRgba(245, 197, 120, 255) : Colors.Transparent;
-            LoveBackgroundColor = ActivityProfile == "love" ? Color.FromRgba(245, 197, 120, 255) : Colors.Transparent;
-            NoPresetBackgroundColor = ActivityProfile == "nopreset" ? Color.FromRgba(245, 197, 120, 255) : Colors.Transparent;
+            GardeningBackgroundColor = ActivityProfile == "gardening" ? ActivityColor : Colors.Transparent;
+            LoveBackgroundColor = ActivityProfile == "love" ? ActivityColor : Colors.Transparent;
+            NoPresetBackgroundColor = ActivityProfile == "nopreset" ? ActivityColor : Colors.Transparent;
 
             // Notify the UI to update
             OnPropertyChanged(nameof(GardeningBackgroundColor));
@@ -247,10 +307,29 @@ namespace AstroApp.UI.Pages
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
                     FontSize = 14,
-                    TextColor = Colors.Orange
+                    // TextColor is now bound to WeekdaysColor.
                 };
+                Binding textColorBinding = new Binding
+                {
+                    Source = this, // MainPage is the BindingContext
+                    Path = nameof(WeekdaysColor)
+                };
+                label.SetBinding(Label.TextColorProperty, textColorBinding);
                 CalendarGrid.Add(label, i, 0);
             }
+            //string[] weekdays = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    Label label = new Label
+            //    {
+            //        Text = weekdays[i],
+            //        HorizontalOptions = LayoutOptions.Center,
+            //        VerticalOptions = LayoutOptions.Center,
+            //        FontSize = 14,
+            //        TextColor = WeekdaysColor
+            //    };
+            //    CalendarGrid.Add(label, i, 0);
+            //}
         }
         private async void PrevMonth_Clicked(object sender, TappedEventArgs e)
         {
@@ -340,6 +419,69 @@ namespace AstroApp.UI.Pages
 
                 // Update the BackgroundColor of the page or specific element
                 PageBackgroundColor2 = newBackgroundColor;
+            }
+            else
+            {
+                // Handle invalid HEX code (optional)
+                DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
+            }
+        }
+
+        private void ApplyBackgroundColor_Clicked3(object sender, EventArgs e)
+        {
+            // Get the HEX code from the entry
+            string hexCode = hexColorEntry3.Text;
+
+            // Check if the HEX code is valid
+            if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
+            {
+                // Convert HEX to Color
+                Color newBackgroundColor = Color.FromArgb(hexCode);
+
+                // Update the BackgroundColor of the page or specific element
+                MonthNameColor = newBackgroundColor;
+            }
+            else
+            {
+                // Handle invalid HEX code (optional)
+                DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
+            }
+        }
+
+        private void ApplyBackgroundColor_Clicked4(object sender, EventArgs e)
+        {
+            // Get the HEX code from the entry
+            string hexCode = hexColorEntry4.Text;
+
+            // Check if the HEX code is valid
+            if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
+            {
+                // Convert HEX to Color
+                Color newBackgroundColor = Color.FromArgb(hexCode);
+
+                // Update the BackgroundColor of the page or specific element
+                WeekdaysColor = newBackgroundColor;
+            }
+            else
+            {
+                // Handle invalid HEX code (optional)
+                DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
+            }
+        }
+
+        private void ApplyBackgroundColor_Clicked5(object sender, EventArgs e)
+        {
+            // Get the HEX code from the entry
+            string hexCode = hexColorEntry5.Text;
+
+            // Check if the HEX code is valid
+            if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
+            {
+                // Convert HEX to Color
+                Color newBackgroundColor = Color.FromArgb(hexCode);
+
+                // Update the BackgroundColor of the page or specific element
+                NoPresetBackgroundColor = newBackgroundColor;
             }
             else
             {
