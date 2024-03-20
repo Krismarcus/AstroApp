@@ -46,6 +46,36 @@ namespace AstroApp.UI.Pages
         public Color GardeningBackgroundColor { get; set; } = Colors.Transparent;
         public Color LoveBackgroundColor { get; set; } = Colors.Transparent;
 
+        private Color _pageBackgroundColor1 = Colors.LightBlue; // Default color
+
+        public Color PageBackgroundColor1
+        {
+            get => _pageBackgroundColor1;
+            set
+            {
+                if (_pageBackgroundColor1 != value)
+                {
+                    _pageBackgroundColor1 = value;
+                    OnPropertyChanged(nameof(PageBackgroundColor1));
+                }
+            }
+        }
+
+        private Color _pageBackgroundColor2 = Colors.LightBlue; // Default color
+
+        public Color PageBackgroundColor2
+        {
+            get => _pageBackgroundColor2;
+            set
+            {
+                if (_pageBackgroundColor2 != value)
+                {
+                    _pageBackgroundColor2 = value;
+                    OnPropertyChanged(nameof(PageBackgroundColor2));
+                }
+            }
+        }
+
         private void UpdateBackgroundColors()
         {
             GardeningBackgroundColor = ActivityProfile == "gardening" ? Color.FromRgba(245, 197, 120, 255) : Colors.Transparent;
@@ -217,14 +247,34 @@ namespace AstroApp.UI.Pages
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
                     FontSize = 14,
-                    TextColor = Color.FromRgba(54, 130, 181, 255)
+                    TextColor = Colors.Orange
                 };
                 CalendarGrid.Add(label, i, 0);
             }
         }
-
-        private void NextMonth_Clicked(object sender, TappedEventArgs e)
+        private async void PrevMonth_Clicked(object sender, TappedEventArgs e)
         {
+            await leftArrow.TranslateTo(-10, 0, 100); // Move 10 units to the left over 100ms
+            await leftArrow.TranslateTo(0, 0, 100); // Move back to original position            
+
+            if (month == 1)
+            {
+                year--;
+                month = 12;
+            }
+            else
+            {
+                month--;
+            }
+
+            UpdateCalendar(year, month);
+        }
+
+        private async void NextMonth_Clicked(object sender, TappedEventArgs e)
+        {
+            await rightArrow.TranslateTo(10, 0, 100); // Move 10 units to the right over 100ms
+            await rightArrow.TranslateTo(0, 0, 100); // Move back to original position
+
             if (month == 12)
             {
                 year++;
@@ -256,19 +306,47 @@ namespace AstroApp.UI.Pages
             UpdateCalendar(year, month);
         }
 
-        private void PrevMonth_Clicked(object sender, TappedEventArgs e)
+        private void ApplyBackgroundColor_Clicked(object sender, EventArgs e)
         {
-            if (month == 1)
+            // Get the HEX code from the entry
+            string hexCode = hexColorEntry.Text;
+
+            // Check if the HEX code is valid
+            if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
             {
-                year--;
-                month = 12;
+                // Convert HEX to Color
+                Color newBackgroundColor = Color.FromArgb(hexCode);
+
+                // Update the BackgroundColor of the page or specific element
+                PageBackgroundColor1 = newBackgroundColor;
             }
             else
             {
-                month--;
+                // Handle invalid HEX code (optional)
+                DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
             }
-
-            UpdateCalendar(year, month);
         }
-    }
+
+        private void ApplyBackgroundColor_Clicked2(object sender, EventArgs e)
+        {
+            // Get the HEX code from the entry
+            string hexCode = hexColorEntry2.Text;
+
+            // Check if the HEX code is valid
+            if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
+            {
+                // Convert HEX to Color
+                Color newBackgroundColor = Color.FromArgb(hexCode);
+
+                // Update the BackgroundColor of the page or specific element
+                PageBackgroundColor2 = newBackgroundColor;
+            }
+            else
+            {
+                // Handle invalid HEX code (optional)
+                DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
+            }
+        }
+
+    }    
 }

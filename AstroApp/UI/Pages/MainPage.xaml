@@ -9,15 +9,15 @@
         <ResourceDictionary>
             <LinearGradientBrush x:Key="PageBackgroundGradient"
                                  StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="{StaticResource LightOrangeBackground}" Offset="0.1"/>
-                <GradientStop Color="{StaticResource SecondaryBackground}" Offset="1.0"/>
+                <GradientStop Color="{Binding PageBackgroundColor1}" Offset="0.1"/>
+                <GradientStop Color="{Binding PageBackgroundColor2}" Offset="1.0"/>
             </LinearGradientBrush>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Background>
     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="{StaticResource LightOrangeBackground}" Offset="0.1"/>
-            <GradientStop Color="{StaticResource SecondaryBackground}" Offset="1.0"/>
+            <GradientStop Color="{Binding PageBackgroundColor1}" Offset="0.1"/>
+            <GradientStop Color="{Binding PageBackgroundColor2}" Offset="1.0"/>
     </LinearGradientBrush>
     </ContentPage.Background>
     <FlexLayout>
@@ -68,7 +68,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>                 
             </Grid>
-            <Grid Grid.Row="2" ColumnDefinitions="*,*,*">                
+            <Grid Grid.Row="2" ColumnDefinitions="*,*,*" VerticalOptions="End">                
                 <Frame Grid.Column="0" BackgroundColor="{Binding GardeningBackgroundColor}">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="GardeningRecognizer_Tapped"/>
@@ -87,6 +87,16 @@
                     </Frame.GestureRecognizers>
                     <Image Source="tech.png" HeightRequest="20" Margin="-10"/>
                 </Frame>                
+            </Grid>
+            <Grid Grid.Row="3" RowDefinitions="*,*">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Entry x:Name="hexColorEntry" Grid.Column="0" Placeholder="Enter HEX color code" HorizontalOptions="FillAndExpand"/>
+                <Button Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked"/>
+                <Entry Grid.Row="1" x:Name="hexColorEntry2" Grid.Column="0" Placeholder="Enter HEX color code" HorizontalOptions="FillAndExpand"/>
+                <Button Grid.Row="1" Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked2"/>
             </Grid>
         </Grid>
     </FlexLayout>
