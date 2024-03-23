@@ -33,15 +33,23 @@ namespace AstroApp.Data.Models
         [ObservableProperty]
         private bool moonEclipse;
         [ObservableProperty]
-        private ActivityQuality gardening;
+        private ActivityQuality beauty;
         [ObservableProperty]
         private ActivityQuality buystuff;
         [ObservableProperty]
-        private ActivityQuality ideas;
+        private ActivityQuality contracts;
+        [ObservableProperty]
+        private ActivityQuality importantTasks;
+        [ObservableProperty]
+        private ActivityQuality gardening;
+        [ObservableProperty]
+        private ActivityQuality love;
+        [ObservableProperty]
+        private ActivityQuality meetings;
+        [ObservableProperty]
+        private ActivityQuality newIdeas;
         [ObservableProperty]
         private ActivityQuality tech;
-        [ObservableProperty]
-        private ActivityQuality love;        
         [ObservableProperty]
         private string eventText;
     }

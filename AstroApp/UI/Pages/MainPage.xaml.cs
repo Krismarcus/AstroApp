@@ -4,6 +4,7 @@ using AstroApp.Data.Models;
 using AstroApp.UI.Controls;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace AstroApp.UI.Pages
 {
@@ -57,8 +58,18 @@ namespace AstroApp.UI.Pages
             }
         }
         
+        public Color BeautyBackgroundColor { get; set; } = Colors.Transparent;
+        public Color BuyStuffBackgroundColor { get; set; } = Colors.Transparent;
+        public Color ContractsBackgroundColor { get; set; } = Colors.Transparent;
+        public Color ImportantTasksBackgroundColor { get; set; } = Colors.Transparent;
         public Color GardeningBackgroundColor { get; set; } = Colors.Transparent;
         public Color LoveBackgroundColor { get; set; } = Colors.Transparent;
+        public Color MeetingsBackgroundColor { get; set; } = Colors.Transparent;
+        public Color NewIdeasBackgroundColor { get; set; } = Colors.Transparent;
+        public Color TechBackgroundColor { get; set; } = Colors.Transparent;
+
+
+
 
         private Color _pageBackgroundColor1 = Colors.LightBlue; // Default color
 
@@ -138,14 +149,29 @@ namespace AstroApp.UI.Pages
 
         private void UpdateBackgroundColors()
         {
-            GardeningBackgroundColor = ActivityProfile == "gardening" ? ActivityColor : Colors.Transparent;
-            LoveBackgroundColor = ActivityProfile == "love" ? ActivityColor : Colors.Transparent;
             NoPresetBackgroundColor = ActivityProfile == "nopreset" ? ActivityColor : Colors.Transparent;
+            BeautyBackgroundColor = ActivityProfile == "beauty" ? ActivityColor : Colors.Transparent;
+            BuyStuffBackgroundColor = ActivityProfile == "buystuff" ? ActivityColor : Colors.Transparent;
+            ContractsBackgroundColor = ActivityProfile == "contracts" ? ActivityColor : Colors.Transparent;
+            ImportantTasksBackgroundColor = ActivityProfile == "importanttasks" ? ActivityColor : Colors.Transparent;
+            GardeningBackgroundColor = ActivityProfile == "gardening" ? ActivityColor : Colors.Transparent;            
+            LoveBackgroundColor = ActivityProfile == "love" ? ActivityColor : Colors.Transparent;
+            MeetingsBackgroundColor = ActivityProfile == "meetings" ? ActivityColor : Colors.Transparent;
+            NewIdeasBackgroundColor = ActivityProfile == "newideas" ? ActivityColor : Colors.Transparent;
+            TechBackgroundColor = ActivityProfile == "tech" ? ActivityColor : Colors.Transparent;
+            
 
             // Notify the UI to update
+            OnPropertyChanged(nameof(NoPresetBackgroundColor));
+            OnPropertyChanged(nameof(BeautyBackgroundColor));
+            OnPropertyChanged(nameof(BuyStuffBackgroundColor));
+            OnPropertyChanged(nameof(ContractsBackgroundColor));
+            OnPropertyChanged(nameof(ImportantTasksBackgroundColor));
             OnPropertyChanged(nameof(GardeningBackgroundColor));
             OnPropertyChanged(nameof(LoveBackgroundColor));
-            OnPropertyChanged(nameof(NoPresetBackgroundColor));
+            OnPropertyChanged(nameof(MeetingsBackgroundColor));
+            OnPropertyChanged(nameof(NewIdeasBackgroundColor));
+            OnPropertyChanged(nameof(TechBackgroundColor));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -236,7 +262,7 @@ namespace AstroApp.UI.Pages
             this.year = year;
             this.month = month;
             DateTime startOfMonth = new DateTime(year, month, 1);
-            this.MonthName = startOfMonth.ToString("MMMM");
+            this.MonthName = startOfMonth.ToString("MMMM", new CultureInfo("lt-LT"));
             int days = DateTime.DaysInMonth(year, month);
             int dayOfWeek = ((int)startOfMonth.DayOfWeek + 6) % 7;
             PopulateCalendar(days, dayOfWeek);
@@ -298,7 +324,7 @@ namespace AstroApp.UI.Pages
 
         private void InitializeWeekdayLabels()
         {
-            string[] weekdays = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+            string[] weekdays = { "Pr", "A", "T", "K", "Pn", "Š", "S" };
             for (int i = 0; i < 7; i++)
             {
                 Label label = new Label
@@ -365,7 +391,31 @@ namespace AstroApp.UI.Pages
             }
 
             UpdateCalendar(year, month);
-        }               
+        }
+
+        private void BeautyRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            ActivityProfile = "beauty";
+            UpdateCalendar(year, month);
+        }
+
+        private void BuyStuffRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            ActivityProfile = "buystuff";
+            UpdateCalendar(year, month);
+        }
+
+        private void ContractsRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            ActivityProfile = "contracts";
+            UpdateCalendar(year, month);
+        }
+
+        private void ImportantTasksRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            ActivityProfile = "importanttasks";
+            UpdateCalendar(year, month);
+        }
 
         private void GardeningRecognizer_Tapped(object sender, TappedEventArgs e)
         {
@@ -379,11 +429,31 @@ namespace AstroApp.UI.Pages
             UpdateCalendar(year, month);
         }
 
+        private void MeetingsRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            ActivityProfile = "meetings";
+            UpdateCalendar(year, month);
+        }
+
+        private void NewIdeasRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            ActivityProfile = "newideas";
+            UpdateCalendar(year, month);
+        }
+
+        private void TechnologiesRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            ActivityProfile = "tech";
+            UpdateCalendar(year, month);
+        }
+
         private void NoPresetRecognizer_Tapped(object sender, TappedEventArgs e)
         {
             ActivityProfile = "nopreset";
             UpdateCalendar(year, month);
         }
+
+
 
         private void ApplyBackgroundColor_Clicked(object sender, EventArgs e)
         {

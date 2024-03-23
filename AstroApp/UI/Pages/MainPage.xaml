@@ -2,10 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:AstroApp.UI.Pages"
+             xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
              x:DataType="pages:MainPage"
              x:Class="AstroApp.UI.Pages.MainPage"             
              >
     <ContentPage.Resources>
+        <converters:DateTimeToMonthNameConverter x:Key="DateTimeToMonthNameConverter"/>
         <ResourceDictionary>
             <LinearGradientBrush x:Key="PageBackgroundGradient"
                                  StartPoint="0,0" EndPoint="1,1">
@@ -68,25 +70,67 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>                 
             </Grid>
-            <Grid Grid.Row="2" ColumnDefinitions="*,*,*" VerticalOptions="End">                
-                <Frame Grid.Column="0" BackgroundColor="{Binding GardeningBackgroundColor}">
+            <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*" VerticalOptions="End">
+                <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="{Binding NoPresetBackgroundColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="NoPresetRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="calendar.png" HeightRequest="20" Margin="-10"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{Binding BeautyBackgroundColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BeautyRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="beauty.png" HeightRequest="20" Margin="-10"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="{Binding BuyStuffBackgroundColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BuyStuffRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="buystuff.png" HeightRequest="20" Margin="-10"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="3" BackgroundColor="{Binding ContractsBackgroundColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ContractsRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="contracts.png" HeightRequest="20" Margin="-10"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="4" BackgroundColor="{Binding ImportantTasksBackgroundColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ImportantTasksRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="importanttasks.png" HeightRequest="20" Margin="-10"/>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="{Binding GardeningBackgroundColor}">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="GardeningRecognizer_Tapped"/>
                     </Frame.GestureRecognizers>
-                    <Image Source="plant.png" HeightRequest="20" Margin="-10"/>
+                    <Image Source="gardening.png" HeightRequest="20" Margin="-10"/>
                 </Frame>
-                <Frame Grid.Column="1" BackgroundColor="{Binding LoveBackgroundColor}">
+                <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="{Binding LoveBackgroundColor}">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="LoveRecognizer_Tapped"/>
                     </Frame.GestureRecognizers>
                     <Image Source="love.png" HeightRequest="20" Margin="-10"/>
                 </Frame>
-                <Frame Grid.Column="2" BackgroundColor="{Binding NoPresetBackgroundColor}">
+                <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="{Binding MeetingsBackgroundColor}">
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="NoPresetRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="MeetingsRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="meetings.png" HeightRequest="20" Margin="-10"/>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="3" BackgroundColor="{Binding NewIdeasBackgroundColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="NewIdeasRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="newideas.png" HeightRequest="20" Margin="-10"/>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="4" BackgroundColor="{Binding TechBackgroundColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TechnologiesRecognizer_Tapped"/>
                     </Frame.GestureRecognizers>
                     <Image Source="tech.png" HeightRequest="20" Margin="-10"/>
-                </Frame>                
+                </Frame>
             </Grid>
             <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*,*">
                 

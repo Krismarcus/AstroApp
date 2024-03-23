@@ -145,27 +145,65 @@ public partial class EditDayControl : ContentView, INotifyPropertyChanged
         setQuality((ActivityQuality)nextQuality);
     }
 
-    private void GardeningIcon_Tapped(object sender, EventArgs e)
+    private void BeautyIcon_Tapped(object sender, EventArgs e)
     {
         CycleActivityQuality(
-            () => dayAstroEvent.Gardening, 
-            (quality) => dayAstroEvent.Gardening = quality 
+            () => dayAstroEvent.Beauty, 
+            (quality) => dayAstroEvent.Beauty = quality 
         );
-    }
-
-    private void LoveIcon_Tapped(object sender, EventArgs e)
-    {
-        CycleActivityQuality(
-            () => dayAstroEvent.Love, 
-            (quality) => dayAstroEvent.Love = quality 
-        );
-    }
+    }    
 
     private void BuyStuffIcon_Tapped(object sender, EventArgs e)
     {
         CycleActivityQuality(
             () => dayAstroEvent.Buystuff, 
             (quality) => dayAstroEvent.Buystuff = quality 
+        );
+    }
+
+    private void ContractsIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.Contracts,
+            (quality) => dayAstroEvent.Contracts = quality
+        );
+    }
+    private void ImportantTasksIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.ImportantTasks,
+            (quality) => dayAstroEvent.ImportantTasks = quality
+        );
+    }
+    private void GardeningIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.Gardening,
+            (quality) => dayAstroEvent.Gardening = quality
+        );
+    }
+
+    private void LoveIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.Love,
+            (quality) => dayAstroEvent.Love = quality
+        );
+    }
+
+    private void MeetingsIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.Meetings,
+            (quality) => dayAstroEvent.Meetings = quality
+        );
+    }
+
+    private void NewIdeasIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.NewIdeas,
+            (quality) => dayAstroEvent.NewIdeas = quality
         );
     }
 
@@ -177,11 +215,5 @@ public partial class EditDayControl : ContentView, INotifyPropertyChanged
         );
     }
 
-    private void IdeasIcon_Tapped(object sender, EventArgs e)
-    {
-        CycleActivityQuality(
-            () => dayAstroEvent.Ideas, 
-            (quality) => dayAstroEvent.Ideas = quality 
-        );
-    }
+    
 }

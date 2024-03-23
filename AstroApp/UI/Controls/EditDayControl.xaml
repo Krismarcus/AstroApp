@@ -57,29 +57,49 @@
                                 </Grid>
                                 <TimePicker Grid.Row="2"  Time="{Binding DayAstroEvent.MoonInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10"/>
                             </Grid>
-                            <Grid Grid.Column="2" ColumnDefinitions="*,*,*,*,*">                               
+                            <Grid Grid.Column="2" ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*">                               
                                 <!--Activities-->
-                                <Image Grid.Column="0" Source="plant.png" Background="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                <Image Grid.Row="0"  Grid.Column="0" Source="beauty.png" Background="{Binding DayAstroEvent.Beauty, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="GardeningIcon_Tapped"/>
+                                        <TapGestureRecognizer Tapped="BeautyIcon_Tapped"/>
                                     </Image.GestureRecognizers>                                    
                                 </Image>
-                                <Image Grid.Column="1" Source="love.png" Background="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="LoveIcon_Tapped"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                                <Image Grid.Column="2" Source="buystuff.png" Background="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                <Image Grid.Row="0" Grid.Column="1" Source="buystuff.png" Background="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="BuyStuffIcon_Tapped"/>
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Image Grid.Column="3" Source="ideas.png" Background="{Binding DayAstroEvent.Ideas, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                <Image Grid.Row="0" Grid.Column="2" Source="contracts.png" Background="{Binding DayAstroEvent.Contracts, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="IdeasIcon_Tapped"/>
+                                        <TapGestureRecognizer Tapped="ContractsIcon_Tapped"/>
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Image Grid.Column="4" Source="tech.png" Background="{Binding DayAstroEvent.Tech, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                <Image Grid.Row="0" Grid.Column="3" Source="importanttasks.png" Background="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ImportantTasksIcon_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Grid.Row="0" Grid.Column="4" Source="gardening.png" Background="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GardeningIcon_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Grid.Row="1" Grid.Column="0" Source="love.png" Background="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="LoveIcon_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Grid.Row="1" Grid.Column="1" Source="meetings.png" Background="{Binding DayAstroEvent.Meetings, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="MeetingsIcon_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Grid.Row="1" Grid.Column="2" Source="newideas.png" Background="{Binding DayAstroEvent.NewIdeas, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="NewIdeasIcon_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Grid.Row="1" Grid.Column="3" Source="tech.png" Background="{Binding DayAstroEvent.Tech, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TechIcon_Tapped"/>
                                     </Image.GestureRecognizers>

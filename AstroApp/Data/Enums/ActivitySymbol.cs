@@ -8,15 +8,13 @@ namespace AstroApp.Data.Enums
 {
     public enum ActivitySymbol
     {
-        Gardening,
         Beauty,
         BuyStuff,
-        Deals,
+        Contracts,
         ImportantTasks,
         Love,
-        Marriage,
-        Technologies,
-        Ideas,
-        RemoteWork
+        Meetings,
+        NewIdeas,              
+        Technologies               
     }
 }

@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 
 namespace AstroApp.UI.Tools.Converters
 {
-    public class ActivityQualityToVisibilityConverter : IValueConverter
+    public class GoodActivityQualityToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             // Assuming the value is of type ActivityQuality
             var activityQuality = (ActivityQuality)value;
-
-            // Only return true (visible) if the activity quality is not Neutral
-            return activityQuality != ActivityQuality.Neutral;
+                        
+            return activityQuality == ActivityQuality.Good;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

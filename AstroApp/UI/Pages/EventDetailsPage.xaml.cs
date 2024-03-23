@@ -422,6 +422,222 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         // This includes hiding the chat bubble and resetting any enlarged images
         await ResetToDefaultState();
     }
+
+    private Color _pageBackgroundColor1 = Colors.LightYellow; // Default color
+
+    public Color PageBackgroundColor1
+    {
+        get => _pageBackgroundColor1;
+        set
+        {
+            if (_pageBackgroundColor1 != value)
+            {
+                _pageBackgroundColor1 = value;
+                OnPropertyChanged(nameof(PageBackgroundColor1));
+            }
+        }
+    }
+
+    private Color _pageBackgroundColor2 = Colors.LightGoldenrodYellow; // Default color
+
+    public Color PageBackgroundColor2
+    {
+        get => _pageBackgroundColor2;
+        set
+        {
+            if (_pageBackgroundColor2 != value)
+            {
+                _pageBackgroundColor2 = value;
+                OnPropertyChanged(nameof(PageBackgroundColor2));
+            }
+        }
+    }
+
+    private Color fontcolor = Colors.DarkBlue; // Default color
+
+    public Color Fontcolor
+    {
+        get => fontcolor;
+        set
+        {
+            if (fontcolor != value)
+            {
+                fontcolor = value;
+                OnPropertyChanged(nameof(Fontcolor));
+            }
+        }
+    }
+
+    private Color colorsettings1 = Colors.Orange; // Default color
+
+    public Color Colorsettings1
+    {
+        get => colorsettings1;
+        set
+        {
+            if (colorsettings1 != value)
+            {
+                colorsettings1 = value;
+                OnPropertyChanged(nameof(Colorsettings1));
+            }
+        }
+    }
+
+    private Color colorsettings2 = Colors.Green; // Default color
+
+    public Color Colorsettings2
+    {
+        get => colorsettings2;
+        set
+        {
+            if (colorsettings2 != value)
+            {
+                colorsettings2 = value;
+                OnPropertyChanged(nameof(Colorsettings2));
+            }
+        }
+    }
+
+    private Color colorsettings3 = Colors.Red; // Default color
+
+    public Color Colorsettings3
+    {
+        get => colorsettings3;
+        set
+        {
+            if (colorsettings3 != value)
+            {
+                colorsettings3 = value;
+                OnPropertyChanged(nameof(Colorsettings3));
+            }
+        }
+    }
+
+    private void ApplyBackgroundColor_Clicked(object sender, EventArgs e)
+    {
+        // Get the HEX code from the entry
+        string hexCode = hexColorEntry.Text;
+
+        // Check if the HEX code is valid
+        if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
+        {
+            // Convert HEX to Color
+            Color newBackgroundColor = Color.FromArgb(hexCode);
+
+            // Update the BackgroundColor of the page or specific element
+            PageBackgroundColor1 = newBackgroundColor;
+        }
+        else
+        {
+            // Handle invalid HEX code (optional)
+            DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
+        }
+    }
+
+    private void ApplyBackgroundColor_Clicked2(object sender, EventArgs e)
+    {
+        // Get the HEX code from the entry
+        string hexCode = hexColorEntry2.Text;
+
+        // Check if the HEX code is valid
+        if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
+        {
+            // Convert HEX to Color
+            Color newBackgroundColor = Color.FromArgb(hexCode);
+
+            // Update the BackgroundColor of the page or specific element
+            PageBackgroundColor2 = newBackgroundColor;
+        }
+        else
+        {
+            // Handle invalid HEX code (optional)
+            DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
+        }
+    }
+
+    private void ApplyBackgroundColor_Clicked3(object sender, EventArgs e)
+    {
+        // Get the HEX code from the entry
+        string hexCode = hexColorEntry3.Text;
+
+        // Check if the HEX code is valid
+        if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
+        {
+            // Convert HEX to Color
+            Color newBackgroundColor = Color.FromArgb(hexCode);
+
+            // Update the BackgroundColor of the page or specific element
+            Colorsettings1 = newBackgroundColor;
+        }
+        else
+        {
+            // Handle invalid HEX code (optional)
+            DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
+        }
+    }
+
+    private void ApplyFontColor_Clicked4(object sender, EventArgs e)
+    {
+        // Get the HEX code from the entry
+        string hexCode = hexFontColorEntry.Text;
+
+        // Check if the HEX code is valid
+        if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
+        {
+            // Convert HEX to Color
+            Color newBackgroundColor = Color.FromArgb(hexCode);
+
+            // Update the BackgroundColor of the page or specific element
+            Colorsettings2 = newBackgroundColor;
+        }
+        else
+        {
+            // Handle invalid HEX code (optional)
+            DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
+        }
+    }
+
+    private void ApplyBackgroundColor_Clicked4(object sender, EventArgs e)
+    {
+        // Get the HEX code from the entry
+        string hexCode = hexColorEntry4.Text;
+
+        // Check if the HEX code is valid
+        if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
+        {
+            // Convert HEX to Color
+            Color newBackgroundColor = Color.FromArgb(hexCode);
+
+            // Update the BackgroundColor of the page or specific element
+            Colorsettings2 = newBackgroundColor;
+        }
+        else
+        {
+            // Handle invalid HEX code (optional)
+            DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
+        }
+    }
+
+    private void ApplyBackgroundColor_Clicked5(object sender, EventArgs e)
+    {
+        // Get the HEX code from the entry
+        string hexCode = hexColorEntry5.Text;
+
+        // Check if the HEX code is valid
+        if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
+        {
+            // Convert HEX to Color
+            Color newBackgroundColor = Color.FromArgb(hexCode);
+
+            // Update the BackgroundColor of the page or specific element
+            Colorsettings3 = newBackgroundColor;
+        }
+        else
+        {
+            // Handle invalid HEX code (optional)
+            DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
+        }
+    }
 }
 
 
