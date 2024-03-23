@@ -71,7 +71,7 @@ namespace AstroApp.UI.Pages
 
 
 
-        private Color _pageBackgroundColor1 = Colors.LightBlue; // Default color
+        private Color _pageBackgroundColor1 = Color.FromRgb(6, 57, 112); // Default color
 
         public Color PageBackgroundColor1
         {
@@ -86,7 +86,7 @@ namespace AstroApp.UI.Pages
             }
         }
 
-        private Color _pageBackgroundColor2 = Colors.LightBlue; // Default color
+        private Color _pageBackgroundColor2 = Color.FromRgb(30, 129, 176); // Default color
 
         public Color PageBackgroundColor2
         {
@@ -101,7 +101,7 @@ namespace AstroApp.UI.Pages
             }
         }
 
-        private Color monthNameColor = Colors.Blue; // Default color
+        private Color monthNameColor = Color.FromRgb(254, 234, 181); // Default color
 
         public Color MonthNameColor
         {
@@ -116,7 +116,7 @@ namespace AstroApp.UI.Pages
             }
         }
 
-        private Color weekdaysColor = Colors.Orange; // Default color
+        private Color weekdaysColor = Color.FromRgb(254, 234, 181); // Default color
 
         public Color WeekdaysColor
         {
@@ -131,7 +131,7 @@ namespace AstroApp.UI.Pages
             }
         }
 
-        private Color activityColor = Colors.Orange; // Default color
+        private Color activityColor = Color.FromRgb(254, 234, 181); // Default color
 
         public Color ActivityColor
         {

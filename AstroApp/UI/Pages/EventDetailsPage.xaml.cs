@@ -423,7 +423,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         await ResetToDefaultState();
     }
 
-    private Color _pageBackgroundColor1 = Colors.LightYellow; // Default color
+    private Color _pageBackgroundColor1 = Color.FromRgb(6, 57, 112); // Default color
 
     public Color PageBackgroundColor1
     {
@@ -438,7 +438,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
-    private Color _pageBackgroundColor2 = Colors.LightGoldenrodYellow; // Default color
+    private Color _pageBackgroundColor2 = Color.FromRgb(30, 129, 176); // Default color
 
     public Color PageBackgroundColor2
     {
@@ -453,7 +453,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
-    private Color fontcolor = Colors.DarkBlue; // Default color
+    private Color fontcolor = Color.FromRgb(254, 234, 181); // Default color
 
     public Color Fontcolor
     {
@@ -468,7 +468,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
-    private Color colorsettings1 = Colors.Orange; // Default color
+    private Color colorsettings1 = Color.FromRgb(254, 248, 234); // Default color
 
     public Color Colorsettings1
     {
@@ -483,7 +483,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
-    private Color colorsettings2 = Colors.Green; // Default color
+    private Color colorsettings2 = Color.FromRgb(23, 156, 70); // Default color
 
     public Color Colorsettings2
     {
@@ -498,7 +498,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
-    private Color colorsettings3 = Colors.Red; // Default color
+    private Color colorsettings3 = Color.FromRgb(156, 52, 40); // Default color
 
     public Color Colorsettings3
     {
@@ -588,7 +588,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             Color newBackgroundColor = Color.FromArgb(hexCode);
 
             // Update the BackgroundColor of the page or specific element
-            Colorsettings2 = newBackgroundColor;
+            Fontcolor = newBackgroundColor;
         }
         else
         {
