@@ -12,7 +12,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <LinearGradientBrush x:Key="PageBackgroundGradient"
-                         StartPoint="0,0" EndPoint="1,1">
+                         StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="{Binding PageBackgroundColor1}" Offset="0.1"/>
                 <GradientStop Color="{Binding PageBackgroundColor2}" Offset="1.0"/>
             </LinearGradientBrush>
@@ -27,7 +27,7 @@
         <converters:MoonPhaseImageToIntConverter x:Key="MoonPhaseImageToIntConverter"/>
     </ContentPage.Resources>
     <ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
             <GradientStop Color="{Binding PageBackgroundColor1}" Offset="0.1"/>
             <GradientStop Color="{Binding PageBackgroundColor2}" Offset="1.0"/>
         </LinearGradientBrush>
@@ -35,15 +35,20 @@
     <ContentPage.Content>
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
-                <VerticalStackLayout >
-                    <Frame CornerRadius="20" BorderColor="Transparent" BackgroundColor="{Binding Colorsettings1}" HeightRequest="50" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnPageTapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Grid.Column="1" Source="calendar.png"/>
-                    </Frame>
+                <Grid VerticalOptions="FillAndExpand" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
 
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,20,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -66,8 +71,8 @@
                             <Image x:Name="rightArrow" Source="right_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
                         </Grid>
                     </Grid>
-                    <Label Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding Fontcolor}" FontSize="20" HorizontalOptions="CenterAndExpand" />
-                    <Frame x:Name="expandableFrame" Padding="10,0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{Binding Colorsettings1}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,30">
+                    <Label Grid.Row="1"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding Fontcolor}" FontSize="20" HorizontalOptions="CenterAndExpand" />
+                    <Frame  Grid.Row="2"  x:Name="expandableFrame" Padding="10,0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{Binding Colorsettings1}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="12.4,20,12.4,12.4">
                         <Grid RowDefinitions="auto,auto">
                             <Grid x:Name="MoonDayInfoGrid" Grid.Row="0" ColumnDefinitions="*,4*" IsVisible="False">
                                 <Grid.GestureRecognizers>
@@ -142,7 +147,7 @@
                             </Grid>
                         </Grid>
                     </Frame>
-                    <Frame Padding="0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{Binding Colorsettings1}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10,10">
+                    <Frame  Grid.Row="3"  Padding="0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{Binding Colorsettings1}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12.4, 0,12.4,12.4">
                         <Grid RowDefinitions="*,*" Margin="0,10">
                             <Grid Grid.Row="0" ColumnDefinitions="*,*" Margin="0,10">
                                 <Grid ColumnDefinitions="*,*" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
@@ -229,7 +234,7 @@
                             </Grid>
                         </Grid>
                     </Frame>
-                    <Frame Padding="0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{Binding Colorsettings1}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10,10">
+                    <Frame   Grid.Row="4" Padding="0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{Binding Colorsettings1}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12.4, 0,12.4,0">
                         <Label Text="{Binding DayAstroEvent.EventText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="18" Margin="20"/>
                     </Frame>                    
                         <Grid RowDefinitions="*,*" >
@@ -291,15 +296,15 @@
                                 <Label Text="Technologies" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAttributes="Bold" FontAutoScalingEnabled="True"/>
                             </Frame>
                         </FlexLayout>
-                        </Grid>                   
-                    <CollectionView ItemsSource="{Binding DayAstroEvent.PlanetEvents}">
+                        </Grid>
+                    <CollectionView  Grid.Row="5"  ItemsSource="{Binding DayAstroEvent.PlanetEvents}"  Margin="12.4, 0,12.4,0">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <controls:CalendarPlanetEventControl />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                    <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*,*">
+                    <Grid  Grid.Row="6"  ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*,*"  Margin="12.4, 0,12.4,0" HorizontalOptions="FillAndExpand">
                         <Entry x:Name="hexColorEntry" Grid.Row="0" Grid.Column="0" Placeholder="Backgroud1" HorizontalOptions="FillAndExpand"/>
                         <Button Grid.Row="0" Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked" BackgroundColor="Transparent"/>
                         <Entry Grid.Row="0" Grid.Column="2" x:Name="hexColorEntry2" Placeholder="Background2" HorizontalOptions="FillAndExpand"/>
@@ -313,7 +318,14 @@
                         <Entry Grid.Row="2" x:Name="hexColorEntry5" Grid.Column="0" Placeholder="Bad" HorizontalOptions="FillAndExpand"/>
                         <Button Grid.Row="2" Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked5" BackgroundColor="Transparent"/>
                     </Grid>
-                </VerticalStackLayout>
+                    <Frame  Grid.Row="7"  CornerRadius="20" BorderColor="Transparent" BackgroundColor="{Binding Colorsettings1}" HeightRequest="50"  Margin="12.4, 20,12.4,20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnPageTapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Grid.Column="1" Source="calendar.png"/>
+                    </Frame>
+                </Grid>
+                
             </ScrollView>
             <Frame x:Name="chatBubble" Padding="10" CornerRadius="15"
        BorderColor="Transparent" BackgroundColor="{StaticResource LightBlueBackground}"

@@ -12,7 +12,7 @@
         <converters:ActivityQualityToColorConverter x:Key="ActivityQualityToColorConverter"/>
         <converters:ActivityQualityToStrokeThicknessConverter x:Key="ActivityQualityToStrokeThicknessConverter"/>        
     </ContentView.Resources>
-    <Border x:Name="dayCard" Stroke="{Binding ActivityProfile, Converter={StaticResource ActivityQualityToColorConverter}}" StrokeThickness="{Binding ActivityProfile, Converter={StaticResource ActivityQualityToStrokeThicknessConverter}}" BackgroundColor="{StaticResource PrimaryBackground}" StrokeShape="RoundRectangle 10,10,10,10" Margin="2">
+    <Border x:Name="dayCard" Stroke="{Binding ActivityProfile, Converter={StaticResource ActivityQualityToColorConverter}}" StrokeThickness="{Binding ActivityProfile, Converter={StaticResource ActivityQualityToStrokeThicknessConverter}}" BackgroundColor="{StaticResource PrimaryBackground}" StrokeShape="RoundRectangle 10,10,10,10" Margin="2.4, 4">
         <Border.Shadow>
             <Shadow Brush="{Binding ActivityProfile, Converter={StaticResource ActivityQualityToColorConverter}}" Offset="0,2" Opacity="0.8" Radius="5"/>            
         </Border.Shadow>

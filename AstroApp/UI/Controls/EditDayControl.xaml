@@ -1,229 +1,530 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AstroApp.UI.Controls.EditDayControl"
-             xmlns:controls="clr-namespace:AstroApp.UI.Controls"
-             xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
-             x:DataType="controls:EditDayControl">
+<ContentView
+    x:Class="AstroApp.UI.Controls.EditDayControl"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:AstroApp.UI.Controls"
+    xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
+    x:DataType="controls:EditDayControl">
     <ContentView.Resources>
-        <converters:EnumToStringConverter x:Key="EnumConverter"/>
-        <converters:MoonDayIntToStringConverter x:Key="IntToStringConverter"/>
-        <converters:DateTimeToTimeSpanConverter x:Key="DateTimeToTimeSpanConverter"/>
-        <converters:MoonPhaseEditIconToIntConverter x:Key="MoonPhaseEditIconToIntConverter"/>
-        <converters:ActivityQualityToColorConverter x:Key="ActivityQualityToColor"/>
+        <converters:EnumToStringConverter x:Key="EnumConverter" />
+        <converters:MoonDayIntToStringConverter x:Key="IntToStringConverter" />
+        <converters:DateTimeToTimeSpanConverter x:Key="DateTimeToTimeSpanConverter" />
+        <converters:MoonPhaseEditIconToIntConverter x:Key="MoonPhaseEditIconToIntConverter" />
+        <converters:ActivityQualityToColorConverter x:Key="ActivityQualityToColor" />
     </ContentView.Resources>
-    <Frame BorderColor="{StaticResource Primary}" >
+    <Frame BorderColor="{StaticResource Primary}">
         <VerticalStackLayout>
             <Grid Margin="10">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>                            
-                            <ColumnDefinition Width="5*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="{Binding DayAstroEvent.Date.Day}" FontSize="30"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10"/>
-                        <Grid Grid.Column="1" ColumnDefinitions="*,*,*" RowDefinitions="*,*">
-                            <Grid Grid.Column="0"> <!--Sun-->
+                        <Label
+                            Grid.Column="0"
+                            Margin="10"
+                            FontSize="30"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{Binding DayAstroEvent.Date.Day}"
+                            VerticalOptions="CenterAndExpand" />
+                        <Grid
+                            Grid.Column="1"
+                            ColumnDefinitions="*,*,*"
+                            RowDefinitions="*,*">
+                            <Grid Grid.Column="0">
+                                <!--  Sun  -->
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Text="{Binding DayAstroEvent.SunInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
-                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
-                                    <Picker Grid.Column="0" x:Name="SunInZodiacPicker" SelectedItem="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" Margin="10"/>
-                                    <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.SunInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
+                                <Label
+                                    Grid.Row="0"
+                                    Margin="5"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding DayAstroEvent.SunInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+                                    VerticalOptions="Center" />
+                                <Grid
+                                    Grid.Row="1"
+                                    ColumnDefinitions="auto,auto"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Picker
+                                        x:Name="SunInZodiacPicker"
+                                        Grid.Column="0"
+                                        Margin="10"
+                                        HorizontalOptions="Center"
+                                        SelectedItem="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+                                        VerticalOptions="Center" />
+                                    <Switch
+                                        Grid.Column="1"
+                                        Margin="10"
+                                        HorizontalOptions="Center"
+                                        IsToggled="{Binding DayAstroEvent.SunInZodiac.IsZodiacTransitioning}"
+                                        VerticalOptions="Center" />
                                 </Grid>
-                                <TimePicker Grid.Row="2"  Time="{Binding DayAstroEvent.SunInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.SunInZodiac.IsZodiacTransitioning}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10"/>
+                                <TimePicker
+                                    Grid.Row="2"
+                                    Margin="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    IsVisible="{Binding DayAstroEvent.SunInZodiac.IsZodiacTransitioning}"
+                                    Time="{Binding DayAstroEvent.SunInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"
+                                    VerticalOptions="CenterAndExpand" />
                             </Grid>
-                            <Grid Grid.Column="1"> <!--Moon-->
+                            <Grid Grid.Column="1">
+                                <!--  Moon  -->
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Text="{Binding DayAstroEvent.MoonInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
-                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
-                                    <Picker Grid.Column="0" x:Name="MoonInZodiacPicker" SelectedItem="{Binding DayAstroEvent.MoonInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" Margin="10"/>
-                                    <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
+                                <Label
+                                    Grid.Row="0"
+                                    Margin="5"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding DayAstroEvent.MoonInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+                                    VerticalOptions="Center" />
+                                <Grid
+                                    Grid.Row="1"
+                                    ColumnDefinitions="auto,auto"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Picker
+                                        x:Name="MoonInZodiacPicker"
+                                        Grid.Column="0"
+                                        Margin="10"
+                                        HorizontalOptions="Center"
+                                        SelectedItem="{Binding DayAstroEvent.MoonInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+                                        VerticalOptions="Center" />
+                                    <Switch
+                                        Grid.Column="1"
+                                        Margin="10"
+                                        HorizontalOptions="Center"
+                                        IsToggled="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}"
+                                        VerticalOptions="Center" />
                                 </Grid>
-                                <TimePicker Grid.Row="2"  Time="{Binding DayAstroEvent.MoonInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10"/>
+                                <TimePicker
+                                    Grid.Row="2"
+                                    Margin="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}"
+                                    Time="{Binding DayAstroEvent.MoonInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"
+                                    VerticalOptions="CenterAndExpand" />
                             </Grid>
-                            <Grid Grid.Column="2" ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*">                               
-                                <!--Activities-->
-                                <Image Grid.Row="0"  Grid.Column="0" Source="beauty.png" Background="{Binding DayAstroEvent.Beauty, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                            <Grid
+                                Grid.Column="2"
+                                ColumnDefinitions="*,*,*,*,*"
+                                RowDefinitions="*,*">
+                                <!--  Activities  -->
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Background="{Binding DayAstroEvent.Beauty, Converter={StaticResource ActivityQualityToColor}}"
+                                    HeightRequest="30"
+                                    Source="beauty.png"
+                                    WidthRequest="30">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="BeautyIcon_Tapped"/>
-                                    </Image.GestureRecognizers>                                    
-                                </Image>
-                                <Image Grid.Row="0" Grid.Column="1" Source="buystuff.png" Background="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="BuyStuffIcon_Tapped"/>
+                                        <TapGestureRecognizer Tapped="BeautyIcon_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Image Grid.Row="0" Grid.Column="2" Source="contracts.png" Background="{Binding DayAstroEvent.Contracts, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Background="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToColor}}"
+                                    HeightRequest="30"
+                                    Source="buystuff.png"
+                                    WidthRequest="30">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ContractsIcon_Tapped"/>
+                                        <TapGestureRecognizer Tapped="BuyStuffIcon_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Image Grid.Row="0" Grid.Column="3" Source="importanttasks.png" Background="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Background="{Binding DayAstroEvent.Contracts, Converter={StaticResource ActivityQualityToColor}}"
+                                    HeightRequest="30"
+                                    Source="contracts.png"
+                                    WidthRequest="30">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ImportantTasksIcon_Tapped"/>
+                                        <TapGestureRecognizer Tapped="ContractsIcon_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Image Grid.Row="0" Grid.Column="4" Source="gardening.png" Background="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    Background="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource ActivityQualityToColor}}"
+                                    HeightRequest="30"
+                                    Source="importanttasks.png"
+                                    WidthRequest="30">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="GardeningIcon_Tapped"/>
+                                        <TapGestureRecognizer Tapped="ImportantTasksIcon_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Image Grid.Row="1" Grid.Column="0" Source="love.png" Background="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="4"
+                                    Background="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToColor}}"
+                                    HeightRequest="30"
+                                    Source="gardening.png"
+                                    WidthRequest="30">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="LoveIcon_Tapped"/>
+                                        <TapGestureRecognizer Tapped="GardeningIcon_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Image Grid.Row="1" Grid.Column="1" Source="meetings.png" Background="{Binding DayAstroEvent.Meetings, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                <Image
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Background="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToColor}}"
+                                    HeightRequest="30"
+                                    Source="love.png"
+                                    WidthRequest="30">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="MeetingsIcon_Tapped"/>
+                                        <TapGestureRecognizer Tapped="LoveIcon_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Image Grid.Row="1" Grid.Column="2" Source="newideas.png" Background="{Binding DayAstroEvent.NewIdeas, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                <Image
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Background="{Binding DayAstroEvent.Meetings, Converter={StaticResource ActivityQualityToColor}}"
+                                    HeightRequest="30"
+                                    Source="meetings.png"
+                                    WidthRequest="30">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="NewIdeasIcon_Tapped"/>
+                                        <TapGestureRecognizer Tapped="MeetingsIcon_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Image Grid.Row="1" Grid.Column="3" Source="tech.png" Background="{Binding DayAstroEvent.Tech, Converter={StaticResource ActivityQualityToColor}}" WidthRequest="30" HeightRequest="30">
+                                <Image
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Background="{Binding DayAstroEvent.NewIdeas, Converter={StaticResource ActivityQualityToColor}}"
+                                    HeightRequest="30"
+                                    Source="newideas.png"
+                                    WidthRequest="30">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TechIcon_Tapped"/>
+                                        <TapGestureRecognizer Tapped="NewIdeasIcon_Tapped" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image
+                                    Grid.Row="1"
+                                    Grid.Column="3"
+                                    Background="{Binding DayAstroEvent.Tech, Converter={StaticResource ActivityQualityToColor}}"
+                                    HeightRequest="30"
+                                    Source="tech.png"
+                                    WidthRequest="30">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TechIcon_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </Grid>
-                            <Grid Grid.Column="0" Grid.Row="1">
-                                <!--Venus-->
+                            <Grid Grid.Row="1" Grid.Column="0">
+                                <!--  Venus  -->
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" ColumnDefinitions="auto,auto" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Label Grid.Column="0" Text="{Binding DayAstroEvent.VenusInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5">
+                                <Grid
+                                    Grid.Row="0"
+                                    ColumnDefinitions="auto,auto"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Grid.Column="0"
+                                        Margin="5"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding DayAstroEvent.VenusInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+                                        VerticalOptions="Center">
                                         <Label.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="VenusRetrograde_Tapped"/>
+                                            <TapGestureRecognizer Tapped="VenusRetrograde_Tapped" />
                                         </Label.GestureRecognizers>
                                     </Label>
-                                    <Label Grid.Column="1" Text="R" FontAttributes="Bold" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsRetrograde}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label
+                                        Grid.Column="1"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="Center"
+                                        IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsRetrograde}"
+                                        Text="R"
+                                        VerticalOptions="Center" />
                                 </Grid>
-                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
-                                    <Picker Grid.Column="0" x:Name="VenusInZodiacPicker" SelectedItem="{Binding DayAstroEvent.VenusInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" Margin="10"/>
-                                    <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
+                                <Grid
+                                    Grid.Row="1"
+                                    ColumnDefinitions="auto,auto"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Picker
+                                        x:Name="VenusInZodiacPicker"
+                                        Grid.Column="0"
+                                        Margin="10"
+                                        HorizontalOptions="Center"
+                                        SelectedItem="{Binding DayAstroEvent.VenusInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+                                        VerticalOptions="Center" />
+                                    <Switch
+                                        Grid.Column="1"
+                                        Margin="10"
+                                        HorizontalOptions="Center"
+                                        IsToggled="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}"
+                                        VerticalOptions="Center" />
                                 </Grid>
-                                <TimePicker Grid.Row="2"  Time="{Binding DayAstroEvent.VenusInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10"/>
+                                <TimePicker
+                                    Grid.Row="2"
+                                    Margin="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}"
+                                    Time="{Binding DayAstroEvent.VenusInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"
+                                    VerticalOptions="CenterAndExpand" />
                             </Grid>
-                            <Grid Grid.Column="1" Grid.Row="1">
-                                <!--Mars-->
+                            <Grid Grid.Row="1" Grid.Column="1">
+                                <!--  Mars  -->
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" ColumnDefinitions="auto,auto" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Label Grid.Column="0" Text="{Binding DayAstroEvent.MarsInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5">
+                                <Grid
+                                    Grid.Row="0"
+                                    ColumnDefinitions="auto,auto"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Grid.Column="0"
+                                        Margin="5"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding DayAstroEvent.MarsInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+                                        VerticalOptions="Center">
                                         <Label.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="MarsRetrograde_Tapped"/>
+                                            <TapGestureRecognizer Tapped="MarsRetrograde_Tapped" />
                                         </Label.GestureRecognizers>
                                     </Label>
-                                    <Label Grid.Column="1" Text="R" FontAttributes="Bold" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsRetrograde}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label
+                                        Grid.Column="1"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="Center"
+                                        IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsRetrograde}"
+                                        Text="R"
+                                        VerticalOptions="Center" />
                                 </Grid>
-                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >
-                                    <Picker Grid.Column="0" x:Name="MarsInZodiacPicker" SelectedItem="{Binding DayAstroEvent.MarsInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" Margin="10"/>
-                                    <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
+                                <Grid
+                                    Grid.Row="1"
+                                    ColumnDefinitions="auto,auto"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Picker
+                                        x:Name="MarsInZodiacPicker"
+                                        Grid.Column="0"
+                                        Margin="10"
+                                        HorizontalOptions="Center"
+                                        SelectedItem="{Binding DayAstroEvent.MarsInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+                                        VerticalOptions="Center" />
+                                    <Switch
+                                        Grid.Column="1"
+                                        Margin="10"
+                                        HorizontalOptions="Center"
+                                        IsToggled="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}"
+                                        VerticalOptions="Center" />
                                 </Grid>
-                                <TimePicker Grid.Row="2"  Time="{Binding DayAstroEvent.MarsInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10"/>
+                                <TimePicker
+                                    Grid.Row="2"
+                                    Margin="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}"
+                                    Time="{Binding DayAstroEvent.MarsInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"
+                                    VerticalOptions="CenterAndExpand" />
                             </Grid>
-                            <Grid Grid.Column="2" Grid.Row="1">
-                                <!--Mercury-->
+                            <Grid Grid.Row="1" Grid.Column="2">
+                                <!--  Mercury  -->
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" ColumnDefinitions="auto,auto" HorizontalOptions="Center" VerticalOptions="Center">                                     
-                                    <Label Grid.Column="0" Text="{Binding DayAstroEvent.MercuryInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" Margin="5">
+                                <Grid
+                                    Grid.Row="0"
+                                    ColumnDefinitions="auto,auto"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Grid.Column="0"
+                                        Margin="5"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding DayAstroEvent.MercuryInZodiac.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+                                        VerticalOptions="Center">
                                         <Label.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="MercuryRetrograde_Tapped"/>
+                                            <TapGestureRecognizer Tapped="MercuryRetrograde_Tapped" />
                                         </Label.GestureRecognizers>
                                     </Label>
-                                    <Label Grid.Column="1" Text="R" FontAttributes="Bold" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsRetrograde}" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                </Grid>                                
-                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand" >                                    
-                                    <Picker Grid.Column="0" x:Name="MercuryInZodiacPicker" SelectedItem="{Binding DayAstroEvent.MercuryInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" Margin="10"/>
-                                    <Switch Grid.Column="1" IsToggled="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
+                                    <Label
+                                        Grid.Column="1"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="Center"
+                                        IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsRetrograde}"
+                                        Text="R"
+                                        VerticalOptions="Center" />
                                 </Grid>
-                                <TimePicker Grid.Row="2"  Time="{Binding DayAstroEvent.MercuryInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10"/>
+                                <Grid
+                                    Grid.Row="1"
+                                    ColumnDefinitions="auto,auto"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Picker
+                                        x:Name="MercuryInZodiacPicker"
+                                        Grid.Column="0"
+                                        Margin="10"
+                                        HorizontalOptions="Center"
+                                        SelectedItem="{Binding DayAstroEvent.MercuryInZodiac.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+                                        VerticalOptions="Center" />
+                                    <Switch
+                                        Grid.Column="1"
+                                        Margin="10"
+                                        HorizontalOptions="Center"
+                                        IsToggled="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}"
+                                        VerticalOptions="Center" />
+                                </Grid>
+                                <TimePicker
+                                    Grid.Row="2"
+                                    Margin="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}"
+                                    Time="{Binding DayAstroEvent.MercuryInZodiac.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"
+                                    VerticalOptions="CenterAndExpand" />
                             </Grid>
                         </Grid>
-                        <Grid Grid.Column="2" RowDefinitions="*,*"  Margin="10">
-                            <Grid Grid.Row="0" ColumnDefinitions="*,*" RowDefinitions="*,*" >
-                                <Label Grid.Row="0" Grid.Column="0" Text="Sun Eclipse" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Switch Grid.Row="0" Grid.Column="1" IsToggled="{Binding DayAstroEvent.SunEclipse}" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
-                                <Label Grid.Row="1" Grid.Column="0" Text="Moon Eclipse" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Switch Grid.Row="1" Grid.Column="1" IsToggled="{Binding DayAstroEvent.MoonEclipse}" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
+                        <Grid
+                            Grid.Column="2"
+                            Margin="10"
+                            RowDefinitions="*,*">
+                            <Grid
+                                Grid.Row="0"
+                                ColumnDefinitions="*,*"
+                                RowDefinitions="*,*">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    HorizontalOptions="Center"
+                                    Text="Sun Eclipse"
+                                    VerticalOptions="Center" />
+                                <Switch
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="10"
+                                    HorizontalOptions="Center"
+                                    IsToggled="{Binding DayAstroEvent.SunEclipse}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    HorizontalOptions="Center"
+                                    Text="Moon Eclipse"
+                                    VerticalOptions="Center" />
+                                <Switch
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="10"
+                                    HorizontalOptions="Center"
+                                    IsToggled="{Binding DayAstroEvent.MoonEclipse}"
+                                    VerticalOptions="Center" />
                             </Grid>
                             <Grid Grid.Row="1">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Text="MoonDay Trans Time" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <TimePicker Grid.Row="1" Time="{Binding DayAstroEvent.MoonDay.MiddleMoonDayTransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" IsVisible="{Binding DayAstroEvent.MoonDay.IsTripleMoonDay}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                <TimePicker Grid.Row="2" Time="{Binding DayAstroEvent.MoonDay.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                
+                                <Label
+                                    Grid.Row="0"
+                                    HorizontalOptions="Center"
+                                    Text="MoonDay Trans Time"
+                                    VerticalOptions="Center" />
+                                <TimePicker
+                                    Grid.Row="1"
+                                    HorizontalOptions="CenterAndExpand"
+                                    IsVisible="{Binding DayAstroEvent.MoonDay.IsTripleMoonDay}"
+                                    Time="{Binding DayAstroEvent.MoonDay.MiddleMoonDayTransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"
+                                    VerticalOptions="CenterAndExpand" />
+                                <TimePicker
+                                    Grid.Row="2"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Time="{Binding DayAstroEvent.MoonDay.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"
+                                    VerticalOptions="CenterAndExpand" />
+
                             </Grid>
                         </Grid>
-                        <Grid Grid.Column="3" RowDefinitions="*,*">                            
+                        <Grid Grid.Column="3" RowDefinitions="*,*">
                             <Grid Grid.Row="1">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" ColumnDefinitions="auto,auto" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Label Grid.Column="0" Text="Moon Day" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Grid
+                                    Grid.Row="0"
+                                    ColumnDefinitions="auto,auto"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Grid.Column="0"
+                                        HorizontalOptions="Center"
+                                        Text="Moon Day"
+                                        VerticalOptions="Center">
                                         <Label.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="MoonDayTitle_Tapped"/>
+                                            <TapGestureRecognizer Tapped="MoonDayTitle_Tapped" />
                                         </Label.GestureRecognizers>
                                     </Label>
-                                    <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonPhase, Converter={StaticResource MoonPhaseEditIconToIntConverter}}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="15" Margin="5,0"/>
+                                    <Image
+                                        Grid.Column="1"
+                                        Margin="5,0"
+                                        HeightRequest="15"
+                                        HorizontalOptions="Center"
+                                        Source="{Binding DayAstroEvent.MoonPhase, Converter={StaticResource MoonPhaseEditIconToIntConverter}}"
+                                        VerticalOptions="Center" />
                                 </Grid>
-                                <Picker Grid.Row="1" x:Name="NewMoonDayPicker" SelectedItem="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToStringConverter}, Mode=TwoWay}" />
+                                <Picker
+                                    x:Name="NewMoonDayPicker"
+                                    Grid.Row="1"
+                                    SelectedItem="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToStringConverter}, Mode=TwoWay}" />
                             </Grid>
-                        </Grid>                       
-                    </Grid>                    
+                        </Grid>
+                    </Grid>
                     <Grid Grid.Row="2">
-                        <Grid Grid.Column="0" ColumnDefinitions="*,10*" Margin="10">
-                            <Label Grid.Column="0" Text="Day Info" HorizontalOptions="Center" VerticalOptions="Center"/>
-                            <Editor Grid.Column="1" Text="{Binding DayAstroEvent.EventText}" AutoSize="TextChanges" VerticalOptions="Center" />
-                        </Grid>                                                                                        
-                    </Grid>                    
+                        <Grid
+                            Grid.Column="0"
+                            Margin="10"
+                            ColumnDefinitions="*,10*">
+                            <Label
+                                Grid.Column="0"
+                                HorizontalOptions="Center"
+                                Text="Day Info"
+                                VerticalOptions="Center" />
+                            <Editor
+                                Grid.Column="1"
+                                AutoSize="TextChanges"
+                                Text="{Binding DayAstroEvent.EventText}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Grid>
                     <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0" >
+                        <Grid Grid.Column="0">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <Button Grid.Row="0" Text="Add Planet Event" Clicked="AddEvent_Clicked" Margin="5"/>
-                            <Button Grid.Row="1" Text="Remove Planet Event" Clicked="RemoveEvent_Clicked" Margin="5"/>
+                            <Button
+                                Grid.Row="0"
+                                Margin="5"
+                                Clicked="AddEvent_Clicked"
+                                Text="Add Planet Event" />
+                            <Button
+                                Grid.Row="1"
+                                Margin="5"
+                                Clicked="RemoveEvent_Clicked"
+                                Text="Remove Planet Event" />
                         </Grid>
                         <CollectionView Grid.Column="1" ItemsSource="{Binding DayAstroEvent.PlanetEvents}">
                             <CollectionView.ItemTemplate>

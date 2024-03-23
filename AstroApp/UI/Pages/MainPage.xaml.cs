@@ -332,7 +332,8 @@ namespace AstroApp.UI.Pages
                     Text = weekdays[i],
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
-                    FontSize = 14,
+                    FontSize = 16,
+                    FontAttributes = FontAttributes.Bold
                     // TextColor is now bound to WeekdaysColor.
                 };
                 Binding textColorBinding = new Binding
@@ -537,6 +538,12 @@ namespace AstroApp.UI.Pages
                 // Handle invalid HEX code (optional)
                 DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
             }
+        }
+
+
+        private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            this.GridColors.IsVisible = !this.GridColors.IsVisible;
         }
 
         private void ApplyBackgroundColor_Clicked5(object sender, EventArgs e)
