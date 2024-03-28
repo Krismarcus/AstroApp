@@ -7,26 +7,31 @@
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
              x:DataType="controls:DayControl">
     <ContentView.Resources>
+        <converters:DayBorderBackgroundColorToEclipseConverter x:Key="DayBorderBackgroundColorToEclipseConverter"/>
+        <converters:NewMoonDayToDarkColorConverter x:Key="NewMoonDayToDarkColorConverter"/>
         <converters:EnumToImageConverter x:Key="EnumToImageConverter"/>
-        <converters:MoonDayIntToImageConverter x:Key="IntToImageConverter"/>
+        <converters:MoonDayIntToImageConverter x:Key="IntToImageConverter"/>        
         <converters:ActivityQualityToColorConverter x:Key="ActivityQualityToColorConverter"/>
+        <converters:ActivityQualityToFontColorConverter x:Key="ActivityQualityToFontColorConverter"/>
         <converters:ActivityQualityToStrokeThicknessConverter x:Key="ActivityQualityToStrokeThicknessConverter"/>        
     </ContentView.Resources>
-    <Border x:Name="dayCard" Stroke="{Binding ActivityProfile, Converter={StaticResource ActivityQualityToColorConverter}}" StrokeThickness="{Binding ActivityProfile, Converter={StaticResource ActivityQualityToStrokeThicknessConverter}}" BackgroundColor="{StaticResource PrimaryBackground}" StrokeShape="RoundRectangle 10,10,10,10" Margin="2.4, 4">
-        <Border.Shadow>
-            <Shadow Brush="{Binding ActivityProfile, Converter={StaticResource ActivityQualityToColorConverter}}" Offset="0,2" Opacity="0.8" Radius="5"/>            
-        </Border.Shadow>
+    <Border x:Name="dayCard" Stroke="Transparent" BackgroundColor="{Binding DayAstroEvent, Converter={StaticResource DayBorderBackgroundColorToEclipseConverter}}" StrokeShape="RoundRectangle 10,10,10,10" Margin="2.4, 4">       
         <Border.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnDayTapped"  />
         </Border.GestureRecognizers>
         <VerticalStackLayout >
-            <Label Text="{Binding DayNumber}" TextColor="{Binding ActivityProfile, Converter={StaticResource ActivityQualityToColorConverter}}" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Label x:Name="dayLabel" Text="{Binding DayNumber}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkColorConverter}, Mode=OneWay}" FontAttributes="Bold" HorizontalOptions="Center" />
             <Grid ColumnDefinitions="*,*">
                 <Image Grid.Column="0" Source="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="40" HeightRequest="40" Margin="-5"/>
                 <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="40" HeightRequest="40" Margin="-5"/>
             </Grid>
-            <Grid Padding="5" HorizontalOptions="Center" VerticalOptions="Start">                
-                <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" WidthRequest="30" HeightRequest="30"/>                
+            <Grid Padding="5" HorizontalOptions="Center" VerticalOptions="Start">
+                <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" WidthRequest="30" HeightRequest="30">
+                    <Image.Shadow>
+                        <Shadow Brush="{StaticResource PrimaryBackground}"/>
+                    </Image.Shadow>
+                    
+                </Image>
             </Grid>
         </VerticalStackLayout>
     </Border>

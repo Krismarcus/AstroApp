@@ -83,6 +83,7 @@
 	  <None Remove="Resources\Images\crocodile.png" />
 	  <None Remove="Resources\Images\crown.png" />
 	  <None Remove="Resources\Images\dove.png" />
+	  <None Remove="Resources\Images\down_arrow.png" />
 	  <None Remove="Resources\Images\eagle.png" />
 	  <None Remove="Resources\Images\earth.png" />
 	  <None Remove="Resources\Images\elephant.png" />
@@ -144,6 +145,7 @@
 	  <None Remove="Resources\Images\trine.png" />
 	  <None Remove="Resources\Images\trumpet.png" />
 	  <None Remove="Resources\Images\unicorn.png" />
+	  <None Remove="Resources\Images\up_arrow.png" />
 	  <None Remove="Resources\Images\uranus.png" />
 	  <None Remove="Resources\Images\venus.png" />
 	  <None Remove="Resources\Images\virgo.png" />

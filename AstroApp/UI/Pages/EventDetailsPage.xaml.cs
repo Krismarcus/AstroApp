@@ -483,7 +483,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
-    private Color colorsettings2 = Color.FromRgb(23, 156, 70); // Default color
+    private Color colorsettings2 = Color.FromRgb(43, 255, 0); // Default color
 
     public Color Colorsettings2
     {
@@ -498,7 +498,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
-    private Color colorsettings3 = Color.FromRgb(156, 52, 40); // Default color
+    private Color colorsettings3 = Color.FromRgb(255, 59, 106); // Default color
 
     public Color Colorsettings3
     {

@@ -68,8 +68,7 @@ namespace AstroApp.UI.Pages
         public Color NewIdeasBackgroundColor { get; set; } = Colors.Transparent;
         public Color TechBackgroundColor { get; set; } = Colors.Transparent;
 
-
-
+        private bool isProfileGridVisible = false;
 
         private Color _pageBackgroundColor1 = Color.FromRgb(6, 57, 112); // Default color
 
@@ -303,7 +302,8 @@ namespace AstroApp.UI.Pages
                 {
                     CalendarGrid.Children.Add(dayCard);
                 }
-                dayCard.SetBorderColor(ActivityProfile);
+                dayCard.OnOffProfile(ActivityProfile != "nopreset");
+                dayCard.ChangeActivityProfile(ActivityProfile);
                 // Update property or trigger binding refresh if necessary
 
                 // Move to the next cell
@@ -454,7 +454,60 @@ namespace AstroApp.UI.Pages
             UpdateCalendar(year, month);
         }
 
+        private async void ToggleGridAndAnimateArrow()
+        {
+            if (isProfileGridVisible)
+            {
+                // Move the arrow down before hiding the grid
+                await arrowImage.TranslateTo(0, 10, 100); // Adjust these values as needed
+                await arrowImage.TranslateTo(0, 0, 100); // Return to the original position
 
+                // Hide the grid
+                await profileGrid.TranslateTo(0, profileGrid.Height, 250, Easing.SinIn);
+                profileGrid.IsVisible = false;
+
+                // Rotate the arrow back to its original orientation
+                await arrowImage.RotateTo(0, 200);
+            }
+            else
+            {
+                // Make the grid visible before animating it
+                profileGrid.IsVisible = true;
+                profileGrid.TranslationY = profileGrid.Height; // Start off-screen
+
+                // Move the arrow up before showing the grid
+                await arrowImage.TranslateTo(0, -10, 100); // Adjust these values as needed
+                await arrowImage.TranslateTo(0, 0, 100); // Return to the original position
+
+                // Animate the grid into view
+                await profileGrid.TranslateTo(0, 0, 250, Easing.SinOut);
+
+                // Rotate the arrow 180 degrees to indicate the grid is open
+                await arrowImage.RotateTo(180, 200);
+            }
+
+            isProfileGridVisible = !isProfileGridVisible;
+        }
+
+        private void OnArrowTapped(object sender, EventArgs e)
+        {
+            ToggleGridAndAnimateArrow();
+        }
+
+        private async void HideGridWithAnimation()
+        {
+            // Step 1: Animate the arrow up
+            await arrowImage.TranslateTo(0, -30, 200); // Adjust values as needed
+
+            // Step 2: Animate the arrow down
+            await arrowImage.TranslateTo(0, 0, 200); // Return to original position
+
+            // Step 3: Rotate the arrow 180 degrees back
+            await arrowImage.RotateTo(0, 200); // This completes the rotation back to 0 degrees
+
+            // Hide the Grid
+            profileGrid.IsVisible = false;
+        }
 
         private void ApplyBackgroundColor_Clicked(object sender, EventArgs e)
         {
@@ -566,6 +619,5 @@ namespace AstroApp.UI.Pages
                 DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
             }
         }
-
     }    
 }

@@ -54,52 +54,18 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
             }
         }
     }
-
     private AstroEvent dayAstroEvent;
 
     public AstroEvent DayAstroEvent
     {
-        get { return dayAstroEvent; }
+        get => dayAstroEvent;
         set
         {
             if (dayAstroEvent != value)
             {
                 dayAstroEvent = value;
                 OnPropertyChanged(nameof(DayAstroEvent));
-
-            }
-        }
-    }
-    
-
-    private PlanetInZodiac sunInZodiac;
-
-    public PlanetInZodiac SunInZodiac
-    {
-        get { return sunInZodiac; }
-        set
-        {
-            if (sunInZodiac != value)
-            {
-                sunInZodiac = value;
-                OnPropertyChanged(nameof(SunInZodiac));
-
-            }
-        }
-    }
-
-    private PlanetInZodiac moonInZodiac;
-
-    public PlanetInZodiac MoonInZodiac
-    {
-        get { return moonInZodiac; }
-        set
-        {
-            if (moonInZodiac != value)
-            {
-                moonInZodiac = value;
-                OnPropertyChanged(nameof(MoonInZodiac));
-
+                UpdateDayCardColor(); // Trigger shadow color update
             }
         }
     }
@@ -115,6 +81,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
             {
                 activityProfile = value;
                 OnPropertyChanged(nameof(ActivityProfile));
+                UpdateDayCardColor(); // Trigger shadow color update
             }
         }
     }
@@ -130,9 +97,10 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
             {
                 isProfileActivated = value;
                 OnPropertyChanged(nameof(IsProfileActivated));
+                UpdateDayCardColor(); // Trigger shadow color update
             }
         }
-    }    
+    }
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -156,6 +124,39 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
     public void AddDayCardDayNumber(int dayNumber)
     {
         this.DayNumber = dayNumber;
+    }
+
+    public void OnOffProfile(bool isActivated)
+    {
+        this.IsProfileActivated = isActivated;
+    }
+
+    public void ChangeActivityProfile(string activityProfile)
+    {
+        if (DayAstroEvent == null || string.IsNullOrWhiteSpace(activityProfile))
+            return;
+
+        // The type should be of DayAstroEvent, not activityProfile.
+        Type targetType = DayAstroEvent.GetType();
+
+        // Use targetType to find the property. The second parameter to GetProperty should be the property name, not the type.
+        PropertyInfo propertyInfo = targetType.GetProperty(activityProfile, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+
+        if (propertyInfo != null && propertyInfo.PropertyType == typeof(ActivityQuality))
+        {
+            // Get the value of the property from the DayAstroEvent object, not from activityProfile.
+            object value = propertyInfo.GetValue(DayAstroEvent);
+
+            if (value != null)
+            {                
+                ActivityProfile = (ActivityQuality)value;
+            }            
+        }
+
+        else
+        {
+            ActivityProfile = ActivityQuality.None;            
+        }
     }
 
     public void LocateDayCardGrid(DateTime date)
@@ -205,33 +206,70 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
         }
     }
 
-    internal void SetBorderColor(string activityProfile)
+    private void UpdateDayCardColor()
     {
-        if (DayAstroEvent == null || string.IsNullOrWhiteSpace(activityProfile))
-            return;
-        
-        // The type should be of DayAstroEvent, not activityProfile.
-        Type targetType = DayAstroEvent.GetType();
 
-        // Use targetType to find the property. The second parameter to GetProperty should be the property name, not the type.
-        PropertyInfo propertyInfo = targetType.GetProperty(activityProfile, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+        Color shadowColor = GetResourceColor("PrimaryLightText", Colors.Transparent);
+        Color fontColor = GetResourceColor("PrimaryLightText", Colors.Transparent);
 
-        if (propertyInfo != null && propertyInfo.PropertyType == typeof(ActivityQuality))
+        if (DayAstroEvent != null)
         {
-            // Get the value of the property from the DayAstroEvent object, not from activityProfile.
-            object value = propertyInfo.GetValue(DayAstroEvent);
-
-            // If the value is not null, cast it to ActivityQuality and set ActivityProfile.
-            if (value != null)
+            if (!IsProfileActivated)
             {
-                isProfileActivated = true;
-                ActivityProfile = (ActivityQuality)value;
+                if (DayAstroEvent.MoonDay.NewMoonDay == 1)
+                {
+                    shadowColor = GetResourceColor("PrimaryBackground", Colors.Transparent);
+                    fontColor = GetResourceColor("PrimaryBackground", Colors.Transparent);
+                }
+
+                else if (DayAstroEvent.MoonEclipse || DayAstroEvent.SunEclipse)
+                {
+                    shadowColor = GetResourceColor("PrimaryDarkText", Colors.Transparent);                    
+                }
+            }
+            else
+            {
+                // Set fontColor based on activity profile
+                fontColor = ActivityProfile switch
+                {
+                    ActivityQuality.Good => Colors.Green,
+                    ActivityQuality.Bad => Colors.Red,
+                    _ => GetResourceColor("PrimaryLightText", Colors.Transparent),
+                };
+
+                // Set shadowColor based on activity profile, default to transparent for cases not good or bad
+                shadowColor = ActivityProfile switch
+                {
+                    ActivityQuality.Good => Colors.Green,
+                    ActivityQuality.Bad => Colors.Red,
+                    _ => Colors.Transparent, // Default to transparent if not good or bad
+                };
             }
         }
 
-        else
+        // Apply the shadow color
+        ApplyShadowColor(shadowColor, fontColor);
+    }
+
+    private Color GetResourceColor(string resourceName, Color defaultColor)
+    {
+        if (Application.Current.Resources.TryGetValue(resourceName, out var colorValue) && colorValue is Color color)
         {
-            ActivityProfile = ActivityQuality.None;
+            return color;
         }
+        return defaultColor;
+    }
+
+    private void ApplyShadowColor(Color shadowColor, Color fontColor)
+    {
+        dayLabel.TextColor = fontColor;
+        // Assuming `dayCard` is the x:Name of your Border control
+        dayCard.Shadow = new Shadow
+        {
+            Brush = new SolidColorBrush(shadowColor),
+            Radius = 5,
+            Opacity = 1,
+            Offset = new Point(0, 5)
+        };
     }
 }

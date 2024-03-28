@@ -32,6 +32,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0, 20, 0, 0">
                 <Grid.ColumnDefinitions>
@@ -73,7 +74,13 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
             </Grid>
-            <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*" VerticalOptions="End" Margin="12.4, 0, 7.4, 22.4">
+            <Grid Grid.Row="2">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnArrowTapped"/>
+                </Grid.GestureRecognizers>
+                <Image x:Name="arrowImage" Source="up_arrow.png" WidthRequest="30"/>
+            </Grid>
+            <Grid x:Name="profileGrid" Grid.Row="3" ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*" VerticalOptions="End" Margin="12.4, 0, 7.4, 22.4" IsVisible="False">
                 <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="{Binding NoPresetBackgroundColor}" Margin="0, 5 ,5, 0">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="NoPresetRecognizer_Tapped"/>
@@ -135,8 +142,7 @@
                     <Image Source="tech.png" HeightRequest="20" Margin="-10"/>
                 </Frame>
             </Grid>
-            <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*,*" IsVisible="False" x:Name="GridColors">
-
+            <Grid Grid.Row="4" ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*,*" IsVisible="False" x:Name="GridColors">
                 <Entry x:Name="hexColorEntry" Grid.Row="0" Grid.Column="0" Placeholder="Backgroud1" HorizontalOptions="FillAndExpand"/>
                 <Button Grid.Row="0" Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked" BackgroundColor="Transparent"/>
                 <Entry Grid.Row="0" Grid.Column="2" x:Name="hexColorEntry2" Placeholder="Background2" HorizontalOptions="FillAndExpand"/>
