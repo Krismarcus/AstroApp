@@ -4,19 +4,22 @@
 
     <!--  Note: For Android please see also Platforms\Android\Resources\values\colors.xml  -->
 
-    <Color x:Key="ShadedBackground">#2596be</Color>
+    <Color x:Key="ShadedBackground">#063970</Color>
     <Color x:Key="Primary">#f2c174</Color>
     <Color x:Key="PrimaryDark">#ac99ea</Color>
     <Color x:Key="PrimaryLightText">#feeab5</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
     <Color x:Key="PrimaryBackground">#074588</Color>
-    <Color x:Key="SecondaryBackground">#bad8e9</Color>
+    <Color x:Key="SecondaryBackground">#1e81b0</Color>
     <Color x:Key="LightOrangeBackground">#fae4bd</Color>
     <Color x:Key="LightBlueBackground">#c3e9f8</Color>
     <Color x:Key="DarkBlueBackground">#08385a</Color>
     <Color x:Key="Secondary">#3682b5</Color>
     <Color x:Key="SecondaryDarkText">#9880e5</Color>
     <Color x:Key="Tertiary">#2B0B98</Color>
+    <Color x:Key="GreenGlowEffect">#2bff00</Color>
+    <Color x:Key="RedGlowEffect">#ff3b6a</Color>
+
 
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>

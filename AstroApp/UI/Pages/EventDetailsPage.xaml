@@ -17,6 +17,8 @@
                 <GradientStop Color="{Binding PageBackgroundColor2}" Offset="1.0"/>
             </LinearGradientBrush>
         </ResourceDictionary>-->
+        <converters:NewMoonDayToLightBackgroundColorConverter x:Key="NewMoonDayToLightBackgroundColorConverter"/>
+        <converters:NewMoonDayToDarkTextColorConverter x:Key="NewMoonDayToDarkTextColorConverter"/>
         <converters:DateTimeToMonthNameConverter x:Key="DateTimeToMonthNameConverter"/>
         <converters:EnumToImageConverter x:Key="EnumToImageConverter"/>
         <converters:MoonDayIntToImageConverter x:Key="IntToImageConverter"/>
@@ -28,8 +30,8 @@
     </ContentPage.Resources>
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="{Binding PageBackgroundColor1}" Offset="0.1"/>
-            <GradientStop Color="{Binding PageBackgroundColor2}" Offset="1.0"/>
+            <GradientStop Color="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToLightBackgroundColorConverter}}" Offset="0.1"/>
+            <GradientStop Color="{StaticResource SecondaryBackground}" Offset="1.0"/>
         </LinearGradientBrush>
     </ContentPage.Background>
     <ContentPage.Content>
@@ -45,8 +47,7 @@
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>                        
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,20,0,0">
@@ -63,7 +64,7 @@
                             </Grid.GestureRecognizers>
                             <Image x:Name="leftArrow" Source="left_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
                         </Grid>
-                        <Label Grid.Column="2" Text="{Binding DayAstroEvent.Date.Day}" TextColor="{Binding Fontcolor}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="50" FontAttributes="Bold" />
+                        <Label Grid.Column="2" Text="{Binding DayAstroEvent.Date.Day}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="50" FontAttributes="Bold" />
                         <Image Grid.Column="3" Source="{Binding DayAstroEvent.MoonPhase, Converter={StaticResource MoonPhaseImageToIntConverter}}" HeightRequest="70" HorizontalOptions="Start" VerticalOptions="Start" Margin="-20,-8,-10,-10"/>
                         <Grid Grid.Column="4" Padding="40,0">
                             <Grid.GestureRecognizers>
@@ -72,7 +73,7 @@
                             <Image x:Name="rightArrow" Source="right_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
                         </Grid>
                     </Grid>
-                    <Label Grid.Row="1"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding Fontcolor}" FontSize="20" HorizontalOptions="CenterAndExpand" />
+                    <Label Grid.Row="1"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="20" HorizontalOptions="CenterAndExpand" />
                     <Frame  Grid.Row="2"  x:Name="expandableFrame" Padding="10,0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="12.4,20,12.4,12.4">
                         <Grid RowDefinitions="auto,auto">
                             <Grid x:Name="MoonDayInfoGrid" Grid.Row="0" ColumnDefinitions="*,4*" IsVisible="False">
@@ -123,22 +124,17 @@
                                 <!--Grid for New Moon Day Marker and Label-->
                                 <Grid Grid.Column="1" x:Name="newMoonDayMarkerGrid" Margin="0,20" VerticalOptions="Center">                                   
                                     <Image x:Name="newMoonDayMarker" Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="40" Opacity="0"/>
-                                    <BoxView x:Name="smallMarker1" HeightRequest="20" WidthRequest="2" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Label x:Name="timeLabel" Text="{Binding DayAstroEvent.MoonDay.TransitionTime, StringFormat='{0:HH:mm}'}" TextColor="{Binding Fontcolor}" HorizontalOptions="Center" VerticalOptions="Center" TranslationY="20"/>
+                                    <BoxView x:Name="smallMarker1" HeightRequest="20" WidthRequest="2" BackgroundColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label x:Name="timeLabel" Text="{Binding DayAstroEvent.MoonDay.TransitionTime, StringFormat='{0:HH:mm}'}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" TranslationY="20"/>
                                 </Grid>
                                 <!--Grid for Middle Moon Day Marker and Label (only visible for triple moon days)-->
-                                <Grid x:Name="middleMoonDayMarkerGrid" IsVisible="{Binding DayAstroEvent.MoonDay.IsTripleMoonDay}" Margin="0,20" VerticalOptions="Start">
+                                <Grid x:Name="middleMoonDayMarkerGrid" IsVisible="{Binding DayAstroEvent.MoonDay.IsTripleMoonDay}" Margin="0,20" VerticalOptions="Center">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="MiddleMoonDayRecognizer_Tapped"/>
-                                    </Grid.GestureRecognizers>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="20"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Image Grid.Row="0" x:Name="middleMoonDayMarker" Source="{Binding DayAstroEvent.MoonDay.MiddleMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="40" IsVisible="True"/>
-                                    <BoxView Grid.Row="1" x:Name="smallMarker2" HeightRequest="20" WidthRequest="2" BackgroundColor="{StaticResource ShadedBackground}" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Label Grid.Row="2" x:Name="secondTimeLabel" Text="{Binding DayAstroEvent.MoonDay.MiddleMoonDayTransitionTime, StringFormat='{0:HH:mm}'}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" />
+                                    </Grid.GestureRecognizers>                                    
+                                    <Image x:Name="middleMoonDayMarker" Source="{Binding DayAstroEvent.MoonDay.MiddleMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="40" Opacity="0"/>
+                                    <BoxView x:Name="smallMarker2" HeightRequest="20" WidthRequest="2" BackgroundColor="{StaticResource ShadedBackground}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label x:Name="secondTimeLabel" Text="{Binding DayAstroEvent.MoonDay.MiddleMoonDayTransitionTime, StringFormat='{0:HH:mm}'}" TextColor="{StaticResource LightBlueBackground}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" TranslationY="20"/>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -231,119 +227,119 @@
                         </Grid>
                     </Frame>
                     <Frame   Grid.Row="4" Padding="0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12.4, 0,12.4,0">
-                        <Label Text="{Binding DayAstroEvent.EventText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" Margin="20"/>
+                        <Label Text="{Binding DayAstroEvent.EventText}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" Margin="20"/>
                     </Frame>
                     <Grid  Grid.Row="5" RowDefinitions="Auto,Auto" Margin="5,10">
                         <FlexLayout Wrap="Wrap" Grid.Row="0">
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Beauty, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings2}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Beauty" TextColor="{Binding Colorsettings2}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Beauty" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                             <Border.Shadow>
-                                <Shadow Brush="{Binding Colorsettings2}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                             </Border.Shadow>
-                                <Label Text="Buy Things" TextColor="{Binding Colorsettings2}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Buy Things" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings2}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Contracts" TextColor="{Binding Colorsettings2}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Contracts" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings2}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Important Tasks" TextColor="{Binding Colorsettings2}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Important Tasks" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings2}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Gardening" TextColor="{Binding Colorsettings2}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Gardening" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings2}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Love" TextColor="{Binding Colorsettings2}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Love" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Meetings, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings2}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Meetings" TextColor="{Binding Colorsettings2}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Meetings" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.NewIdeas, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings2}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="New Ideas" TextColor="{Binding Colorsettings2}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="New Ideas" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Tech, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings2}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Technologies" TextColor="{Binding Colorsettings2}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Technologies" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                         </FlexLayout>
                         <FlexLayout Wrap="Wrap" Grid.Row="1">
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Beauty, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings3}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Beauty" TextColor="{Binding Colorsettings3}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Beauty" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings3}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Buy Things" TextColor="{Binding Colorsettings3}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Buy Things" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings3}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Contracts" TextColor="{Binding Colorsettings3}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Contracts" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings3}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Important Tasks" TextColor="{Binding Colorsettings3}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Important Tasks" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings3}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Gardening" TextColor="{Binding Colorsettings3}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Gardening" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">                                
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings3}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Love" TextColor="{Binding Colorsettings3}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Love" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Meetings, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings3}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Meetings" TextColor="{Binding Colorsettings3}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Meetings" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.NewIdeas, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings3}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="New Ideas" TextColor="{Binding Colorsettings3}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="New Ideas" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Tech, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
                                 <Border.Shadow>
-                                    <Shadow Brush="{Binding Colorsettings3}" Offset="0,2" Opacity="1" Radius="5"/>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Technologies" TextColor="{Binding Colorsettings3}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Technologies" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                         </FlexLayout>
                     </Grid>
@@ -353,22 +349,8 @@
                                 <controls:CalendarPlanetEventControl />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
-                    </CollectionView>
-                    <Grid  Grid.Row="7"  ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*,*"  Margin="12.4, 0,12.4,0" HorizontalOptions="FillAndExpand">
-                        <Entry x:Name="hexColorEntry" Grid.Row="0" Grid.Column="0" Placeholder="Backgroud1" HorizontalOptions="FillAndExpand"/>
-                        <Button Grid.Row="0" Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked" BackgroundColor="Transparent"/>
-                        <Entry Grid.Row="0" Grid.Column="2" x:Name="hexColorEntry2" Placeholder="Background2" HorizontalOptions="FillAndExpand"/>
-                        <Button Grid.Row="0" Grid.Column="3" Text="Apply" Clicked="ApplyBackgroundColor_Clicked2" BackgroundColor="Transparent"/>
-                        <Entry Grid.Row="1" x:Name="hexColorEntry3" Grid.Column="0" Placeholder="Top" HorizontalOptions="FillAndExpand"/>
-                        <Button Grid.Row="1" Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked3" BackgroundColor="Transparent"/>
-                        <Entry Grid.Row="1" x:Name="hexFontColorEntry" Grid.Column="2" Placeholder="Fonts" HorizontalOptions="FillAndExpand"/>
-                        <Button Grid.Row="1" Grid.Column="3" Text="Apply" Clicked="ApplyFontColor_Clicked4" BackgroundColor="Transparent"/>
-                        <Entry Grid.Row="2" x:Name="hexColorEntry4" Grid.Column="2" Placeholder="Good" HorizontalOptions="FillAndExpand"/>
-                        <Button Grid.Row="2" Grid.Column="3" Text="Apply" Clicked="ApplyBackgroundColor_Clicked4" BackgroundColor="Transparent"/>
-                        <Entry Grid.Row="2" x:Name="hexColorEntry5" Grid.Column="0" Placeholder="Bad" HorizontalOptions="FillAndExpand"/>
-                        <Button Grid.Row="2" Grid.Column="1" Text="Apply" Clicked="ApplyBackgroundColor_Clicked5" BackgroundColor="Transparent"/>
-                    </Grid>
-                    <Frame  Grid.Row="8"  CornerRadius="20" BorderColor="Transparent" BackgroundColor="{Binding Colorsettings1}" HeightRequest="50"  Margin="12.4, 20,12.4,20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    </CollectionView>                    
+                    <Frame  Grid.Row="7"  CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}" HeightRequest="50"  Margin="12.4, 20,12.4,20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnPageTapped"/>
                         </Frame.GestureRecognizers>
@@ -378,7 +360,7 @@
 
             </ScrollView>
             <Frame x:Name="chatBubble" Padding="10" CornerRadius="15"
-       BorderColor="Transparent" BackgroundColor="{StaticResource LightBlueBackground}"
+       BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}"
        IsVisible="False" AbsoluteLayout.LayoutFlags="PositionProportional"
        AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" WidthRequest="350">
                 <Grid>
@@ -388,10 +370,10 @@
                     </Grid.RowDefinitions>
                     <Button Text="X" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Start"
                 WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"
-                TextColor="{StaticResource Secondary}" FontAttributes="Bold"
+                TextColor="{StaticResource DarkBlueBackground}" FontAttributes="Bold"
                 Clicked="CloseChatBubble_Clicked"/>
                     <Label x:Name="chatBubbleText" Text="{Binding MoonDayConteiner.MoonDayInfo}"
-               TextColor="{StaticResource Secondary}" Grid.Row="1"/>
+               TextColor="{StaticResource DarkBlueBackground}" Grid.Row="1"/>
                 </Grid>
             </Frame>
         </AbsoluteLayout>

@@ -8,7 +8,7 @@
              x:DataType="controls:DayControl">
     <ContentView.Resources>
         <converters:DayBorderBackgroundColorToEclipseConverter x:Key="DayBorderBackgroundColorToEclipseConverter"/>
-        <converters:NewMoonDayToDarkColorConverter x:Key="NewMoonDayToDarkColorConverter"/>
+        
         <converters:EnumToImageConverter x:Key="EnumToImageConverter"/>
         <converters:MoonDayIntToImageConverter x:Key="IntToImageConverter"/>        
         <converters:ActivityQualityToColorConverter x:Key="ActivityQualityToColorConverter"/>
@@ -20,7 +20,7 @@
             <TapGestureRecognizer Tapped="OnDayTapped"  />
         </Border.GestureRecognizers>
         <VerticalStackLayout >
-            <Label x:Name="dayLabel" Text="{Binding DayNumber}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkColorConverter}, Mode=OneWay}" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Label x:Name="dayLabel" Text="{Binding DayNumber}" FontAttributes="Bold" HorizontalOptions="Center" />
             <Grid ColumnDefinitions="*,*">
                 <Image Grid.Column="0" Source="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="40" HeightRequest="40" Margin="-5"/>
                 <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="40" HeightRequest="40" Margin="-5"/>

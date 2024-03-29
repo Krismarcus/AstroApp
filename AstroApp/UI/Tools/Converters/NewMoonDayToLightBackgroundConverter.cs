@@ -9,14 +9,21 @@ using System.Threading.Tasks;
 
 namespace AstroApp.UI.Tools.Converters
 {
-    internal class NewMoonDayToDarkColorConverter : IValueConverter
+    internal class NewMoonDayToLightBackgroundColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             // Expecting the value to be an AstroEvent object
-            if (value is DayControl dayControl)
-            {               
-                if (dayControl.DayAstroEvent.MoonDay.NewMoonDay != 1)
+            if (value is AstroEvent astroEvent)
+            {
+                // Check for either SunEclipse or MoonEclipse being true
+                if (astroEvent.SunEclipse || astroEvent.MoonEclipse)
+                {
+                    // Return a specific color if any eclipse is present
+                    return Color.FromRgb(4, 39, 77); // Example color
+                }
+
+                else if (astroEvent.MoonDay.NewMoonDay == 1 || astroEvent.MoonDay.MiddleMoonDay == 1)
                 {
                     return Color.FromRgb(240, 201, 134);
                 }
@@ -29,7 +36,7 @@ namespace AstroApp.UI.Tools.Converters
             }
 
             // Return a fallback color if no condition is met
-            return Colors.Transparent; // Fallback color
+            return Colors.Transparent; // Fallback colorrent; // Fallback color
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
