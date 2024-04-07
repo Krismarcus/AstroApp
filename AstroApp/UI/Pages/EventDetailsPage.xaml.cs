@@ -3,7 +3,7 @@ using AstroApp.Data.Models;
 using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics.X86;
 
 namespace AstroApp.UI.Pages;
 
@@ -44,8 +44,8 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
     public ObservableCollection<AstroEvent> AstroEvents { get; set; } = new ObservableCollection<AstroEvent>();
 
-    private MoonDaySlide moonDayConteiner;
-    public MoonDaySlide MoonDayConteiner
+    private MoonDayDetails moonDayConteiner;
+    public MoonDayDetails MoonDayConteiner
     {
         get => moonDayConteiner;
         set
@@ -57,9 +57,26 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             }
         }
     }
-    
-    private Image currentlyEnlargedMoonImage;
-    private bool isMoonImageEnlarged = false;
+
+    private PlanetInZodiacDetails planetInZodiacConteiner;
+    public PlanetInZodiacDetails PlanetInZodiacConteiner
+    {
+        get => planetInZodiacConteiner;
+        set
+        {
+            if (planetInZodiacConteiner != value)
+            {
+                planetInZodiacConteiner = value;
+                OnPropertyChanged(nameof(PlanetInZodiacConteiner));
+            }
+        }
+    }
+
+    private Grid currentlyEnlargedMoonGrid;
+    private bool isMoonGridEnlarged = false;
+
+    private Grid currentlyEnlargedPlanetInZodiacGrid;
+    private bool isPlanetInZodiacGridEnlarged = false;
 
     public EventDetailsPage()
     {
@@ -77,7 +94,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         {            
             timeLabel.Opacity = 0;
             ResetToDefaultState();
-            UpdateMoonDayInfo();
+            UpdateDayEventInfoList();
             Task.Delay(50).ContinueWith(t => AnimateMarkerToPosition(DayAstroEvent.MoonDay));
         });
     }    
@@ -147,11 +164,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         await leftArrow.TranslateTo(-10, 0, 100); // Move 10 units to the left over 100ms
         await leftArrow.TranslateTo(0, 0, 100); // Move back to original position
         timeLabel.Opacity = 0;
-
-        if (MoonDayInfoGrid.IsVisible == true)
-        {
-            this.MoonDayInfoGrid.IsVisible = false;
-        }
+        
         // Adjust the date to the previous day        
         CurrentDate = CurrentDate.AddDays(-1);
         await InitializeDataAsync(CurrentDate);
@@ -162,11 +175,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         await rightArrow.TranslateTo(10, 0, 100); // Move 10 units to the right over 100ms
         await rightArrow.TranslateTo(0, 0, 100); // Move back to original position
         timeLabel.Opacity = 0;
-
-        if (MoonDayInfoGrid.IsVisible == true)
-        {
-            this.MoonDayInfoGrid.IsVisible = false;
-        }
+        
         // Adjust the date to the next day        
         CurrentDate = CurrentDate.AddDays(1);
         await InitializeDataAsync(CurrentDate);
@@ -259,70 +268,32 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         Application.Current.MainPage.DisplayAlert("Mercury in " + DayAstroEvent.MercuryInZodiac.NewZodiacSign + " Details", DayAstroEvent.MercuryInZodiac.PlanetInZodiacInfo, "OK");
     }
 
-    private async void MiddleMoonDayRecognizer_Tapped(object sender, TappedEventArgs e)
+    private async Task ToggleMoonGridAnimation(Grid moonGrid, string moonDayInfo)
     {
-        if (MoonDayConteiner == null)
+        // Check if there's a previously enlarged grid and it's not the same as the current, shrink it
+        if (currentlyEnlargedMoonGrid != null && currentlyEnlargedMoonGrid != moonGrid && isMoonGridEnlarged)
         {
-            MoonDayConteiner = new MoonDaySlide();
+            await currentlyEnlargedMoonGrid.ScaleTo(1, 200, Easing.CubicIn);
+            await HideMoonDayInfo(); // Assuming you have a method to hide details about the moon day
         }
 
-        this.MoonDayConteiner.MoonDay = DayAstroEvent.MoonDay.MiddleMoonDay;
-        this.MoonDayConteiner.MoonDayInfo = DayAstroEvent.MoonDay.MiddleMoonDayInfo;
-        MoonDayInfoGrid.IsVisible = true;
-        MoonDayInfoGrid.Opacity = 0; // Ensure it's fully transparent initially
-        await MoonDayInfoGrid.FadeTo(1, 250); // 250ms for fade in
-    }
-
-    private async void NewMoonDayRecognizer_Tapped(object sender, TappedEventArgs e)
-    {
-        if (MoonDayConteiner == null)
+        // Now handle the current grid
+        if (currentlyEnlargedMoonGrid != moonGrid || !isMoonGridEnlarged)
         {
-            MoonDayConteiner = new MoonDaySlide();
-        }
+            await moonGrid.ScaleTo(1.5, 400, Easing.CubicOut);
+            isMoonGridEnlarged = true;
+            currentlyEnlargedMoonGrid = moonGrid;
 
-        this.MoonDayConteiner.MoonDay = DayAstroEvent.MoonDay.NewMoonDay;
-        this.MoonDayConteiner.MoonDayInfo = DayAstroEvent.MoonDay.NewMoonDayInfo;
-        MoonDayInfoGrid.IsVisible = true;
-        MoonDayInfoGrid.Opacity = 0; // Ensure it's fully transparent initially
-        await MoonDayInfoGrid.FadeTo(1, 250); // 250ms for fade in
-    }
+            // Update the details about the moon day here
 
-    private async void MoonDayInfoContainerHideRecognizer_Tapped(object sender, TappedEventArgs e)
-    {
-        await MoonDayInfoGrid.FadeTo(0, 250); // 250ms for fade out
-        MoonDayInfoGrid.IsVisible = false;
-    }
-
-    private async Task ToggleMoonImageAnimation(Image moonImage, string moonDayInfo)
-    {
-        // If there's a previously enlarged image and it's not the same as the current, shrink it
-        if (currentlyEnlargedMoonImage != null && currentlyEnlargedMoonImage != moonImage && isMoonImageEnlarged)
-        {
-            await currentlyEnlargedMoonImage.ScaleTo(1, 200, Easing.CubicIn);
-            await HideMoonDayInfo(); // Make sure to hide (fade out) the chat bubble before updating content
-        }
-
-        // Update the chat bubble content in the appropriate place based on your logic here
-
-        // Now handle the current image
-        if (currentlyEnlargedMoonImage != moonImage || !isMoonImageEnlarged)
-        {
-            await moonImage.ScaleTo(1.5, 400, Easing.CubicOut);
-            isMoonImageEnlarged = true;
-            currentlyEnlargedMoonImage = moonImage;
-
-            // Since the chat bubble is already invisible or fading out, now update the content
-            // This should happen right before you start fading it back in
-            UpdateChatBubbleContent(moonDayInfo); // Placeholder for where you'd update the content
-
-            // Show the chat bubble with the updated info
-            await ShowMoonDayInfo();
+            // Show the details after updating
+            await ShowMoonDayInfo(moonDayInfo); // Assuming you have a method to show details about the moon day
         }
         else
         {
-            await moonImage.ScaleTo(1, 400, Easing.CubicIn);
-            isMoonImageEnlarged = false;
-            // Optionally, hide the chat bubble if the same image is clicked again
+            await moonGrid.ScaleTo(1, 400, Easing.CubicIn);
+            isMoonGridEnlarged = false;
+            // Optionally, hide the details if the same grid is tapped again
             await HideMoonDayInfo();
         }
     }
@@ -333,58 +304,52 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     {
         if (MoonDayConteiner == null)
         {
-            MoonDayConteiner = new MoonDaySlide();
+            MoonDayConteiner = new MoonDayDetails();
         }
 
-        if (sender == previousMoonDayImage)
-        {
-            var previousMoonImage = this.previousMoonDayImage.Children.OfType<Image>().FirstOrDefault();
-            if (previousMoonImage != null)
-            {   
+        if (sender == previousMoonDayImageGrid)
+        {            
                 string moonDayInfo = DayAstroEvent.MoonDay.PreviousMoonDayInfo;
-                await ToggleMoonImageAnimation(previousMoonImage, moonDayInfo);
-                
-            }
+                await ToggleMoonGridAnimation(previousMoonDayImageGrid, moonDayInfo);               
+            
         }
-        else if (sender == newMoonDayImage)
-        {
-            var newMoonDayImage = this.newMoonDayImage.Children.OfType<Image>().FirstOrDefault();
-            if (newMoonDayImage != null)
-            {
+        else if (sender == newMoonDayImageGrid)
+        {                        
                 string moonDayInfo = DayAstroEvent.MoonDay.NewMoonDayInfo;
-                await ToggleMoonImageAnimation(newMoonDayImage, moonDayInfo);                
-            }
+                await ToggleMoonGridAnimation(newMoonDayImageGrid, moonDayInfo);                
+            
         }
     }
 
-    private async Task ShowMoonDayInfo()
+    private async Task ShowMoonDayInfo(string moonDayInfo)
     {
         // Fade out existing content quickly if it's already visible
-        if (chatBubble.IsVisible)
+        if (moonDayInfoScreen.IsVisible)
         {
-            await chatBubble.FadeTo(0, 200, Easing.CubicIn);
+            await moonDayInfoScreen.FadeTo(0, 200, Easing.CubicIn);
         }
 
         // Assuming chatBubble.Text is updated elsewhere in the MoonImage_Tapped handler
-        chatBubble.Opacity = 0;
-        chatBubble.Scale = 0.5;
-        chatBubble.IsVisible = true;
+        moonDayInfoScreen.Opacity = 0;
+        moonDayInfoScreen.Scale = 0.5;
+        moonDayInfoScreen.IsVisible = true;
+        UpdateChatBubbleContent(moonDayInfo);
 
         // Fade in new content
-        var fadeAnimation = chatBubble.FadeTo(0.8, 200, Easing.CubicOut);
-        var scaleAnimation = chatBubble.ScaleTo(1, 200, Easing.CubicOut);
+        var fadeAnimation = moonDayInfoScreen.FadeTo(0.8, 200, Easing.CubicOut);
+        var scaleAnimation = moonDayInfoScreen.ScaleTo(1, 200, Easing.CubicOut);
         await Task.WhenAll(fadeAnimation, scaleAnimation);
     }
 
     private async Task HideMoonDayInfo()
     {
         // Initiate fade out
-        await chatBubble.FadeTo(0, 200, Easing.CubicIn);
+        await moonDayInfoScreen.FadeTo(0, 200, Easing.CubicIn);
 
         // Scale down and hide
-        var scaleAnimation = chatBubble.ScaleTo(0.5, 200, Easing.CubicIn);
+        var scaleAnimation = moonDayInfoScreen.ScaleTo(0.5, 200, Easing.CubicIn);
         await Task.WhenAll(scaleAnimation);
-        chatBubble.IsVisible = false;
+        moonDayInfoScreen.IsVisible = false;
     }
 
     private void UpdateChatBubbleContent(string newContent)
@@ -396,31 +361,88 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     private async Task ResetToDefaultState()
     {
         // Check if any moon image is currently enlarged and reset its scale if necessary
-        if (isMoonImageEnlarged && currentlyEnlargedMoonImage != null)
+        if (isMoonGridEnlarged && currentlyEnlargedMoonGrid != null)
         {
-            await currentlyEnlargedMoonImage.ScaleTo(1, 400, Easing.CubicIn);
-            isMoonImageEnlarged = false;
-            currentlyEnlargedMoonImage = null; // Reset the reference to the currently enlarged moon image
+            await currentlyEnlargedMoonGrid.ScaleTo(1, 400, Easing.CubicIn);
+            isMoonGridEnlarged = false;
+            currentlyEnlargedMoonGrid = null; // Reset the reference to the currently enlarged moon image
         }
 
         // Hide the chat bubble with animation and then reset its properties
         await HideMoonDayInfo();
 
         // After the chat bubble is hidden, reset its text and other properties to default        
-        chatBubble.Opacity = 0.8; // Reset opacity back to fully opaque
-        chatBubble.Scale = 1; // Reset scale to its original size
-        chatBubble.IsVisible = false; // Ensure it's hidden
+        moonDayInfoScreen.Opacity = 0.8; // Reset opacity back to fully opaque
+        moonDayInfoScreen.Scale = 1; // Reset scale to its original size
+        moonDayInfoScreen.IsVisible = false; // Ensure it's hidden
 
         // Reset any other states or properties related to your UI or data here
         // For example, if you have a container or model that needs to be reset
         // MoonDayConteiner.MoonDayInfo = null; // Reset or clear as appropriate for your application
     }
 
-    private async void CloseChatBubble_Clicked(object sender, EventArgs e)
+    private async void CloseMoonDayInfoScreen_Clicked(object sender, EventArgs e)
     {
         // Call the method to reset the UI elements to their original state
         // This includes hiding the chat bubble and resetting any enlarged images
         await ResetToDefaultState();
+    }
+
+    private async void PlanetInZodiacGrid_Tapped(object sender, EventArgs e)
+    {
+        if (MoonDayConteiner == null)
+        {
+            MoonDayConteiner = new MoonDayDetails();
+        }
+
+        if (sender == sunInZodiacGrid)
+        {            
+            if (sunInZodiacGrid != null)
+            {
+                string sunInZodiacInfo = DayAstroEvent.SunInZodiac.PlanetInZodiacInfo;
+                await ToggleMoonGridAnimation(sunInZodiacGrid, sunInZodiacInfo);
+
+            }
+        }
+
+        if (sender == moonInZodiacGrid)
+        {
+            if (moonInZodiacGrid != null)
+            {
+                string moonInZodiacInfo = DayAstroEvent.MoonInZodiac.PlanetInZodiacInfo;
+                await ToggleMoonGridAnimation(moonInZodiacGrid, moonInZodiacInfo);
+
+            }
+        }
+
+        if (sender == venusInZodiacGrid)
+        {
+            if (venusInZodiacGrid != null)
+            {
+                string venusInZodiacInfo = DayAstroEvent.VenusInZodiac.PlanetInZodiacInfo;
+                await ToggleMoonGridAnimation(venusInZodiacGrid, venusInZodiacInfo);
+
+            }
+        }
+
+        if (sender == marsInZodiacGrid)
+        {
+            if (marsInZodiacGrid != null)
+            {
+                string marsInZodiacInfo = DayAstroEvent.MarsInZodiac.PlanetInZodiacInfo;
+                await ToggleMoonGridAnimation(marsInZodiacGrid, marsInZodiacInfo);
+            }
+        }
+
+        if (sender == mercuryInZodiacGrid)
+        {
+            if (mercuryInZodiacGrid != null)
+            {
+                string mercuryInZodiacInfo = DayAstroEvent.MercuryInZodiac.PlanetInZodiacInfo;
+                await ToggleMoonGridAnimation(mercuryInZodiacGrid, mercuryInZodiacInfo);
+
+            }
+        }
     }
 }
 

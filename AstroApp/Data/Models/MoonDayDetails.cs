@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AstroApp.Data.Models
 {
-    public partial class MoonDaySlide : ObservableObject
+    public partial class MoonDayDetails : ObservableObject
     {
         [ObservableProperty]
         private int moonDay;

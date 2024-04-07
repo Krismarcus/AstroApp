@@ -200,9 +200,8 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
             var eventDetailsPage = new EventDetailsPage();
             eventDetailsPage.InitializeAstroEventList();
             eventDetailsPage.InitializeDataAsync(DayAstroEvent.Date);            
-            eventDetailsPage.UpdateDayEventInfoList();
             Navigation.PushModalAsync(eventDetailsPage);
-
+            eventDetailsPage.UpdateDayEventInfoList();
         }
     }
 
