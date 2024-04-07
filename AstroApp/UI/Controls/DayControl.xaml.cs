@@ -239,7 +239,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
                 // Set shadowColor based on activity profile, default to transparent for cases not good or bad
                 shadowColor = ActivityProfile switch
                 {
-                    ActivityQuality.Good => Colors.Green,
+                    ActivityQuality.Good => Color.FromRgb(15, 255, 80),
                     ActivityQuality.Bad => Colors.Red,
                     _ => Colors.Transparent, // Default to transparent if not good or bad
                 };
