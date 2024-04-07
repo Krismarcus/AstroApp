@@ -144,6 +144,13 @@ public partial class EditDayControl : ContentView, INotifyPropertyChanged
         
         setQuality((ActivityQuality)nextQuality);
     }
+    private void BarberIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.Barber,
+            (quality) => dayAstroEvent.Barber = quality
+        );
+    }
 
     private void BeautyIcon_Tapped(object sender, EventArgs e)
     {

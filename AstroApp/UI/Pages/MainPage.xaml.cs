@@ -57,7 +57,8 @@ namespace AstroApp.UI.Pages
                 }
             }
         }
-        
+
+        public Color BarberBackgroundColor { get; set; } = Colors.Transparent;
         public Color BeautyBackgroundColor { get; set; } = Colors.Transparent;
         public Color BuyStuffBackgroundColor { get; set; } = Colors.Transparent;
         public Color ContractsBackgroundColor { get; set; } = Colors.Transparent;
@@ -391,6 +392,11 @@ namespace AstroApp.UI.Pages
                 month++;
             }
 
+            UpdateCalendar(year, month);
+        }
+        private void BarberRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            ActivityProfile = "barber";
             UpdateCalendar(year, month);
         }
 

@@ -8,6 +8,7 @@ namespace AstroApp.Data.Enums
 {
     public enum ActivitySymbol
     {
+        Barber,
         Beauty,
         BuyStuff,
         Contracts,

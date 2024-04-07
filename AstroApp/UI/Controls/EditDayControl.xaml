@@ -127,6 +127,17 @@
                                 <Image
                                     Grid.Row="0"
                                     Grid.Column="0"
+                                    Background="{Binding DayAstroEvent.Barber, Converter={StaticResource ActivityQualityToColor}}"
+                                    HeightRequest="30"
+                                    Source="barber.png"
+                                    WidthRequest="30">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="BarberIcon_Tapped" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
                                     Background="{Binding DayAstroEvent.Beauty, Converter={StaticResource ActivityQualityToColor}}"
                                     HeightRequest="30"
                                     Source="beauty.png"
@@ -137,7 +148,7 @@
                                 </Image>
                                 <Image
                                     Grid.Row="0"
-                                    Grid.Column="1"
+                                    Grid.Column="2"
                                     Background="{Binding DayAstroEvent.Buystuff, Converter={StaticResource ActivityQualityToColor}}"
                                     HeightRequest="30"
                                     Source="buystuff.png"
@@ -148,7 +159,7 @@
                                 </Image>
                                 <Image
                                     Grid.Row="0"
-                                    Grid.Column="2"
+                                    Grid.Column="3"
                                     Background="{Binding DayAstroEvent.Contracts, Converter={StaticResource ActivityQualityToColor}}"
                                     HeightRequest="30"
                                     Source="contracts.png"
@@ -159,7 +170,7 @@
                                 </Image>
                                 <Image
                                     Grid.Row="0"
-                                    Grid.Column="3"
+                                    Grid.Column="4"
                                     Background="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource ActivityQualityToColor}}"
                                     HeightRequest="30"
                                     Source="importanttasks.png"
@@ -169,8 +180,8 @@
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <Image
-                                    Grid.Row="0"
-                                    Grid.Column="4"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
                                     Background="{Binding DayAstroEvent.Gardening, Converter={StaticResource ActivityQualityToColor}}"
                                     HeightRequest="30"
                                     Source="gardening.png"
@@ -181,7 +192,7 @@
                                 </Image>
                                 <Image
                                     Grid.Row="1"
-                                    Grid.Column="0"
+                                    Grid.Column="1"
                                     Background="{Binding DayAstroEvent.Love, Converter={StaticResource ActivityQualityToColor}}"
                                     HeightRequest="30"
                                     Source="love.png"
@@ -192,7 +203,7 @@
                                 </Image>
                                 <Image
                                     Grid.Row="1"
-                                    Grid.Column="1"
+                                    Grid.Column="2"
                                     Background="{Binding DayAstroEvent.Meetings, Converter={StaticResource ActivityQualityToColor}}"
                                     HeightRequest="30"
                                     Source="meetings.png"
@@ -203,7 +214,7 @@
                                 </Image>
                                 <Image
                                     Grid.Row="1"
-                                    Grid.Column="2"
+                                    Grid.Column="3"
                                     Background="{Binding DayAstroEvent.NewIdeas, Converter={StaticResource ActivityQualityToColor}}"
                                     HeightRequest="30"
                                     Source="newideas.png"
@@ -214,7 +225,7 @@
                                 </Image>
                                 <Image
                                     Grid.Row="1"
-                                    Grid.Column="3"
+                                    Grid.Column="4"
                                     Background="{Binding DayAstroEvent.Tech, Converter={StaticResource ActivityQualityToColor}}"
                                     HeightRequest="30"
                                     Source="tech.png"

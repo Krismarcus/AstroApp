@@ -70,6 +70,7 @@
 	  <None Remove="Resources\Images\aquarius.png" />
 	  <None Remove="Resources\Images\aries.png" />
 	  <None Remove="Resources\Images\arrow.png" />
+	  <None Remove="Resources\Images\barber.png" />
 	  <None Remove="Resources\Images\bat.png" />
 	  <None Remove="Resources\Images\bear.png" />
 	  <None Remove="Resources\Images\beauty.png" />

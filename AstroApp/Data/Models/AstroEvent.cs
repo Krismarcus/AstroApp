@@ -33,6 +33,8 @@ namespace AstroApp.Data.Models
         [ObservableProperty]
         private bool moonEclipse;
         [ObservableProperty]
+        private ActivityQuality barber;
+        [ObservableProperty]
         private ActivityQuality beauty;
         [ObservableProperty]
         private ActivityQuality buystuff;
