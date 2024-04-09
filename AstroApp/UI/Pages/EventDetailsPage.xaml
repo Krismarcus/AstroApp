@@ -215,7 +215,7 @@
                         <Label Text="{Binding DayAstroEvent.EventText}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" Margin="20"/>
                     </Frame>
                     <Grid  Grid.Row="5" RowDefinitions="Auto,Auto" Margin="5,10">
-                        <FlexLayout Wrap="Wrap" Grid.Row="0">
+                        <FlexLayout Wrap="Wrap" Grid.Row="0" HorizontalOptions="Center">
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Barber, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
                                     <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
@@ -277,7 +277,7 @@
                                 <Label Text="Technika" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                         </FlexLayout>
-                        <FlexLayout Wrap="Wrap" Grid.Row="1">
+                        <FlexLayout Wrap="Wrap" Grid.Row="1" HorizontalOptions="Center">
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Barber, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
                                     <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
@@ -359,7 +359,8 @@
             <Frame x:Name="moonDayInfoScreen" Padding="10" CornerRadius="15"
        BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}"
        IsVisible="False" AbsoluteLayout.LayoutFlags="PositionProportional"
-       AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" WidthRequest="350">
+       AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" MaximumWidthRequest="350" MaximumHeightRequest="500">
+                
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -369,9 +370,11 @@
                 WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"
                 TextColor="{StaticResource DarkBlueBackground}" FontAttributes="Bold"
                 Clicked="CloseMoonDayInfoScreen_Clicked"/>
-                    <Label x:Name="moonDayInfoScreenText" Text="{Binding MoonDayConteiner.MoonDayInfo}"
-               TextColor="{StaticResource DarkBlueBackground}" Grid.Row="1"/>
-                </Grid>
+                    <ScrollView Grid.Row="1">
+                    <Label x:Name="moonDayInfoScreenText" Text="{Binding MoonDayConteiner.MoonDayInfo}" FontSize="16"
+               TextColor="{StaticResource DarkBlueBackground}" />
+                    </ScrollView>
+                </Grid>                
             </Frame>
             <!--<Frame x:Name="PlanetInZodiacInfoScreen" Padding="10" CornerRadius="15"
 BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}"

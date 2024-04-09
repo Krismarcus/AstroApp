@@ -336,7 +336,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         UpdateChatBubbleContent(moonDayInfo);
 
         // Fade in new content
-        var fadeAnimation = moonDayInfoScreen.FadeTo(0.8, 200, Easing.CubicOut);
+        var fadeAnimation = moonDayInfoScreen.FadeTo(1, 200, Easing.CubicOut);
         var scaleAnimation = moonDayInfoScreen.ScaleTo(1, 200, Easing.CubicOut);
         await Task.WhenAll(fadeAnimation, scaleAnimation);
     }
@@ -372,7 +372,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         await HideMoonDayInfo();
 
         // After the chat bubble is hidden, reset its text and other properties to default        
-        moonDayInfoScreen.Opacity = 0.8; // Reset opacity back to fully opaque
+        moonDayInfoScreen.Opacity = 1; // Reset opacity back to fully opaque
         moonDayInfoScreen.Scale = 1; // Reset scale to its original size
         moonDayInfoScreen.IsVisible = false; // Ensure it's hidden
 
