@@ -65,7 +65,7 @@
                             <Image x:Name="leftArrow" Source="left_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
                         </Grid>
                         <Label Grid.Column="2" Text="{Binding DayAstroEvent.Date.Day}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="50" FontAttributes="Bold" />
-                        <Image Grid.Column="3" Source="{Binding DayAstroEvent.MoonPhase, Converter={StaticResource MoonPhaseImageToIntConverter}}" HeightRequest="70" HorizontalOptions="Start" VerticalOptions="Start" Margin="-20,-8,-10,-10"/>
+                        <Image Grid.Column="3" Source="{Binding DayAstroEvent.MoonPhase, Converter={StaticResource MoonPhaseImageToIntConverter}}" HeightRequest="30" HorizontalOptions="Start" TranslationY="-8" TranslationX="-8"/>
                         <Grid Grid.Column="4" Padding="40,0">
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="NextDateButton_Clicked"/>
@@ -124,94 +124,86 @@
                             
                         </Grid>
                     </Frame>
-                    <Frame  Grid.Row="3"  Padding="0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12.4, 0,12.4,12.4">
-                        <Grid RowDefinitions="*,*" Margin="0,10">
-                            <Grid Grid.Row="0" ColumnDefinitions="*,*" Margin="0,10">
+                    <Frame  Grid.Row="3"  Padding="10" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12.4, 0,12.4,12.4">
+                        <Grid RowDefinitions="*,*">
+                            <Grid Grid.Row="0" ColumnDefinitions="*,*">
                                 <Grid x:Name="sunInZodiacGrid" ColumnDefinitions="*,*" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">                                    
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="PlanetInZodiacGrid_Tapped"/>
                                     </Grid.GestureRecognizers>
-                                    <Image Grid.Column="0" Source="sun.png" HeightRequest="150" Margin="-50"/>
-                                    <Image Grid.Column="1" Source="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HeightRequest="90" Margin="-15,-30,-30,-30"/>
+                                    <Image Grid.Column="0" Source="sun.png"/>
+                                    <Grid Grid.Column="1" ColumnDefinitions="*,*" RowDefinitions="*,*" TranslationX="-15" Margin="10">
+                                        <Image Grid.Column="0" Source="{Binding DayAstroEvent.SunInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.SunInZodiac.IsZodiacTransitioning}"/>
+                                        <Image Grid.Column="1" Source="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Grid>
                                 </Grid>
                                 <Grid x:Name="moonInZodiacGrid" Grid.Column="1" ColumnDefinitions="*,*"  HorizontalOptions="Center" VerticalOptions="Center">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="PlanetInZodiacGrid_Tapped"/>
                                     </Grid.GestureRecognizers>
-                                    <Image Grid.Column="0" Source="moon.png" HeightRequest="150" Margin="-50"/>
-                                    <Grid Grid.Column="1">
-                                        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" Margin="10">
-                                            <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}" HeightRequest="90" Margin="-30,-30,-15,-30"/>
-                                            <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="90" Margin="-15,-30,-30,-30"/>
-                                            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                                                <VerticalStackLayout HorizontalOptions="Center">
-                                                    <Image Source="arrow.png" HeightRequest="40" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}"/>
-                                                    <Label Text="{Binding DayAstroEvent.MoonInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}"/>
-                                                </VerticalStackLayout>
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
+                                    <Image Grid.Column="0" Source="moon.png" TranslationX="15"/>                                    
+                                        <Grid Grid.Column="1"  ColumnDefinitions="*,*" RowDefinitions="*,*" Margin="10">
+                                            <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}"/>
+                                            <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2" >
+                                                <Image Source="arrow_transition.png" HeightRequest="20" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
+                                                <Label Text="{Binding DayAstroEvent.MoonInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                        </Grid>                                    
                                 </Grid>
                             </Grid>
-                            <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Margin="0,10">
+                            <Grid Grid.Row="1" ColumnDefinitions="*,*,*">
                                 <Grid x:Name="venusInZodiacGrid"  Grid.Column="0" ColumnDefinitions="*,*"  HorizontalOptions="Center" VerticalOptions="Center">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="PlanetInZodiacGrid_Tapped"/>
                                     </Grid.GestureRecognizers>
-                                    <Image Grid.Column="0" Source="venus.png" HeightRequest="150" Margin="-50"/>
-                                    <Grid Grid.Column="1">
-                                        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" Margin="10">
-                                            <Image Grid.Column="0" Source="{Binding DayAstroEvent.VenusInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}" HeightRequest="90" Margin="-30,-30,-15,-30"/>
-                                            <Image Grid.Column="1" Source="{Binding DayAstroEvent.VenusInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="90" Margin="-15,-30,-30,-30"/>
-                                            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                                                <VerticalStackLayout HorizontalOptions="Center">
-                                                    <Image Source="arrow.png" HeightRequest="40" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}"/>
-                                                    <Label Text="{Binding DayAstroEvent.VenusInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}"/>
-                                                </VerticalStackLayout>
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
+                                    <Image Grid.Column="0" Source="venus.png"/>
+                                    <Grid Grid.Column="1" ColumnDefinitions="*,*" RowDefinitions="*,*">
+                                        <Image Grid.Column="0" Source="{Binding DayAstroEvent.VenusInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}"/>
+                                        <Image Grid.Column="1" Source="{Binding DayAstroEvent.VenusInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                                            <Image Source="arrow_transition.png" HeightRequest="15" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
+                                            <Label Text="{Binding DayAstroEvent.VenusInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                    </Grid>                                    
                                 </Grid>
                                 <Grid x:Name="marsInZodiacGrid" Grid.Column="1" ColumnDefinitions="*,*"  HorizontalOptions="Center" VerticalOptions="Center">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="PlanetInZodiacGrid_Tapped"/>
                                     </Grid.GestureRecognizers>
-                                    <Image Grid.Column="0" Source="mars.png" HeightRequest="150" Margin="-50"/>
-                                    <Grid Grid.Column="1">
-                                        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" Margin="10">
-                                            <Image Grid.Column="0" Source="{Binding DayAstroEvent.MarsInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" HeightRequest="90" Margin="-30,-30,-15,-30"/>
-                                            <Image Grid.Column="1" Source="{Binding DayAstroEvent.MarsInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="90" Margin="-15,-30,-30,-30"/>
-                                            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                                                <VerticalStackLayout HorizontalOptions="Center">
-                                                    <Image Source="arrow.png" HeightRequest="40" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}"/>
-                                                    <Label Text="{Binding DayAstroEvent.MarsInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}"/>
-                                                </VerticalStackLayout>
-                                            </Grid>
+                                    <Image Grid.Column="0" Source="mars.png"/>
+                                    <Grid  Grid.Column="1" ColumnDefinitions="*,*" RowDefinitions="*,*">
+                                            <Image Grid.Column="0" Source="{Binding DayAstroEvent.MarsInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}"/>
+                                            <Image Grid.Column="1" Source="{Binding DayAstroEvent.MarsInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                                                <Image Source="arrow_transition.png" HeightRequest="15" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
+                                                <Label Text="{Binding DayAstroEvent.MarsInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
                                         </Grid>
-                                    </Grid>
-                                </Grid>
-                                <Grid x:Name="mercuryInZodiacGrid" Grid.Column="2" ColumnDefinitions="*,*"  HorizontalOptions="Center" VerticalOptions="Center">
+                                        </Grid>
+                                    <Grid x:Name="mercuryInZodiacGrid" Grid.Column="2" ColumnDefinitions="*,*"  HorizontalOptions="Center" VerticalOptions="Center">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="PlanetInZodiacGrid_Tapped"/>
                                     </Grid.GestureRecognizers>
-                                    <Image Grid.Column="0" Source="mercury.png" HeightRequest="150" Margin="-50"/>
-                                    <Grid Grid.Column="1">
-                                        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" Margin="10">
-                                            <Image Grid.Column="0" Source="{Binding DayAstroEvent.MercuryInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}" HeightRequest="90" Margin="-30,-30,-15,-30"/>
-                                            <Image Grid.Column="1" Source="{Binding DayAstroEvent.MercuryInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="90" Margin="-15,-30,-30,-30"/>
-                                            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                                                <VerticalStackLayout HorizontalOptions="Center">
-                                                    <Image Source="arrow.png" HeightRequest="40" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}"/>
-                                                    <Label Text="{Binding DayAstroEvent.MercuryInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}"/>
-                                                </VerticalStackLayout>
+                                    <Image Grid.Column="0" Source="mercury.png"/>                                    
+                                        <Grid Grid.Column="1" ColumnDefinitions="*,*,auto" RowDefinitions="*,*">
+                                            <Image Grid.Column="0" Source="{Binding DayAstroEvent.MercuryInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}"/>
+                                            <Image Grid.Column="1" Source="{Binding DayAstroEvent.MercuryInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>                                        
+                                        <Grid Grid.Row="1" Grid.ColumnSpan="2" RowDefinitions="*,*" HorizontalOptions="Center" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}" >
+                                                <Image Source="arrow_transition.png" HeightRequest="15" HorizontalOptions="Center"/>
+                                                <Label Text="{Binding DayAstroEvent.MercuryInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" HorizontalOptions="Center"/>
                                             </Grid>
-                                        </Grid>
-                                    </Grid>
+                                        </Grid>                                    
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Frame>
                     <Frame   Grid.Row="4" Padding="0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12.4, 0,12.4,0">
+                        <Frame.Triggers>
+                            <DataTrigger TargetType="Frame" Binding="{Binding DayAstroEvent.EventText}" Value="">
+                                <Setter Property="IsVisible" Value="False"/>
+                            </DataTrigger>
+                        </Frame.Triggers>
                         <Label Text="{Binding DayAstroEvent.EventText}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" Margin="20"/>
                     </Frame>
                     <Grid  Grid.Row="5" RowDefinitions="Auto,Auto" Margin="5,10">
@@ -222,7 +214,7 @@
                                 </Border.Shadow>
                                 <Label Text="Kirpykla" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Beauty, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="5" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Beauty, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
                                     <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
@@ -359,7 +351,7 @@
             <Frame x:Name="moonDayInfoScreen" Padding="10" CornerRadius="15"
        BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}"
        IsVisible="False" AbsoluteLayout.LayoutFlags="PositionProportional"
-       AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" MaximumWidthRequest="350" MaximumHeightRequest="500">
+       AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" MaximumWidthRequest="300">
                 
                 <Grid>
                     <Grid.RowDefinitions>

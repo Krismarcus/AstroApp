@@ -22,9 +22,9 @@
         <VerticalStackLayout >
             <Label x:Name="dayLabel" Text="{Binding DayNumber}" FontAttributes="Bold" HorizontalOptions="Center" />
             <Grid ColumnDefinitions="*,*">
-                <Image Grid.Column="0" Source="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="40" HeightRequest="40" Margin="-5">                    
+                <Image Grid.Column="0" Source="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="20" HeightRequest="20">                    
                 </Image>
-                <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="40" HeightRequest="40" Margin="-5">                    
+                <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="20" HeightRequest="20">                    
                 </Image>
             </Grid>
             <Grid Padding="5" HorizontalOptions="Center" VerticalOptions="Start">

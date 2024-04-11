@@ -231,8 +231,8 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
                 // Set fontColor based on activity profile
                 fontColor = ActivityProfile switch
                 {
-                    ActivityQuality.Good => Colors.Green,
-                    ActivityQuality.Bad => Colors.Red,
+                    ActivityQuality.Good => GetResourceColor("PrimaryLightText", Colors.Transparent),
+                    ActivityQuality.Bad => GetResourceColor("PrimaryLightText", Colors.Transparent),
                     _ => GetResourceColor("PrimaryLightText", Colors.Transparent),
                 };
 

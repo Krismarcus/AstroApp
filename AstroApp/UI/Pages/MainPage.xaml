@@ -74,11 +74,13 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
             </Grid>
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="2" ColumnDefinitions="auto,*,auto" Margin="10" BackgroundColor="Transparent">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnArrowTapped"/>
-                </Grid.GestureRecognizers>
-                <Image x:Name="arrowImage" Source="up_arrow.png" WidthRequest="30"/>
+                </Grid.GestureRecognizers>                
+                <Image Grid.Column="0" x:Name="leftArrowImage" Source="up_arrow.png" WidthRequest="30" HorizontalOptions="Center" BackgroundColor="Transparent"/>
+                <Label Grid.Column="1" Text="Palankios/Nepalankios Dienos" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Image Grid.Column="2" x:Name="rightArrowImage" Source="up_arrow.png" WidthRequest="30"/>
             </Grid>
             <Grid x:Name="profileGrid" Grid.Row="3" ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*" VerticalOptions="End" Margin="12.4, 0, 7.4, 22.4" IsVisible="False">
                 <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="{Binding NoPresetBackgroundColor}" Margin="0, 5 ,5, 0">

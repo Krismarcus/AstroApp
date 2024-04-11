@@ -464,32 +464,46 @@ namespace AstroApp.UI.Pages
         {
             if (isProfileGridVisible)
             {
-                // Move the arrow down before hiding the grid
-                await arrowImage.TranslateTo(0, 10, 100); // Adjust these values as needed
-                await arrowImage.TranslateTo(0, 0, 100); // Return to the original position
+                // Animate both arrows down before hiding the grid
+                var arrowDownLeft = leftArrowImage.TranslateTo(0, 10, 100);
+                var arrowDownRight = rightArrowImage.TranslateTo(0, 10, 100);
+                await Task.WhenAll(arrowDownLeft, arrowDownRight);
+
+                var arrowReturnLeft = leftArrowImage.TranslateTo(0, 0, 100);
+                var arrowReturnRight = rightArrowImage.TranslateTo(0, 0, 100);
+                await Task.WhenAll(arrowReturnLeft, arrowReturnRight);
 
                 // Hide the grid
                 await profileGrid.TranslateTo(0, profileGrid.Height, 250, Easing.SinIn);
                 profileGrid.IsVisible = false;
 
-                // Rotate the arrow back to its original orientation
-                await arrowImage.RotateTo(0, 200);
+                // Rotate both arrows back to their original orientation
+                var rotateBackLeft = leftArrowImage.RotateTo(0, 200);
+                var rotateBackRight = rightArrowImage.RotateTo(0, 200);
+                await Task.WhenAll(rotateBackLeft, rotateBackRight);
             }
             else
             {
                 // Make the grid visible before animating it
                 profileGrid.IsVisible = true;
-                profileGrid.TranslationY = profileGrid.Height; // Start off-screen
+                profileGrid.TranslationY = profileGrid.Height;  // Start off-screen
 
-                // Move the arrow up before showing the grid
-                await arrowImage.TranslateTo(0, -10, 100); // Adjust these values as needed
-                await arrowImage.TranslateTo(0, 0, 100); // Return to the original position
+                // Animate both arrows up before showing the grid
+                var arrowUpLeft = leftArrowImage.TranslateTo(0, -10, 100);
+                var arrowUpRight = rightArrowImage.TranslateTo(0, -10, 100);
+                await Task.WhenAll(arrowUpLeft, arrowUpRight);
+
+                var arrowReturnLeft = leftArrowImage.TranslateTo(0, 0, 100);
+                var arrowReturnRight = rightArrowImage.TranslateTo(0, 0, 100);
+                await Task.WhenAll(arrowReturnLeft, arrowReturnRight);
 
                 // Animate the grid into view
                 await profileGrid.TranslateTo(0, 0, 250, Easing.SinOut);
 
-                // Rotate the arrow 180 degrees to indicate the grid is open
-                await arrowImage.RotateTo(180, 200);
+                // Rotate both arrows 180 degrees to indicate the grid is open
+                var rotateLeft = leftArrowImage.RotateTo(180, 200);
+                var rotateRight = rightArrowImage.RotateTo(180, 200);
+                await Task.WhenAll(rotateLeft, rotateRight);
             }
 
             isProfileGridVisible = !isProfileGridVisible;
@@ -502,14 +516,20 @@ namespace AstroApp.UI.Pages
 
         private async void HideGridWithAnimation()
         {
-            // Step 1: Animate the arrow up
-            await arrowImage.TranslateTo(0, -30, 200); // Adjust values as needed
+            // Animate both arrows up before hiding the grid
+            Task arrowUpLeft = leftArrowImage.TranslateTo(0, -30, 200); // Adjust these values as needed
+            Task arrowUpRight = rightArrowImage.TranslateTo(0, -30, 200); // Adjust these values as needed
+            await Task.WhenAll(arrowUpLeft, arrowUpRight);
 
-            // Step 2: Animate the arrow down
-            await arrowImage.TranslateTo(0, 0, 200); // Return to original position
+            // Animate both arrows down to return to the original position
+            Task arrowDownLeft = leftArrowImage.TranslateTo(0, 0, 200);
+            Task arrowDownRight = rightArrowImage.TranslateTo(0, 0, 200);
+            await Task.WhenAll(arrowDownLeft, arrowDownRight);
 
-            // Step 3: Rotate the arrow 180 degrees back
-            await arrowImage.RotateTo(0, 200); // This completes the rotation back to 0 degrees
+            // Rotate both arrows back to their original orientation (0 degrees)
+            Task rotateBackLeft = leftArrowImage.RotateTo(0, 200);
+            Task rotateBackRight = rightArrowImage.RotateTo(0, 200);
+            await Task.WhenAll(rotateBackLeft, rotateBackRight);
 
             // Hide the Grid
             profileGrid.IsVisible = false;
