@@ -121,7 +121,7 @@
                             </Grid>
                             <Grid
                                 Grid.Column="2"
-                                ColumnDefinitions="*,*,*,*,*"
+                                ColumnDefinitions="*,*,*,*,*,*"
                                 RowDefinitions="*,*">
                                 <!--  Activities  -->
                                 <Image
@@ -232,6 +232,17 @@
                                     WidthRequest="30">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TechIcon_Tapped" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image
+                                    Grid.Row="1"
+                                    Grid.Column="5"
+                                    Background="{Binding DayAstroEvent.Travel, Converter={StaticResource ActivityQualityToColor}}"
+                                    HeightRequest="30"
+                                    Source="travel.png"
+                                    WidthRequest="30">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TravelIcon_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </Grid>

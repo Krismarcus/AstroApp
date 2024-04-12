@@ -144,6 +144,7 @@
 	  <None Remove="Resources\Images\thirdquarter_small.png" />
 	  <None Remove="Resources\Images\toad.png" />
 	  <None Remove="Resources\Images\tortoise.png" />
+	  <None Remove="Resources\Images\travel.png" />
 	  <None Remove="Resources\Images\tree.png" />
 	  <None Remove="Resources\Images\trine.png" />
 	  <None Remove="Resources\Images\trumpet.png" />

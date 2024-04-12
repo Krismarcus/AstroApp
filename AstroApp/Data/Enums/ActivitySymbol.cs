@@ -16,6 +16,7 @@ namespace AstroApp.Data.Enums
         Love,
         Meetings,
         NewIdeas,              
-        Technologies               
+        Technologies,
+        Travel,
     }
 }

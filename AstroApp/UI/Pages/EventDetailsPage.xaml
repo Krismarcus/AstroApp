@@ -131,7 +131,7 @@
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="PlanetInZodiacGrid_Tapped"/>
                                     </Grid.GestureRecognizers>
-                                    <Image Grid.Column="0" Source="sun.png"/>
+                                    <Image Grid.Column="0" Source="sun.png"/>                                    
                                     <Grid Grid.Column="1" ColumnDefinitions="*,*" RowDefinitions="*,*" TranslationX="-15" Margin="10">
                                         <Image Grid.Column="0" Source="{Binding DayAstroEvent.SunInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.SunInZodiac.IsZodiacTransitioning}"/>
                                         <Image Grid.Column="1" Source="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -153,12 +153,28 @@
                                 </Grid>
                             </Grid>
                             <Grid Grid.Row="1" ColumnDefinitions="*,*,*">
-                                <Grid x:Name="venusInZodiacGrid"  Grid.Column="0" ColumnDefinitions="*,*"  HorizontalOptions="Center" VerticalOptions="Center">
+                                <Grid x:Name="mercuryInZodiacGrid" Grid.Column="0" ColumnDefinitions="*,auto,*"  HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PlanetInZodiacGrid_Tapped"/>
+                                    </Grid.GestureRecognizers>
+                                    <Image Grid.Column="0" Source="mercury.png"/>
+                                    <Image Grid.Column="1" Source="retrograde.png" HeightRequest="20" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsRetrograde}" VerticalOptions="End" HorizontalOptions="Start" Margin="-15,0"/>
+                                    <Grid  Grid.Column="2" ColumnDefinitions="*,*" RowDefinitions="*,*">
+                                        <Image Grid.Column="0" Source="{Binding DayAstroEvent.MercuryInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}"/>
+                                        <Image Grid.Column="1" Source="{Binding DayAstroEvent.MercuryInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                                            <Image Source="arrow_transition.png" HeightRequest="15" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
+                                            <Label Text="{Binding DayAstroEvent.MercuryInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Grid>
+                                <Grid x:Name="venusInZodiacGrid"  Grid.Column="1" ColumnDefinitions="*,Auto,*"  HorizontalOptions="Center" VerticalOptions="Center">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="PlanetInZodiacGrid_Tapped"/>
                                     </Grid.GestureRecognizers>
                                     <Image Grid.Column="0" Source="venus.png"/>
-                                    <Grid Grid.Column="1" ColumnDefinitions="*,*" RowDefinitions="*,*">
+                                    <Image Grid.Column="1" Source="retrograde.png" HeightRequest="20" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsRetrograde}" VerticalOptions="End" HorizontalOptions="Start" Margin="-15,0"/>
+                                    <Grid Grid.Column="2" ColumnDefinitions="*,*" RowDefinitions="*,*">
                                         <Image Grid.Column="0" Source="{Binding DayAstroEvent.VenusInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}"/>
                                         <Image Grid.Column="1" Source="{Binding DayAstroEvent.VenusInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                         <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
@@ -167,33 +183,20 @@
                                         </VerticalStackLayout>
                                     </Grid>                                    
                                 </Grid>
-                                <Grid x:Name="marsInZodiacGrid" Grid.Column="1" ColumnDefinitions="*,*"  HorizontalOptions="Center" VerticalOptions="Center">
+                                <Grid x:Name="marsInZodiacGrid" Grid.Column="2" ColumnDefinitions="*,auto,*"  HorizontalOptions="Center" VerticalOptions="Center">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="PlanetInZodiacGrid_Tapped"/>
                                     </Grid.GestureRecognizers>
                                     <Image Grid.Column="0" Source="mars.png"/>
-                                    <Grid  Grid.Column="1" ColumnDefinitions="*,*" RowDefinitions="*,*">
-                                            <Image Grid.Column="0" Source="{Binding DayAstroEvent.MarsInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}"/>
-                                            <Image Grid.Column="1" Source="{Binding DayAstroEvent.MarsInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                            <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
-                                                <Image Source="arrow_transition.png" HeightRequest="15" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
-                                                <Label Text="{Binding DayAstroEvent.MarsInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center"/>
-                                            </VerticalStackLayout>
-                                        </Grid>
-                                        </Grid>
-                                    <Grid x:Name="mercuryInZodiacGrid" Grid.Column="2" ColumnDefinitions="*,*"  HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="PlanetInZodiacGrid_Tapped"/>
-                                    </Grid.GestureRecognizers>
-                                    <Image Grid.Column="0" Source="mercury.png"/>                                    
-                                        <Grid Grid.Column="1" ColumnDefinitions="*,*,auto" RowDefinitions="*,*">
-                                            <Image Grid.Column="0" Source="{Binding DayAstroEvent.MercuryInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}"/>
-                                            <Image Grid.Column="1" Source="{Binding DayAstroEvent.MercuryInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>                                        
-                                        <Grid Grid.Row="1" Grid.ColumnSpan="2" RowDefinitions="*,*" HorizontalOptions="Center" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}" >
-                                                <Image Source="arrow_transition.png" HeightRequest="15" HorizontalOptions="Center"/>
-                                                <Label Text="{Binding DayAstroEvent.MercuryInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" HorizontalOptions="Center"/>
-                                            </Grid>
-                                        </Grid>                                    
+                                    <Image Grid.Column="1" Source="retrograde.png" HeightRequest="20" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsRetrograde}" VerticalOptions="End" HorizontalOptions="Start" Margin="-15,0"/>
+                                    <Grid  Grid.Column="2" ColumnDefinitions="*,*" RowDefinitions="*,*">
+                                        <Image Grid.Column="0" Source="{Binding DayAstroEvent.MarsInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}"/>
+                                        <Image Grid.Column="1" Source="{Binding DayAstroEvent.MarsInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                                            <Image Source="arrow_transition.png" HeightRequest="15" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
+                                            <Label Text="{Binding DayAstroEvent.MarsInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -208,53 +211,23 @@
                     </Frame>
                     <Grid  Grid.Row="5" RowDefinitions="Auto,Auto" Margin="5,10">
                         <FlexLayout Wrap="Wrap" Grid.Row="0" HorizontalOptions="Center">
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Barber, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
-                                <Border.Shadow>
-                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
-                                </Border.Shadow>
-                                <Label Text="Kirpykla" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
-                            </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="5" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Beauty, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
-                                <Border.Shadow>
-                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
-                                </Border.Shadow>
-                                <Label Text="Grožis" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
-                            </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
-                            <Border.Shadow>
-                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
-                            </Border.Shadow>
-                                <Label Text="Pirkiniai" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
-                            </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
-                                <Border.Shadow>
-                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
-                                </Border.Shadow>
-                                <Label Text="Sutartys" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
-                            </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
                                     <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Svarbūs darbai" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Svarbūs darbai" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>                                
                             </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="5" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
                                     <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Sodininkystė" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
-                            </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
-                                <Border.Shadow>
-                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
-                                </Border.Shadow>
-                                <Label Text="Meilė" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Sutartys" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>                                
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Meetings, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
-                                <Border.Shadow>
+                            <Border.Shadow>
                                     <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
-                                </Border.Shadow>
-                                <Label Text="Susitikimai" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                            </Border.Shadow>
+                                <Label Text="Susitikimai" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>                                
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.NewIdeas, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
@@ -262,19 +235,97 @@
                                 </Border.Shadow>
                                 <Label Text="Mokymasis" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Travel, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Kelionės" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                            </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Tech, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
                                     <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Technika" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Technika" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>                                
+                            </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Pirkiniai" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>                                
+                            </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Meilė" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                            </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Beauty, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Grožis" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                            </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Barber, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Kirpykla" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                            </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Sodininkystė" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                         </FlexLayout>
                         <FlexLayout Wrap="Wrap" Grid.Row="1" HorizontalOptions="Center">
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Barber, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
                                     <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Kirpykla" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Svarbūs darbai" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                            </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="5" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Sutartys" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                            </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Meetings, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Susitikimai" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                            </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.NewIdeas, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Mokymasis" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                            </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Travel, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Kelionės" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                            </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Tech, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Technika" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                            </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Pirkiniai" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                            </Border>
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <Border.Shadow>
+                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
+                                </Border.Shadow>
+                                <Label Text="Meilė" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Beauty, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
@@ -282,53 +333,17 @@
                                 </Border.Shadow>
                                 <Label Text="Grožis" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Barber, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
                                     <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Pirkiniai" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                <Label Text="Kirpykla" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
-                                <Border.Shadow>
-                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
-                                </Border.Shadow>
-                                <Label Text="Sutartys" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
-                            </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
-                                <Border.Shadow>
-                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
-                                </Border.Shadow>
-                                <Label Text="Svarbūs darbai" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
-                            </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
                                     <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
                                 <Label Text="Sodininkystė" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
-                            </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">                                
-                                <Border.Shadow>
-                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
-                                </Border.Shadow>
-                                <Label Text="Meilė" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
-                            </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Meetings, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
-                                <Border.Shadow>
-                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
-                                </Border.Shadow>
-                                <Label Text="Susitikimai" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
-                            </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.NewIdeas, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
-                                <Border.Shadow>
-                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
-                                </Border.Shadow>
-                                <Label Text="Mokymasis" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
-                            </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Tech, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35">
-                                <Border.Shadow>
-                                    <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
-                                </Border.Shadow>
-                                <Label Text="Technika" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                         </FlexLayout>
                     </Grid>
@@ -351,8 +366,7 @@
             <Frame x:Name="moonDayInfoScreen" Padding="10" CornerRadius="15"
        BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}"
        IsVisible="False" AbsoluteLayout.LayoutFlags="PositionProportional"
-       AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" MaximumWidthRequest="300">
-                
+       AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" MaximumWidthRequest="300">                
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>

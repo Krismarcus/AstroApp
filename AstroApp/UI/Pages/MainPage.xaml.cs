@@ -43,6 +43,23 @@ namespace AstroApp.UI.Pages
                 }
             }
         }
+
+        private string activityProfileLt = "Palankios/Nepalankios Dienos";
+
+        public string ActivityProfileLt
+        {
+            get => activityProfileLt;
+            set
+            {
+                if (activityProfileLt != value)
+                {
+                    activityProfileLt = value;
+                    OnPropertyChanged(nameof(ActivityProfileLt));
+                    UpdateBackgroundColors();
+                }
+            }
+        }
+
         private Color noPresetBackgroundColor;
 
         public Color NoPresetBackgroundColor
@@ -68,53 +85,9 @@ namespace AstroApp.UI.Pages
         public Color MeetingsBackgroundColor { get; set; } = Colors.Transparent;
         public Color NewIdeasBackgroundColor { get; set; } = Colors.Transparent;
         public Color TechBackgroundColor { get; set; } = Colors.Transparent;
+        public Color TravelBackgroundColor { get; set; } = Colors.Transparent;
 
-        private bool isProfileGridVisible = false;
-
-        private Color _pageBackgroundColor1 = Color.FromRgb(6, 57, 112); // Default color
-
-        public Color PageBackgroundColor1
-        {
-            get => _pageBackgroundColor1;
-            set
-            {
-                if (_pageBackgroundColor1 != value)
-                {
-                    _pageBackgroundColor1 = value;
-                    OnPropertyChanged(nameof(PageBackgroundColor1));
-                }
-            }
-        }
-
-        private Color _pageBackgroundColor2 = Color.FromRgb(30, 129, 176); // Default color
-
-        public Color PageBackgroundColor2
-        {
-            get => _pageBackgroundColor2;
-            set
-            {
-                if (_pageBackgroundColor2 != value)
-                {
-                    _pageBackgroundColor2 = value;
-                    OnPropertyChanged(nameof(PageBackgroundColor2));
-                }
-            }
-        }
-
-        private Color monthNameColor = Color.FromRgb(254, 234, 181); // Default color
-
-        public Color MonthNameColor
-        {
-            get => monthNameColor;
-            set
-            {
-                if (monthNameColor != value)
-                {
-                    monthNameColor = value;
-                    OnPropertyChanged(nameof(MonthNameColor));
-                }
-            }
-        }
+        private bool isProfileGridVisible = false;        
 
         private Color weekdaysColor = Color.FromRgb(254, 234, 181); // Default color
 
@@ -150,6 +123,7 @@ namespace AstroApp.UI.Pages
         private void UpdateBackgroundColors()
         {
             NoPresetBackgroundColor = ActivityProfile == "nopreset" ? ActivityColor : Colors.Transparent;
+            BarberBackgroundColor = ActivityProfile == "barber" ? ActivityColor : Colors.Transparent;
             BeautyBackgroundColor = ActivityProfile == "beauty" ? ActivityColor : Colors.Transparent;
             BuyStuffBackgroundColor = ActivityProfile == "buystuff" ? ActivityColor : Colors.Transparent;
             ContractsBackgroundColor = ActivityProfile == "contracts" ? ActivityColor : Colors.Transparent;
@@ -159,10 +133,12 @@ namespace AstroApp.UI.Pages
             MeetingsBackgroundColor = ActivityProfile == "meetings" ? ActivityColor : Colors.Transparent;
             NewIdeasBackgroundColor = ActivityProfile == "newideas" ? ActivityColor : Colors.Transparent;
             TechBackgroundColor = ActivityProfile == "tech" ? ActivityColor : Colors.Transparent;
+            TravelBackgroundColor = ActivityProfile == "travel" ? activityColor : Colors.Transparent;
             
 
             // Notify the UI to update
             OnPropertyChanged(nameof(NoPresetBackgroundColor));
+            OnPropertyChanged(nameof(BarberBackgroundColor));
             OnPropertyChanged(nameof(BeautyBackgroundColor));
             OnPropertyChanged(nameof(BuyStuffBackgroundColor));
             OnPropertyChanged(nameof(ContractsBackgroundColor));
@@ -172,6 +148,7 @@ namespace AstroApp.UI.Pages
             OnPropertyChanged(nameof(MeetingsBackgroundColor));
             OnPropertyChanged(nameof(NewIdeasBackgroundColor));
             OnPropertyChanged(nameof(TechBackgroundColor));
+            OnPropertyChanged(nameof(TravelBackgroundColor));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -397,66 +374,84 @@ namespace AstroApp.UI.Pages
         private void BarberRecognizer_Tapped(object sender, TappedEventArgs e)
         {
             ActivityProfile = "barber";
+            ActivityProfileLt = "Kirpykla";
             UpdateCalendar(year, month);
         }
 
         private void BeautyRecognizer_Tapped(object sender, TappedEventArgs e)
         {
             ActivityProfile = "beauty";
+            ActivityProfileLt = "Grožis";
             UpdateCalendar(year, month);
         }
 
         private void BuyStuffRecognizer_Tapped(object sender, TappedEventArgs e)
         {
             ActivityProfile = "buystuff";
+            ActivityProfileLt = "Pirkiniai";
             UpdateCalendar(year, month);
         }
 
         private void ContractsRecognizer_Tapped(object sender, TappedEventArgs e)
         {
             ActivityProfile = "contracts";
+            ActivityProfileLt = "Sutartys";
             UpdateCalendar(year, month);
         }
 
         private void ImportantTasksRecognizer_Tapped(object sender, TappedEventArgs e)
         {
             ActivityProfile = "importanttasks";
+            ActivityProfileLt = "Svarbūs darbai";
             UpdateCalendar(year, month);
         }
 
         private void GardeningRecognizer_Tapped(object sender, TappedEventArgs e)
         {
             ActivityProfile = "gardening";
+            ActivityProfileLt = "Sodininkystė";
             UpdateCalendar(year, month);
         }
 
         private void LoveRecognizer_Tapped(object sender, TappedEventArgs e)
         {
             ActivityProfile = "love";
+            ActivityProfileLt = "Meilė";
             UpdateCalendar(year, month);
         }
 
         private void MeetingsRecognizer_Tapped(object sender, TappedEventArgs e)
         {
             ActivityProfile = "meetings";
+            ActivityProfileLt = "Susitikimai";
             UpdateCalendar(year, month);
         }
 
         private void NewIdeasRecognizer_Tapped(object sender, TappedEventArgs e)
         {
             ActivityProfile = "newideas";
+            ActivityProfileLt = "Mokymasis";
             UpdateCalendar(year, month);
         }
 
         private void TechnologiesRecognizer_Tapped(object sender, TappedEventArgs e)
         {
             ActivityProfile = "tech";
+            ActivityProfileLt = "Technika";
+            UpdateCalendar(year, month);
+        }
+
+        private void TravelRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            ActivityProfile = "travel";
+            ActivityProfileLt = "Kelionės";
             UpdateCalendar(year, month);
         }
 
         private void NoPresetRecognizer_Tapped(object sender, TappedEventArgs e)
         {
             ActivityProfile = "nopreset";
+            ActivityProfileLt = "Palankios/Nepalankios Dienos";
             UpdateCalendar(year, month);
         }
 
@@ -533,117 +528,6 @@ namespace AstroApp.UI.Pages
 
             // Hide the Grid
             profileGrid.IsVisible = false;
-        }
-
-        private void ApplyBackgroundColor_Clicked(object sender, EventArgs e)
-        {
-            // Get the HEX code from the entry
-            string hexCode = hexColorEntry.Text;
-
-            // Check if the HEX code is valid
-            if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
-            {
-                // Convert HEX to Color
-                Color newBackgroundColor = Color.FromArgb(hexCode);
-
-                // Update the BackgroundColor of the page or specific element
-                PageBackgroundColor1 = newBackgroundColor;
-            }
-            else
-            {
-                // Handle invalid HEX code (optional)
-                DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
-            }
-        }
-
-        private void ApplyBackgroundColor_Clicked2(object sender, EventArgs e)
-        {
-            // Get the HEX code from the entry
-            string hexCode = hexColorEntry2.Text;
-
-            // Check if the HEX code is valid
-            if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
-            {
-                // Convert HEX to Color
-                Color newBackgroundColor = Color.FromArgb(hexCode);
-
-                // Update the BackgroundColor of the page or specific element
-                PageBackgroundColor2 = newBackgroundColor;
-            }
-            else
-            {
-                // Handle invalid HEX code (optional)
-                DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
-            }
-        }
-
-        private void ApplyBackgroundColor_Clicked3(object sender, EventArgs e)
-        {
-            // Get the HEX code from the entry
-            string hexCode = hexColorEntry3.Text;
-
-            // Check if the HEX code is valid
-            if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
-            {
-                // Convert HEX to Color
-                Color newBackgroundColor = Color.FromArgb(hexCode);
-
-                // Update the BackgroundColor of the page or specific element
-                MonthNameColor = newBackgroundColor;
-            }
-            else
-            {
-                // Handle invalid HEX code (optional)
-                DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
-            }
-        }
-
-        private void ApplyBackgroundColor_Clicked4(object sender, EventArgs e)
-        {
-            // Get the HEX code from the entry
-            string hexCode = hexColorEntry4.Text;
-
-            // Check if the HEX code is valid
-            if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
-            {
-                // Convert HEX to Color
-                Color newBackgroundColor = Color.FromArgb(hexCode);
-
-                // Update the BackgroundColor of the page or specific element
-                WeekdaysColor = newBackgroundColor;
-            }
-            else
-            {
-                // Handle invalid HEX code (optional)
-                DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
-            }
-        }
-
-
-        private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
-        {
-            this.GridColors.IsVisible = !this.GridColors.IsVisible;
-        }
-
-        private void ApplyBackgroundColor_Clicked5(object sender, EventArgs e)
-        {
-            // Get the HEX code from the entry
-            string hexCode = hexColorEntry5.Text;
-
-            // Check if the HEX code is valid
-            if (!string.IsNullOrWhiteSpace(hexCode) && hexCode.StartsWith("#") && (hexCode.Length == 7 || hexCode.Length == 9))
-            {
-                // Convert HEX to Color
-                Color newBackgroundColor = Color.FromArgb(hexCode);
-
-                // Update the BackgroundColor of the page or specific element
-                NoPresetBackgroundColor = newBackgroundColor;
-            }
-            else
-            {
-                // Handle invalid HEX code (optional)
-                DisplayAlert("Error", "Invalid HEX code. Please enter a valid HEX color code.", "OK");
-            }
-        }
+        }        
     }    
 }

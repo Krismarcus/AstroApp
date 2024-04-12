@@ -53,6 +53,8 @@ namespace AstroApp.Data.Models
         [ObservableProperty]
         private ActivityQuality tech;
         [ObservableProperty]
+        private ActivityQuality travel;
+        [ObservableProperty]
         private string eventText;
     }
 }

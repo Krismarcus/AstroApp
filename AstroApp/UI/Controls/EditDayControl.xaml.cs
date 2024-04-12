@@ -222,5 +222,13 @@ public partial class EditDayControl : ContentView, INotifyPropertyChanged
         );
     }
 
-    
+    private void TravelIcon_Tapped(object sender, EventArgs e)
+    {
+        CycleActivityQuality(
+            () => dayAstroEvent.Travel,
+            (quality) => dayAstroEvent.Travel = quality
+        );
+    }
+
+
 }

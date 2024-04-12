@@ -223,7 +223,8 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
 
                 else if (DayAstroEvent.MoonEclipse || DayAstroEvent.SunEclipse)
                 {
-                    shadowColor = GetResourceColor("PrimaryDarkText", Colors.Transparent);                    
+                    shadowColor = GetResourceColor("PrimaryDarkText", Colors.Transparent);
+                    fontColor = GetResourceColor("PrimaryLightText", Colors.Transparent);
                 }
             }
             else
