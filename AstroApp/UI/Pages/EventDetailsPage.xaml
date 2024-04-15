@@ -117,9 +117,9 @@
                                 </Grid>
                                 <!--Grid for Middle Moon Day Marker and Label (only visible for triple moon days)-->
                                 <Grid x:Name="middleMoonDayMarkerGrid" IsVisible="{Binding DayAstroEvent.MoonDay.IsTripleMoonDay}" Margin="0,20" VerticalOptions="Center">                                                                     
-                                    <Image x:Name="middleMoonDayMarker" Source="{Binding DayAstroEvent.MoonDay.MiddleMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="40" Opacity="0"/>
-                                    <BoxView x:Name="smallMarker2" HeightRequest="20" WidthRequest="2" BackgroundColor="{StaticResource ShadedBackground}" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Label x:Name="secondTimeLabel" Text="{Binding DayAstroEvent.MoonDay.MiddleMoonDayTransitionTime, StringFormat='{0:HH:mm}'}" TextColor="{StaticResource LightBlueBackground}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" TranslationY="20"/>
+                                    <Image x:Name="middleMoonDayMarker" Source="{Binding DayAstroEvent.MoonDay.MiddleMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="20" Opacity="1" TranslationY="-40"/>
+                                    <BoxView x:Name="smallMarker2" HeightRequest="20" WidthRequest="2" BackgroundColor="{StaticResource LightBlueBackground}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label x:Name="secondTimeLabel" Text="{Binding DayAstroEvent.MoonDay.MiddleMoonDayTransitionTime, StringFormat='{0:HH:mm}'}" TextColor="{StaticResource LightBlueBackground}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" TranslationY="-20"/>
                                 </Grid>
                             
                         </Grid>
@@ -217,11 +217,11 @@
                                 </Border.Shadow>
                                 <Label Text="Svarbūs darbai" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>                                
                             </Border>
-                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="5" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                            <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
                                     <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                 </Border.Shadow>
-                                <Label Text="Sutartys" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>                                
+                                <Label Text="Sutartys" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Meetings, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                             <Border.Shadow>
