@@ -272,7 +272,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         // Check if there's a previously enlarged grid and it's not the same as the current, shrink it
         if (currentlyEnlargedMoonGrid != null && currentlyEnlargedMoonGrid != moonGrid && isMoonGridEnlarged)
         {
-            await currentlyEnlargedMoonGrid.ScaleTo(1, 200, Easing.CubicIn);
+            await currentlyEnlargedMoonGrid.ScaleTo(1, 200, Easing.CubicIn);            
             await HideMoonDayInfo(); // Assuming you have a method to hide details about the moon day
         }
 
