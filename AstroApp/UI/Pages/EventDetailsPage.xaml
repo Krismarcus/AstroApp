@@ -78,10 +78,10 @@
                         <Grid>                          
                                 <!-- The horizontal line -->
                             <Grid ColumnDefinitions="auto,*, auto" Padding="0,20">                                
-                                <Grid x:Name="timeLine" Grid.Column="1" Margin="5,0">
+                                
                                     
                                         <!--Thick gradient line-->
-                                        <BoxView Grid.Row="0" AbsoluteLayout.LayoutBounds="0, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="WidthProportional" HeightRequest="10" VerticalOptions="Center" ZIndex="0">
+                                    <BoxView x:Name="timeLine" Grid.Column="1" AbsoluteLayout.LayoutBounds="0, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="WidthProportional" HeightRequest="10" VerticalOptions="Center" ZIndex="0">
                                             <BoxView.Background>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                                     <GradientStop Color="{StaticResource PrimaryBackground}" Offset="0.0"/>
@@ -91,7 +91,7 @@
                                             </BoxView.Background>
                                         </BoxView>
                                     
-                                </Grid>
+                                
                                 <!-- AbsoluteLayout for the timeline and markers -->
                                 <Grid Grid.Column="1" x:Name="newMoonDayMarkerGrid" Margin="0,20" VerticalOptions="Center">
                                     <Image x:Name="newMoonDayMarker" Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="40" Opacity="0"/>
