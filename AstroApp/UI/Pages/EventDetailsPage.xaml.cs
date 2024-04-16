@@ -273,7 +273,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         if (currentlyEnlargedMoonGrid != null && currentlyEnlargedMoonGrid != moonGrid && isMoonGridEnlarged)
         {
             await currentlyEnlargedMoonGrid.ScaleTo(1, 200, Easing.CubicIn);
-            //await HideMoonDayInfo(); // Assuming you have a method to hide details about the moon day
+            await HideMoonDayInfo(); // Assuming you have a method to hide details about the moon day
         }
 
         // Now handle the current grid
@@ -286,14 +286,14 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             // Update the details about the moon day here
 
             // Show the details after updating
-            //await ShowMoonDayInfo(moonDayInfo); // Assuming you have a method to show details about the moon day
+            await ShowMoonDayInfo(moonDayInfo); // Assuming you have a method to show details about the moon day
         }
         else
         {
             await moonGrid.ScaleTo(1, 400, Easing.CubicIn);
             isMoonGridEnlarged = false;
             // Optionally, hide the details if the same grid is tapped again
-            //await HideMoonDayInfo();
+            await HideMoonDayInfo();
         }
     }
 
@@ -326,36 +326,36 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
-    //private async Task ShowMoonDayInfo(string moonDayInfo)
-    //{
-    //    // Fade out existing content quickly if it's already visible
-    //    if (moonDayInfoScreen.IsVisible)
-    //    {
-    //        await moonDayInfoScreen.FadeTo(0, 200, Easing.CubicIn);
-    //    }
+    private async Task ShowMoonDayInfo(string moonDayInfo)
+    {
+        // Fade out existing content quickly if it's already visible
+        if (moonDayInfoScreen.IsVisible)
+        {
+            await moonDayInfoScreen.FadeTo(0, 200, Easing.CubicIn);
+        }
 
-    //    // Assuming chatBubble.Text is updated elsewhere in the MoonImage_Tapped handler
-    //    moonDayInfoScreen.Opacity = 0;
-    //    moonDayInfoScreen.Scale = 0.5;
-    //    moonDayInfoScreen.IsVisible = true;
-    //    UpdateChatBubbleContent(moonDayInfo);
+        // Assuming chatBubble.Text is updated elsewhere in the MoonImage_Tapped handler
+        moonDayInfoScreen.Opacity = 0;
+        moonDayInfoScreen.Scale = 0.5;
+        moonDayInfoScreen.IsVisible = true;
+        UpdateChatBubbleContent(moonDayInfo);
 
-    //    // Fade in new content
-    //    var fadeAnimation = moonDayInfoScreen.FadeTo(1, 200, Easing.CubicOut);
-    //    var scaleAnimation = moonDayInfoScreen.ScaleTo(1, 200, Easing.CubicOut);
-    //    await Task.WhenAll(fadeAnimation, scaleAnimation);
-    //}
+        // Fade in new content
+        var fadeAnimation = moonDayInfoScreen.FadeTo(1, 200, Easing.CubicOut);
+        var scaleAnimation = moonDayInfoScreen.ScaleTo(1, 200, Easing.CubicOut);
+        await Task.WhenAll(fadeAnimation, scaleAnimation);
+    }
 
-    //private async Task HideMoonDayInfo()
-    //{
-    //    // Initiate fade out
-    //    await moonDayInfoScreen.FadeTo(0, 200, Easing.CubicIn);
+    private async Task HideMoonDayInfo()
+    {
+        // Initiate fade out
+        await moonDayInfoScreen.FadeTo(0, 200, Easing.CubicIn);
 
-    //    // Scale down and hide
-    //    var scaleAnimation = moonDayInfoScreen.ScaleTo(0.5, 200, Easing.CubicIn);
-    //    await Task.WhenAll(scaleAnimation);
-    //    moonDayInfoScreen.IsVisible = false;
-    //}
+        // Scale down and hide
+        var scaleAnimation = moonDayInfoScreen.ScaleTo(0.5, 200, Easing.CubicIn);
+        await Task.WhenAll(scaleAnimation);
+        moonDayInfoScreen.IsVisible = false;
+    }
 
     private void UpdateChatBubbleContent(string newContent)
     {
@@ -374,12 +374,12 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
 
         // Hide the chat bubble with animation and then reset its properties
-        //await HideMoonDayInfo();
+        await HideMoonDayInfo();
 
-        //// After the chat bubble is hidden, reset its text and other properties to default        
-        //moonDayInfoScreen.Opacity = 1; // Reset opacity back to fully opaque
-        //moonDayInfoScreen.Scale = 1; // Reset scale to its original size
-        //moonDayInfoScreen.IsVisible = false; // Ensure it's hidden
+        // After the chat bubble is hidden, reset its text and other properties to default        
+        moonDayInfoScreen.Opacity = 1; // Reset opacity back to fully opaque
+        moonDayInfoScreen.Scale = 1; // Reset scale to its original size
+        moonDayInfoScreen.IsVisible = false; // Ensure it's hidden
 
         // Reset any other states or properties related to your UI or data here
         // For example, if you have a container or model that needs to be reset
