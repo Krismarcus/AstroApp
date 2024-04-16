@@ -49,8 +49,19 @@
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>                        
                     </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,20,0,0">
+                    <AbsoluteLayout Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                        <!--Thick gradient line-->
+                        <BoxView AbsoluteLayout.LayoutBounds="0, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="WidthProportional" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ZIndex="0">
+                            <BoxView.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="{StaticResource PrimaryBackground}" Offset="0.0"/>
+                                    <GradientStop Color="{StaticResource PrimaryLightText}" Offset="0.5"/>
+                                    <GradientStop Color="{StaticResource PrimaryBackground}" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </BoxView.Background>
+                        </BoxView>
+                    </AbsoluteLayout>
+                    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,20,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -79,18 +90,7 @@
                                 <!-- The horizontal line -->
                             <Grid ColumnDefinitions="auto,*, auto" Padding="0,20">                                
                                 <Grid x:Name="timeLine" Grid.Column="1" Margin="5,0">
-                                    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                                        <!--Thick gradient line-->
-                                        <BoxView AbsoluteLayout.LayoutBounds="0, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="WidthProportional" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ZIndex="0">
-                                            <BoxView.Background>
-                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                    <GradientStop Color="{StaticResource PrimaryBackground}" Offset="0.0"/>
-                                                    <GradientStop Color="{StaticResource PrimaryLightText}" Offset="0.5"/>
-                                                    <GradientStop Color="{StaticResource PrimaryBackground}" Offset="1.0"/>
-                                                </LinearGradientBrush>
-                                            </BoxView.Background>
-                                        </BoxView>
-                                    </AbsoluteLayout>
+                                    
                                 </Grid>
                                 <!-- AbsoluteLayout for the timeline and markers -->
                                 <Grid Grid.Column="1" x:Name="newMoonDayMarkerGrid" Margin="0,20" VerticalOptions="Center">
