@@ -203,7 +203,7 @@
                         <Label Text="{Binding DayAstroEvent.EventText}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" Margin="20"/>
                     </Frame>
                     <Grid  Grid.Row="6" RowDefinitions="Auto,Auto" Margin="5,10">
-                        <FlexLayout Wrap="Wrap" Grid.Row="0" HorizontalOptions="Center">
+                        <FlexLayout Wrap="Wrap" Grid.Row="0" HorizontalOptions="CenterAndExpand">
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
                                     <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
@@ -271,7 +271,7 @@
                                 <Label Text="Sodininkystė" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                             </Border>
                         </FlexLayout>
-                        <FlexLayout Wrap="Wrap" Grid.Row="1" HorizontalOptions="Center">
+                        <FlexLayout Wrap="Wrap" Grid.Row="1" HorizontalOptions="CenterAndExpand">
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
                                     <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
