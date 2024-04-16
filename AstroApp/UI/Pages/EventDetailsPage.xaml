@@ -355,7 +355,7 @@
                         </Frame.GestureRecognizers>
                         <Image Grid.Column="1" Source="calendar.png"/>
                     </Frame>
-                    <Frame Grid.Row="1" x:Name="moonDayInfoScreen" Padding="10" CornerRadius="15" Margin="12.4,0"
+                    <!--<Frame Grid.Row="1" x:Name="moonDayInfoScreen" Padding="10" CornerRadius="15" Margin="12.4,0"
                            BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}" MaximumHeightRequest="300"
                            IsVisible="False" >
                         <Grid>
@@ -372,7 +372,7 @@
         TextColor="{StaticResource DarkBlueBackground}" />
                             </ScrollView>
                         </Grid>
-                    </Frame>
+                    </Frame>-->
                 </Grid>
             </ScrollView>            
             <!--<Frame x:Name="PlanetInZodiacInfoScreen" Padding="10" CornerRadius="15"
