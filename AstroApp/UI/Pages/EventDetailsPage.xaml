@@ -47,7 +47,9 @@
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>                        
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,20,0,0">
@@ -204,7 +206,7 @@
                         </Frame.Triggers>
                         <Label Text="{Binding DayAstroEvent.EventText}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" Margin="20"/>
                     </Frame>
-                    <Grid  Grid.Row="5" RowDefinitions="Auto,Auto" Margin="5,10">
+                    <Grid  Grid.Row="6" RowDefinitions="Auto,Auto" Margin="5,10">
                         <FlexLayout Wrap="Wrap" Grid.Row="0" HorizontalOptions="Center">
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                 <Border.Shadow>
@@ -342,6 +344,7 @@
                             </Border>
                         </FlexLayout>
                     </Grid>
+                    
                     <CollectionView  Grid.Row="6"  ItemsSource="{Binding DayAstroEvent.PlanetEvents}"  Margin="12.4, 0,12.4,0">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -355,7 +358,7 @@
                         </Frame.GestureRecognizers>
                         <Image Grid.Column="1" Source="calendar.png"/>
                     </Frame>
-                    <Frame Grid.Row="2" x:Name="moonDayInfoScreen" Padding="10" CornerRadius="15" Margin="12.4,0"
+                    <Frame Grid.Row="5" x:Name="moonDayInfoScreen" Padding="10" CornerRadius="15" Margin="12.4,0"
                            BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}" MaximumHeightRequest="300"
                            IsVisible="False" >
                         <Grid>
