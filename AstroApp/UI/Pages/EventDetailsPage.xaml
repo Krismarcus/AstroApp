@@ -35,8 +35,8 @@
         </LinearGradientBrush>
     </ContentPage.Background>
     <ContentPage.Content>
-        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+        <FlexLayout>
+            <ScrollView >
                 <Grid VerticalOptions="FillAndExpand" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"></RowDefinition>
@@ -81,7 +81,7 @@
                                 <Grid x:Name="timeLine" Grid.Column="1" Margin="5,0">
                                     
                                         <!--Thick gradient line-->
-                                        <BoxView HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                        <BoxView HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ZIndex="0">
                                             <BoxView.Background>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                                     <GradientStop Color="{StaticResource PrimaryBackground}" Offset="0.0"/>
@@ -397,6 +397,6 @@ AbsoluteLayout.LayoutBounds="0.5,1,-1,-1" WidthRequest="350">
         TextColor="{StaticResource DarkBlueBackground}" Grid.Row="1"/>
                 </Grid>
             </Frame>-->
-        </AbsoluteLayout>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
