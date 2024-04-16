@@ -35,8 +35,8 @@
         </LinearGradientBrush>
     </ContentPage.Background>
     <ContentPage.Content>
-        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+        <FlexLayout>
+            <ScrollView>
                 <Grid VerticalOptions="FillAndExpand" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"></RowDefinition>
@@ -355,28 +355,26 @@
                         </Frame.GestureRecognizers>
                         <Image Grid.Column="1" Source="calendar.png"/>
                     </Frame>
+                    <Frame Grid.Row="1" x:Name="moonDayInfoScreen" Padding="10" CornerRadius="15" Margin="12.4,0"
+                           BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}" MaximumHeightRequest="300"
+                           IsVisible="False" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Text="X" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Start"
+         WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"
+         TextColor="{StaticResource DarkBlueBackground}" FontAttributes="Bold"
+         Clicked="CloseMoonDayInfoScreen_Clicked"/>
+                            <ScrollView Grid.Row="1">
+                                <Label x:Name="moonDayInfoScreenText" Text="{Binding MoonDayConteiner.MoonDayInfo}" FontSize="16"
+        TextColor="{StaticResource DarkBlueBackground}" />
+                            </ScrollView>
+                        </Grid>
+                    </Frame>
                 </Grid>
-
-            </ScrollView>
-            <Frame x:Name="moonDayInfoScreen" Padding="10" CornerRadius="15"
-       BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}"
-       IsVisible="False" AbsoluteLayout.LayoutFlags="PositionProportional"
-       AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" MaximumWidthRequest="300">                
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Button Text="X" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Start"
-                WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"
-                TextColor="{StaticResource DarkBlueBackground}" FontAttributes="Bold"
-                Clicked="CloseMoonDayInfoScreen_Clicked"/>
-                    <ScrollView Grid.Row="1">
-                    <Label x:Name="moonDayInfoScreenText" Text="{Binding MoonDayConteiner.MoonDayInfo}" FontSize="16"
-               TextColor="{StaticResource DarkBlueBackground}" />
-                    </ScrollView>
-                </Grid>                
-            </Frame>
+            </ScrollView>            
             <!--<Frame x:Name="PlanetInZodiacInfoScreen" Padding="10" CornerRadius="15"
 BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}"
 IsVisible="False" AbsoluteLayout.LayoutFlags="PositionProportional"
@@ -394,6 +392,6 @@ AbsoluteLayout.LayoutBounds="0.5,1,-1,-1" WidthRequest="350">
         TextColor="{StaticResource DarkBlueBackground}" Grid.Row="1"/>
                 </Grid>
             </Frame>-->
-        </AbsoluteLayout>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
