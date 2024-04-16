@@ -79,10 +79,18 @@
                                 <!-- The horizontal line -->
                             <Grid ColumnDefinitions="auto,*, auto" Padding="0,20">                                
                                 <Grid x:Name="timeLine" Grid.Column="1" Margin="5,0">
-                                    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                    
                                         <!--Thick gradient line-->
-                                        
-                                    </AbsoluteLayout>
+                                        <BoxView Grid.Row="0" AbsoluteLayout.LayoutBounds="0, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="WidthProportional" HeightRequest="10" VerticalOptions="Center" ZIndex="0">
+                                            <BoxView.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="{StaticResource PrimaryBackground}" Offset="0.0"/>
+                                                    <GradientStop Color="{StaticResource PrimaryLightText}" Offset="0.5"/>
+                                                    <GradientStop Color="{StaticResource PrimaryBackground}" Offset="1.0"/>
+                                                </LinearGradientBrush>
+                                            </BoxView.Background>
+                                        </BoxView>
+                                    
                                 </Grid>
                                 <!-- AbsoluteLayout for the timeline and markers -->
                                 <Grid Grid.Column="1" x:Name="newMoonDayMarkerGrid" Margin="0,20" VerticalOptions="Center">
@@ -199,16 +207,7 @@
                             </DataTrigger>
                         </Frame.Triggers>
                         <Label Text="{Binding DayAstroEvent.EventText}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" Margin="20"/>
-                    </Frame>
-                    <BoxView Grid.Row="5" AbsoluteLayout.LayoutBounds="0, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="WidthProportional" HeightRequest="10" VerticalOptions="Center" ZIndex="0">
-                        <BoxView.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                <GradientStop Color="{StaticResource PrimaryBackground}" Offset="0.0"/>
-                                <GradientStop Color="{StaticResource PrimaryLightText}" Offset="0.5"/>
-                                <GradientStop Color="{StaticResource PrimaryBackground}" Offset="1.0"/>
-                            </LinearGradientBrush>
-                        </BoxView.Background>
-                    </BoxView>
+                    </Frame>                    
                     <Grid  Grid.Row="5" RowDefinitions="Auto,Auto" Margin="5,10">
                         <FlexLayout Wrap="Wrap" Grid.Row="0" HorizontalOptions="Center">
                             <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
