@@ -35,8 +35,8 @@
         </LinearGradientBrush>
     </ContentPage.Background>
     <ContentPage.Content>
-        <FlexLayout>
-            <ScrollView >
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
                 <Grid VerticalOptions="FillAndExpand" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"></RowDefinition>
@@ -79,9 +79,9 @@
                                 <!-- The horizontal line -->
                             <Grid ColumnDefinitions="auto,*, auto" Padding="0,20">                                
                                 <Grid x:Name="timeLine" Grid.Column="1" Margin="5,0">
-                                    
+                                    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                                         <!--Thick gradient line-->
-                                        <BoxView HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ZIndex="0">
+                                        <BoxView AbsoluteLayout.LayoutBounds="0, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="WidthProportional" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ZIndex="0">
                                             <BoxView.Background>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                                     <GradientStop Color="{StaticResource PrimaryBackground}" Offset="0.0"/>
@@ -90,7 +90,7 @@
                                                 </LinearGradientBrush>
                                             </BoxView.Background>
                                         </BoxView>
-                                    
+                                    </AbsoluteLayout>
                                 </Grid>
                                 <!-- AbsoluteLayout for the timeline and markers -->
                                 <Grid Grid.Column="1" x:Name="newMoonDayMarkerGrid" Margin="0,20" VerticalOptions="Center">
@@ -103,7 +103,8 @@
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="MoonImage_Tapped"/>
                                     </Grid.GestureRecognizers>
-                                    <Image x:Name="middleMoonDayMarker" Source="{Binding DayAstroEvent.MoonDay.MiddleMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="20" Opacity="1" TranslationY="-40"/>                                   
+                                    <Image x:Name="middleMoonDayMarker" Source="{Binding DayAstroEvent.MoonDay.MiddleMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="20" Opacity="1" TranslationY="-40"/>
+                                   
                                     <BoxView x:Name="smallMarker2" HeightRequest="20" WidthRequest="2" BackgroundColor="{StaticResource LightBlueBackground}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Label x:Name="secondTimeLabel" Text="{Binding DayAstroEvent.MoonDay.MiddleMoonDayTransitionTime, StringFormat='{0:HH:mm}'}" TextColor="{StaticResource LightBlueBackground}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" TranslationY="-20"/>
                                 </Grid>
@@ -397,6 +398,6 @@ AbsoluteLayout.LayoutBounds="0.5,1,-1,-1" WidthRequest="350">
         TextColor="{StaticResource DarkBlueBackground}" Grid.Row="1"/>
                 </Grid>
             </Frame>-->
-        </FlexLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

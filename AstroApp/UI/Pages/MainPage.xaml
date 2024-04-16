@@ -15,8 +15,8 @@
             <GradientStop Color="{StaticResource SecondaryBackground}" Offset="1.0"/>
         </LinearGradientBrush>
     </ContentPage.Background>
-    <FlexLayout  VerticalOptions="FillAndExpand">
-        <Grid VerticalOptions="FillAndExpand">           
+    <FlexLayout  >
+        <Grid >           
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
