@@ -80,7 +80,7 @@
                         <Grid>
                             <Grid ColumnDefinitions="auto,*, auto" Padding="0,20">                                    
                                         <!--Thick gradient line-->
-                                        <BoxView x:Name="timeLine" Grid.Column="1" AbsoluteLayout.LayoutBounds="0, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="WidthProportional" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ZIndex="0">
+                                        <BoxView x:Name="timeLine" Grid.Column="1" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ZIndex="0">
                                             <BoxView.Background>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                                     <GradientStop Color="{StaticResource PrimaryBackground}" Offset="0.0"/>
