@@ -13,6 +13,7 @@ namespace AstroApp.Data.Models
     {
         [ObservableProperty]
         private DateTime date;
+        public bool IsNewMonthStart => Date.Day == 1;
         [ObservableProperty]
         private PlanetInZodiac sunInZodiac;
         [ObservableProperty]
