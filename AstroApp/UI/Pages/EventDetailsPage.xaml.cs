@@ -105,10 +105,9 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         {
             if (newMoonDayMarkerGrid.Width <= 0) return; // Ensures the layout is ready
 
-            var totalMinutesInDay = 24 * 60;
-            var startImageWidth = 80;
-            var startOffset = 5 + startImageWidth; // Adjust based on the left margin of the gradient line.
-            var endOffset = -startImageWidth - 10; // Adjust based on the right margin of the gradient line.
+            var totalMinutesInDay = 24 * 60;           
+            var startOffset = 5; // Adjust based on the left margin of the gradient line.
+            var endOffset = -10; // Adjust based on the right margin of the gradient line.
             var lineWidthAdjustment = 10; // Adjustment for the marker's width to align with the line start/end.
 
             var availableWidth = timeLine.Width - (startOffset + endOffset) - lineWidthAdjustment;
@@ -318,6 +317,12 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
                 string moonDayInfo = DayAstroEvent.MoonDay.NewMoonDayInfo;
                 await ToggleMoonGridAnimation(newMoonDayImageGrid, moonDayInfo);                
             
+        }
+        else if (sender == middleMoonDayMarkerGrid)
+        {
+            string moonDayInfo = DayAstroEvent.MoonDay.MiddleMoonDayInfo;
+            await ToggleMoonGridAnimation(middleMoonDayMarkerGrid, moonDayInfo);
+
         }
     }
 

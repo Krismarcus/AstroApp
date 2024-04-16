@@ -9,6 +9,32 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary>
+                    <Color x:Key="AriesColor">#FF0000</Color>
+                    <!-- Red -->
+                    <Color x:Key="TaurusColor">#008000</Color>
+                    <!-- Green -->
+                    <Color x:Key="GeminiColor">#FFFF00</Color>
+                    <!-- Yellow -->
+                    <Color x:Key="CancerColor">#C0C0C0</Color>
+                    <!-- Silver -->
+                    <Color x:Key="LeoColor">#FFA500</Color>
+                    <!-- Orange -->
+                    <Color x:Key="VirgoColor">#800080</Color>
+                    <!-- Purple -->
+                    <Color x:Key="LibraColor">#FFC0CB</Color>
+                    <!-- Pink -->
+                    <Color x:Key="ScorpioColor">#800000</Color>
+                    <!-- Maroon -->
+                    <Color x:Key="SagittariusColor">#0000FF</Color>
+                    <!-- Blue -->
+                    <Color x:Key="CapricornColor">#808080</Color>
+                    <!-- Gray -->
+                    <Color x:Key="AquariusColor">#00FFFF</Color>
+                    <!-- Aqua -->
+                    <Color x:Key="PiscesColor">#000080</Color>
+                    <!-- Navy -->
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

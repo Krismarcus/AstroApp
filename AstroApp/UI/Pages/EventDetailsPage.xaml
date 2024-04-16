@@ -77,51 +77,49 @@
                     <Frame  Grid.Row="2"  x:Name="expandableFrame" Padding="10,0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="12.4,20,12.4,12.4">
                         <Grid>                          
                                 <!-- The horizontal line -->
-                                <Grid ColumnDefinitions="auto,*, auto" Padding="0,20">
-                                    <Grid x:Name="previousMoonDayImageGrid" Grid.Column="0" HeightRequest="80" VerticalOptions="Center">
-                                        <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="MoonImage_Tapped"/>
-                                        </Grid.GestureRecognizers>
-                                        <Image Source="{Binding DayAstroEvent.MoonDay.PreviousMoonDay, Converter={StaticResource IntToImageConverter}}" Margin="10"/>
-                                    </Grid>
-                                    <!-- AbsoluteLayout for the timeline and markers -->
-                                    <Grid x:Name="timeLine" Grid.Column="1" Margin="5,0">
-                                        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                                            <!--Thick gradient line-->
-                                            <BoxView AbsoluteLayout.LayoutBounds="0, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="WidthProportional" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                                                <BoxView.Background>
-                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                        <GradientStop Color="{StaticResource PrimaryBackground}" Offset="0.0"/>
-                                                        <GradientStop Color="{StaticResource PrimaryLightText}" Offset="0.5"/>
-                                                        <GradientStop Color="{StaticResource PrimaryBackground}" Offset="1.0"/>
-                                                    </LinearGradientBrush>
-                                                </BoxView.Background>
-                                            </BoxView>
-                                        </AbsoluteLayout>
-                                    </Grid>
-                                    <!-- New Moon Day Image -->
-                                    <Grid x:Name="newMoonDayImageGrid" Grid.Column="2" HeightRequest="80" VerticalOptions="Center">
-                                        <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="MoonImage_Tapped"/>
-                                        </Grid.GestureRecognizers>
-                                        <Image Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" Margin="10"/>
-                                    </Grid>
+                            <Grid ColumnDefinitions="auto,*, auto" Padding="0,20">                                
+                                <Grid x:Name="timeLine" Grid.Column="1" Margin="5,0">
+                                    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                        <!--Thick gradient line-->
+                                        <BoxView AbsoluteLayout.LayoutBounds="0, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="WidthProportional" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ZIndex="0">
+                                            <BoxView.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="{StaticResource PrimaryBackground}" Offset="0.0"/>
+                                                    <GradientStop Color="{StaticResource PrimaryLightText}" Offset="0.5"/>
+                                                    <GradientStop Color="{StaticResource PrimaryBackground}" Offset="1.0"/>
+                                                </LinearGradientBrush>
+                                            </BoxView.Background>
+                                        </BoxView>
+                                    </AbsoluteLayout>
                                 </Grid>
-                                <!-- The marker, assuming you'll position it dynamically in code-behind -->
-
-                                <!--Grid for New Moon Day Marker and Label-->
-                                <Grid Grid.Column="1" x:Name="newMoonDayMarkerGrid" Margin="0,20" VerticalOptions="Center">                                   
+                                <!-- AbsoluteLayout for the timeline and markers -->
+                                <Grid Grid.Column="1" x:Name="newMoonDayMarkerGrid" Margin="0,20" VerticalOptions="Center">
                                     <Image x:Name="newMoonDayMarker" Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="40" Opacity="0"/>
                                     <BoxView x:Name="smallMarker1" HeightRequest="20" WidthRequest="2" BackgroundColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Label x:Name="timeLabel" Text="{Binding DayAstroEvent.MoonDay.TransitionTime, StringFormat='{0:HH:mm}'}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" TranslationY="20"/>
                                 </Grid>
                                 <!--Grid for Middle Moon Day Marker and Label (only visible for triple moon days)-->
-                                <Grid x:Name="middleMoonDayMarkerGrid" IsVisible="{Binding DayAstroEvent.MoonDay.IsTripleMoonDay}" Margin="0,20" VerticalOptions="Center">                                                                     
-                                    <Image x:Name="middleMoonDayMarker" Source="{Binding DayAstroEvent.MoonDay.MiddleMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="20" Opacity="1" TranslationY="-40"/>
+                                <Grid Grid.Column="1" x:Name="middleMoonDayMarkerGrid" IsVisible="{Binding DayAstroEvent.MoonDay.IsTripleMoonDay}" Margin="0,20" VerticalOptions="Center">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="MoonImage_Tapped"/>
+                                    </Grid.GestureRecognizers>
+                                    <Image x:Name="middleMoonDayMarker" Source="{Binding DayAstroEvent.MoonDay.MiddleMoonDay, Converter={StaticResource IntToImageConverter}}" HeightRequest="20" Opacity="1" TranslationY="-40"/>                                   
                                     <BoxView x:Name="smallMarker2" HeightRequest="20" WidthRequest="2" BackgroundColor="{StaticResource LightBlueBackground}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Label x:Name="secondTimeLabel" Text="{Binding DayAstroEvent.MoonDay.MiddleMoonDayTransitionTime, StringFormat='{0:HH:mm}'}" TextColor="{StaticResource LightBlueBackground}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" TranslationY="-20"/>
                                 </Grid>
-                            
+                                <Grid x:Name="previousMoonDayImageGrid" Grid.Column="0" HeightRequest="80" VerticalOptions="Center">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="MoonImage_Tapped"/>
+                                    </Grid.GestureRecognizers>
+                                    <Image Source="{Binding DayAstroEvent.MoonDay.PreviousMoonDay, Converter={StaticResource IntToImageConverter}}" Margin="10"/>
+                                </Grid>
+                                <Grid x:Name="newMoonDayImageGrid" Grid.Column="2" HeightRequest="80" VerticalOptions="Center">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="MoonImage_Tapped"/>
+                                    </Grid.GestureRecognizers>
+                                    <Image Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" Margin="10"/>
+                                </Grid>
+                            </Grid>
                         </Grid>
                     </Frame>
                     <Frame  Grid.Row="3"  Padding="10" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12.4, 0,12.4,12.4">
