@@ -74,7 +74,7 @@
                         </Grid>
                     </Grid>
                     <Label Grid.Row="1"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="20" HorizontalOptions="CenterAndExpand" />
-                    <Frame  Grid.Row="2"  x:Name="expandableFrame" Padding="10,0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="12.4,20,12.4,12.4">
+                    <Frame  Grid.Row="2"  Padding="10,0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" Margin="12.4,20,12.4,12.4">
                         <Grid>                          
                                 <!-- The horizontal line -->
                             <Grid ColumnDefinitions="auto,*, auto" Padding="0,20">                                
