@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace AstroApp.Data.Models
 {
-    public partial class MoonDayDetails : ObservableObject
+    public partial class InfoScreen : ObservableObject
     {
         [ObservableProperty]
-        private int moonDay;
+        private string header;
         [ObservableProperty]
-        private string moonDayInfo;
+        private string infoText;        
         [ObservableProperty]
         private DateTime transitionTime;
     }

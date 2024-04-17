@@ -1,4 +1,4 @@
-using AstroApp.Data.Enums;
+﻿using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
 using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
@@ -44,16 +44,16 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
     public ObservableCollection<AstroEvent> AstroEvents { get; set; } = new ObservableCollection<AstroEvent>();
 
-    private MoonDayDetails moonDayConteiner;
-    public MoonDayDetails MoonDayConteiner
+    private InfoScreen infoConteiner;
+    public InfoScreen InfoConteiner
     {
-        get => moonDayConteiner;
+        get => infoConteiner;
         set
         {
-            if (moonDayConteiner != value)
+            if (infoConteiner != value)
             {
-                moonDayConteiner = value;
-                OnPropertyChanged(nameof(MoonDayConteiner));
+                infoConteiner = value;
+                OnPropertyChanged(nameof(InfoConteiner));
             }
         }
     }
@@ -241,33 +241,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
-    private void TapSunInZodiac_Tapped(object sender, TappedEventArgs e)
-    {
-        Application.Current.MainPage.DisplayAlert("Sun in " + DayAstroEvent.SunInZodiac.NewZodiacSign + " Details", DayAstroEvent.SunInZodiac.PlanetInZodiacInfo, "OK");
-    }
-
-    private void TapMoonInZodiac_Tapped(object sender, TappedEventArgs e)
-    {
-        Application.Current.MainPage.DisplayAlert("Moon in " + DayAstroEvent.MoonInZodiac.NewZodiacSign + " Details", DayAstroEvent.MoonInZodiac.PlanetInZodiacInfo, "OK");
-    }
-
-
-    private void TapVenusInZodiac_Tapped(object sender, TappedEventArgs e)
-    {
-        Application.Current.MainPage.DisplayAlert("Venus in " + DayAstroEvent.VenusInZodiac.NewZodiacSign + " Details", DayAstroEvent.VenusInZodiac.PlanetInZodiacInfo, "OK");
-    }
-
-    private void TapMarsInZodiac_Tapped(object sender, TappedEventArgs e)
-    {
-        Application.Current.MainPage.DisplayAlert("Mars in " + DayAstroEvent.MarsInZodiac.NewZodiacSign + " Details", DayAstroEvent.MarsInZodiac.PlanetInZodiacInfo, "OK");
-    }
-
-    private void TapMercuryInZodiac_Tapped(object sender, TappedEventArgs e)
-    {
-        Application.Current.MainPage.DisplayAlert("Mercury in " + DayAstroEvent.MercuryInZodiac.NewZodiacSign + " Details", DayAstroEvent.MercuryInZodiac.PlanetInZodiacInfo, "OK");
-    }
-
-    private async Task ToggleMoonGridAnimation(Grid moonGrid, string moonDayInfo)
+    private async Task ToggleMoonGridAnimation(Grid moonGrid, string infoText, string header)
     {
         // Check if there's a previously enlarged grid and it's not the same as the current, shrink it
         if (currentlyEnlargedMoonGrid != null && currentlyEnlargedMoonGrid != moonGrid && isMoonGridEnlarged)
@@ -286,7 +260,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             // Update the details about the moon day here
 
             // Show the details after updating
-            await ShowMoonDayInfo(moonDayInfo); // Assuming you have a method to show details about the moon day
+            await ShowMoonDayInfo(infoText, header); // Assuming you have a method to show details about the moon day
         }
         else
         {
@@ -301,32 +275,104 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
     private async void MoonImage_Tapped(object sender, EventArgs e)
     {
-        if (MoonDayConteiner == null)
+        if (InfoConteiner == null)
         {
-            MoonDayConteiner = new MoonDayDetails();
+            InfoConteiner = new InfoScreen();
         }
 
         if (sender == previousMoonDayImageGrid)
-        {            
-                string moonDayInfo = DayAstroEvent.MoonDay.PreviousMoonDayInfo;
-                await ToggleMoonGridAnimation(previousMoonDayImageGrid, moonDayInfo);               
+        {
+            string moonDayLT = TranslateMoonDay(DayAstroEvent.MoonDay.PreviousMoonDay);
+            string moonDayInfo = DayAstroEvent.MoonDay.PreviousMoonDayInfo;
+            await ToggleMoonGridAnimation(previousMoonDayImageGrid, moonDayInfo, moonDayLT);               
             
         }
         else if (sender == newMoonDayImageGrid)
-        {                        
-                string moonDayInfo = DayAstroEvent.MoonDay.NewMoonDayInfo;
-                await ToggleMoonGridAnimation(newMoonDayImageGrid, moonDayInfo);                
+        {
+            string moonDayLT = TranslateMoonDay(DayAstroEvent.MoonDay.NewMoonDay);
+            string moonDayInfo = DayAstroEvent.MoonDay.NewMoonDayInfo;
+            await ToggleMoonGridAnimation(newMoonDayImageGrid, moonDayInfo, moonDayLT);                
             
         }
         else if (sender == middleMoonDayMarkerGrid)
         {
+            string moonDayLT = TranslateMoonDay(DayAstroEvent.MoonDay.MiddleMoonDay);
             string moonDayInfo = DayAstroEvent.MoonDay.MiddleMoonDayInfo;
-            await ToggleMoonGridAnimation(middleMoonDayMarkerGrid, moonDayInfo);
+            await ToggleMoonGridAnimation(middleMoonDayMarkerGrid, moonDayInfo, moonDayLT);
 
         }
     }
 
-    private async Task ShowMoonDayInfo(string moonDayInfo)
+    private string TranslateMoonDay(int moonDay)
+    {
+        switch (moonDay)
+        {
+            case 1:
+                return "1.Žibintas";
+            case 2:
+                return "2.Banginis";
+            case 3:
+                return "3.Leopardas";
+            case 4:
+                return "4.Medis";
+            case 5:
+                return "5.Vienaragis";
+            case 6:
+                return "6.Vaivorykštė";
+            case 7:
+                return "7.Gaidys";
+            case 8:
+                return "8.Feniksas";
+            case 9:
+                return "9.Šikšnosparnis";
+            case 10:
+                return "10.Fontanas";
+            case 11:
+                return "11.Karūna";
+            case 12:
+                return "žuvyse";
+            case 13:
+                return "13.Ratas";
+            case 14:
+                return "14.Trimitas";
+            case 15:
+                return "15.Gyvatė";
+            case 16:
+                return "16.Balandis";
+            case 17:
+                return "17.Vynuogė";
+            case 18:
+                return "18.Bezdžionė";
+            case 19:
+                return "19.Voras";
+            case 20:
+                return "20.Erelis";
+            case 21:
+                return "21.Arklys";
+            case 22:
+                return "22.Dramblys";
+            case 23:
+                return "23.Krokodilas";
+            case 24:
+                return "24.Meška";
+            case 25:
+                return "25.Vėžlys";
+            case 26:
+                return "26.Varlė";
+            case 27:
+                return "27.Laivas";
+            case 28:
+                return "28.Lotosas";
+            case 29:
+                return "29.Aštunkojis";
+            case 30:
+                return "30.Gulbė";
+            default:
+                return "nežinoma diena"; // Default case for unknown or uninitialized values
+        }
+    }
+
+    private async Task ShowMoonDayInfo(string infoText, string header)
     {
         // Fade out existing content quickly if it's already visible
         if (moonDayInfoScreen.IsVisible)
@@ -338,7 +384,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         moonDayInfoScreen.Opacity = 0;
         moonDayInfoScreen.Scale = 0.5;
         moonDayInfoScreen.IsVisible = true;
-        UpdateChatBubbleContent(moonDayInfo);
+        UpdateChatBubbleContent(infoText, header);
 
         // Fade in new content
         var fadeAnimation = moonDayInfoScreen.FadeTo(1, 200, Easing.CubicOut);
@@ -357,10 +403,11 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         moonDayInfoScreen.IsVisible = false;
     }
 
-    private void UpdateChatBubbleContent(string newContent)
+    private void UpdateChatBubbleContent(string newContent, string newHeader)
     {
         // Directly update the chat bubble's text here
-        MoonDayConteiner.MoonDayInfo = newContent;
+        InfoConteiner.Header = newHeader;
+        InfoConteiner.InfoText = newContent;
     }
 
     private async Task ResetToDefaultState()
@@ -395,17 +442,19 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
     private async void PlanetInZodiacGrid_Tapped(object sender, EventArgs e)
     {
-        if (MoonDayConteiner == null)
+        if (InfoConteiner == null)
         {
-            MoonDayConteiner = new MoonDayDetails();
+            InfoConteiner = new InfoScreen();
         }
 
         if (sender == sunInZodiacGrid)
         {            
             if (sunInZodiacGrid != null)
             {
+                string zodiacLT = TranslateZodiac(DayAstroEvent.SunInZodiac.NewZodiacSign);
+                string sunInZodiacHeader = "Saulė " + zodiacLT;
                 string sunInZodiacInfo = DayAstroEvent.SunInZodiac.PlanetInZodiacInfo;
-                await ToggleMoonGridAnimation(sunInZodiacGrid, sunInZodiacInfo);
+                await ToggleMoonGridAnimation(sunInZodiacGrid, sunInZodiacInfo, sunInZodiacHeader);
 
             }
         }
@@ -414,8 +463,10 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         {
             if (moonInZodiacGrid != null)
             {
+                string zodiacLT = TranslateZodiac(DayAstroEvent.MoonInZodiac.NewZodiacSign);
+                string moonInZodiacHeader = "Mėnulis " + zodiacLT;
                 string moonInZodiacInfo = DayAstroEvent.MoonInZodiac.PlanetInZodiacInfo;
-                await ToggleMoonGridAnimation(moonInZodiacGrid, moonInZodiacInfo);
+                await ToggleMoonGridAnimation(moonInZodiacGrid, moonInZodiacInfo, moonInZodiacHeader);
 
             }
         }
@@ -424,8 +475,10 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         {
             if (venusInZodiacGrid != null)
             {
+                string zodiacLT = TranslateZodiac(DayAstroEvent.VenusInZodiac.NewZodiacSign);
+                string venusInZodiacHeader = "Venera " + zodiacLT;
                 string venusInZodiacInfo = DayAstroEvent.VenusInZodiac.PlanetInZodiacInfo;
-                await ToggleMoonGridAnimation(venusInZodiacGrid, venusInZodiacInfo);
+                await ToggleMoonGridAnimation(venusInZodiacGrid, venusInZodiacInfo, venusInZodiacHeader);
 
             }
         }
@@ -434,8 +487,10 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         {
             if (marsInZodiacGrid != null)
             {
+                string zodiacLT = TranslateZodiac(DayAstroEvent.MarsInZodiac.NewZodiacSign);
+                string marsInZodiacHeader = "Marsas " + zodiacLT;
                 string marsInZodiacInfo = DayAstroEvent.MarsInZodiac.PlanetInZodiacInfo;
-                await ToggleMoonGridAnimation(marsInZodiacGrid, marsInZodiacInfo);
+                await ToggleMoonGridAnimation(marsInZodiacGrid, marsInZodiacInfo, marsInZodiacHeader);
             }
         }
 
@@ -443,10 +498,45 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         {
             if (mercuryInZodiacGrid != null)
             {
+                string zodiacLT = TranslateZodiac(DayAstroEvent.MercuryInZodiac.NewZodiacSign);
+                string mercuryInZodiacHeader = "Marsas " + zodiacLT;
                 string mercuryInZodiacInfo = DayAstroEvent.MercuryInZodiac.PlanetInZodiacInfo;
-                await ToggleMoonGridAnimation(mercuryInZodiacGrid, mercuryInZodiacInfo);
+                await ToggleMoonGridAnimation(mercuryInZodiacGrid, mercuryInZodiacInfo, mercuryInZodiacHeader);
 
             }
+        }
+    }
+
+    private string TranslateZodiac(ZodiacSign planetInZodiac)
+    {
+        switch (planetInZodiac)
+        {
+            case ZodiacSign.Aries:
+                return "avine";
+            case ZodiacSign.Taurus:
+                return "jautyje";
+            case ZodiacSign.Gemini:
+                return "dvyniuose";
+            case ZodiacSign.Cancer:
+                return "vėžyje";
+            case ZodiacSign.Leo:
+                return "liūte";
+            case ZodiacSign.Virgo:
+                return "mergelėje";
+            case ZodiacSign.Libra:
+                return "svarstyklėse";
+            case ZodiacSign.Scorpio:
+                return "skorpione";
+            case ZodiacSign.Sagittarius:
+                return "šaulyje";
+            case ZodiacSign.Capricorn:
+                return "ožiaragyje";
+            case ZodiacSign.Aquarius:
+                return "vandenyje";
+            case ZodiacSign.Pisces:
+                return "žuvyse";
+            default:
+                return "nežinomas ženklas"; // Default case for unknown or uninitialized values
         }
     }
 }
