@@ -39,14 +39,14 @@
             <ScrollView>
                 <Grid VerticalOptions="FillAndExpand" >
                     <Grid.RowDefinitions>
-                        <RowDefinition ></RowDefinition>
-                        <RowDefinition ></RowDefinition>
-                        <RowDefinition ></RowDefinition>
-                        <RowDefinition ></RowDefinition>
-                        <RowDefinition ></RowDefinition>
-                        <RowDefinition ></RowDefinition>
-                        <RowDefinition ></RowDefinition>
-                        <RowDefinition ></RowDefinition>                       
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>                       
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,20,0,0">
                         <Grid.ColumnDefinitions>
