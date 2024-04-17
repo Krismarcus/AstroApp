@@ -308,65 +308,65 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         switch (moonDay)
         {
             case 1:
-                return "1.Žibintas";
+                return "1 Mėnulio diena - Žibintas";
             case 2:
-                return "2.Banginis";
+                return "2 Mėnulio diena - Banginis";
             case 3:
-                return "3.Leopardas";
+                return "3 Mėnulio diena - Leopardas";
             case 4:
-                return "4.Medis";
+                return "4 Mėnulio diena - Medis";
             case 5:
-                return "5.Vienaragis";
+                return "5 Mėnulio diena - Vienaragis";
             case 6:
-                return "6.Vaivorykštė";
+                return "6 Mėnulio diena - Vaivorykštė";
             case 7:
-                return "7.Gaidys";
+                return "7 Mėnulio diena - Gaidys";
             case 8:
-                return "8.Feniksas";
+                return "8 Mėnulio diena - Feniksas";
             case 9:
-                return "9.Šikšnosparnis";
+                return "9 Mėnulio diena - Šikšnosparnis";
             case 10:
-                return "10.Fontanas";
+                return "10 Mėnulio diena - Fontanas";
             case 11:
-                return "11.Karūna";
+                return "11 Mėnulio diena - Karūna";
             case 12:
-                return "žuvyse";
+                return "12 Mėnulio diena - Taurė";
             case 13:
-                return "13.Ratas";
+                return "13 Mėnulio diena - Ratas";
             case 14:
-                return "14.Trimitas";
+                return "14 Mėnulio diena - Trimitas";
             case 15:
-                return "15.Gyvatė";
+                return "15 Mėnulio diena - Gyvatė";
             case 16:
-                return "16.Balandis";
+                return "16 Mėnulio diena - Balandis";
             case 17:
-                return "17.Vynuogė";
+                return "17 Mėnulio diena - Vynuogė";
             case 18:
-                return "18.Bezdžionė";
+                return "18 Mėnulio diena - Bezdžionė";
             case 19:
-                return "19.Voras";
+                return "19 Mėnulio diena - Voras";
             case 20:
-                return "20.Erelis";
+                return "20 Mėnulio diena - Erelis";
             case 21:
-                return "21.Arklys";
+                return "21 Mėnulio diena - Arklys";
             case 22:
-                return "22.Dramblys";
+                return "22 Mėnulio diena - Dramblys";
             case 23:
-                return "23.Krokodilas";
+                return "23 Mėnulio diena - Krokodilas";
             case 24:
-                return "24.Meška";
+                return "24 Mėnulio diena - Meška";
             case 25:
-                return "25.Vėžlys";
+                return "25 Mėnulio diena - Vėžlys";
             case 26:
-                return "26.Varlė";
+                return "26 Mėnulio diena - Varlė";
             case 27:
-                return "27.Laivas";
+                return "27 Mėnulio diena - Laivas";
             case 28:
-                return "28.Lotosas";
+                return "28 Mėnulio diena - Lotosas";
             case 29:
-                return "29.Aštunkojis";
+                return "29 Mėnulio diena - Aštunkojis";
             case 30:
-                return "30.Gulbė";
+                return "30 Mėnulio diena - Gulbė";
             default:
                 return "nežinoma diena"; // Default case for unknown or uninitialized values
         }
@@ -512,29 +512,29 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         switch (planetInZodiac)
         {
             case ZodiacSign.Aries:
-                return "avine";
+                return "Avine";
             case ZodiacSign.Taurus:
-                return "jautyje";
+                return "Jautyje";
             case ZodiacSign.Gemini:
-                return "dvyniuose";
+                return "Dvyniuose";
             case ZodiacSign.Cancer:
-                return "vėžyje";
+                return "Vėžyje";
             case ZodiacSign.Leo:
-                return "liūte";
+                return "Liūte";
             case ZodiacSign.Virgo:
-                return "mergelėje";
+                return "Mergelėje";
             case ZodiacSign.Libra:
-                return "svarstyklėse";
+                return "Svarstyklėse";
             case ZodiacSign.Scorpio:
-                return "skorpione";
+                return "Skorpione";
             case ZodiacSign.Sagittarius:
-                return "šaulyje";
+                return "Šaulyje";
             case ZodiacSign.Capricorn:
-                return "ožiaragyje";
+                return "Ožiaragyje";
             case ZodiacSign.Aquarius:
-                return "vandenyje";
+                return "Vandenyje";
             case ZodiacSign.Pisces:
-                return "žuvyse";
+                return "Žuvyse";
             default:
                 return "nežinomas ženklas"; // Default case for unknown or uninitialized values
         }

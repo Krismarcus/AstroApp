@@ -72,6 +72,8 @@
 	  <None Remove="Resources\Images\aries.png" />
 	  <None Remove="Resources\Images\aries_blue.png" />
 	  <None Remove="Resources\Images\arrow_transition.png" />
+	  <None Remove="Resources\Images\background.png" />
+	  <None Remove="Resources\Images\background2.png" />
 	  <None Remove="Resources\Images\barber.png" />
 	  <None Remove="Resources\Images\bat.png" />
 	  <None Remove="Resources\Images\bear.png" />

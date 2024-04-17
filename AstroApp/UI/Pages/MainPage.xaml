@@ -4,17 +4,11 @@
              xmlns:pages="clr-namespace:AstroApp.UI.Pages"
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
              x:DataType="pages:MainPage"
-             x:Class="AstroApp.UI.Pages.MainPage"             
-             >
+             BackgroundImageSource="background2.png"
+             x:Class="AstroApp.UI.Pages.MainPage">
     <ContentPage.Resources>
         <converters:DateTimeToMonthNameConverter x:Key="DateTimeToMonthNameConverter"/>       
-    </ContentPage.Resources>
-    <ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="{StaticResource ShadedBackground}" Offset="0.1"/>
-            <GradientStop Color="{StaticResource SecondaryBackground}" Offset="1.0"/>
-        </LinearGradientBrush>
-    </ContentPage.Background>
+    </ContentPage.Resources>    
     <FlexLayout  VerticalOptions="FillAndExpand">
         <Grid VerticalOptions="FillAndExpand">           
             <Grid.RowDefinitions>
