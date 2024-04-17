@@ -279,7 +279,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         // Now handle the current grid
         if (currentlyEnlargedMoonGrid != moonGrid || !isMoonGridEnlarged)
         {
-            await moonGrid.ScaleTo(1.5, 400, Easing.CubicOut);
+            await moonGrid.ScaleTo(1.2, 400, Easing.CubicOut);
             isMoonGridEnlarged = true;
             currentlyEnlargedMoonGrid = moonGrid;
 

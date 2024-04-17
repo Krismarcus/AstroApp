@@ -7,9 +7,10 @@
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
              x:DataType="controls:DayControl">
     <ContentView.Resources>
-        <converters:DayBorderBackgroundColorToEclipseConverter x:Key="DayBorderBackgroundColorToEclipseConverter"/>
-        
+        <converters:DayBorderBackgroundColorToEclipseConverter x:Key="DayBorderBackgroundColorToEclipseConverter"/>        
         <converters:EnumToImageConverter x:Key="EnumToImageConverter"/>
+        <converters:NewMoonDayToBluePlanetInSunIconsConverter x:Key="NewMoonDayToBluePlanetInSunIconsConverter"/>
+        <converters:NewMoonDayToBluePlanetInMoonIconsConverter x:Key="NewMoonDayToBluePlanetInMoonIconsConverter"/>
         <converters:MoonDayIntToImageConverter x:Key="IntToImageConverter"/>        
         <converters:ActivityQualityToColorConverter x:Key="ActivityQualityToColorConverter"/>
         <converters:ActivityQualityToFontColorConverter x:Key="ActivityQualityToFontColorConverter"/>
@@ -22,9 +23,9 @@
         <VerticalStackLayout >
             <Label x:Name="dayLabel" Text="{Binding DayNumber}" FontAttributes="Bold" HorizontalOptions="Center" />
             <Grid ColumnDefinitions="*,*">
-                <Image Grid.Column="0" Source="{Binding DayAstroEvent.SunInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="20" HeightRequest="20">                    
+                <Image Grid.Column="0" Source="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToBluePlanetInSunIconsConverter}}" WidthRequest="20" HeightRequest="20">                    
                 </Image>
-                <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" WidthRequest="20" HeightRequest="20">                    
+                <Image Grid.Column="1" Source="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToBluePlanetInMoonIconsConverter}}" WidthRequest="20" HeightRequest="20">                    
                 </Image>
             </Grid>
             <Grid Padding="5" HorizontalOptions="Center" VerticalOptions="Start">

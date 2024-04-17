@@ -68,7 +68,9 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\aquarius.png" />
+	  <None Remove="Resources\Images\aquarius_blue.png" />
 	  <None Remove="Resources\Images\aries.png" />
+	  <None Remove="Resources\Images\aries_blue.png" />
 	  <None Remove="Resources\Images\arrow_transition.png" />
 	  <None Remove="Resources\Images\barber.png" />
 	  <None Remove="Resources\Images\bat.png" />
@@ -79,7 +81,9 @@
 	  <None Remove="Resources\Images\buystuff.png" />
 	  <None Remove="Resources\Images\calendar.png" />
 	  <None Remove="Resources\Images\cancer.png" />
+	  <None Remove="Resources\Images\cancer_blue.png" />
 	  <None Remove="Resources\Images\capricorn.png" />
+	  <None Remove="Resources\Images\capricorn_blue.png" />
 	  <None Remove="Resources\Images\conjunction.png" />
 	  <None Remove="Resources\Images\contracts.png" />
 	  <None Remove="Resources\Images\crocodile.png" />
@@ -94,6 +98,7 @@
 	  <None Remove="Resources\Images\fullmoon_small.png" />
 	  <None Remove="Resources\Images\gardening.png" />
 	  <None Remove="Resources\Images\gemini.png" />
+	  <None Remove="Resources\Images\gemini_blue.png" />
 	  <None Remove="Resources\Images\grapes.png" />
 	  <None Remove="Resources\Images\horse.png" />
 	  <None Remove="Resources\Images\importanttasks.png" />
@@ -102,7 +107,9 @@
 	  <None Remove="Resources\Images\left_arrow.png" />
 	  <None Remove="Resources\Images\leo.png" />
 	  <None Remove="Resources\Images\leopard.png" />
+	  <None Remove="Resources\Images\leo_blue.png" />
 	  <None Remove="Resources\Images\libra.png" />
+	  <None Remove="Resources\Images\libra_blue.png" />
 	  <None Remove="Resources\Images\line.png" />
 	  <None Remove="Resources\Images\line2.png" />
 	  <None Remove="Resources\Images\lotus.png" />
@@ -121,14 +128,17 @@
 	  <None Remove="Resources\Images\other.png" />
 	  <None Remove="Resources\Images\phoenix.png" />
 	  <None Remove="Resources\Images\pisces.png" />
+	  <None Remove="Resources\Images\pisces_blue.png" />
 	  <None Remove="Resources\Images\pluto.png" />
 	  <None Remove="Resources\Images\rainbow.png" />
 	  <None Remove="Resources\Images\retrograde.png" />
 	  <None Remove="Resources\Images\right_arrow.png" />
 	  <None Remove="Resources\Images\rooster.png" />
 	  <None Remove="Resources\Images\sagittarius.png" />
+	  <None Remove="Resources\Images\sagittarius_blue.png" />
 	  <None Remove="Resources\Images\saturn.png" />
 	  <None Remove="Resources\Images\scorpio.png" />
+	  <None Remove="Resources\Images\scorpio_blue.png" />
 	  <None Remove="Resources\Images\sextile.png" />
 	  <None Remove="Resources\Images\ship.png" />
 	  <None Remove="Resources\Images\snake.png" />
@@ -138,6 +148,7 @@
 	  <None Remove="Resources\Images\sun.png" />
 	  <None Remove="Resources\Images\swan.png" />
 	  <None Remove="Resources\Images\taurus.png" />
+	  <None Remove="Resources\Images\taurus_blue.png" />
 	  <None Remove="Resources\Images\tech.png" />
 	  <None Remove="Resources\Images\text_gardening.png" />
 	  <None Remove="Resources\Images\text_love.png" />
@@ -153,6 +164,7 @@
 	  <None Remove="Resources\Images\uranus.png" />
 	  <None Remove="Resources\Images\venus.png" />
 	  <None Remove="Resources\Images\virgo.png" />
+	  <None Remove="Resources\Images\virgo_blue.png" />
 	  <None Remove="Resources\Images\whale.png" />
 	  <None Remove="Resources\Images\wheel.png" />
 	</ItemGroup>
