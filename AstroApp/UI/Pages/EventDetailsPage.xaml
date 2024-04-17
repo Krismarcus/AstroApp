@@ -360,10 +360,10 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" ColumnDefinitions="4*,*">
-                                    <Label Grid.Column="0" x:Name="moonDayHeader" Text="{Binding InfoConteiner.Header}" TextColor="{StaticResource DarkBlueBackground}" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Grid Grid.Row="0" ColumnDefinitions="7*,*">
+                                    <Label Grid.Column="0" x:Name="moonDayHeader" Text="{Binding InfoConteiner.Header}" TextColor="{StaticResource DarkBlueBackground}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Button Text="X" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Start"
-                                    WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"
+                                    BackgroundColor="Transparent"
                                     TextColor="{StaticResource DarkBlueBackground}" FontAttributes="Bold"
                                     Clicked="CloseMoonDayInfoScreen_Clicked"/>
                                 </Grid>
