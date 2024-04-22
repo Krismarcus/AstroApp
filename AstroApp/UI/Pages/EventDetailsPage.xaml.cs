@@ -499,7 +499,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             if (mercuryInZodiacGrid != null)
             {
                 string zodiacLT = TranslateZodiac(DayAstroEvent.MercuryInZodiac.NewZodiacSign);
-                string mercuryInZodiacHeader = "Marsas " + zodiacLT;
+                string mercuryInZodiacHeader = "Merkurijus " + zodiacLT;
                 string mercuryInZodiacInfo = DayAstroEvent.MercuryInZodiac.PlanetInZodiacInfo;
                 await ToggleMoonGridAnimation(mercuryInZodiacGrid, mercuryInZodiacInfo, mercuryInZodiacHeader);
 

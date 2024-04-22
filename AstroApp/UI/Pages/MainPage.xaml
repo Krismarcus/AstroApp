@@ -3,142 +3,150 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:AstroApp.UI.Pages"
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
-             x:DataType="pages:MainPage"
-             BackgroundImageSource="background2.png"
+             x:DataType="pages:MainPage"             
              x:Class="AstroApp.UI.Pages.MainPage">
     <ContentPage.Resources>
-        <converters:DateTimeToMonthNameConverter x:Key="DateTimeToMonthNameConverter"/>       
-    </ContentPage.Resources>    
-    <FlexLayout  VerticalOptions="FillAndExpand">
-        <Grid VerticalOptions="FillAndExpand">           
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>                
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0, 20, 0, 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" Padding="40,0">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="PrevMonth_Clicked"/>
-                    </Grid.GestureRecognizers>
-                    <Image x:Name="leftArrow" Source="left_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
-                </Grid>
-                <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" FontAttributes="Bold" />
-                <Grid Grid.Column="2" Padding="40,0">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="NextMonth_Clicked"/>
-                    </Grid.GestureRecognizers>
-                    <Image x:Name="rightArrow" Source="right_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
-                </Grid>
-            </Grid>
-            <Grid Grid.Row="1" x:Name="CalendarGrid" VerticalOptions="Center" Margin="10" >
+        <converters:DateTimeToMonthNameConverter x:Key="DateTimeToMonthNameConverter"/>
+    </ContentPage.Resources>
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="{StaticResource ShadedBackground}" Offset="0.1"/>
+            <GradientStop Color="{StaticResource SecondaryBackground}" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <Grid>
+        <Image Source="background.png" Aspect="AspectFill" Opacity="0.2"/>
+        <FlexLayout  VerticalOptions="FillAndExpand">
+            <Grid VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50" />
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0, 20, 0, 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Padding="40,0">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PrevMonth_Clicked"/>
+                        </Grid.GestureRecognizers>
+                        <Image x:Name="leftArrow" Source="left_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
+                    </Grid>
+                    <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" FontAttributes="Bold" />
+                    <Grid Grid.Column="2" Padding="40,0">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NextMonth_Clicked"/>
+                        </Grid.GestureRecognizers>
+                        <Image x:Name="rightArrow" Source="right_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" x:Name="CalendarGrid" VerticalOptions="Center" Margin="10" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Grid Grid.Row="2" ColumnDefinitions="auto,*,auto" Margin="10" BackgroundColor="Transparent">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnArrowTapped"/>
+                    </Grid.GestureRecognizers>
+                    <Image Grid.Column="0" x:Name="leftArrowImage" Source="up_arrow.png" WidthRequest="30" HorizontalOptions="Center" BackgroundColor="Transparent"/>
+                    <Label Grid.Column="1" Text="{Binding ActivityProfileLt}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Image Grid.Column="2" x:Name="rightArrowImage" Source="up_arrow.png" WidthRequest="30"/>
+                </Grid>
+                <Grid x:Name="profileGrid" Grid.Row="3" ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*,*" VerticalOptions="End" Margin="12.4, 0" IsVisible="False">
+                    <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="{Binding NoPresetBackgroundColor}" Margin="0, 5 ,5, 0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NoPresetRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="calendar.png" HeightRequest="20" Margin="-10"/>
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{Binding ImportantTasksBackgroundColor}" Margin="0 ,5 ,5, 0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ImportantTasksRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="importanttasks.png" HeightRequest="20" Margin="-10"/>
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="{Binding ContractsBackgroundColor}" Margin="0 ,5, 5 ,0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ContractsRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="contracts.png" HeightRequest="20" Margin="-10"/>
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="3" BackgroundColor="{Binding MeetingsBackgroundColor}" Margin="0, 5, 5, 0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="MeetingsRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="meetings.png" HeightRequest="20" Margin="-10"/>
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="4" BackgroundColor="{Binding NewIdeasBackgroundColor}" Margin="0 ,5 ,5, 0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NewIdeasRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="newideas.png" HeightRequest="20" Margin="-10"/>
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="5" BackgroundColor="{Binding TravelBackgroundColor}" Margin="0 ,5 ,5, 0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TravelRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="travel.png" HeightRequest="20" Margin="-10"/>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="{Binding TechBackgroundColor}" Margin="0 ,5, 5, 0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TechnologiesRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="tech.png" HeightRequest="20" Margin="-10"/>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="{Binding BuyStuffBackgroundColor}" Margin="0 ,5 ,5 ,0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BuyStuffRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="buystuff.png" HeightRequest="20" Margin="-10"/>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="{Binding LoveBackgroundColor}" Margin="0 ,5, 5 ,0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="LoveRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="love.png" HeightRequest="20" Margin="-10"/>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="3" BackgroundColor="{Binding BeautyBackgroundColor}" Margin="0, 5, 5 ,0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BeautyRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="beauty.png" HeightRequest="20" Margin="-10"/>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="4" BackgroundColor="{Binding BarberBackgroundColor}" Margin="0, 5,5, 0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BarberRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="barber.png" HeightRequest="20" Margin="-10"/>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="5" BackgroundColor="{Binding GardeningBackgroundColor}" Margin="0, 5,5, 0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GardeningRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="gardening.png" HeightRequest="20" Margin="-10"/>
+                    </Frame>
+                </Grid>
             </Grid>
-            <Grid Grid.Row="2" ColumnDefinitions="auto,*,auto" Margin="10" BackgroundColor="Transparent">
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnArrowTapped"/>
-                </Grid.GestureRecognizers>                
-                <Image Grid.Column="0" x:Name="leftArrowImage" Source="up_arrow.png" WidthRequest="30" HorizontalOptions="Center" BackgroundColor="Transparent"/>
-                <Label Grid.Column="1" Text="{Binding ActivityProfileLt}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" FontAttributes="Bold"/>
-                <Image Grid.Column="2" x:Name="rightArrowImage" Source="up_arrow.png" WidthRequest="30"/>
-            </Grid>
-            <Grid x:Name="profileGrid" Grid.Row="3" ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*,*" VerticalOptions="End" Margin="12.4, 0" IsVisible="False">
-                <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="{Binding NoPresetBackgroundColor}" Margin="0, 5 ,5, 0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="NoPresetRecognizer_Tapped"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="calendar.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-                <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{Binding ImportantTasksBackgroundColor}" Margin="0 ,5 ,5, 0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ImportantTasksRecognizer_Tapped"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="importanttasks.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-                <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="{Binding ContractsBackgroundColor}" Margin="0 ,5, 5 ,0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ContractsRecognizer_Tapped"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="contracts.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-                <Frame Grid.Row="0" Grid.Column="3" BackgroundColor="{Binding MeetingsBackgroundColor}" Margin="0, 5, 5, 0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="MeetingsRecognizer_Tapped"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="meetings.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-                <Frame Grid.Row="0" Grid.Column="4" BackgroundColor="{Binding NewIdeasBackgroundColor}" Margin="0 ,5 ,5, 0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="NewIdeasRecognizer_Tapped"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="newideas.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-                <Frame Grid.Row="0" Grid.Column="5" BackgroundColor="{Binding TravelBackgroundColor}" Margin="0 ,5 ,5, 0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TravelRecognizer_Tapped"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="travel.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-                <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="{Binding TechBackgroundColor}" Margin="0 ,5, 5, 0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TechnologiesRecognizer_Tapped"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="tech.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-                <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="{Binding BuyStuffBackgroundColor}" Margin="0 ,5 ,5 ,0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="BuyStuffRecognizer_Tapped"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="buystuff.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-                <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="{Binding LoveBackgroundColor}" Margin="0 ,5, 5 ,0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="LoveRecognizer_Tapped"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="love.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-                <Frame Grid.Row="1" Grid.Column="3" BackgroundColor="{Binding BeautyBackgroundColor}" Margin="0, 5, 5 ,0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="BeautyRecognizer_Tapped"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="beauty.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-                <Frame Grid.Row="1" Grid.Column="4" BackgroundColor="{Binding BarberBackgroundColor}" Margin="0, 5,5, 0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="BarberRecognizer_Tapped"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="barber.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-                <Frame Grid.Row="1" Grid.Column="5" BackgroundColor="{Binding GardeningBackgroundColor}" Margin="0, 5,5, 0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="GardeningRecognizer_Tapped"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="gardening.png" HeightRequest="20" Margin="-10"/>
-                </Frame>
-            </Grid>            
-        </Grid>
-    </FlexLayout>
+        </FlexLayout>
+    </Grid>
 </ContentPage>

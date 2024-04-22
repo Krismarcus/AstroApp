@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace AstroApp.UI.Tools.Converters
 {
-    class DateTimeToMonthNameConverter : IValueConverter
+    class DateTimeToWeekdayConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is DateTime date)
             {
                 // "lt-LT" is the culture code for Lithuanian
-                var monthLt= date.ToString("MMMM", new CultureInfo("lt-LT"));
-                return char.ToUpperInvariant(monthLt[0]) + monthLt.Substring(1);
+                var weekDayLt = date.ToString("dddd", new CultureInfo("lt-LT"));
+                return char.ToUpperInvariant(weekDayLt[0]) + weekDayLt.Substring(1);
             }
             return value;
         }
