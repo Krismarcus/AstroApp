@@ -3,19 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:AstroApp.UI.Pages"
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
-             x:DataType="pages:MainPage"             
+             x:DataType="pages:MainPage"
+             BackgroundColor="Transparent"
              x:Class="AstroApp.UI.Pages.MainPage">
     <ContentPage.Resources>
         <converters:DateTimeToMonthNameConverter x:Key="DateTimeToMonthNameConverter"/>
     </ContentPage.Resources>
-    <ContentPage.Background>
+    <!--<ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
             <GradientStop Color="{StaticResource ShadedBackground}" Offset="0.1"/>
             <GradientStop Color="{StaticResource SecondaryBackground}" Offset="1.0"/>
         </LinearGradientBrush>
-    </ContentPage.Background>
+    </ContentPage.Background>-->
     <Grid>
-        <Image Source="background.png" Aspect="AspectFill" Opacity="0.2"/>
+        <Image Source="background.png" Aspect="AspectFill" Opacity="1"/>
         <FlexLayout  VerticalOptions="FillAndExpand">
             <Grid VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>

@@ -148,7 +148,7 @@
                                                 <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}"/>
                                                 <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                 <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2" >
-                                                    <Image Source="arrow_transition.png" HeightRequest="20" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
+                                                    <Image Source="arrow_transition.png" HeightRequest="7" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
                                                     <Label Text="{Binding DayAstroEvent.MoonInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center"/>
                                                 </VerticalStackLayout>
                                             </Grid>
@@ -165,7 +165,7 @@
                                                 <Image Grid.Column="0" Source="{Binding DayAstroEvent.MercuryInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}"/>
                                                 <Image Grid.Column="1" Source="{Binding DayAstroEvent.MercuryInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                 <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
-                                                    <Image Source="arrow_transition.png" HeightRequest="15" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
+                                                    <Image Source="arrow_transition.png" HeightRequest="5" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
                                                     <Label Text="{Binding DayAstroEvent.MercuryInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MercuryInZodiac.IsZodiacTransitioning}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center"/>
                                                 </VerticalStackLayout>
                                             </Grid>
@@ -180,7 +180,7 @@
                                                 <Image Grid.Column="0" Source="{Binding DayAstroEvent.VenusInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}"/>
                                                 <Image Grid.Column="1" Source="{Binding DayAstroEvent.VenusInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                 <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
-                                                    <Image Source="arrow_transition.png" HeightRequest="15" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
+                                                    <Image Source="arrow_transition.png" HeightRequest="5" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
                                                     <Label Text="{Binding DayAstroEvent.VenusInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.VenusInZodiac.IsZodiacTransitioning}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center"/>
                                                 </VerticalStackLayout>
                                             </Grid>
@@ -195,7 +195,7 @@
                                                 <Image Grid.Column="0" Source="{Binding DayAstroEvent.MarsInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}"/>
                                                 <Image Grid.Column="1" Source="{Binding DayAstroEvent.MarsInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                 <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
-                                                    <Image Source="arrow_transition.png" HeightRequest="15" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
+                                                    <Image Source="arrow_transition.png" HeightRequest="5" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
                                                     <Label Text="{Binding DayAstroEvent.MarsInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MarsInZodiac.IsZodiacTransitioning}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center"/>
                                                 </VerticalStackLayout>
                                             </Grid>
