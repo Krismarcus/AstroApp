@@ -58,7 +58,7 @@
                                 <RowDefinition ></RowDefinition>
                                 <RowDefinition ></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="20" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0"/>
+                            <Label Grid.Row="0"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="Header" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0"/>
                             <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -148,7 +148,7 @@
                                                 <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonInZodiac.PreviousZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}"/>
                                                 <Image Grid.Column="1" Source="{Binding DayAstroEvent.MoonInZodiac.NewZodiacSign, Converter={StaticResource EnumToImageConverter}}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                 <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2" >
-                                                    <Image Source="arrow_transition.png" HeightRequest="7" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
+                                                    <Image Source="arrow_transition.png" HeightRequest="6" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}" HorizontalOptions="Center"/>
                                                     <Label Text="{Binding DayAstroEvent.MoonInZodiac.TransitionTime, StringFormat='{0:HH:mm}'}" IsVisible="{Binding DayAstroEvent.MoonInZodiac.IsZodiacTransitioning}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center"/>
                                                 </VerticalStackLayout>
                                             </Grid>

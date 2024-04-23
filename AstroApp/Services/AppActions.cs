@@ -134,7 +134,7 @@ namespace AstroApp.Services
             }
         }
 
-        public async Task SavePlanetinZodiacsAsync(ObservableCollection<MoonDay> moonDays)
+        public async Task SaveMoonDaysAsync(ObservableCollection<MoonDay> moonDays)
         {
             try
             {
@@ -149,7 +149,7 @@ namespace AstroApp.Services
                     existingData = JsonSerializer.Deserialize<AppDB>(existingJson);
                 }
 
-                // Update PlanetInZodiac only
+                // Update Moondays only
                 if (existingData != null)
                 {
                     existingData.MoonDaysDB = moonDays;
@@ -158,6 +158,43 @@ namespace AstroApp.Services
                 {
                     existingData = new AppDB();
                     existingData.MoonDaysDB = moonDays; // In case there was no existing data
+                }
+
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                var jsonString = JsonSerializer.Serialize(existingData, options);
+
+                await File.WriteAllTextAsync(filePath, jsonString);
+            }
+            catch (Exception ex)
+            {
+                // Handle or log the exception as needed
+            }
+        }
+
+        public async Task SavePlanetInRetrogradeAsync(ObservableCollection<PlanetInRetrogradeDetails> planetInRetrogradeDetails)
+        {
+            try
+            {
+                var localFolderPath = FileSystem.AppDataDirectory; // Gets the local app data folder
+                var filePath = Path.Combine(localFolderPath, "astrodb.json");
+
+                // Read the existing data
+                AppDB existingData = null;
+                if (File.Exists(filePath))
+                {
+                    string existingJson = await File.ReadAllTextAsync(filePath);
+                    existingData = JsonSerializer.Deserialize<AppDB>(existingJson);
+                }
+
+                // Update PlanetInRetrograde only
+                if (existingData != null)
+                {
+                    existingData.PlanetInRetrogradeDetailsDB = planetInRetrogradeDetails;
+                }
+                else
+                {
+                    existingData = new AppDB();
+                    existingData.PlanetInRetrogradeDetailsDB = planetInRetrogradeDetails; // In case there was no existing data
                 }
 
                 var options = new JsonSerializerOptions { WriteIndented = true };

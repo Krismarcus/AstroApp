@@ -197,6 +197,9 @@
 	  <MauiXaml Update="UI\Controls\EditMoonDaysControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\EditPlanetInRetrogradeControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="UI\Controls\EditPlanetInZodiacControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -43,6 +43,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     }
 
     public ObservableCollection<AstroEvent> AstroEvents { get; set; } = new ObservableCollection<AstroEvent>();
+    public ObservableCollection<PlanetInRetrogradeDetails> PlanetInRetrogradeDetails { get; set; } = new ObservableCollection<PlanetInRetrogradeDetails>();
 
     private InfoScreen infoConteiner;
     public InfoScreen InfoConteiner
@@ -73,10 +74,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     }
 
     private Grid currentlyEnlargedMoonGrid;
-    private bool isMoonGridEnlarged = false;
-
-    private Grid currentlyEnlargedPlanetInZodiacGrid;
-    private bool isPlanetInZodiacGridEnlarged = false;
+    private bool isMoonGridEnlarged = false;   
 
     public EventDetailsPage()
     {
@@ -190,8 +188,12 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         UpdatePlanetInZodiacInfo(DayAstroEvent.VenusInZodiac);
         UpdatePlanetInZodiacInfo(DayAstroEvent.MarsInZodiac);
         UpdatePlanetInZodiacInfo(DayAstroEvent.MercuryInZodiac);
-
         UpdateMoonDayInfo();
+
+        if (App.AppData.AppDB.PlanetInRetrogradeDetailsDB != null)
+        {
+            PlanetInRetrogradeDetails = App.AppData.AppDB.PlanetInRetrogradeDetailsDB;
+        }
     }
 
     private void UpdatePlanetInZodiacInfo(PlanetInZodiac planetInZodiac)
@@ -453,7 +455,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             {
                 string zodiacLT = TranslateZodiac(DayAstroEvent.SunInZodiac.NewZodiacSign);
                 string sunInZodiacHeader = "Saulė " + zodiacLT;
-                string sunInZodiacInfo = DayAstroEvent.SunInZodiac.PlanetInZodiacInfo;
+                string sunInZodiacInfo = DayAstroEvent.SunInZodiac.PlanetInZodiacInfo;                
                 await ToggleMoonGridAnimation(sunInZodiacGrid, sunInZodiacInfo, sunInZodiacHeader);
 
             }
@@ -478,6 +480,12 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
                 string zodiacLT = TranslateZodiac(DayAstroEvent.VenusInZodiac.NewZodiacSign);
                 string venusInZodiacHeader = "Venera " + zodiacLT;
                 string venusInZodiacInfo = DayAstroEvent.VenusInZodiac.PlanetInZodiacInfo;
+
+                if (DayAstroEvent.VenusInZodiac.IsRetrograde == true)
+                {
+                    string venusInRetrogradeInfo = PlanetInRetrogradeDetails.FirstOrDefault(r => r.PlanetInRetrograde == Planet.Venus).PlanetInRetrogradeInfo;
+                    venusInZodiacInfo = venusInZodiacInfo + "\n" + venusInRetrogradeInfo;
+                }
                 await ToggleMoonGridAnimation(venusInZodiacGrid, venusInZodiacInfo, venusInZodiacHeader);
 
             }
@@ -490,6 +498,12 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
                 string zodiacLT = TranslateZodiac(DayAstroEvent.MarsInZodiac.NewZodiacSign);
                 string marsInZodiacHeader = "Marsas " + zodiacLT;
                 string marsInZodiacInfo = DayAstroEvent.MarsInZodiac.PlanetInZodiacInfo;
+
+                if (DayAstroEvent.MarsInZodiac.IsRetrograde == true)
+                {
+                    string marsInRetrogradeInfo = PlanetInRetrogradeDetails.FirstOrDefault(r => r.PlanetInRetrograde == Planet.Mars).PlanetInRetrogradeInfo;
+                    marsInZodiacInfo = marsInZodiacInfo + "\n" + marsInRetrogradeInfo;
+                }
                 await ToggleMoonGridAnimation(marsInZodiacGrid, marsInZodiacInfo, marsInZodiacHeader);
             }
         }
@@ -501,6 +515,12 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
                 string zodiacLT = TranslateZodiac(DayAstroEvent.MercuryInZodiac.NewZodiacSign);
                 string mercuryInZodiacHeader = "Merkurijus " + zodiacLT;
                 string mercuryInZodiacInfo = DayAstroEvent.MercuryInZodiac.PlanetInZodiacInfo;
+
+                if (DayAstroEvent.MercuryInZodiac.IsRetrograde == true)
+                {
+                    string mercuryInRetrogradeInfo = PlanetInRetrogradeDetails.FirstOrDefault(r => r.PlanetInRetrograde == Planet.Mercury).PlanetInRetrogradeInfo;
+                    mercuryInZodiacInfo = mercuryInZodiacInfo + "\n" + mercuryInRetrogradeInfo;
+                }
                 await ToggleMoonGridAnimation(mercuryInZodiacGrid, mercuryInZodiacInfo, mercuryInZodiacHeader);
 
             }

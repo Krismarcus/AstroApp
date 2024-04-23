@@ -7,7 +7,9 @@ namespace AstroApp.UI.Pages;
 
 public partial class PlanetInZodiacEventsEditPage : ContentPage
 {
-    public ObservableCollection<PlanetInZodiac> PlanetInZodiacs { get; set; }    
+    public ObservableCollection<PlanetInZodiac> PlanetInZodiacs { get; set; }
+
+    public ObservableCollection<PlanetInRetrogradeDetails> PlanetInRetrogradeDetails { get; set; }
 
     public PlanetInZodiacEventsEditPage()
 	{
@@ -20,6 +22,7 @@ public partial class PlanetInZodiacEventsEditPage : ContentPage
     {
         //this.MoonDays = await appActions.LoadMoonDaysAsync();
         PopulatePlanetsInZodiacsDetailsList();
+        PopulatePlanetsInRetrogradeDetailsList();
     }
 
     private void PopulatePlanetsInZodiacsDetailsList()
@@ -60,10 +63,44 @@ public partial class PlanetInZodiacEventsEditPage : ContentPage
         }
     }
 
+    private void PopulatePlanetsInRetrogradeDetailsList()
+    {
+        this.PlanetInRetrogradeDetails = App.AppData.AppDB.PlanetInRetrogradeDetailsDB;
+        if (this.PlanetInRetrogradeDetails == null)
+        {
+            this.PlanetInRetrogradeDetails = new ObservableCollection<PlanetInRetrogradeDetails>();
+
+            // Iterate over each value in the Planet enum
+            foreach (Planet planet in Enum.GetValues(typeof(Planet)))
+            {
+                this.PlanetInRetrogradeDetails.Add(new PlanetInRetrogradeDetails
+                {
+                    PlanetInRetrograde = planet,
+                    PlanetInRetrogradeInfo = ""
+                });
+
+            }
+        }
+
+        for (int i = 0; i < PlanetInRetrogradeDetails.Count; i++)
+        {
+
+            EditPlanetInRetrogradeControl editPlanetInRetrogradeControl = new EditPlanetInRetrogradeControl();
+            PlanetInRetrogradeDetails planetInRetrograde = PlanetInRetrogradeDetails[i];
+            if (planetInRetrograde != null)
+            {
+                editPlanetInRetrogradeControl.AddPlanetInRetrograde(planetInRetrograde);
+            }
+            this.RetrogradeList.Add(editPlanetInRetrogradeControl);
+
+        }
+    }
+
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
         var appActions = new Services.AppActions();
         appActions.SavePlanetinZodiacsAsync(PlanetInZodiacs);
+        appActions.SavePlanetInRetrogradeAsync(PlanetInRetrogradeDetails);
         await Application.Current.MainPage.DisplayAlert("Success", "Planets in Zodiacs saved succesfully", "OK");
     }
 }

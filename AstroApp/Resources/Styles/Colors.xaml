@@ -36,6 +36,19 @@
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
 
+    <Color x:Key="AriesColor">#FF0000</Color>   
+    <Color x:Key="TaurusColor">#008000</Color>    
+    <Color x:Key="GeminiColor">#FFFF00</Color>    
+    <Color x:Key="CancerColor">#C0C0C0</Color>    
+    <Color x:Key="LeoColor">#FFA500</Color>    
+    <Color x:Key="VirgoColor">#800080</Color>    
+    <Color x:Key="LibraColor">#FFC0CB</Color>    
+    <Color x:Key="ScorpioColor">#800000</Color>    
+    <Color x:Key="SagittariusColor">#0000FF</Color>    
+    <Color x:Key="CapricornColor">#808080</Color>    
+    <Color x:Key="AquariusColor">#00FFFF</Color>    
+    <Color x:Key="PiscesColor">#000080</Color>    
+
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" />
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}" />
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}" />

@@ -9,6 +9,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -17,7 +18,8 @@
                 </Grid.ColumnDefinitions>
             </Grid>
             <VerticalStackLayout Grid.Row="1" x:Name="EventList"/>
-            <Grid Grid.Row="2">
+            <VerticalStackLayout Grid.Row="2" x:Name="RetrogradeList"/>
+            <Grid Grid.Row="3">
                 <Button Text="Save" Clicked="SaveButton_Clicked"/>
             </Grid>
         </Grid>
