@@ -5,6 +5,7 @@
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
              x:DataType="pages:MainPage"
              BackgroundColor="Transparent"
+             Shell.NavBarIsVisible="False"
              x:Class="AstroApp.UI.Pages.MainPage">
     <ContentPage.Resources>
         <converters:DateTimeToMonthNameConverter x:Key="DateTimeToMonthNameConverter"/>
@@ -17,7 +18,7 @@
     </ContentPage.Background>-->
     <Grid>
         <Image Source="background2.png" Aspect="AspectFill" Opacity="1"/>
-        <FlexLayout  VerticalOptions="FillAndExpand">
+        <FlexLayout  VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"> 
             <Grid VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

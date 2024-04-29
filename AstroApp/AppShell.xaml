@@ -5,8 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
     xmlns:pages="clr-namespace:AstroApp.UI.Pages"
     Shell.FlyoutBehavior="Disabled"
-    Shell.NavBarIsVisible="False"
-    Shell.FlyoutItemIsVisible="False"
+    Shell.NavBarIsVisible="False"    
     Title="AstroApp">
     <TabBar>
         <Tab Title="Calendar" >
