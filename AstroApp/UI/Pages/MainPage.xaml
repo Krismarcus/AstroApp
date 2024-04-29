@@ -16,7 +16,7 @@
         </LinearGradientBrush>
     </ContentPage.Background>-->
     <Grid>
-        <Image Source="background.png" Aspect="AspectFill" Opacity="1"/>
+        <Image Source="background2.png" Aspect="AspectFill" Opacity="1"/>
         <FlexLayout  VerticalOptions="FillAndExpand">
             <Grid VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
