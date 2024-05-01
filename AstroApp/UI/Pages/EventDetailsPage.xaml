@@ -83,7 +83,7 @@
                                     <Image x:Name="rightArrow" Source="right_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
                                 </Grid>
                             </Grid>
-                            <Label Grid.Row="2"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToWeekdayConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="18" HorizontalOptions="CenterAndExpand" />
+                            <Label Grid.Row="2"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToWeekdayConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="20" HorizontalOptions="CenterAndExpand" />
                             <Frame  Grid.Row="3"  x:Name="expandableFrame" Padding="10,0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="12.4,20,12.4,12.4">
                                 <Grid ColumnDefinitions="auto,*, auto" Padding="0,0">
                                     <!--Thick gradient line-->
@@ -214,11 +214,11 @@
                                         <Setter Property="IsVisible" Value="False"/>
                                     </DataTrigger>
                                 </Frame.Triggers>
-                                <Label Text="{Binding DayAstroEvent.EventText}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" Margin="20"/>
+                                <Label Text="{Binding DayAstroEvent.EventText}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" Margin="20"/>
                             </Frame>
                             <Grid  Grid.Row="7" RowDefinitions="Auto,Auto" Margin="5,10">
                                 <FlexLayout Wrap="Wrap" Grid.Row="0">
-                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="5" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
@@ -285,72 +285,72 @@
                                         <Label Text="Sodininkystė" TextColor="{StaticResource GreenGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                 </FlexLayout>
-                                <FlexLayout Wrap="Wrap" Grid.Row="1" >
-                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.ImportantTasks, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                <FlexLayout Wrap="Wrap" Grid.Row="1" AlignItems="Start" JustifyContent="SpaceBetween" Direction="Row">
+                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="45" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
-                                        <Label Text="Svarbūs darbai" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="Svarbūs darbai" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
-                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="5" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="45" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
-                                        <Label Text="Sutartys" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="Sutartys" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
-                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Meetings, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Meetings, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="45" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
-                                        <Label Text="Susitikimai" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="Susitikimai" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
-                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.NewIdeas, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.NewIdeas, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="45" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
-                                        <Label Text="Mokymasis" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="Mokymasis" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
-                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Travel, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Travel, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="45" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
-                                        <Label Text="Kelionės" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="Kelionės" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
-                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Tech, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Tech, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="45" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
-                                        <Label Text="Technika" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="Technika" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
-                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="45" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
-                                        <Label Text="Pirkiniai" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="Pirkiniai" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
-                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="45" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
-                                        <Label Text="Meilė" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="Meilė" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
-                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Beauty, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Beauty, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="45" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
-                                        <Label Text="Grožis" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="Grožis" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
-                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Barber, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Barber, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="45" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
-                                        <Label Text="Kirpykla" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="Kirpykla" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
-                                    <Border StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="Center" HeightRequest="35" >
+                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="45" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,2" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
-                                        <Label Text="Sodininkystė" TextColor="{StaticResource RedGlowEffect}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="Sodininkystė" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                 </FlexLayout>
                             </Grid>
@@ -378,18 +378,21 @@
                                     Clicked="CloseMoonDayInfoScreen_Clicked"/>
                                     </Grid>
                                     <ScrollView Grid.Row="1">
-                                        <Label x:Name="moonDayInfoScreenText" Text="{Binding InfoConteiner.InfoText}" FontSize="16"
+                                        <Label x:Name="moonDayInfoScreenText" Text="{Binding InfoConteiner.InfoText}" FontSize="16" HorizontalOptions="CenterAndExpand"
                                        TextColor="{StaticResource DarkBlueBackground}" />
                                     </ScrollView>
                                 </Grid>
                             </Frame>
                         </Grid>
                     </ScrollView>
-                    <Frame  Grid.Row="1"  CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}" HeightRequest="50"  Margin="12.4, 20,12.4,20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Frame  Grid.Row="1" Padding="0"  CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HeightRequest="50"  Margin="12.4, 10,12.4,20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Frame.Shadow>
+                            <Shadow Brush="{StaticResource PrimaryLightText}"/>
+                        </Frame.Shadow>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnPageTapped"/>
                         </Frame.GestureRecognizers>
-                        <Image Grid.Column="1" Source="calendar.png"/>
+                        <Label Text="Atgal į Kalendorių" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20"/>
                     </Frame>
                 </Grid>
                 <!--<Frame x:Name="PlanetInZodiacInfoScreen" Padding="10" CornerRadius="15"
