@@ -95,6 +95,7 @@
 	  <None Remove="Resources\Images\eagle.png" />
 	  <None Remove="Resources\Images\earth.png" />
 	  <None Remove="Resources\Images\elephant.png" />
+	  <None Remove="Resources\Images\firstquarter.png" />
 	  <None Remove="Resources\Images\firstquarter_small.png" />
 	  <None Remove="Resources\Images\fountain.png" />
 	  <None Remove="Resources\Images\fullmoon_small.png" />

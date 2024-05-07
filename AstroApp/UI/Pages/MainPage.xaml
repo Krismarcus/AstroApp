@@ -74,7 +74,7 @@
                     <Label Grid.Column="1" Text="{Binding ActivityProfileLt}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Image Grid.Column="2" x:Name="rightArrowImage" Source="up_arrow.png" WidthRequest="30"/>
                 </Grid>
-                <Grid x:Name="profileGrid" Grid.Row="3" ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*,*" VerticalOptions="End" Margin="12.4, 0" IsVisible="False">
+                <Grid x:Name="profileGrid" Grid.Row="3" ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*,*" VerticalOptions="End" Margin="12.4,6.2,12.4,0" IsVisible="False">
                     <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="{Binding NoPresetBackgroundColor}" Margin="0, 5 ,5, 0">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="NoPresetRecognizer_Tapped"/>

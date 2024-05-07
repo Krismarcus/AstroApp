@@ -213,7 +213,7 @@
                                         <Setter Property="IsVisible" Value="False"/>
                                     </DataTrigger>
                                 </Frame.Triggers>
-                                <Label Text="{Binding DayAstroEvent.EventText}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="14" Margin="20"/>
+                                <Label Text="{Binding DayAstroEvent.EventText}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="16" Margin="20"/>
                             </Frame>
                             <Grid  Grid.Row="7" RowDefinitions="Auto,Auto" Margin="7.4,0">
                                 <FlexLayout Wrap="Wrap" Grid.Row="0" AlignItems="Start" JustifyContent="SpaceBetween" Direction="Row">
@@ -391,7 +391,7 @@
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnPageTapped"/>
                         </Frame.GestureRecognizers>
-                        <Label Text="Atgal į Kalendorių" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20"/>
+                        <Label Text="Atgal į Kalendorių" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16"/>
                     </Frame>
                 </Grid>
                 <!--<Frame x:Name="PlanetInZodiacInfoScreen" Padding="10" CornerRadius="15"
