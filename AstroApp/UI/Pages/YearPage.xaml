@@ -4,6 +4,7 @@
              x:Class="AstroApp.UI.Pages.YearPage"
              xmlns:pages="clr-namespace:AstroApp.UI.Pages"
              xmlns:models="clr-namespace:AstroApp.Data.Models"
+             xmlns:controls="clr-namespace:AstroApp.UI.Controls"
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
              x:DataType="pages:YearPage"
              Title="YearPage">
@@ -11,62 +12,16 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ZodiacToColorConverter x:Key="ZodiacToColor"/>
+            <converters:DurationToWidthConverter x:Key="DurationToWidthConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <ScrollView Orientation="Horizontal">
-        <VerticalStackLayout Spacing="5">
-            <!-- Sun line -->
-            <HorizontalStackLayout Spacing="0" HeightRequest="20" BindableLayout.ItemsSource="{Binding ActiveAstroEvents}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="models:AstroEvent">
-                        <BoxView WidthRequest="2"
-                                 Color="{Binding SunInZodiac.NewZodiacSign, Converter={StaticResource ZodiacToColor}}"/>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </HorizontalStackLayout>
-
-            <!-- Moon line -->
-            <HorizontalStackLayout Spacing="0" HeightRequest="20" BindableLayout.ItemsSource="{Binding ActiveAstroEvents}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="models:AstroEvent">
-                        <BoxView WidthRequest="2"
-                                 Color="{Binding MoonInZodiac.NewZodiacSign, Converter={StaticResource ZodiacToColor}}"/>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </HorizontalStackLayout>
-
-            <!-- Mercury line -->
-            <HorizontalStackLayout Spacing="0" HeightRequest="20" BindableLayout.ItemsSource="{Binding ActiveAstroEvents}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="models:AstroEvent">
-                        <BoxView WidthRequest="2"
-                                 Color="{Binding MercuryInZodiac.NewZodiacSign, Converter={StaticResource ZodiacToColor}}"/>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </HorizontalStackLayout>
-
-            <!-- Venus line -->
-            <HorizontalStackLayout Spacing="0" HeightRequest="20" BindableLayout.ItemsSource="{Binding ActiveAstroEvents}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="models:AstroEvent">
-                        <BoxView WidthRequest="2"
-                                 Color="{Binding VenusInZodiac.NewZodiacSign, Converter={StaticResource ZodiacToColor}}"/>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </HorizontalStackLayout>
-
-            <!-- Mars line -->
-            <HorizontalStackLayout Spacing="0" HeightRequest="20" BindableLayout.ItemsSource="{Binding ActiveAstroEvents}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="models:AstroEvent">
-                        <BoxView WidthRequest="2"
-                     Color="{Binding MarsInZodiac.NewZodiacSign, Converter={StaticResource ZodiacToColor}}"/>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </HorizontalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout>            
+            <controls:CustomZodiacLineView ZodiacSegments="{Binding SunInZodiacSegments}"/>
+            <controls:CustomZodiacLineView ZodiacSegments="{Binding MercuryInZodiacSegments}"/>
+            <controls:CustomZodiacLineView ZodiacSegments="{Binding VenusInZodiacSegments}"/>
+            <controls:CustomZodiacLineView ZodiacSegments="{Binding MarsInZodiacSegments}"/>
         </VerticalStackLayout>
     </ScrollView>
-
 
 </ContentPage>

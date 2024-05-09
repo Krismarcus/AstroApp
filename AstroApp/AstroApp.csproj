@@ -189,6 +189,9 @@
 	  <MauiXaml Update="UI\Controls\CalendarPlanetEventControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\CustomZodiacLineView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="UI\Controls\DayControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
