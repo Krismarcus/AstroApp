@@ -32,12 +32,16 @@ public partial class YearPage : ContentPage
         this.VenusInZodiacSegments = new ObservableCollection<ZodiacSegment>();
         this.MarsInZodiacSegments = new ObservableCollection<ZodiacSegment>();
 
+        // Initialize lastSign variables to handle the very first segment
         ZodiacSign lastSunInSign = this.ActiveAstroEvents.FirstOrDefault()?.SunInZodiac.NewZodiacSign ?? ZodiacSign.Pisces;
         ZodiacSign lastMercuryInSign = this.ActiveAstroEvents.FirstOrDefault()?.MercuryInZodiac.NewZodiacSign ?? ZodiacSign.Pisces;
         ZodiacSign lastVenusInSign = this.ActiveAstroEvents.FirstOrDefault()?.VenusInZodiac.NewZodiacSign ?? ZodiacSign.Pisces;
         ZodiacSign lastMarsInSign = this.ActiveAstroEvents.FirstOrDefault()?.MarsInZodiac.NewZodiacSign ?? ZodiacSign.Pisces;
 
-        int currentSegmentDuration = 0;  // To track the duration of the current zodiac sign
+        DateTime? startSunDate = null;
+        DateTime? startMercuryDate = null;
+        DateTime? startVenusDate = null;
+        DateTime? startMarsDate = null;
 
         foreach (var astroEvent in this.ActiveAstroEvents.OrderBy(e => e.Date))  // Ensure events are sorted by date
         {
@@ -46,68 +50,57 @@ public partial class YearPage : ContentPage
             ZodiacSign venusInZodiac = astroEvent.VenusInZodiac.NewZodiacSign;
             ZodiacSign marsInZodiac = astroEvent.MarsInZodiac.NewZodiacSign;
 
-            if (sunInZodiac != lastSunInSign)
+            if (sunInZodiac != lastSunInSign || startSunDate == null)
             {
-                // If the sign changes, finalize the current segment and add to the calendar
-                if (currentSegmentDuration > 0)
+                if (startSunDate != null)
                 {
-                    var segment = new ZodiacSegment { ZodiacSign = lastSunInSign, Duration = currentSegmentDuration };
-                    SunInZodiacSegments.Add(segment);
+                    var endDate = astroEvent.Date.AddDays(-1);
+                    SunInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastSunInSign, ZodiacStartDate = startSunDate.Value, ZodiacEndDate = endDate });
                 }
-                // Reset the duration for the new segment
-                currentSegmentDuration = 0;
+                startSunDate = astroEvent.Date;
                 lastSunInSign = sunInZodiac;
             }
 
-            if (mercuryInZodiac != lastMercuryInSign)
+            if (mercuryInZodiac != lastMercuryInSign || startMercuryDate == null)
             {
-                // If the sign changes, finalize the current segment and add to the calendar
-                if (currentSegmentDuration > 0)
+                if (startMercuryDate != null)
                 {
-                    var segment = new ZodiacSegment { ZodiacSign = lastMercuryInSign, Duration = currentSegmentDuration };
-                    MercuryInZodiacSegments.Add(segment);
+                    var endDate = astroEvent.Date.AddDays(-1);
+                    MercuryInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastMercuryInSign, ZodiacStartDate = startMercuryDate.Value, ZodiacEndDate = endDate });
                 }
-                // Reset the duration for the new segment
-                currentSegmentDuration = 0;
+                startMercuryDate = astroEvent.Date;
                 lastMercuryInSign = mercuryInZodiac;
             }
 
-            if (venusInZodiac != lastVenusInSign)
+            if (venusInZodiac != lastVenusInSign || startVenusDate == null)
             {
-                // If the sign changes, finalize the current segment and add to the calendar
-                if (currentSegmentDuration > 0)
+                if (startVenusDate != null)
                 {
-                    var segment = new ZodiacSegment { ZodiacSign = lastVenusInSign, Duration = currentSegmentDuration };
-                    VenusInZodiacSegments.Add(segment);
+                    var endDate = astroEvent.Date.AddDays(-1);
+                    VenusInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastVenusInSign, ZodiacStartDate = startVenusDate.Value, ZodiacEndDate = endDate });
                 }
-                // Reset the duration for the new segment
-                currentSegmentDuration = 0;
+                startVenusDate = astroEvent.Date;
                 lastVenusInSign = venusInZodiac;
             }
 
-            if (marsInZodiac != lastMarsInSign)
+            if (marsInZodiac != lastMarsInSign || startMarsDate == null)
             {
-                // If the sign changes, finalize the current segment and add to the calendar
-                if (currentSegmentDuration > 0)
+                if (startMarsDate != null)
                 {
-                    var segment = new ZodiacSegment { ZodiacSign = lastMarsInSign, Duration = currentSegmentDuration };
-                    MarsInZodiacSegments.Add(segment);
+                    var endDate = astroEvent.Date.AddDays(-1);
+                    MarsInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastMarsInSign, ZodiacStartDate = startMarsDate.Value, ZodiacEndDate = endDate });
                 }
-                // Reset the duration for the new segment
-                currentSegmentDuration = 0;
+                startMarsDate = astroEvent.Date;
                 lastMarsInSign = marsInZodiac;
             }
-            currentSegmentDuration++;  // Increment the duration of the current zodiac segment
         }
 
-        // Add the last segment of the year
-        var finalSuninSignSegment = new ZodiacSegment { ZodiacSign = lastSunInSign, Duration = currentSegmentDuration };
-        SunInZodiacSegments.Add(finalSuninSignSegment);
-        var finalMercuryinSignSegment = new ZodiacSegment { ZodiacSign = lastMercuryInSign, Duration = currentSegmentDuration };
-        MercuryInZodiacSegments.Add(finalMercuryinSignSegment);
-        var finalVenusinSignSegment = new ZodiacSegment { ZodiacSign = lastVenusInSign, Duration = currentSegmentDuration };
-        VenusInZodiacSegments.Add(finalVenusinSignSegment);
-        var finalMarsinSignSegment = new ZodiacSegment { ZodiacSign = lastMarsInSign, Duration = currentSegmentDuration };
-        MarsInZodiacSegments.Add(finalMarsinSignSegment);
+        // Add the last segments for each planet
+        var lastDate = this.ActiveAstroEvents.LastOrDefault()?.Date ?? DateTime.Today;
+        SunInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastSunInSign, ZodiacStartDate = startSunDate.Value, ZodiacEndDate = lastDate });
+        MercuryInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastMercuryInSign, ZodiacStartDate = startMercuryDate.Value, ZodiacEndDate = lastDate });
+        VenusInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastVenusInSign, ZodiacStartDate = startVenusDate.Value, ZodiacEndDate = lastDate });
+        MarsInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastMarsInSign, ZodiacStartDate = startMarsDate.Value, ZodiacEndDate = lastDate });
     }
+
 }

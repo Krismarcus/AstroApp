@@ -14,6 +14,10 @@ namespace AstroApp.Data.Models
         [ObservableProperty]
         public ZodiacSign zodiacSign;
         [ObservableProperty]
+        DateTime zodiacStartDate;
+        [ObservableProperty]
+        DateTime zodiacEndDate;
+        [ObservableProperty]
         private int duration;  // New property to track the number of days
     }
 }

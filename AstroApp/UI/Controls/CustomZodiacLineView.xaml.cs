@@ -1,5 +1,6 @@
 using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
+using AstroApp.UI.Tools.Converters;
 using System.Collections.ObjectModel;
 
 namespace AstroApp.UI.Controls;
@@ -21,7 +22,7 @@ public partial class CustomZodiacLineView : ContentView
 
     public CustomZodiacLineView()
     {
-        InitializeComponent();
+        InitializeComponent();        
     }
 
     private static void OnZodiacSegmentsChanged(BindableObject bindable, object oldValue, object newValue)
@@ -44,23 +45,43 @@ public partial class CustomZodiacLineView : ContentView
             var boxView = new BoxView
             {
                 Color = GetColorForZodiacSign(segment.ZodiacSign),
-                VerticalOptions = LayoutOptions.FillAndExpand
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                CornerRadius = 20
             };
 
             var label = new Label
             {
-                Text = segment.ZodiacSign.ToString(),
-                TextColor = Colors.White,
-                HorizontalOptions = LayoutOptions.Center,
+                Text = segment.ZodiacStartDate.Day.ToString(),
+                HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
-                VerticalTextAlignment = TextAlignment.Center
+                HorizontalTextAlignment = TextAlignment.Center
             };
 
+            var image = new Image
+            {
+                Aspect = Aspect.AspectFit,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+            };
+            image.BindingContext = segment; // Set each image's context to its corresponding segment
+            image.SetBinding(Image.SourceProperty, new Binding("ZodiacSign", BindingMode.Default, new EnumToImageConverter()));
+
             // Adding a Grid to hold both the BoxView and the Label
-            var cellGrid = new Grid();
-            cellGrid.Children.Add(boxView);
-            cellGrid.Children.Add(label);
+            var cellGrid = new Grid
+            {
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+
+            // Setup rows within the cellGrid to allocate space for each control
+            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.2, GridUnitType.Star) });
+            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.8, GridUnitType.Star) });
+
+            // Add controls to the cellGrid
+            cellGrid.Add(boxView, 0, 0);    // BoxView spans both rows
+            Grid.SetColumnSpan(boxView, 2);
+            cellGrid.Add(label, 0, 0);      // Label is in the second row
+            cellGrid.Add(image, 1, 0);      // Image is in the first row
 
             MainGrid.Add(cellGrid, columnIndex, 0);
             columnIndex++;

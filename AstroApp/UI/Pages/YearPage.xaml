@@ -7,26 +7,21 @@
              xmlns:controls="clr-namespace:AstroApp.UI.Controls"
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
              x:DataType="pages:YearPage"
+             BackgroundColor="{StaticResource PrimaryBackground}"
              Title="YearPage">
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:ZodiacToColorConverter x:Key="ZodiacToColor"/>
-            <converters:DurationToWidthConverter x:Key="DurationToWidthConverter"/>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    
     <ScrollView>
         <VerticalStackLayout>
             <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*">
-                <Image Grid.Row="0" Grid.Column="0" Source="sun.png" HeightRequest="20" BackgroundColor="{StaticResource PrimaryBackground}"/>
+                <Image Grid.Row="0" Grid.Column="0" Source="sun.png" HeightRequest="40" BackgroundColor="{StaticResource PrimaryBackground}" Margin="5"/>
                 <controls:CustomZodiacLineView Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding SunInZodiacSegments}"/>
-                <Image Grid.Row="1" Grid.Column="0" Source="mercury.png" HeightRequest="20" BackgroundColor="{StaticResource PrimaryBackground}"/>
+                <Image Grid.Row="1" Grid.Column="0" Source="mercury.png" HeightRequest="40" BackgroundColor="{StaticResource PrimaryBackground}" Margin="5"/>
                 <controls:CustomZodiacLineView Grid.Row="1" Grid.Column="1" ZodiacSegments="{Binding MercuryInZodiacSegments}"/>
-                <Image Grid.Row="2" Grid.Column="0" Source="venus.png" HeightRequest="20" BackgroundColor="{StaticResource PrimaryBackground}"/>
+                <Image Grid.Row="2" Grid.Column="0" Source="venus.png" HeightRequest="40" BackgroundColor="{StaticResource PrimaryBackground}" Margin="5"/>
                 <controls:CustomZodiacLineView Grid.Row="2" Grid.Column="1" ZodiacSegments="{Binding VenusInZodiacSegments}"/>
-                <Image Grid.Row="3" Grid.Column="0" Source="mars.png" HeightRequest="20" BackgroundColor="{StaticResource PrimaryBackground}"/>
+                <Image Grid.Row="3" Grid.Column="0" Source="mars.png" HeightRequest="40" BackgroundColor="{StaticResource PrimaryBackground}" Margin="5"/>
                 <controls:CustomZodiacLineView Grid.Row="3" Grid.Column="1" ZodiacSegments="{Binding MarsInZodiacSegments}"/>
-            </Grid>
+            </Grid>            
         </VerticalStackLayout>
     </ScrollView>
 
