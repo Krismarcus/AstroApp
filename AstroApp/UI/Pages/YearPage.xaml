@@ -7,21 +7,37 @@
              xmlns:controls="clr-namespace:AstroApp.UI.Controls"
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
              x:DataType="pages:YearPage"
-             BackgroundColor="{StaticResource PrimaryBackground}"
+             BackgroundImageSource="background2.png"
              Title="YearPage">
     
     <ScrollView>
-        <VerticalStackLayout>
-            <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*">
-                <Image Grid.Row="0" Grid.Column="0" Source="sun.png" HeightRequest="40" BackgroundColor="{StaticResource PrimaryBackground}" Margin="5"/>
-                <controls:CustomZodiacLineView Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding SunInZodiacSegments}"/>
-                <Image Grid.Row="1" Grid.Column="0" Source="mercury.png" HeightRequest="40" BackgroundColor="{StaticResource PrimaryBackground}" Margin="5"/>
-                <controls:CustomZodiacLineView Grid.Row="1" Grid.Column="1" ZodiacSegments="{Binding MercuryInZodiacSegments}"/>
-                <Image Grid.Row="2" Grid.Column="0" Source="venus.png" HeightRequest="40" BackgroundColor="{StaticResource PrimaryBackground}" Margin="5"/>
-                <controls:CustomZodiacLineView Grid.Row="2" Grid.Column="1" ZodiacSegments="{Binding VenusInZodiacSegments}"/>
-                <Image Grid.Row="3" Grid.Column="0" Source="mars.png" HeightRequest="40" BackgroundColor="{StaticResource PrimaryBackground}" Margin="5"/>
-                <controls:CustomZodiacLineView Grid.Row="3" Grid.Column="1" ZodiacSegments="{Binding MarsInZodiacSegments}"/>
-            </Grid>            
+        <VerticalStackLayout VerticalOptions="Center">
+            <Grid RowDefinitions="*,*,*,*,*">
+                <controls:CustomMonthLineView x:Name="CustomMonthLineView" Grid.Row="0" Grid.Column="1" MonthSegments="{Binding MonthSegments}" Margin="40,0,0,0"/>
+                <Grid Grid.Row="1" RowDefinitions="*,*" ColumnDefinitions="Auto,*" Margin="0,20">
+                    <Image Grid.Row="0" Grid.Column="0" Source="sun.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewSun" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding SunInZodiacSegments}"/>                    
+                </Grid>
+                <Grid Grid.Row="2" RowDefinitions="*,*" ColumnDefinitions="Auto,*" >
+                    <Image Grid.Row="0" Grid.Column="0" Source="mercury.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewMercury" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding MercuryInZodiacSegments}"/>
+                    <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
+                    <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeMercurySegments}" Margin="0,-20,0,0"/>
+                </Grid>
+                <Grid Grid.Row="3" RowDefinitions="*,*" ColumnDefinitions="Auto,*" >
+                    <Image Grid.Row="0" Grid.Column="0" Source="venus.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewVenus" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding VenusInZodiacSegments}"/>
+                    <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
+                    <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeVenusSegments}" Margin="0,-20,0,0"/>
+                </Grid>
+                <Grid Grid.Row="4" RowDefinitions="*,*" ColumnDefinitions="Auto,*" >
+                    <Image Grid.Row="0" Grid.Column="0" Source="mars.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewMars" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding MarsInZodiacSegments}"/>
+                    <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
+                    <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeMarsSegments}" Margin="0,-20,0,0"/>
+                </Grid>
+            </Grid>
+            <Label x:Name="LabelShowingZodiacSign"/>
         </VerticalStackLayout>
     </ScrollView>
 

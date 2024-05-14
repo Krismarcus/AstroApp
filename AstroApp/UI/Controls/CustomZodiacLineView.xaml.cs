@@ -1,6 +1,7 @@
 using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
 using AstroApp.UI.Tools.Converters;
+using Microsoft.Maui.Graphics.Text;
 using System.Collections.ObjectModel;
 
 namespace AstroApp.UI.Controls;
@@ -20,6 +21,8 @@ public partial class CustomZodiacLineView : ContentView
         set => SetValue(ZodiacSegmentsProperty, value);
     }
 
+    public event EventHandler<ZodiacSign> SegmentClicked;
+
     public CustomZodiacLineView()
     {
         InitializeComponent();        
@@ -36,57 +39,129 @@ public partial class CustomZodiacLineView : ContentView
         MainGrid.ColumnDefinitions.Clear();
         MainGrid.Children.Clear();
 
-        int columnIndex = 0;
+        // Calculate the total duration in days
+        DateTime minDate = ZodiacSegments.Min(s => s.ZodiacStartDate);
+        DateTime maxDate = ZodiacSegments.Max(s => s.ZodiacEndDate);
+        double totalDays = (maxDate - minDate).TotalDays;
+
         foreach (var segment in ZodiacSegments)
         {
-            var columnDefinition = new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) };
+            double segmentDuration = (segment.ZodiacEndDate - segment.ZodiacStartDate).TotalDays;
+            double widthFraction = segmentDuration / totalDays;
+
+            var columnDefinition = new ColumnDefinition { Width = new GridLength(widthFraction, GridUnitType.Star) };
             MainGrid.ColumnDefinitions.Add(columnDefinition);
 
-            var boxView = new BoxView
-            {
-                Color = GetColorForZodiacSign(segment.ZodiacSign),
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                CornerRadius = 20
-            };
-
-            var label = new Label
-            {
-                Text = segment.ZodiacStartDate.Day.ToString(),
-                HorizontalOptions = LayoutOptions.Start,
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center
-            };
-
-            var image = new Image
-            {
-                Aspect = Aspect.AspectFit,
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center,
-            };
-            image.BindingContext = segment; // Set each image's context to its corresponding segment
-            image.SetBinding(Image.SourceProperty, new Binding("ZodiacSign", BindingMode.Default, new EnumToImageConverter()));
-
-            // Adding a Grid to hold both the BoxView and the Label
-            var cellGrid = new Grid
-            {
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand
-            };
-
-            // Setup rows within the cellGrid to allocate space for each control
-            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.2, GridUnitType.Star) });
-            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.8, GridUnitType.Star) });
-
-            // Add controls to the cellGrid
-            cellGrid.Add(boxView, 0, 0);    // BoxView spans both rows
-            Grid.SetColumnSpan(boxView, 2);
-            cellGrid.Add(label, 0, 0);      // Label is in the second row
-            cellGrid.Add(image, 1, 0);      // Image is in the first row
-
-            MainGrid.Add(cellGrid, columnIndex, 0);
-            columnIndex++;
+            var cellGrid = CreateSegmentCell(segment);
+            MainGrid.Add(cellGrid, MainGrid.ColumnDefinitions.Count - 1, 0);
         }
     }
+
+    private Grid CreateSegmentCell(ZodiacSegment segment)
+    {
+        var boxView = new BoxView
+        {
+            Color = GetColorForZodiacSign(segment.ZodiacSign),
+            VerticalOptions = LayoutOptions.FillAndExpand,
+            CornerRadius = 10
+        };
+
+        var textColor = GetResourceColor("PrimaryLightText");
+
+        var label = new Label
+        {
+            Text = segment.ZodiacStartDate.Day.ToString(),
+            TextColor = textColor,
+            FontSize = 16,
+            HorizontalOptions = LayoutOptions.Start,
+            VerticalOptions = LayoutOptions.Center,
+            HorizontalTextAlignment = TextAlignment.Center,
+            Margin = new Thickness(10, 0, 0, 0)
+        };
+
+        var image = new Image
+        {
+            HeightRequest = 25,
+            HorizontalOptions = LayoutOptions.Center,
+            VerticalOptions = LayoutOptions.Center,
+        };
+        image.BindingContext = segment;
+        image.SetBinding(Image.SourceProperty, new Binding("ZodiacSign", BindingMode.Default, new EnumToImageConverter()));
+
+        var cellGrid = new Grid
+        {
+            VerticalOptions = LayoutOptions.FillAndExpand,
+            HorizontalOptions = LayoutOptions.FillAndExpand
+        };
+
+        var tapGestureRecognizer = new TapGestureRecognizer();
+        tapGestureRecognizer.Tapped += (s, e) => OnSegmentTapped(segment.ZodiacSign);
+        boxView.GestureRecognizers.Add(tapGestureRecognizer);
+        label.GestureRecognizers.Add(tapGestureRecognizer);
+        image.GestureRecognizers.Add(tapGestureRecognizer);
+
+        if (segment.Duration > 15)
+        {
+
+            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
+            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.2, GridUnitType.Star) });
+            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
+            cellGrid.Add(boxView, 0, 0);
+            Grid.SetColumnSpan(boxView, 3);
+            cellGrid.Add(label, 0, 0);
+            cellGrid.Add(image, 1, 0);
+
+            return cellGrid;
+        }
+
+        else if (7 < segment.Duration && segment.Duration <= 15)
+        {
+            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.5, GridUnitType.Star) });
+            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.5, GridUnitType.Star) });            
+            cellGrid.Add(boxView, 0, 0);
+            Grid.SetColumnSpan(boxView, 2);            
+            cellGrid.Add(label, 0, 0);
+            cellGrid.Add(image, 1, 0);
+
+            return cellGrid;
+        }
+
+        else if (5 < segment.Duration && segment.Duration <= 7)
+        {
+            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            cellGrid.Add(boxView, 0, 0);
+            cellGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }); // Row for the image
+            cellGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }); // Row for the label            
+            Grid.SetRowSpan(boxView, 2);
+            cellGrid.Add(image, 0, 1);
+            label.HorizontalTextAlignment = TextAlignment.Center;
+            label.VerticalTextAlignment = TextAlignment.Center;            
+            cellGrid.Add(label, 0, 0);
+
+            return cellGrid;
+        }
+        
+        else
+        {            
+            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            cellGrid.Add(boxView, 0, 0);
+            Grid.SetColumnSpan(boxView, 1);            
+            cellGrid.Add(image, 0, 0);
+
+            return cellGrid;
+        }
+    }
+
+    private Color GetResourceColor(string key)
+    {
+    Color textColor = new Color();
+    if (Application.Current.Resources.TryGetValue(key, out var colorValue) && colorValue is Color myColor)
+        {
+        textColor = myColor;
+        }
+    return textColor;
+    }
+
 
     private Color GetColorForZodiacSign(ZodiacSign sign)
     {
@@ -108,5 +183,9 @@ public partial class CustomZodiacLineView : ContentView
             // Add cases for other signs
             default: return Colors.Gray;
         }
+    }
+    private void OnSegmentTapped(ZodiacSign sign)
+    {
+        SegmentClicked?.Invoke(this, sign);
     }
 }
