@@ -52,7 +52,7 @@ public partial class MoonDaysEditPage : ContentPage
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
         var appActions = new Services.AppActions();
-        appActions.SaveMoonDaysAsync(MoonDays);
+        await appActions.SaveDataAsync(MoonDays, "MoonDaysDB");
         await Application.Current.MainPage.DisplayAlert("Success", "Moon days saved succesfully", "OK");
     }    
 }

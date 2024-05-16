@@ -67,6 +67,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiAsset Remove="Resources\Raw\astrodb.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="astrodb.json" />
 	  <None Remove="Resources\Images\aquarius.png" />
 	  <None Remove="Resources\Images\aquarius_blue.png" />
 	  <None Remove="Resources\Images\aries.png" />
@@ -170,6 +175,14 @@
 	  <None Remove="Resources\Images\virgo_blue.png" />
 	  <None Remove="Resources\Images\whale.png" />
 	  <None Remove="Resources\Images\wheel.png" />
+	  <None Remove="Resources\Raw\astrodb.json" />
+	  <None Remove="Resources\Styles\astrodb.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="astrodb.json" />
+	  <EmbeddedResource Include="Resources\Raw\astrodb.json" />
+	  <EmbeddedResource Include="Resources\Styles\astrodb.json" />
 	</ItemGroup>
 
 	<ItemGroup>

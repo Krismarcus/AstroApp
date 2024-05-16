@@ -99,8 +99,8 @@ public partial class PlanetInZodiacEventsEditPage : ContentPage
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
         var appActions = new Services.AppActions();
-        appActions.SavePlanetinZodiacsAsync(PlanetInZodiacs);
-        appActions.SavePlanetInRetrogradeAsync(PlanetInRetrogradeDetails);
+        await appActions.SaveDataAsync(PlanetInZodiacs, "PlanetInZodiacsDB");
+        await appActions.SaveDataAsync(PlanetInRetrogradeDetails, "PlanetInRetrogradeDetailsDB");
         await Application.Current.MainPage.DisplayAlert("Success", "Planets in Zodiacs saved succesfully", "OK");
     }
 }

@@ -1,6 +1,7 @@
 using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
 using AstroApp.UI.Tools.Converters;
+using Microsoft.Maui.Controls.Shapes;
 using Microsoft.Maui.Graphics.Text;
 using System.Collections.ObjectModel;
 
@@ -59,11 +60,12 @@ public partial class CustomZodiacLineView : ContentView
 
     private Grid CreateSegmentCell(ZodiacSegment segment)
     {
-        var boxView = new BoxView
+        var boxView = new Border
         {
-            Color = GetColorForZodiacSign(segment.ZodiacSign),
+            BackgroundColor = GetColorForZodiacSign(segment.ZodiacSign),
+            StrokeThickness = 0,
             VerticalOptions = LayoutOptions.FillAndExpand,
-            CornerRadius = 10
+            StrokeShape = new RoundRectangle { CornerRadius = new CornerRadius(10) }
         };
 
         var textColor = GetResourceColor("PrimaryLightText");

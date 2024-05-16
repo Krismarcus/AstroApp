@@ -1,4 +1,5 @@
 using AstroApp.Data.Models;
+using Microsoft.Maui.Controls.Shapes;
 using System.Collections.ObjectModel;
 
 namespace AstroApp.UI.Controls;
@@ -57,11 +58,12 @@ public partial class CustomRetrogradeLineView : ContentView
 
     private Grid CreateSegmentCell(RetrogradeSegment segment)
     {
-        var boxView = new BoxView
+        var boxView = new Border
         {
-            Color = GetColorForZodiacSign(segment.IsRetrograde),
+            Stroke = GetColorForZodiacSign(segment.IsRetrograde),
+            StrokeThickness = 0,
             VerticalOptions = LayoutOptions.FillAndExpand,
-            CornerRadius = 10
+            StrokeShape = new RoundRectangle { CornerRadius = new CornerRadius(10) }
         };
 
         var textColor = GetResourceColor("PrimaryLightText");

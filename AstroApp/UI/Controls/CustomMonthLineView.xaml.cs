@@ -1,4 +1,5 @@
 using AstroApp.Data.Models;
+using Microsoft.Maui.Controls.Shapes;
 using System.Collections.ObjectModel;
 using System.Globalization;
 
@@ -59,11 +60,12 @@ public partial class CustomMonthLineView : ContentView
         var textColor = GetResourceColor("PrimaryBackground");
         CultureInfo lithuanianCulture = new CultureInfo("lt-LT");
 
-        var boxView = new BoxView
+        var boxView = new Border
         {            
             BackgroundColor = boxColor,
+            StrokeThickness = 0,
             VerticalOptions = LayoutOptions.FillAndExpand,
-            CornerRadius = 10
+            StrokeShape = new RoundRectangle { CornerRadius = new CornerRadius(10) }
         };        
 
         var label = new Label
