@@ -104,16 +104,22 @@ public partial class EditDayControl : ContentView, INotifyPropertyChanged
     private void MercuryRetrograde_Tapped(object sender, TappedEventArgs e)
     {
         DayAstroEvent.MercuryInZodiac.IsRetrograde = !DayAstroEvent.MercuryInZodiac.IsRetrograde;
+        OnPropertyChanged(nameof(DayAstroEvent.MercuryInZodiac.IsRetrograde));
+        DayAstroEvent.MercuryInZodiac.UpdatePreviousZodiacSign();
     }
 
     private void VenusRetrograde_Tapped(object sender, TappedEventArgs e)
     {
         DayAstroEvent.VenusInZodiac.IsRetrograde = !DayAstroEvent.VenusInZodiac.IsRetrograde;
+        OnPropertyChanged(nameof(DayAstroEvent.VenusInZodiac.IsRetrograde));
+        DayAstroEvent.VenusInZodiac.UpdatePreviousZodiacSign();
     }
 
     private void MarsRetrograde_Tapped(object sender, TappedEventArgs e)
     {
         DayAstroEvent.MarsInZodiac.IsRetrograde = !DayAstroEvent.MarsInZodiac.IsRetrograde;
+        OnPropertyChanged(nameof(DayAstroEvent.MarsInZodiac.IsRetrograde));
+        DayAstroEvent.MarsInZodiac.UpdatePreviousZodiacSign();
     }
 
     private void MoonDayTitle_Tapped(object sender, TappedEventArgs e)

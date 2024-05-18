@@ -142,7 +142,7 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
     {
         App.AppData.AppDB.AstroEventsDB = ActiveAstroEvents;
         var appActions = new Services.AppActions();
-        await appActions.SaveDataAsync(App.AppData.AppDB, "AstroEventsDB");
+        await appActions.SaveAstroEventsDBAsync(App.AppData.AppDB);
         await Application.Current.MainPage.DisplayAlert("Success", "Calendar data saved succesfully", "OK");
     }
 

@@ -14,19 +14,23 @@ namespace AstroApp.UI.Tools.Converters
         {
             if (value is AstroEvent astroEvent)
             {
-                if (astroEvent.MoonDay.NewMoonDay == 1 || astroEvent.MoonDay.MiddleMoonDay == 1)
+                if (astroEvent.SunInZodiac != null)
                 {
-                    string enumName = astroEvent.SunInZodiac.NewZodiacSign.ToString();
-                    string imagePath = $"{enumName.ToLower()}_blue.png"; // Assuming lowercase enum names and PNG images
-                    return imagePath;
-                    
-                }
 
-                else
-                {
-                    string enumName = astroEvent.SunInZodiac.NewZodiacSign.ToString();
-                    string imagePath = $"{enumName.ToLower()}.png"; // Assuming lowercase enum names and PNG images
-                    return imagePath;
+                    if (astroEvent.MoonDay.NewMoonDay == 1 || astroEvent.MoonDay.MiddleMoonDay == 1)
+                    {
+                        string enumName = astroEvent.SunInZodiac.NewZodiacSign.ToString();
+                        string imagePath = $"{enumName.ToLower()}_blue.png"; // Assuming lowercase enum names and PNG images
+                        return imagePath;
+
+                    }
+
+                    else
+                    {
+                        string enumName = astroEvent.SunInZodiac.NewZodiacSign.ToString();
+                        string imagePath = $"{enumName.ToLower()}.png"; // Assuming lowercase enum names and PNG images
+                        return imagePath;
+                    }
                 }
                 
             }

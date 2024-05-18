@@ -27,15 +27,29 @@ namespace AstroApp.Data.Models
             private set => previousZodiacSign = value;
         }
 
-        private void UpdatePreviousZodiacSign()
+        public void UpdatePreviousZodiacSign()
         {
-            if (newZodiacSign == ZodiacSign.Aries)
+            if (isRetrograde)
             {
-                previousZodiacSign = ZodiacSign.Pisces;
+                if (newZodiacSign == ZodiacSign.Pisces)
+                {
+                    previousZodiacSign = ZodiacSign.Aries;
+                }
+                else
+                {
+                    previousZodiacSign = (ZodiacSign)(newZodiacSign + 1);
+                }
             }
             else
             {
-                previousZodiacSign = (ZodiacSign)(newZodiacSign - 1);
+                if (newZodiacSign == ZodiacSign.Aries)
+                {
+                    previousZodiacSign = ZodiacSign.Pisces;
+                }
+                else
+                {
+                    previousZodiacSign = (ZodiacSign)(newZodiacSign - 1);
+                }
             }
         }
 
@@ -43,12 +57,12 @@ namespace AstroApp.Data.Models
         private bool isZodiacTransitioning;
 
         [ObservableProperty]
-        private DateTime transitionTime;        
+        private DateTime transitionTime;
 
         [ObservableProperty]
         private string planetInZodiacInfo;
 
         [ObservableProperty]
-        private bool isRetrograde;       
+        private bool isRetrograde;
     }
 }

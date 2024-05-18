@@ -51,8 +51,11 @@ public partial class CustomRetrogradeLineView : ContentView
             var columnDefinition = new ColumnDefinition { Width = new GridLength(widthFraction, GridUnitType.Star) };
             MainGrid.ColumnDefinitions.Add(columnDefinition);
 
-            var cellGrid = CreateSegmentCell(segment);
-            MainGrid.Add(cellGrid, MainGrid.ColumnDefinitions.Count - 1, 0);
+            if (segment.IsRetrograde == true)
+            {
+                var cellGrid = CreateSegmentCell(segment);
+                MainGrid.Add(cellGrid, MainGrid.ColumnDefinitions.Count - 1, 0);
+            }
         }
     }
 
@@ -60,7 +63,7 @@ public partial class CustomRetrogradeLineView : ContentView
     {
         var boxView = new Border
         {
-            Stroke = GetColorForZodiacSign(segment.IsRetrograde),
+            BackgroundColor = GetColorForZodiacSign(segment.IsRetrograde),
             StrokeThickness = 0,
             VerticalOptions = LayoutOptions.FillAndExpand,
             StrokeShape = new RoundRectangle { CornerRadius = new CornerRadius(10) }
@@ -72,29 +75,39 @@ public partial class CustomRetrogradeLineView : ContentView
         {
             Text = segment.RetrogradeStartDate.Day.ToString(),
             TextColor = textColor,
-            FontSize = 16,
+            FontSize = 12,
             HorizontalOptions = LayoutOptions.Start,
             VerticalOptions = LayoutOptions.Center,
             HorizontalTextAlignment = TextAlignment.Center,
             Margin = new Thickness(10, 0, 0, 0)
-        };        
+        };
+
+        var image = new Image
+        {
+            Source = "retrograde.png",
+            HeightRequest = 25,
+            HorizontalOptions = LayoutOptions.Center,
+            VerticalOptions = LayoutOptions.Center,
+        };
+              
 
         var cellGrid = new Grid
         {
             VerticalOptions = LayoutOptions.FillAndExpand,
             HorizontalOptions = LayoutOptions.FillAndExpand
-        };
+        };        
 
         var tapGestureRecognizer = new TapGestureRecognizer();
         tapGestureRecognizer.Tapped += (s, e) => OnSegmentTapped(segment.IsRetrograde);
-        boxView.GestureRecognizers.Add(tapGestureRecognizer);              
+        boxView.GestureRecognizers.Add(tapGestureRecognizer);
 
         cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
         cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.2, GridUnitType.Star) });
         cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
-
         cellGrid.Add(boxView, 0, 0);
-        Grid.SetColumnSpan(boxView, 3);        
+        Grid.SetColumnSpan(boxView, 3);
+        cellGrid.Add(label, 0, 0);
+        cellGrid.Add(image, 1, 0);
 
         return cellGrid;
     }
@@ -103,7 +116,7 @@ public partial class CustomRetrogradeLineView : ContentView
     {
         if (isRetrograde == true)
         {
-            return Colors.Gray;
+            return Colors.Black;
         }
         return Colors.Transparent;
     }

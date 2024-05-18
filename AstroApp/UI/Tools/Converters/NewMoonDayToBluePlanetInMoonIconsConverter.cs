@@ -14,6 +14,11 @@ namespace AstroApp.UI.Tools.Converters
         {
             if (value is AstroEvent astroEvent)
             {
+                if (astroEvent.MoonInZodiac == null)
+                {
+                    return null;
+                }
+
                 if (astroEvent.MoonDay.NewMoonDay == 1 || astroEvent.MoonDay.MiddleMoonDay == 1)
                 {
                     string enumName = astroEvent.MoonInZodiac.NewZodiacSign.ToString();
