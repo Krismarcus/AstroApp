@@ -71,6 +71,11 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
     public ZodiacSign SelectedVenusZodiac {  get; set; }
     public ZodiacSign SelectedMarsZodiac { get; set; }
     public ZodiacSign SelectedMercuryZodiac { get; set; }
+    public ZodiacSign SelectedJupiterZodiac { get; set; }
+    public ZodiacSign SelectedSaturnZodiac { get; set; }
+    public ZodiacSign SelectedUranusZodiac { get; set; }
+    public ZodiacSign SelectedNeptuneZodiac { get; set; }
+    public ZodiacSign SelectedPlutoZodiac { get; set; }
 
     public ObservableCollection<AstroEvent> ActiveAstroEvents { get; set; }
 
@@ -184,7 +189,12 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
                         MoonInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Moon, TransitionTime = new DateTime() },
                         VenusInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Venus, TransitionTime = new DateTime() },
                         MarsInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mars, TransitionTime = new DateTime() },
-                        MercuryInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },                        
+                        MercuryInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
+                        JupiterInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
+                        SaturnInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
+                        UranusInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
+                        NeptuneInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
+                        PlutoInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
                         EventText = "",
                         MoonDay = new MoonDay() { NewMoonDay = 0, TransitionTime = new DateTime() }
                     };
@@ -263,6 +273,11 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
             this.VenusInZodiacPicker.Items.Add(zodiacSign.ToString());
             this.MarsInZodiacPicker.Items.Add(zodiacSign.ToString());
             this.MercuryInZodiacPicker.Items.Add(zodiacSign.ToString());
+            this.JupiterInZodiacPicker.Items.Add(zodiacSign.ToString());
+            this.SaturnInZodiacPicker.Items.Add(zodiacSign.ToString());
+            this.UranusInZodiacPicker.Items.Add(zodiacSign.ToString());
+            this.NeptuneInZodiacPicker.Items.Add(zodiacSign.ToString());
+            this.PlutoInZodiacPicker.Items.Add(zodiacSign.ToString());
         }
 
         foreach (MoonDaySymbol moonDay in Enum.GetValues(typeof(MoonDaySymbol)))
@@ -301,6 +316,41 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
                     eventDay.MercuryInZodiac.NewZodiacSign = selectedZodiacSign;
                 }
             }
+            else if (picker == JupiterInZodiacPicker)
+            {
+                foreach (var eventDay in eventsInCurrentMonth)
+                {
+                    eventDay.JupiterInZodiac.NewZodiacSign = selectedZodiacSign;
+                }
+            }
+            else if (picker == SaturnInZodiacPicker)
+            {
+                foreach (var eventDay in eventsInCurrentMonth)
+                {
+                    eventDay.SaturnInZodiac.NewZodiacSign = selectedZodiacSign;
+                }
+            }
+            else if (picker == UranusInZodiacPicker)
+            {
+                foreach (var eventDay in eventsInCurrentMonth)
+                {
+                    eventDay.UranusInZodiac.NewZodiacSign = selectedZodiacSign;
+                }
+            }
+            else if (picker == NeptuneInZodiacPicker)
+            {
+                foreach (var eventDay in eventsInCurrentMonth)
+                {
+                    eventDay.NeptuneInZodiac.NewZodiacSign = selectedZodiacSign;
+                }
+            }
+            else if (picker == PlutoInZodiacPicker)
+            {
+                foreach (var eventDay in eventsInCurrentMonth)
+                {
+                    eventDay.PlutoInZodiac.NewZodiacSign = selectedZodiacSign;
+                }
+            }
         }
     }
 
@@ -329,6 +379,31 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
                 if (SelectedMercuryZodiac != 0)
                 {
                     astroEvent.MercuryInZodiac.NewZodiacSign = SelectedMercuryZodiac;
+                }
+
+                if (SelectedJupiterZodiac != 0)
+                {
+                    astroEvent.JupiterInZodiac.NewZodiacSign = SelectedJupiterZodiac;
+                }
+
+                if (SelectedSaturnZodiac != 0)
+                {
+                    astroEvent.SaturnInZodiac.NewZodiacSign = SelectedSaturnZodiac;
+                }
+
+                if (SelectedUranusZodiac != 0)
+                {
+                    astroEvent.UranusInZodiac.NewZodiacSign = SelectedUranusZodiac;
+                }
+
+                if (SelectedNeptuneZodiac != 0)
+                {
+                    astroEvent.NeptuneInZodiac.NewZodiacSign = SelectedNeptuneZodiac;
+                }
+
+                if (SelectedPlutoZodiac != 0)
+                {
+                    astroEvent.PlutoInZodiac.NewZodiacSign = SelectedPlutoZodiac;
                 }
 
                 astroEvent.MoonDay.IsTripleMoonDay = false;

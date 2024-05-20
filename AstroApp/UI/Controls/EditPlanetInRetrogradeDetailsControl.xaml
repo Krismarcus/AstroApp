@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
              xmlns:controls="clr-namespace:AstroApp.UI.Controls"
-             x:Class="AstroApp.UI.Controls.EditPlanetInRetrogradeControl"
-             x:DataType="controls:EditPlanetInRetrogradeControl">
+             x:Class="AstroApp.UI.Controls.EditPlanetInRetrogradeDetailsControl"
+             x:DataType="controls:EditPlanetInRetrogradeDetailsControl">
     <ContentView.Resources>
         <converters:EnumToStringConverter x:Key="EnumConverter"/>
     </ContentView.Resources>

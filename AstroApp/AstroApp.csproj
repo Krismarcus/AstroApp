@@ -193,6 +193,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="UI\Controls\EditMoonDaysDetailsControl.xaml.cs">
+	    <DependentUpon>EditMoonDaysDetailsControl.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="UI\Controls\EditPlanetInRetrogradeDetailsControl.xaml.cs">
+	    <DependentUpon>EditPlanetInRetrogradeDetailsControl.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="UI\Controls\EditPlanetInZodiacDetailsControl.xaml.cs">
+	    <DependentUpon>EditPlanetInZodiacDetailsControl.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="UI\Pages\PlanetinZodiacEventsEditPage.xaml.cs">
 	    <DependentUpon>PlanetInZodiacEventsEditPage.xaml</DependentUpon>
 	  </Compile>
@@ -217,13 +226,16 @@
 	  <MauiXaml Update="UI\Controls\EditDayControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="UI\Controls\EditMoonDaysControl.xaml">
+	  <MauiXaml Update="UI\Controls\EditMoonDaysDetailsControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="UI\Controls\EditPlanetInRetrogradeControl.xaml">
+	  <MauiXaml Update="UI\Controls\EditPlanetInRetrogradeDetailsControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UI\Controls\EditPlanetInZodiacControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\EditPlanetInZodiacDetailsControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UI\Controls\PlanetEventControl.xaml">

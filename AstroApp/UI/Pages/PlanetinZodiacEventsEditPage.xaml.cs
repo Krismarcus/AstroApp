@@ -51,15 +51,15 @@ public partial class PlanetInZodiacEventsEditPage : ContentPage
 
         for (int i = 0; i < PlanetInZodiacs.Count; i++)
         {
-            EditPlanetInZodiacControl editPlanetInZodiacControl = new EditPlanetInZodiacControl();
+            EditPlanetInZodiacDetailsControl editPlanetInZodiacDetailsControl = new EditPlanetInZodiacDetailsControl();
 
             PlanetInZodiac planetInZodiac = PlanetInZodiacs[i];
             if (planetInZodiac != null)
             {
-                editPlanetInZodiacControl.AddPlanetInZodiacDetails(planetInZodiac);
+                editPlanetInZodiacDetailsControl.AddPlanetInZodiacDetails(planetInZodiac);
             }
 
-            this.EventList.Add(editPlanetInZodiacControl);
+            this.EventList.Add(editPlanetInZodiacDetailsControl);
         }
     }
 
@@ -85,7 +85,7 @@ public partial class PlanetInZodiacEventsEditPage : ContentPage
         for (int i = 0; i < PlanetInRetrogradeDetails.Count; i++)
         {
 
-            EditPlanetInRetrogradeControl editPlanetInRetrogradeControl = new EditPlanetInRetrogradeControl();
+            EditPlanetInRetrogradeDetailsControl editPlanetInRetrogradeControl = new EditPlanetInRetrogradeDetailsControl();
             PlanetInRetrogradeDetails planetInRetrograde = PlanetInRetrogradeDetails[i];
             if (planetInRetrograde != null)
             {

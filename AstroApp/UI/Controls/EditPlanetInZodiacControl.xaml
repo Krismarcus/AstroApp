@@ -1,16 +1,55 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AstroApp.UI.Controls.EditPlanetInZodiacControl"
-             xmlns:controls="clr-namespace:AstroApp.UI.Controls"
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
-             x:DataType="controls:EditPlanetInZodiacControl">
+             xmlns:controls="clr-namespace:AstroApp.UI.Controls"
+             xmlns:models="clr-namespace:AstroApp.Data.Models"
+             x:Class="AstroApp.UI.Controls.EditPlanetInZodiacControl"
+             x:DataType="controls:EditPlanetInZodiacControl"
+             >
     <ContentView.Resources>
-        <converters:EnumToStringConverter x:Key="EnumConverter"/>
-    </ContentView.Resources>    
-    <Grid ColumnDefinitions="Auto,Auto,*">
-        <Label Grid.Column="0" Text="{Binding PlanetInZodiac.Planet}" VerticalOptions="Center"/>
-        <Label Grid.Column="1" Text="{Binding PlanetInZodiac.NewZodiacSign}" VerticalOptions="Center"/>
-        <Editor Grid.Column="2" Text="{Binding PlanetInZodiac.PlanetInZodiacInfo}" VerticalOptions="Center" AutoSize="TextChanges" Margin="10,0"/>
+        <converters:EnumToStringConverter x:Key="EnumConverter" />
+        <converters:MoonDayIntToStringConverter x:Key="IntToStringConverter" />
+        <converters:DateTimeToTimeSpanConverter x:Key="DateTimeToTimeSpanConverter" />
+        <converters:MoonPhaseEditIconToIntConverter x:Key="MoonPhaseEditIconToIntConverter" />
+        <converters:ActivityQualityToColorConverter x:Key="ActivityQualityToColor" />
+    </ContentView.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>        
+        <Label 
+            Grid.Row="0"
+            Margin="5"
+            HorizontalOptions="Center"
+            Text="{Binding PlanetInZodiacUnit.Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+            VerticalOptions="Center" />
+        <Grid
+            Grid.Row="1"
+            ColumnDefinitions="auto,auto"
+            HorizontalOptions="CenterAndExpand">
+            <Picker                
+                x:Name="ZodiacPicker"
+                Grid.Column="0"
+                Margin="10"
+                HorizontalOptions="Center"
+                SelectedItem="{Binding PlanetInZodiacUnit.NewZodiacSign, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+                VerticalOptions="Center" />
+            <Switch                
+                Grid.Column="1"
+                Margin="10"
+                HorizontalOptions="Center"
+                IsToggled="{Binding PlanetInZodiacUnit.IsRetrograde}"
+                VerticalOptions="Center" />
+        </Grid>
+        <TimePicker            
+            Grid.Row="2"
+            Margin="10"
+            HorizontalOptions="CenterAndExpand"
+            IsVisible="{Binding PlanetInZodiacUnit.IsZodiacTransitioning}"
+            Time="{Binding PlanetInZodiacUnit.TransitionTime, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"
+            VerticalOptions="CenterAndExpand" />        
     </Grid>
 </ContentView>

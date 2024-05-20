@@ -11,44 +11,38 @@ namespace AstroApp.Data.Models
         private ZodiacSign newZodiacSign;
         private ZodiacSign previousZodiacSign;
 
+        private bool isRetrograde;
+        private bool isInitialized;
+
         public ZodiacSign NewZodiacSign
         {
             get => newZodiacSign;
             set
             {
-                newZodiacSign = value;
-                UpdatePreviousZodiacSign();
+                if (SetProperty(ref newZodiacSign, value))
+                {
+                    if (isInitialized)
+                    {
+                        UpdatePreviousZodiacSign();
+                    }
+                }
             }
         }
 
         public ZodiacSign PreviousZodiacSign
         {
             get => previousZodiacSign;
-            private set => previousZodiacSign = value;
+            private set => SetProperty(ref previousZodiacSign, value);
         }
-
-        public void UpdatePreviousZodiacSign()
+        
+        public bool IsRetrograde
         {
-            if (isRetrograde)
+            get => isRetrograde;
+            set
             {
-                if (newZodiacSign == ZodiacSign.Pisces)
+                if (SetProperty(ref isRetrograde, value) && isInitialized)
                 {
-                    previousZodiacSign = ZodiacSign.Aries;
-                }
-                else
-                {
-                    previousZodiacSign = (ZodiacSign)(newZodiacSign + 1);
-                }
-            }
-            else
-            {
-                if (newZodiacSign == ZodiacSign.Aries)
-                {
-                    previousZodiacSign = ZodiacSign.Pisces;
-                }
-                else
-                {
-                    previousZodiacSign = (ZodiacSign)(newZodiacSign - 1);
+                    UpdatePreviousZodiacSign();
                 }
             }
         }
@@ -62,7 +56,36 @@ namespace AstroApp.Data.Models
         [ObservableProperty]
         private string planetInZodiacInfo;
 
-        [ObservableProperty]
-        private bool isRetrograde;
+        public PlanetInZodiac()
+        {
+            isInitialized = true;
+            UpdatePreviousZodiacSign();
+        }
+
+        public void UpdatePreviousZodiacSign()
+        {
+            if (isRetrograde)
+            {
+                if (newZodiacSign == ZodiacSign.Pisces)
+                {
+                    PreviousZodiacSign = ZodiacSign.Aries;
+                }
+                else
+                {
+                    PreviousZodiacSign = (ZodiacSign)((int)newZodiacSign + 1);
+                }
+            }
+            else
+            {
+                if (newZodiacSign == ZodiacSign.Aries)
+                {
+                    PreviousZodiacSign = ZodiacSign.Pisces;
+                }
+                else
+                {
+                    PreviousZodiacSign = (ZodiacSign)((int)newZodiacSign - 1);
+                }
+            }
+        }
     }
 }

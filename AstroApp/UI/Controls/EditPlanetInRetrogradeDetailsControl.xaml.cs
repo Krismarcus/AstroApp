@@ -2,7 +2,7 @@ using AstroApp.Data.Models;
 
 namespace AstroApp.UI.Controls;
 
-public partial class EditPlanetInRetrogradeControl : ContentView
+public partial class EditPlanetInRetrogradeDetailsControl : ContentView
 {
     private PlanetInRetrogradeDetails planetInRetrograde;
 
@@ -20,7 +20,7 @@ public partial class EditPlanetInRetrogradeControl : ContentView
         }
     }
 
-    public EditPlanetInRetrogradeControl()
+    public EditPlanetInRetrogradeDetailsControl()
 	{
 		InitializeComponent();
         BindingContext = this;

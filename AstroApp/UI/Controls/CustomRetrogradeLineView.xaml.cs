@@ -79,13 +79,24 @@ public partial class CustomRetrogradeLineView : ContentView
             HorizontalOptions = LayoutOptions.Start,
             VerticalOptions = LayoutOptions.Center,
             HorizontalTextAlignment = TextAlignment.Center,
-            Margin = new Thickness(10, 0, 0, 0)
+            Margin = new Thickness(10, 0, 10, 0)
+        };
+
+        var label2 = new Label
+        {
+            Text = segment.RetrogradeEndDate.Day.ToString(),
+            TextColor = textColor,
+            FontSize = 12,
+            HorizontalOptions = LayoutOptions.End,
+            VerticalOptions = LayoutOptions.Center,
+            HorizontalTextAlignment = TextAlignment.Center,
+            Margin = new Thickness(10, 0, 10, 0)
         };
 
         var image = new Image
         {
             Source = "retrograde.png",
-            HeightRequest = 25,
+            HeightRequest = 15,
             HorizontalOptions = LayoutOptions.Center,
             VerticalOptions = LayoutOptions.Center,
         };
@@ -108,6 +119,7 @@ public partial class CustomRetrogradeLineView : ContentView
         Grid.SetColumnSpan(boxView, 3);
         cellGrid.Add(label, 0, 0);
         cellGrid.Add(image, 1, 0);
+        cellGrid.Add(label2, 2, 0);
 
         return cellGrid;
     }
@@ -116,7 +128,7 @@ public partial class CustomRetrogradeLineView : ContentView
     {
         if (isRetrograde == true)
         {
-            return Colors.Black;
+            return Colors.DimGray;
         }
         return Colors.Transparent;
     }

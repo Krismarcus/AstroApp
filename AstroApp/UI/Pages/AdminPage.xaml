@@ -32,13 +32,23 @@
                     <Button Grid.Column="1" Text="Next" Clicked="NextButton_Clicked"/>
                 </Grid>
             <Label Grid.Row="2" Text="{Binding MonthName}" FontSize="Header" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*,*">
+            <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*,*,*,*">
                 <Label Grid.Column="0" Grid.Row="0" Text="Venus in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Picker Grid.Column="0" Grid.Row="1" x:Name="VenusInZodiacPicker" SelectedItem="{Binding SelectedVenusZodiac, Converter={StaticResource EnumToStringConverter}}" Margin="10,0"/>
                 <Label Grid.Column="1" Grid.Row="0" Text="Mars in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Picker Grid.Column="1" Grid.Row="1" x:Name="MarsInZodiacPicker" SelectedItem="{Binding SelectedMarsZodiac, Converter={StaticResource EnumToStringConverter}}" Margin="10,0"/>
                 <Label Grid.Column="2" Grid.Row="0" Text="Mercury in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Picker Grid.Column="2" Grid.Row="1" x:Name="MercuryInZodiacPicker" SelectedItem="{Binding SelectedMercuryZodiac, Converter={StaticResource EnumToStringConverter}}" Margin="10,0"/>                                
+                <Picker Grid.Column="2" Grid.Row="1" x:Name="MercuryInZodiacPicker" SelectedItem="{Binding SelectedMercuryZodiac, Converter={StaticResource EnumToStringConverter}}" Margin="10,0"/>
+                <Label Grid.Column="0" Grid.Row="2" Text="Jupiter in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Picker Grid.Column="0" Grid.Row="3" x:Name="JupiterInZodiacPicker" SelectedItem="{Binding SelectedJupiterZodiac, Converter={StaticResource EnumToStringConverter}}" Margin="10,0"/>
+                <Label Grid.Column="1" Grid.Row="2" Text="Saturn in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Picker Grid.Column="1" Grid.Row="3" x:Name="SaturnInZodiacPicker" SelectedItem="{Binding SelectedSaturnZodiac, Converter={StaticResource EnumToStringConverter}}" Margin="10,0"/>
+                <Label Grid.Column="2" Grid.Row="2" Text="Uranus in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Picker Grid.Column="2" Grid.Row="3" x:Name="UranusInZodiacPicker" SelectedItem="{Binding SelectedUranusZodiac, Converter={StaticResource EnumToStringConverter}}" Margin="10,0"/>
+                <Label Grid.Column="3" Grid.Row="2" Text="Neptune in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Picker Grid.Column="3" Grid.Row="3" x:Name="NeptuneInZodiacPicker" SelectedItem="{Binding SelectedNeptuneZodiac, Converter={StaticResource EnumToStringConverter}}" Margin="10,0"/>
+                <Label Grid.Column="4" Grid.Row="2" Text="Pluto in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Picker Grid.Column="4" Grid.Row="3" x:Name="PlutoInZodiacPicker" SelectedItem="{Binding SelectedPlutoZodiac, Converter={StaticResource EnumToStringConverter}}" Margin="10,0"/>
                 <Label Grid.Column="3" Grid.Row="0" Text="New Moon" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Entry Grid.Column="3" Grid.Row="1" Text="{Binding SkipDayIndex, Mode=TwoWay}" Keyboard="Numeric" Margin="10,0" HorizontalOptions="Center"/>
                 <HorizontalStackLayout Grid.Column="4" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" >
