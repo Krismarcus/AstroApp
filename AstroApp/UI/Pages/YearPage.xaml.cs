@@ -38,12 +38,18 @@ public partial class YearPage : ContentPage
         Initialize();
         GenerateCalendar();
         this.BindingContext = this;
-        SetupSegmentClickHandlers();
+        //SetupSegmentClickHandlers();
     }
 
     private void Initialize()
     {
         this.ActiveAstroEvents = App.AppData.AppDB.AstroEventsDB;
+        var currentYear = DateTime.Now.Year;
+
+        // Filter entries from March to August of the current year
+        this.ActiveAstroEvents = new ObservableCollection<AstroEvent>(
+            this.ActiveAstroEvents.Where(e => e.Date.Year == currentYear && e.Date.Month >= 1 && e.Date.Month <= 12)
+        );
         this.PlanetInZodiacInfo = App.AppData.AppDB.PlanetInZodiacsDB;
     }
 
@@ -52,7 +58,7 @@ public partial class YearPage : ContentPage
         CustomZodiacLineViewSun.SegmentClicked += OnPlanetInSunZodiacSegmentClicked;
         CustomZodiacLineViewMercury.SegmentClicked += OnPlanetInMercuryZodiacSegmentClicked;
         CustomZodiacLineViewVenus.SegmentClicked += OnPlanetInVenusZodiacSegmentClicked;
-        CustomZodiacLineViewMars.SegmentClicked += OnPlanetInMarsZodiacSegmentClicked;
+        CustomZodiacLineViewMars.SegmentClicked += OnPlanetInMarsZodiacSegmentClicked;        
     }
 
     private void OnPlanetInSunZodiacSegmentClicked(object sender, ZodiacSign sign)

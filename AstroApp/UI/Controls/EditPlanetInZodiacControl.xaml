@@ -12,12 +12,25 @@
     </ContentView.Resources>
     <VerticalStackLayout>
         <Grid RowDefinitions="*,*,Auto">
-            <Label
-                Grid.Row="0"
-                Margin="5"
-                HorizontalOptions="Center"
-                Text="{Binding Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
-                VerticalOptions="Center" />
+            <HorizontalStackLayout Grid.Row="0" >
+                <Label                    
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding IsRetrograde}"
+                    Text="R"
+                    VerticalOptions="Center" />
+                <Label
+                    Margin="5"
+                    HorizontalOptions="Center"
+                    Text="{Binding Planet, Converter={StaticResource EnumConverter}, Mode=TwoWay}"
+                    VerticalOptions="Center" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnLabelTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            </HorizontalStackLayout>
+            
             <Grid Grid.Row="1" ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand">
                 <Picker
                     x:Name="ZodiacSignPicker"
