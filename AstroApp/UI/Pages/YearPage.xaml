@@ -12,7 +12,7 @@
     
     <ScrollView>
         <VerticalStackLayout VerticalOptions="Center">
-            <Grid RowDefinitions="*,*,*,*,*">
+            <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*">
                 <controls:CustomMonthLineView x:Name="CustomMonthLineView" Grid.Row="0" Grid.Column="1" MonthSegments="{Binding MonthSegments}" Margin="40,0,0,0"/>
                 <Grid Grid.Row="1" RowDefinitions="*,*" ColumnDefinitions="Auto,*" Margin="0,20">
                     <Image Grid.Row="0" Grid.Column="0" Source="sun.png" WidthRequest="40"/>
@@ -36,6 +36,36 @@
                     <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
                     <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeMarsSegments}" Margin="0,-20,0,0"/>
                 </Grid>
+                <Grid Grid.Row="5" RowDefinitions="*,*" ColumnDefinitions="Auto,*" >
+                    <Image Grid.Row="0" Grid.Column="0" Source="jupiter.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewJupiter" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding JupiterInZodiacSegments}"/>
+                    <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
+                    <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeJupiterSegments}" Margin="0,-20,0,0"/>
+                </Grid>
+                <Grid Grid.Row="6" RowDefinitions="*,*" ColumnDefinitions="Auto,*" >
+                    <Image Grid.Row="0" Grid.Column="0" Source="saturn.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewSaturn" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding SaturnInZodiacSegments}"/>
+                    <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
+                    <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeSaturnSegments}" Margin="0,-20,0,0"/>
+                </Grid>
+                <Grid Grid.Row="7" RowDefinitions="*,*" ColumnDefinitions="Auto,*" >
+                    <Image Grid.Row="0" Grid.Column="0" Source="uranus.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewUranus" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding UranusInZodiacSegments}"/>
+                    <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
+                    <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeUranusSegments}" Margin="0,-20,0,0"/>
+                </Grid>
+                <Grid Grid.Row="8" RowDefinitions="*,*" ColumnDefinitions="Auto,*" >
+                    <Image Grid.Row="0" Grid.Column="0" Source="neptune.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewNeptune" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding NeptuneInZodiacSegments}"/>
+                    <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
+                    <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeNeptuneSegments}" Margin="0,-20,0,0"/>
+                </Grid>
+                <Grid Grid.Row="9" RowDefinitions="*,*" ColumnDefinitions="Auto,*" >
+                    <Image Grid.Row="0" Grid.Column="0" Source="pluto.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewPluto" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding PlutoInZodiacSegments}"/>
+                    <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
+                    <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradePlutoSegments}" Margin="0,-20,0,0"/>
+                </Grid>                
             </Grid>
             <Label x:Name="LabelShowingZodiacSign"/>
         </VerticalStackLayout>

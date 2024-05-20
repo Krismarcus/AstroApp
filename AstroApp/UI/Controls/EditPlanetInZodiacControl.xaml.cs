@@ -1,38 +1,21 @@
 using AstroApp.Data.Enums;
-using AstroApp.Data.Models;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 
-namespace AstroApp.UI.Controls;
-
-public partial class EditPlanetInZodiacControl : ContentView
+namespace AstroApp.UI.Controls
 {
-    public static readonly BindableProperty PlanetInZodiacUnitProperty = BindableProperty.Create(
-            nameof(PlanetInZodiacUnit),
-            typeof(PlanetInZodiac),
-            typeof(EditPlanetInZodiacControl),
-            default(PlanetInZodiac),
-            BindingMode.TwoWay);
-
-
-    public PlanetInZodiac PlanetInZodiacUnit
+    public partial class EditPlanetInZodiacControl : ContentView
     {
-        get => (PlanetInZodiac)GetValue(PlanetInZodiacUnitProperty);
-        set => SetValue(PlanetInZodiacUnitProperty, value);
-    }
-
-    public EditPlanetInZodiacControl()
-    {
-        InitializeComponent();                
-        PopulatePicker();
-        this.BindingContext = this;
-    }   
-
-    private void PopulatePicker()
-    {
-        foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
+        public EditPlanetInZodiacControl()
         {
-            this.ZodiacPicker.Items.Add(zodiacSign.ToString());
+            InitializeComponent();
+            PopulatePicker();
+        }
+
+        private void PopulatePicker()
+        {
+            foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
+            {
+                ZodiacSignPicker.Items.Add(zodiacSign.ToString());
+            }
         }
     }
 }

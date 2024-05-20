@@ -368,41 +368,57 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
             {
                 if (SelectedMarsZodiac != 0)
                 {
+                    astroEvent.MarsInZodiac ??= new PlanetInZodiac();
+                    astroEvent.MarsInZodiac.Planet = Planet.Mars;
                     astroEvent.MarsInZodiac.NewZodiacSign = SelectedMarsZodiac;
                 }
 
                 if (SelectedVenusZodiac != 0)
                 {
+                    astroEvent.VenusInZodiac ??= new PlanetInZodiac();
+                    astroEvent.VenusInZodiac.Planet = Planet.Venus;
                     astroEvent.VenusInZodiac.NewZodiacSign = SelectedVenusZodiac;
                 }
 
                 if (SelectedMercuryZodiac != 0)
                 {
+                    astroEvent.MercuryInZodiac ??= new PlanetInZodiac();
+                    astroEvent.MercuryInZodiac.Planet = Planet.Mercury;
                     astroEvent.MercuryInZodiac.NewZodiacSign = SelectedMercuryZodiac;
                 }
 
                 if (SelectedJupiterZodiac != 0)
                 {
+                    astroEvent.JupiterInZodiac ??= new PlanetInZodiac();
+                    astroEvent.JupiterInZodiac.Planet = Planet.Jupiter;
                     astroEvent.JupiterInZodiac.NewZodiacSign = SelectedJupiterZodiac;
                 }
 
                 if (SelectedSaturnZodiac != 0)
                 {
+                    astroEvent.SaturnInZodiac ??= new PlanetInZodiac();
+                    astroEvent.SaturnInZodiac.Planet = Planet.Saturn;
                     astroEvent.SaturnInZodiac.NewZodiacSign = SelectedSaturnZodiac;
                 }
 
                 if (SelectedUranusZodiac != 0)
                 {
+                    astroEvent.UranusInZodiac ??= new PlanetInZodiac();
+                    astroEvent.UranusInZodiac.Planet = Planet.Uranus;
                     astroEvent.UranusInZodiac.NewZodiacSign = SelectedUranusZodiac;
                 }
 
                 if (SelectedNeptuneZodiac != 0)
                 {
+                    astroEvent.NeptuneInZodiac ??= new PlanetInZodiac();
+                    astroEvent.NeptuneInZodiac.Planet = Planet.Neptune;
                     astroEvent.NeptuneInZodiac.NewZodiacSign = SelectedNeptuneZodiac;
                 }
 
                 if (SelectedPlutoZodiac != 0)
                 {
+                    astroEvent.PlutoInZodiac ??= new PlanetInZodiac();
+                    astroEvent.PlutoInZodiac.Planet = Planet.Pluto;
                     astroEvent.PlutoInZodiac.NewZodiacSign = SelectedPlutoZodiac;
                 }
 

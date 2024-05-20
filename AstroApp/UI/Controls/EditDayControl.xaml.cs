@@ -41,30 +41,7 @@ public partial class EditDayControl : ContentView, INotifyPropertyChanged
             this.NewMoonDayPicker.Items.Add(moonDay.ToString());
         }
 
-        foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
-        {
-            this.SunInZodiacPicker.Items.Add(zodiacSign.ToString());
-        }
-
-        foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
-        {
-            this.MoonInZodiacPicker.Items.Add(zodiacSign.ToString());
-        }
-
-        foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
-        {
-            this.VenusInZodiacPicker.Items.Add(zodiacSign.ToString());
-        }
-
-        foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
-        {
-            this.MarsInZodiacPicker.Items.Add(zodiacSign.ToString());
-        }
-
-        foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
-        {
-            this.MercuryInZodiacPicker.Items.Add(zodiacSign.ToString());
-        }
+        
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
