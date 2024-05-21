@@ -391,7 +391,40 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
         PlutoInZodiacPicker.SelectedItem = null;
         MoonDayPicker.SelectedIndex = 0;
         SkipDayIndex = 0;
-    }    
+    }
+
+    private async void DeleteCurrentMonthEventsButton_Clicked(object sender, EventArgs e)
+    {
+        // Show confirmation dialog
+        bool isConfirmed = await Application.Current.MainPage.DisplayAlert(
+            "Confirm Deletion",
+            "Are you sure you want to delete all events for the current month?",
+            "Yes",
+            "No");
+
+        if (isConfirmed)
+        {
+            // Get events to remove
+            var eventsToRemove = ActiveAstroEvents.Where(e => e.Date.Month == month && e.Date.Year == year).ToList();
+
+            // Remove events from the collection
+            foreach (var astroEvent in eventsToRemove)
+            {
+                ActiveAstroEvents.Remove(astroEvent);
+            }
+
+            // Save the updated and sorted collection to the JSON file
+            var appActions = new Services.AppActions();
+            App.AppData.AppDB.AstroEventsDB = ActiveAstroEvents;
+            await appActions.SaveAstroEventsDBAsync(App.AppData.AppDB);
+
+            // Update the list view
+            UpdateList(year, month);
+
+            // Show success message
+            await Application.Current.MainPage.DisplayAlert("Success", "Events for the current month have been deleted.", "OK");
+        }
+    }
 
     private int IncrementMoonDay(int currentMoonDay, int date, int skipDay, bool is29DayCycle)
     {

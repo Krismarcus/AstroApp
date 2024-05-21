@@ -48,7 +48,7 @@ public partial class YearPage : ContentPage
 
         // Filter entries from March to August of the current year
         this.ActiveAstroEvents = new ObservableCollection<AstroEvent>(
-            this.ActiveAstroEvents.Where(e => e.Date.Year == currentYear && e.Date.Month >= 2 && e.Date.Month <= 12)
+            this.ActiveAstroEvents.Where(e => e.Date.Year == currentYear && e.Date.Month >= 1 && e.Date.Month <= 12)
         );
         this.PlanetInZodiacInfo = App.AppData.AppDB.PlanetInZodiacsDB;
     }

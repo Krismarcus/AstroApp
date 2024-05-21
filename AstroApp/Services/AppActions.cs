@@ -71,6 +71,10 @@ namespace AstroApp.Services
                 var localFolderPath = FileSystem.AppDataDirectory; // Gets the local app data folder
                 var filePath = Path.Combine(localFolderPath, "astrodb.json");
 
+                // Sort the AstroEvents by Date
+                astroDB.AstroEventsDB = new ObservableCollection<AstroEvent>(
+                    astroDB.AstroEventsDB.OrderBy(e => e.Date));
+
                 // Read the existing data
                 AppDB existingData = null;
                 if (File.Exists(filePath))
