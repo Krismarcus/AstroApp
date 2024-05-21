@@ -68,20 +68,22 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
     public int SelectedMoonDay {  get; set; }    
     public bool Is29MoonDayCycle { get; set; }
 
-    public ZodiacSign SelectedVenusZodiac {  get; set; }
-    public ZodiacSign SelectedMarsZodiac { get; set; }
-    public ZodiacSign SelectedMercuryZodiac { get; set; }
-    public ZodiacSign SelectedJupiterZodiac { get; set; }
-    public ZodiacSign SelectedSaturnZodiac { get; set; }
-    public ZodiacSign SelectedUranusZodiac { get; set; }
-    public ZodiacSign SelectedNeptuneZodiac { get; set; }
-    public ZodiacSign SelectedPlutoZodiac { get; set; }
+    public ZodiacSign? SelectedVenusZodiac {  get; set; }
+    public ZodiacSign? SelectedMarsZodiac { get; set; }
+    public ZodiacSign? SelectedMercuryZodiac { get; set; }
+    public ZodiacSign? SelectedJupiterZodiac { get; set; }
+    public ZodiacSign? SelectedSaturnZodiac { get; set; }
+    public ZodiacSign? SelectedUranusZodiac { get; set; }
+    public ZodiacSign? SelectedNeptuneZodiac { get; set; }
+    public ZodiacSign? SelectedPlutoZodiac { get; set; }
 
     public ObservableCollection<AstroEvent> ActiveAstroEvents { get; set; }
 
     public ObservableCollection<PlanetInZodiac> PlanetInZodiacsDetails { get; set; }
 
     public ObservableCollection<EditDayControl> TempDayList { get; set; }
+
+    public ObservableCollection<ZodiacSign> ZodiacSigns { get; set; }
 
     public AdminPage()
 	{
@@ -103,8 +105,6 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
 
     private void UpdateList(int year, int month)
     {
-        this.EventList.Clear();
-
         this.year = year;
         this.month = month;
         DateTime startOfMonth = new DateTime(year, month, 1);
@@ -165,65 +165,84 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
             {
                 TempDayList = new ObservableCollection<EditDayControl>();
             }
-            TempDayList.Clear();  
+            TempDayList.Clear();
 
             for (int i = 1; i <= days; i++)
             {
-                // Assuming EditDayControl can be instantiated in background thread; if not, adjust accordingly.
+                // Assuming EditDayControl can be instantiated in the background thread; if not, adjust accordingly.
                 EditDayControl editDayCard = new EditDayControl();
 
                 DateTime currentDate = new DateTime(year, month, i);
                 AstroEvent astroEventForDate = ActiveAstroEvents.FirstOrDefault(e => e.Date.Date == currentDate.Date);
 
-                if (astroEventForDate != null)
-                {
-                    // Since this might update UI, ensure it runs on UI thread if necessary
-                    Device.BeginInvokeOnMainThread(() => editDayCard.AddAstroEvent(astroEventForDate));
-                }
-                else
+                if (astroEventForDate == null)
                 {
                     astroEventForDate = new AstroEvent()
                     {
                         Date = currentDate,
-                        SunInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Sun, NewZodiacSign = SunZodiacSignYearlyCalendar(currentDate), TransitionTime = new DateTime() },
-                        MoonInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Moon, TransitionTime = new DateTime() },
-                        VenusInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Venus, TransitionTime = new DateTime() },
-                        MarsInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mars, TransitionTime = new DateTime() },
-                        MercuryInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
-                        JupiterInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
-                        SaturnInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
-                        UranusInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
-                        NeptuneInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
-                        PlutoInZodiac = new PlanetInZodiac() { Planet = Data.Enums.Planet.Mercury, TransitionTime = new DateTime() },
-                        EventText = "",
-                        MoonDay = new MoonDay() { NewMoonDay = 0, TransitionTime = new DateTime() }
+                        SunInZodiac = CreateBlankPlanetInZodiac(Planet.Sun, currentDate),
+                        MoonInZodiac = CreateBlankPlanetInZodiac(Planet.Moon),
+                        VenusInZodiac = CreateBlankPlanetInZodiac(Planet.Venus),
+                        MarsInZodiac = CreateBlankPlanetInZodiac(Planet.Mars),
+                        MercuryInZodiac = CreateBlankPlanetInZodiac(Planet.Mercury),
+                        JupiterInZodiac = CreateBlankPlanetInZodiac(Planet.Jupiter),
+                        SaturnInZodiac = CreateBlankPlanetInZodiac(Planet.Saturn),
+                        UranusInZodiac = CreateBlankPlanetInZodiac(Planet.Uranus),
+                        NeptuneInZodiac = CreateBlankPlanetInZodiac(Planet.Neptune),
+                        PlutoInZodiac = CreateBlankPlanetInZodiac(Planet.Pluto),
+                        MoonDay = new MoonDay() { NewMoonDay = 0, TransitionTime = DateTime.MinValue },
+                        MoonPhase = (int)MoonPhaseSymbol.None,
+                        SunEclipse = false,
+                        MoonEclipse = false,
+                        Barber = ActivityQuality.Neutral,
+                        Beauty = ActivityQuality.Neutral,
+                        Buystuff = ActivityQuality.Neutral,
+                        Contracts = ActivityQuality.Neutral,
+                        ImportantTasks = ActivityQuality.Neutral,
+                        Gardening = ActivityQuality.Neutral,
+                        Love = ActivityQuality.Neutral,
+                        Meetings = ActivityQuality.Neutral,
+                        NewIdeas = ActivityQuality.Neutral,
+                        Tech = ActivityQuality.Neutral,
+                        Travel = ActivityQuality.Neutral,
+                        EventText = ""
                     };
-                    
-                    // This might need to run on the UI thread too
+
+                    // Add new AstroEvent to the collection
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         ActiveAstroEvents.Add(astroEventForDate);
-                        editDayCard.AddAstroEvent(astroEventForDate);
                     });
                 }
+
+                // Since this might update UI, ensure it runs on the UI thread if necessary
+                Device.BeginInvokeOnMainThread(() => editDayCard.AddAstroEvent(astroEventForDate));
                 TempDayList.Add(editDayCard);
             }
 
-            // Update the main list on UI thread
+            // Update the main list on the UI thread
             Device.BeginInvokeOnMainThread(() =>
             {
-                this.EventList.Clear();
-                foreach (var item in TempDayList)
-                {
-                    this.EventList.Add(item);
-                }
-
-                // Hide loading indicator
+                // CollectionView binding will handle updating the UI, no need to manually clear and add items
                 loadingIndicator.IsRunning = false;
                 loadingIndicator.IsVisible = false;
             });
         });
     }
+
+    private PlanetInZodiac CreateBlankPlanetInZodiac(Planet planet, DateTime? date = null)
+    {
+        return new PlanetInZodiac()
+        {
+            Planet = planet,
+            NewZodiacSign = planet == Planet.Sun && date.HasValue ? SunZodiacSignYearlyCalendar(date.Value) : ZodiacSign.Aries,
+            IsRetrograde = false,
+            IsZodiacTransitioning = false,
+            TransitionTime = DateTime.MinValue,
+            PlanetInZodiacInfo = string.Empty
+        };
+    }
+
 
     public ZodiacSign SunZodiacSignYearlyCalendar(DateTime date)
     {
@@ -266,93 +285,15 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
     }
 
     public void PopulatePickers()
-    {        
-        
-        foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
-        {
-            this.VenusInZodiacPicker.Items.Add(zodiacSign.ToString());
-            this.MarsInZodiacPicker.Items.Add(zodiacSign.ToString());
-            this.MercuryInZodiacPicker.Items.Add(zodiacSign.ToString());
-            this.JupiterInZodiacPicker.Items.Add(zodiacSign.ToString());
-            this.SaturnInZodiacPicker.Items.Add(zodiacSign.ToString());
-            this.UranusInZodiacPicker.Items.Add(zodiacSign.ToString());
-            this.NeptuneInZodiacPicker.Items.Add(zodiacSign.ToString());
-            this.PlutoInZodiacPicker.Items.Add(zodiacSign.ToString());
-        }
+    {
+        this.ZodiacSigns = new ObservableCollection<ZodiacSign>(Enum.GetValues(typeof(ZodiacSign)).Cast<ZodiacSign>());
 
         foreach (MoonDaySymbol moonDay in Enum.GetValues(typeof(MoonDaySymbol)))
         {
             this.MoonDayPicker.Items.Add(moonDay.ToString());
         }        
     }
-
-    private void ZodiacSignPicker_OnSelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (sender is Picker picker && picker.SelectedIndex != -1)
-        {
-            var selectedZodiacSign = (ZodiacSign)picker.SelectedIndex + 1; // Adjusted assuming enum starts at 1
-
-            // Filter ActiveAstroEvents for the current month and year before applying changes
-            var eventsInCurrentMonth = ActiveAstroEvents.Where(eventDay => eventDay.Date.Month == this.Month && eventDay.Date.Year == this.Year);
-
-            if (picker == VenusInZodiacPicker)
-            {
-                foreach (var eventDay in eventsInCurrentMonth)
-                {
-                    eventDay.VenusInZodiac.NewZodiacSign = selectedZodiacSign;
-                }
-            }
-            else if (picker == MarsInZodiacPicker)
-            {
-                foreach (var eventDay in eventsInCurrentMonth)
-                {
-                    eventDay.MarsInZodiac.NewZodiacSign = selectedZodiacSign;
-                }
-            }
-            else if (picker == MercuryInZodiacPicker)
-            {
-                foreach (var eventDay in eventsInCurrentMonth)
-                {
-                    eventDay.MercuryInZodiac.NewZodiacSign = selectedZodiacSign;
-                }
-            }
-            else if (picker == JupiterInZodiacPicker)
-            {
-                foreach (var eventDay in eventsInCurrentMonth)
-                {
-                    eventDay.JupiterInZodiac.NewZodiacSign = selectedZodiacSign;
-                }
-            }
-            else if (picker == SaturnInZodiacPicker)
-            {
-                foreach (var eventDay in eventsInCurrentMonth)
-                {
-                    eventDay.SaturnInZodiac.NewZodiacSign = selectedZodiacSign;
-                }
-            }
-            else if (picker == UranusInZodiacPicker)
-            {
-                foreach (var eventDay in eventsInCurrentMonth)
-                {
-                    eventDay.UranusInZodiac.NewZodiacSign = selectedZodiacSign;
-                }
-            }
-            else if (picker == NeptuneInZodiacPicker)
-            {
-                foreach (var eventDay in eventsInCurrentMonth)
-                {
-                    eventDay.NeptuneInZodiac.NewZodiacSign = selectedZodiacSign;
-                }
-            }
-            else if (picker == PlutoInZodiacPicker)
-            {
-                foreach (var eventDay in eventsInCurrentMonth)
-                {
-                    eventDay.PlutoInZodiac.NewZodiacSign = selectedZodiacSign;
-                }
-            }
-        }
-    }
+    
 
     private void Button_Clicked(object sender, EventArgs e)
     {
@@ -366,76 +307,90 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
             // Check if the event is in the current month and year before updating.
             if (astroEvent.Date.Month == month && astroEvent.Date.Year == year)
             {
-                if (SelectedMarsZodiac != 0)
+                if (SelectedMarsZodiac != null)
                 {
                     astroEvent.MarsInZodiac ??= new PlanetInZodiac();
                     astroEvent.MarsInZodiac.Planet = Planet.Mars;
-                    astroEvent.MarsInZodiac.NewZodiacSign = SelectedMarsZodiac;
+                    astroEvent.MarsInZodiac.NewZodiacSign = (ZodiacSign)SelectedMarsZodiac;
                 }
 
-                if (SelectedVenusZodiac != 0)
+                if (SelectedVenusZodiac != null)
                 {
                     astroEvent.VenusInZodiac ??= new PlanetInZodiac();
                     astroEvent.VenusInZodiac.Planet = Planet.Venus;
-                    astroEvent.VenusInZodiac.NewZodiacSign = SelectedVenusZodiac;
+                    astroEvent.VenusInZodiac.NewZodiacSign = (ZodiacSign)SelectedVenusZodiac;
                 }
 
-                if (SelectedMercuryZodiac != 0)
+                if (SelectedMercuryZodiac != null)
                 {
                     astroEvent.MercuryInZodiac ??= new PlanetInZodiac();
                     astroEvent.MercuryInZodiac.Planet = Planet.Mercury;
-                    astroEvent.MercuryInZodiac.NewZodiacSign = SelectedMercuryZodiac;
+                    astroEvent.MercuryInZodiac.NewZodiacSign = (ZodiacSign)SelectedMercuryZodiac;
                 }
 
-                if (SelectedJupiterZodiac != 0)
+                if (SelectedJupiterZodiac != null)
                 {
                     astroEvent.JupiterInZodiac ??= new PlanetInZodiac();
                     astroEvent.JupiterInZodiac.Planet = Planet.Jupiter;
-                    astroEvent.JupiterInZodiac.NewZodiacSign = SelectedJupiterZodiac;
+                    astroEvent.JupiterInZodiac.NewZodiacSign = (ZodiacSign)SelectedJupiterZodiac;
                 }
 
-                if (SelectedSaturnZodiac != 0)
+                if (SelectedSaturnZodiac != null)
                 {
                     astroEvent.SaturnInZodiac ??= new PlanetInZodiac();
                     astroEvent.SaturnInZodiac.Planet = Planet.Saturn;
-                    astroEvent.SaturnInZodiac.NewZodiacSign = SelectedSaturnZodiac;
+                    astroEvent.SaturnInZodiac.NewZodiacSign = (ZodiacSign)SelectedSaturnZodiac;
                 }
 
-                if (SelectedUranusZodiac != 0)
+                if (SelectedUranusZodiac != null)
                 {
                     astroEvent.UranusInZodiac ??= new PlanetInZodiac();
                     astroEvent.UranusInZodiac.Planet = Planet.Uranus;
-                    astroEvent.UranusInZodiac.NewZodiacSign = SelectedUranusZodiac;
+                    astroEvent.UranusInZodiac.NewZodiacSign = (ZodiacSign)SelectedUranusZodiac;
                 }
 
-                if (SelectedNeptuneZodiac != 0)
+                if (SelectedNeptuneZodiac != null)
                 {
                     astroEvent.NeptuneInZodiac ??= new PlanetInZodiac();
                     astroEvent.NeptuneInZodiac.Planet = Planet.Neptune;
-                    astroEvent.NeptuneInZodiac.NewZodiacSign = SelectedNeptuneZodiac;
+                    astroEvent.NeptuneInZodiac.NewZodiacSign = (ZodiacSign)SelectedNeptuneZodiac;
                 }
 
-                if (SelectedPlutoZodiac != 0)
+                if (SelectedPlutoZodiac != null)
                 {
                     astroEvent.PlutoInZodiac ??= new PlanetInZodiac();
                     astroEvent.PlutoInZodiac.Planet = Planet.Pluto;
-                    astroEvent.PlutoInZodiac.NewZodiacSign = SelectedPlutoZodiac;
+                    astroEvent.PlutoInZodiac.NewZodiacSign = (ZodiacSign)SelectedPlutoZodiac;
                 }
 
-                astroEvent.MoonDay.IsTripleMoonDay = false;
-                astroEvent.MoonDay.NewMoonDay = currentMoonDayValue;
-                if (astroEvent.Date.Day == SkipDayIndex)
+                if (SelectedMoonDay != 0 && SkipDayIndex != 0)
                 {
-                    astroEvent.MoonDay.IsTripleMoonDay = true;
-                }
-                // Now also passing is29DayCycle to the method.
-                currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, astroEvent.Date.Day, skipDay, Is29MoonDayCycle);
+                    astroEvent.MoonDay.IsTripleMoonDay = false;
+                    astroEvent.MoonDay.NewMoonDay = currentMoonDayValue;
+                    if (astroEvent.Date.Day == SkipDayIndex)
+                    {
+                        astroEvent.MoonDay.IsTripleMoonDay = true;
+                    }
+                    // Now also passing is29DayCycle to the method.
+                    currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, astroEvent.Date.Day, skipDay, Is29MoonDayCycle);
 
-                astroEvent.MoonPhase = CalculatePhaseForDay(astroEvent.Date, newMoonDay);
+                    astroEvent.MoonPhase = CalculatePhaseForDay(astroEvent.Date, newMoonDay);
+                }                
             }
         }
 
         UpdateList(year, month); // Assume this updates your list display
+
+        VenusInZodiacPicker.SelectedItem = null;
+        MarsInZodiacPicker.SelectedItem = null;
+        MercuryInZodiacPicker.SelectedItem = null;
+        JupiterInZodiacPicker.SelectedItem = null;
+        SaturnInZodiacPicker.SelectedItem = null;
+        UranusInZodiacPicker.SelectedItem = null;
+        NeptuneInZodiacPicker.SelectedItem = null;
+        PlutoInZodiacPicker.SelectedItem = null;
+        MoonDayPicker.SelectedIndex = 0;
+        SkipDayIndex = 0;
     }    
 
     private int IncrementMoonDay(int currentMoonDay, int date, int skipDay, bool is29DayCycle)
