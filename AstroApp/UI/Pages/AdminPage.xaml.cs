@@ -113,7 +113,7 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
         PopulateList(days);
     }
 
-    private void NextButton_Clicked(object sender, EventArgs e)
+    private async void NextButton_Clicked(object sender, EventArgs e)
     {
         if (month == 12)
         {
@@ -125,10 +125,10 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
             month++;
         }
 
-        UpdateList(year, month);
+        await Task.Run(() => UpdateList(year, month));
     }
 
-    private void PrevButton_Clicked(object sender, EventArgs e)
+    private async void PrevButton_Clicked(object sender, EventArgs e)
     {
         if (month == 1)
         {
@@ -140,7 +140,7 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
             month--;
         }
 
-        UpdateList(year, month);
+        await Task.Run(() => UpdateList(year, month));
     }
 
     private async void SaveButton_Clicked(object sender, EventArgs e)
@@ -165,13 +165,13 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
             {
                 TempDayList = new ObservableCollection<EditDayControl>();
             }
+
             TempDayList.Clear();
+
+            var tempList = new List<EditDayControl>();
 
             for (int i = 1; i <= days; i++)
             {
-                // Assuming EditDayControl can be instantiated in the background thread; if not, adjust accordingly.
-                EditDayControl editDayCard = new EditDayControl();
-
                 DateTime currentDate = new DateTime(year, month, i);
                 AstroEvent astroEventForDate = ActiveAstroEvents.FirstOrDefault(e => e.Date.Date == currentDate.Date);
 
@@ -208,22 +208,23 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
                         EventText = ""
                     };
 
-                    // Add new AstroEvent to the collection
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         ActiveAstroEvents.Add(astroEventForDate);
                     });
                 }
 
-                // Since this might update UI, ensure it runs on the UI thread if necessary
+                var editDayCard = new EditDayControl();
                 Device.BeginInvokeOnMainThread(() => editDayCard.AddAstroEvent(astroEventForDate));
-                TempDayList.Add(editDayCard);
+                tempList.Add(editDayCard);
             }
 
-            // Update the main list on the UI thread
             Device.BeginInvokeOnMainThread(() =>
             {
-                // CollectionView binding will handle updating the UI, no need to manually clear and add items
+                foreach (var item in tempList)
+                {
+                    TempDayList.Add(item);
+                }
                 loadingIndicator.IsRunning = false;
                 loadingIndicator.IsVisible = false;
             });
