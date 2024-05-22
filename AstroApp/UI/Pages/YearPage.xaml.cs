@@ -38,7 +38,7 @@ public partial class YearPage : ContentPage
         Initialize();
         GenerateCalendar();
         this.BindingContext = this;
-        //SetupSegmentClickHandlers();
+        SetupSegmentClickHandlers();
     }
 
     private void Initialize()

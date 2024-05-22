@@ -427,6 +427,33 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
         }
     }
 
+    private async void DeleteAllEventsButton_Clicked(object sender, EventArgs e)
+    {
+        // Show confirmation dialog
+        bool isConfirmed = await Application.Current.MainPage.DisplayAlert(
+            "Confirm Deletion",
+            "Are you sure you want to delete all events?",
+            "Yes",
+            "No");
+
+        if (isConfirmed)
+        {
+            // Clear all events
+            ActiveAstroEvents.Clear();
+
+            // Save the updated empty collection to the JSON file
+            var appActions = new Services.AppActions();
+            App.AppData.AppDB.AstroEventsDB = ActiveAstroEvents;
+            await appActions.SaveAstroEventsDBAsync(App.AppData.AppDB);
+
+            // Update the list view
+            UpdateList(year, month);
+
+            // Show success message
+            await Application.Current.MainPage.DisplayAlert("Success", "All events have been deleted.", "OK");
+        }
+    }
+
     private int IncrementMoonDay(int currentMoonDay, int date, int skipDay, bool is29DayCycle)
     {
         // Determine the max day based on whether it's a 29-day cycle

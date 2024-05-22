@@ -65,9 +65,10 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-                <Grid Grid.Row="5" ColumnDefinitions="5*,*">
+                <Grid Grid.Row="5" ColumnDefinitions="5*,*,*">
                     <Button Grid.Column="0" Text="Save" Clicked="SaveButton_Clicked"/>
                     <Button Grid.Column="1" Text="Delete" BackgroundColor="Red" Clicked="DeleteCurrentMonthEventsButton_Clicked"/>
+                <Button Grid.Column="2" Text="Delete All" BackgroundColor="Red" Clicked="DeleteAllEventsButton_Clicked"/>
             </Grid>
             </Grid>
         </ScrollView>    
