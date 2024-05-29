@@ -2,6 +2,7 @@
 using AstroApp.Data.Models;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Net.Http;
 using System.Reflection;
 using System.Text.Json;
 
@@ -9,6 +10,8 @@ namespace AstroApp.Services
 {
     public class AppActions
     {
+        private static readonly HttpClient httpClient = new HttpClient();
+
         //public async Task SaveAstroEventsAsync(List<AstroEvent> astroEventsList)
         //{
         //    try
@@ -214,5 +217,24 @@ namespace AstroApp.Services
                 // Handle or log the exception as needed
             }
         }
+
+        public async Task<AppDB> LoadDBFromUrlAsync(string url)
+        {
+            try
+            {
+                var response = await httpClient.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var appDB = JsonSerializer.Deserialize<AppDB>(jsonString);
+                return appDB;
+            }
+            catch (Exception ex)
+            {
+                // Handle or log the exception as needed
+                return new AppDB();
+            }
+        }
+
     }
 }

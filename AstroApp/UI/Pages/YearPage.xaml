@@ -67,8 +67,26 @@
                     <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradePlutoSegments}" Margin="0,-20,0,0"/>
                 </Grid>                
             </Grid>
-            <Label x:Name="LabelShowingZodiacSign"/>
+            <Frame Padding="10" CornerRadius="15" Margin="12.4,0"
+                   BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" HorizontalOptions="CenterAndExpand">
+                        <HorizontalStackLayout Margin="10" HorizontalOptions="Center">
+                            <Label x:Name="PlanetInZodiacLabel" TextColor="{StaticResource DarkBlueBackground}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label x:Name="LabelShowingStartDate" TextColor="{StaticResource DarkBlueBackground}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label x:Name="LabelShoingEndDate" TextColor="{StaticResource DarkBlueBackground}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                    <ScrollView Grid.Row="1">
+                        <Label x:Name="LabelShowingPlanetInZodiacInfo" FontSize="14" HorizontalOptions="CenterAndExpand"
+                               TextColor="{StaticResource DarkBlueBackground}" />
+                    </ScrollView>
+                </Grid>
+            </Frame>            
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

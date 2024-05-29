@@ -1,5 +1,6 @@
 ﻿using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
+using AstroApp.UI.Tools;
 using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -284,95 +285,26 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
         if (sender == previousMoonDayImageGrid)
         {
-            string moonDayLT = TranslateMoonDay(DayAstroEvent.MoonDay.PreviousMoonDay);
+            string moonDayLT = TranslationManager.TranslateMoonDay(DayAstroEvent.MoonDay.PreviousMoonDay);
             string moonDayInfo = DayAstroEvent.MoonDay.PreviousMoonDayInfo;
             await ToggleMoonGridAnimation(previousMoonDayImageGrid, moonDayInfo, moonDayLT);               
             
         }
         else if (sender == newMoonDayImageGrid)
         {
-            string moonDayLT = TranslateMoonDay(DayAstroEvent.MoonDay.NewMoonDay);
+            string moonDayLT = TranslationManager.TranslateMoonDay(DayAstroEvent.MoonDay.NewMoonDay);
             string moonDayInfo = DayAstroEvent.MoonDay.NewMoonDayInfo;
             await ToggleMoonGridAnimation(newMoonDayImageGrid, moonDayInfo, moonDayLT);                
             
         }
         else if (sender == middleMoonDayMarkerGrid)
         {
-            string moonDayLT = TranslateMoonDay(DayAstroEvent.MoonDay.MiddleMoonDay);
+            string moonDayLT = TranslationManager.TranslateMoonDay(DayAstroEvent.MoonDay.MiddleMoonDay);
             string moonDayInfo = DayAstroEvent.MoonDay.MiddleMoonDayInfo;
             await ToggleMoonGridAnimation(middleMoonDayMarkerGrid, moonDayInfo, moonDayLT);
 
         }
-    }
-
-    private string TranslateMoonDay(int moonDay)
-    {
-        switch (moonDay)
-        {
-            case 1:
-                return "1 Mėnulio diena - Žibintas";
-            case 2:
-                return "2 Mėnulio diena - Banginis";
-            case 3:
-                return "3 Mėnulio diena - Leopardas";
-            case 4:
-                return "4 Mėnulio diena - Medis";
-            case 5:
-                return "5 Mėnulio diena - Vienaragis";
-            case 6:
-                return "6 Mėnulio diena - Vaivorykštė";
-            case 7:
-                return "7 Mėnulio diena - Gaidys";
-            case 8:
-                return "8 Mėnulio diena - Feniksas";
-            case 9:
-                return "9 Mėnulio diena - Šikšnosparnis";
-            case 10:
-                return "10 Mėnulio diena - Fontanas";
-            case 11:
-                return "11 Mėnulio diena - Karūna";
-            case 12:
-                return "12 Mėnulio diena - Taurė";
-            case 13:
-                return "13 Mėnulio diena - Ratas";
-            case 14:
-                return "14 Mėnulio diena - Trimitas";
-            case 15:
-                return "15 Mėnulio diena - Gyvatė";
-            case 16:
-                return "16 Mėnulio diena - Balandis";
-            case 17:
-                return "17 Mėnulio diena - Vynuogė";
-            case 18:
-                return "18 Mėnulio diena - Bezdžionė";
-            case 19:
-                return "19 Mėnulio diena - Voras";
-            case 20:
-                return "20 Mėnulio diena - Erelis";
-            case 21:
-                return "21 Mėnulio diena - Arklys";
-            case 22:
-                return "22 Mėnulio diena - Dramblys";
-            case 23:
-                return "23 Mėnulio diena - Krokodilas";
-            case 24:
-                return "24 Mėnulio diena - Meška";
-            case 25:
-                return "25 Mėnulio diena - Vėžlys";
-            case 26:
-                return "26 Mėnulio diena - Varlė";
-            case 27:
-                return "27 Mėnulio diena - Laivas";
-            case 28:
-                return "28 Mėnulio diena - Lotosas";
-            case 29:
-                return "29 Mėnulio diena - Aštunkojis";
-            case 30:
-                return "30 Mėnulio diena - Gulbė";
-            default:
-                return "nežinoma diena"; // Default case for unknown or uninitialized values
-        }
-    }
+    }   
 
     private async Task ShowMoonDayInfo(string infoText, string header)
     {
@@ -453,8 +385,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         {            
             if (sunInZodiacGrid != null)
             {
-                string zodiacLT = TranslateZodiac(DayAstroEvent.SunInZodiac.NewZodiacSign);
-                string sunInZodiacHeader = "Saulė " + zodiacLT;
+                string sunInZodiacHeader = TranslationManager.TranslatePlanetInZodiac(Planet.Sun, DayAstroEvent.SunInZodiac.NewZodiacSign);
                 string sunInZodiacInfo = DayAstroEvent.SunInZodiac.PlanetInZodiacInfo;                
                 await ToggleMoonGridAnimation(sunInZodiacGrid, sunInZodiacInfo, sunInZodiacHeader);
 
@@ -465,8 +396,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         {
             if (moonInZodiacGrid != null)
             {
-                string zodiacLT = TranslateZodiac(DayAstroEvent.MoonInZodiac.NewZodiacSign);
-                string moonInZodiacHeader = "Mėnulis " + zodiacLT;
+                string moonInZodiacHeader = TranslationManager.TranslatePlanetInZodiac(Planet.Moon, DayAstroEvent.MoonInZodiac.NewZodiacSign);
                 string moonInZodiacInfo = DayAstroEvent.MoonInZodiac.PlanetInZodiacInfo;
                 await ToggleMoonGridAnimation(moonInZodiacGrid, moonInZodiacInfo, moonInZodiacHeader);
 
@@ -477,8 +407,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         {
             if (venusInZodiacGrid != null)
             {
-                string zodiacLT = TranslateZodiac(DayAstroEvent.VenusInZodiac.NewZodiacSign);
-                string venusInZodiacHeader = "Venera " + zodiacLT;
+                string venusInZodiacHeader = TranslationManager.TranslatePlanetInZodiac(Planet.Venus, DayAstroEvent.VenusInZodiac.NewZodiacSign);
                 string venusInZodiacInfo = DayAstroEvent.VenusInZodiac.PlanetInZodiacInfo;
 
                 if (DayAstroEvent.VenusInZodiac.IsRetrograde == true)
@@ -495,8 +424,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         {
             if (marsInZodiacGrid != null)
             {
-                string zodiacLT = TranslateZodiac(DayAstroEvent.MarsInZodiac.NewZodiacSign);
-                string marsInZodiacHeader = "Marsas " + zodiacLT;
+                string marsInZodiacHeader = TranslationManager.TranslatePlanetInZodiac(Planet.Mars, DayAstroEvent.MarsInZodiac.NewZodiacSign);
                 string marsInZodiacInfo = DayAstroEvent.MarsInZodiac.PlanetInZodiacInfo;
 
                 if (DayAstroEvent.MarsInZodiac.IsRetrograde == true)
@@ -512,8 +440,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         {
             if (mercuryInZodiacGrid != null)
             {
-                string zodiacLT = TranslateZodiac(DayAstroEvent.MercuryInZodiac.NewZodiacSign);
-                string mercuryInZodiacHeader = "Merkurijus " + zodiacLT;
+                string mercuryInZodiacHeader = TranslationManager.TranslatePlanetInZodiac(Planet.Mercury, DayAstroEvent.MercuryInZodiac.NewZodiacSign);                
                 string mercuryInZodiacInfo = DayAstroEvent.MercuryInZodiac.PlanetInZodiacInfo;
 
                 if (DayAstroEvent.MercuryInZodiac.IsRetrograde == true)
@@ -525,40 +452,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
             }
         }
-    }
-
-    private string TranslateZodiac(ZodiacSign planetInZodiac)
-    {
-        switch (planetInZodiac)
-        {
-            case ZodiacSign.Aries:
-                return "Avine";
-            case ZodiacSign.Taurus:
-                return "Jautyje";
-            case ZodiacSign.Gemini:
-                return "Dvyniuose";
-            case ZodiacSign.Cancer:
-                return "Vėžyje";
-            case ZodiacSign.Leo:
-                return "Liūte";
-            case ZodiacSign.Virgo:
-                return "Mergelėje";
-            case ZodiacSign.Libra:
-                return "Svarstyklėse";
-            case ZodiacSign.Scorpio:
-                return "Skorpione";
-            case ZodiacSign.Sagittarius:
-                return "Šaulyje";
-            case ZodiacSign.Capricorn:
-                return "Ožiaragyje";
-            case ZodiacSign.Aquarius:
-                return "Vandenyje";
-            case ZodiacSign.Pisces:
-                return "Žuvyse";
-            default:
-                return "nežinomas ženklas"; // Default case for unknown or uninitialized values
-        }
-    }
+    }    
 }
 
 

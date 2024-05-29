@@ -113,6 +113,25 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
         PopulateList(days);
     }
 
+    private async void LoadFromUrlButton_Clicked(object sender, EventArgs e)
+    {
+        var appActions = new Services.AppActions();
+        string url = "https://raw.githubusercontent.com/Krismarcus/AstroAppJSON/main/astrodb.json";
+        var appDB = await appActions.LoadDBFromUrlAsync(url);
+
+        if (appDB != null)
+        {
+            App.AppData.AppDB = appDB;
+            this.ActiveAstroEvents = appDB.AstroEventsDB;            
+            UpdateList(DateTime.Now.Year, DateTime.Now.Month);
+            await Application.Current.MainPage.DisplayAlert("Success", "Database loaded from URL successfully", "OK");
+        }
+        else
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", "Failed to load database from URL", "OK");
+        }
+    }
+
     private async void NextButton_Clicked(object sender, EventArgs e)
     {
         if (month == 12)

@@ -1,6 +1,7 @@
 using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
 using AstroApp.UI.Pages;
+using AstroApp.UI.Tools;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
@@ -208,8 +209,8 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
     private void UpdateDayCardColor()
     {
 
-        Color shadowColor = GetResourceColor("PrimaryLightText", Colors.Transparent);
-        Color fontColor = GetResourceColor("PrimaryLightText", Colors.Transparent);
+        Color shadowColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
+        Color fontColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
 
         if (DayAstroEvent != null)
         {
@@ -217,14 +218,14 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
             {
                 if (DayAstroEvent.MoonDay.NewMoonDay == 1)
                 {
-                    shadowColor = GetResourceColor("PrimaryBackground", Colors.Transparent);
-                    fontColor = GetResourceColor("PrimaryBackground", Colors.Transparent);
+                    shadowColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
+                    fontColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
                 }
 
                 else if (DayAstroEvent.MoonEclipse || DayAstroEvent.SunEclipse)
                 {
-                    shadowColor = GetResourceColor("PrimaryDarkText", Colors.Transparent);
-                    fontColor = GetResourceColor("PrimaryLightText", Colors.Transparent);
+                    shadowColor = ColorManager.GetResourceColor("PrimaryDarkText", Colors.Transparent);
+                    fontColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
                 }
             }
             else
@@ -232,9 +233,9 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
                 // Set fontColor based on activity profile
                 fontColor = ActivityProfile switch
                 {
-                    ActivityQuality.Good => GetResourceColor("PrimaryLightText", Colors.Transparent),
-                    ActivityQuality.Bad => GetResourceColor("PrimaryLightText", Colors.Transparent),
-                    _ => GetResourceColor("PrimaryLightText", Colors.Transparent),
+                    ActivityQuality.Good => ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent),
+                    ActivityQuality.Bad => ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent),
+                    _ => ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent),
                 };
 
                 // Set shadowColor based on activity profile, default to transparent for cases not good or bad
@@ -249,16 +250,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
 
         // Apply the shadow color
         ApplyShadowColor(shadowColor, fontColor);
-    }
-
-    private Color GetResourceColor(string resourceName, Color defaultColor)
-    {
-        if (Application.Current.Resources.TryGetValue(resourceName, out var colorValue) && colorValue is Color color)
-        {
-            return color;
-        }
-        return defaultColor;
-    }
+    }    
 
     private void ApplyShadowColor(Color shadowColor, Color fontColor)
     {

@@ -1,6 +1,8 @@
 using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
+using AstroApp.UI.Tools;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace AstroApp.UI.Pages;
 
@@ -31,7 +33,6 @@ public partial class YearPage : ContentPage
     public ObservableCollection<ZodiacSegment> PlutoInZodiacSegments { get; set; }
     public ObservableCollection<RetrogradeSegment> RetrogradePlutoSegments { get; set; }
 
-
     public YearPage()
     {
         InitializeComponent();
@@ -55,50 +56,28 @@ public partial class YearPage : ContentPage
 
     private void SetupSegmentClickHandlers()
     {
-        CustomZodiacLineViewSun.SegmentClicked += OnPlanetInSunZodiacSegmentClicked;
-        CustomZodiacLineViewMercury.SegmentClicked += OnPlanetInMercuryZodiacSegmentClicked;
-        CustomZodiacLineViewVenus.SegmentClicked += OnPlanetInVenusZodiacSegmentClicked;
-        CustomZodiacLineViewMars.SegmentClicked += OnPlanetInMarsZodiacSegmentClicked;        
+        CustomZodiacLineViewSun.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Sun);
+        CustomZodiacLineViewMercury.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Mercury);
+        CustomZodiacLineViewVenus.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Venus);
+        CustomZodiacLineViewMars.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Mars);
+        CustomZodiacLineViewJupiter.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Jupiter);
+        CustomZodiacLineViewSaturn.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Saturn);
+        CustomZodiacLineViewUranus.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Uranus);
+        CustomZodiacLineViewNeptune.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Neptune);
+        CustomZodiacLineViewPluto.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Pluto);
     }
 
-    private void OnPlanetInSunZodiacSegmentClicked(object sender, ZodiacSign sign)
+    private void OnPlanetInZodiacSegmentClicked(object sender, ZodiacSegment segment, Planet planet)
     {
-        if (sign == null) return;
+        if (segment == null) return;
 
         var infoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
-            p.Planet == Planet.Sun && p.NewZodiacSign == sign);
+            p.Planet == planet && p.NewZodiacSign == segment.ZodiacSign);
 
-        LabelShowingZodiacSign.Text = infoSourceItem.PlanetInZodiacInfo;
-    }
-
-    private void OnPlanetInMercuryZodiacSegmentClicked(object sender, ZodiacSign sign)
-    {
-        if (sign == null) return;
-
-        var infoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
-            p.Planet == Planet.Mercury && p.NewZodiacSign == sign);
-
-        LabelShowingZodiacSign.Text = infoSourceItem.PlanetInZodiacInfo;
-    }
-
-    private void OnPlanetInVenusZodiacSegmentClicked(object sender, ZodiacSign sign)
-    {
-        if (sign == null) return;
-
-        var infoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
-            p.Planet == Planet.Venus && p.NewZodiacSign == sign);
-
-        LabelShowingZodiacSign.Text = infoSourceItem.PlanetInZodiacInfo;
-    }
-
-    private void OnPlanetInMarsZodiacSegmentClicked(object sender, ZodiacSign sign)
-    {
-        if (sign == null) return;
-
-        var infoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
-            p.Planet == Planet.Mars && p.NewZodiacSign == sign);
-
-        LabelShowingZodiacSign.Text = infoSourceItem.PlanetInZodiacInfo;
+        PlanetInZodiacLabel.Text = TranslationManager.TranslatePlanetInZodiac(planet, segment.ZodiacSign);
+        LabelShowingStartDate.Text = " (nuo " + segment.ZodiacStartDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo);
+        LabelShoingEndDate.Text = " iki " + segment.ZodiacEndDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo) + ")";
+        LabelShowingPlanetInZodiacInfo.Text = infoSourceItem?.PlanetInZodiacInfo ?? "No information available.";
     }
 
     public void GenerateCalendar()

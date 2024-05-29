@@ -26,7 +26,7 @@ public partial class CustomRetrogradeLineView : ContentView
         
     }
 
-    public event EventHandler<bool> SegmentClicked;
+    public event EventHandler<RetrogradeSegment> SegmentClicked;
 
     public CustomRetrogradeLineView()
 	{
@@ -61,67 +61,72 @@ public partial class CustomRetrogradeLineView : ContentView
 
     private Grid CreateSegmentCell(RetrogradeSegment segment)
     {
-        var boxView = new Border
+        if (segment.IsRetrograde)
         {
-            BackgroundColor = GetColorForZodiacSign(segment.IsRetrograde),
-            StrokeThickness = 0,
-            VerticalOptions = LayoutOptions.FillAndExpand,
-            StrokeShape = new RoundRectangle { CornerRadius = new CornerRadius(10) }
-        };
+            var boxView = new Border
+            {
+                BackgroundColor = GetColorForZodiacSign(segment.IsRetrograde),
+                StrokeThickness = 0,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                StrokeShape = new RoundRectangle { CornerRadius = new CornerRadius(10) }
+            };
 
-        var textColor = GetResourceColor("PrimaryLightText");
+            var textColor = GetResourceColor("PrimaryLightText");
 
-        var label = new Label
-        {
-            Text = segment.RetrogradeStartDate.Day.ToString(),
-            TextColor = textColor,
-            FontSize = 12,
-            HorizontalOptions = LayoutOptions.Start,
-            VerticalOptions = LayoutOptions.Center,
-            HorizontalTextAlignment = TextAlignment.Center,
-            Margin = new Thickness(10, 0, 10, 0)
-        };
+            var label = new Label
+            {
+                Text = segment.RetrogradeStartDate.Day.ToString(),
+                TextColor = textColor,
+                FontSize = 12,
+                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Margin = new Thickness(10, 0, 10, 0)
+            };
 
-        var label2 = new Label
-        {
-            Text = segment.RetrogradeEndDate.Day.ToString(),
-            TextColor = textColor,
-            FontSize = 12,
-            HorizontalOptions = LayoutOptions.End,
-            VerticalOptions = LayoutOptions.Center,
-            HorizontalTextAlignment = TextAlignment.Center,
-            Margin = new Thickness(10, 0, 10, 0)
-        };
+            var label2 = new Label
+            {
+                Text = segment.RetrogradeEndDate.Day.ToString(),
+                TextColor = textColor,
+                FontSize = 12,
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Margin = new Thickness(10, 0, 10, 0)
+            };
 
-        var image = new Image
-        {
-            Source = "retrograde.png",
-            HeightRequest = 15,
-            HorizontalOptions = LayoutOptions.Center,
-            VerticalOptions = LayoutOptions.Center,
-        };
-              
+            var image = new Image
+            {
+                Source = "retrograde.png",
+                HeightRequest = 15,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+            };
 
-        var cellGrid = new Grid
-        {
-            VerticalOptions = LayoutOptions.FillAndExpand,
-            HorizontalOptions = LayoutOptions.FillAndExpand
-        };        
 
-        var tapGestureRecognizer = new TapGestureRecognizer();
-        tapGestureRecognizer.Tapped += (s, e) => OnSegmentTapped(segment.IsRetrograde);
-        boxView.GestureRecognizers.Add(tapGestureRecognizer);
+            var cellGrid = new Grid
+            {
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
 
-        cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
-        cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.2, GridUnitType.Star) });
-        cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
-        cellGrid.Add(boxView, 0, 0);
-        Grid.SetColumnSpan(boxView, 3);
-        cellGrid.Add(label, 0, 0);
-        cellGrid.Add(image, 1, 0);
-        cellGrid.Add(label2, 2, 0);
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (s, e) => OnSegmentTapped(segment);
+            boxView.GestureRecognizers.Add(tapGestureRecognizer);
 
-        return cellGrid;
+            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
+            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.2, GridUnitType.Star) });
+            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
+            cellGrid.Add(boxView, 0, 0);
+            Grid.SetColumnSpan(boxView, 3);
+            cellGrid.Add(label, 0, 0);
+            cellGrid.Add(image, 1, 0);
+            cellGrid.Add(label2, 2, 0);
+
+            return cellGrid;
+        }
+
+        return null;
     }
 
     private Color GetColorForZodiacSign(bool isRetrograde)
@@ -143,8 +148,8 @@ public partial class CustomRetrogradeLineView : ContentView
         return textColor;
     }
 
-    private void OnSegmentTapped(bool isRetrograde)
+    private void OnSegmentTapped(RetrogradeSegment segment)
     {
-        SegmentClicked?.Invoke(this, isRetrograde);
+        SegmentClicked?.Invoke(this, segment);
     }
 }

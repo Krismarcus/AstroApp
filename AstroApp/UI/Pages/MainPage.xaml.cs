@@ -239,7 +239,7 @@ namespace AstroApp.UI.Pages
             this.year = year;
             this.month = month;
             DateTime startOfMonth = new DateTime(year, month, 1);
-            string monthnameLT = startOfMonth.ToString("MMMM", new CultureInfo("lt-LT"));
+            string monthnameLT = startOfMonth.ToString("MMMM", App.AppData.CultureInfo);
             this.MonthName = char.ToUpperInvariant(monthnameLT[0]) + monthnameLT.Substring(1);
             int days = DateTime.DaysInMonth(year, month);
             int dayOfWeek = ((int)startOfMonth.DayOfWeek + 6) % 7;

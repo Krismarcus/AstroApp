@@ -1,5 +1,6 @@
 using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
+using AstroApp.UI.Tools;
 using AstroApp.UI.Tools.Converters;
 using Microsoft.Maui.Controls.Shapes;
 using Microsoft.Maui.Graphics.Text;
@@ -22,7 +23,7 @@ public partial class CustomZodiacLineView : ContentView
         set => SetValue(ZodiacSegmentsProperty, value);
     }
 
-    public event EventHandler<ZodiacSign> SegmentClicked;
+    public event EventHandler<ZodiacSegment> SegmentClicked;    
 
     public CustomZodiacLineView()
     {
@@ -60,7 +61,7 @@ public partial class CustomZodiacLineView : ContentView
 
     private Grid CreateSegmentCell(ZodiacSegment segment)
     {
-        var boxView = new Border
+        var border = new Border
         {
             BackgroundColor = GetColorForZodiacSign(segment.ZodiacSign),
             StrokeThickness = 0,
@@ -97,8 +98,8 @@ public partial class CustomZodiacLineView : ContentView
         };
 
         var tapGestureRecognizer = new TapGestureRecognizer();
-        tapGestureRecognizer.Tapped += (s, e) => OnSegmentTapped(segment.ZodiacSign);
-        boxView.GestureRecognizers.Add(tapGestureRecognizer);
+        tapGestureRecognizer.Tapped += (s, e) => OnSegmentTapped(segment, border);
+        border.GestureRecognizers.Add(tapGestureRecognizer);
         label.GestureRecognizers.Add(tapGestureRecognizer);
         image.GestureRecognizers.Add(tapGestureRecognizer);
 
@@ -108,8 +109,8 @@ public partial class CustomZodiacLineView : ContentView
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.2, GridUnitType.Star) });
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
-            cellGrid.Add(boxView, 0, 0);
-            Grid.SetColumnSpan(boxView, 3);
+            cellGrid.Add(border, 0, 0);
+            Grid.SetColumnSpan(border, 3);
             cellGrid.Add(label, 0, 0);
             cellGrid.Add(image, 1, 0);
 
@@ -120,8 +121,8 @@ public partial class CustomZodiacLineView : ContentView
         {
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.5, GridUnitType.Star) });
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.5, GridUnitType.Star) });            
-            cellGrid.Add(boxView, 0, 0);
-            Grid.SetColumnSpan(boxView, 2);            
+            cellGrid.Add(border, 0, 0);
+            Grid.SetColumnSpan(border, 2);            
             cellGrid.Add(label, 0, 0);
             cellGrid.Add(image, 1, 0);
 
@@ -131,10 +132,10 @@ public partial class CustomZodiacLineView : ContentView
         else if (5 < segment.Duration && segment.Duration <= 7)
         {
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            cellGrid.Add(boxView, 0, 0);
+            cellGrid.Add(border, 0, 0);
             cellGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }); // Row for the image
             cellGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }); // Row for the label            
-            Grid.SetRowSpan(boxView, 2);
+            Grid.SetRowSpan(border, 2);
             cellGrid.Add(image, 0, 1);
             label.HorizontalTextAlignment = TextAlignment.Center;
             label.VerticalTextAlignment = TextAlignment.Center;            
@@ -146,8 +147,8 @@ public partial class CustomZodiacLineView : ContentView
         else
         {            
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            cellGrid.Add(boxView, 0, 0);
-            Grid.SetColumnSpan(boxView, 1);            
+            cellGrid.Add(border, 0, 0);
+            Grid.SetColumnSpan(border, 1);            
             cellGrid.Add(image, 0, 0);
 
             return cellGrid;
@@ -186,8 +187,9 @@ public partial class CustomZodiacLineView : ContentView
             default: return Colors.Gray;
         }
     }
-    private void OnSegmentTapped(ZodiacSign sign)
+    private void OnSegmentTapped(ZodiacSegment segment, Border border)
     {
-        SegmentClicked?.Invoke(this, sign);
+        SegmentSelectionManager.Instance.SelectSegment(border);
+        SegmentClicked?.Invoke(this, segment);        
     }
 }
