@@ -48,7 +48,7 @@ public partial class CustomRetrogradeLineView : ContentView
             double segmentDuration = (segment.RetrogradeEndDate - segment.RetrogradeStartDate).TotalDays;
             double widthFraction = segmentDuration / totalDays;
 
-            var columnDefinition = new ColumnDefinition { Width = new GridLength(widthFraction, GridUnitType.Star) };
+            var columnDefinition = new ColumnDefinition { Width = new GridLength(widthFraction, GridUnitType.Star) };            
             MainGrid.ColumnDefinitions.Add(columnDefinition);
 
             if (segment.IsRetrograde == true)
@@ -60,9 +60,7 @@ public partial class CustomRetrogradeLineView : ContentView
     }
 
     private Grid CreateSegmentCell(RetrogradeSegment segment)
-    {
-        if (segment.IsRetrograde)
-        {
+    {        
             var boxView = new Border
             {
                 BackgroundColor = GetColorForZodiacSign(segment.IsRetrograde),
@@ -124,9 +122,7 @@ public partial class CustomRetrogradeLineView : ContentView
             cellGrid.Add(label2, 2, 0);
 
             return cellGrid;
-        }
-
-        return null;
+        
     }
 
     private Color GetColorForZodiacSign(bool isRetrograde)

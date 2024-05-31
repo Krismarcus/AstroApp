@@ -12,7 +12,7 @@
     
     <ScrollView>
         <VerticalStackLayout VerticalOptions="Center">
-            <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*">
+            <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*" Margin="12.4,0">
                 <controls:CustomMonthLineView x:Name="CustomMonthLineView" Grid.Row="0" Grid.Column="1" MonthSegments="{Binding MonthSegments}" Margin="40,0,0,0"/>
                 <Grid Grid.Row="1" RowDefinitions="*,*" ColumnDefinitions="Auto,*" Margin="0,20">
                     <Image Grid.Row="0" Grid.Column="0" Source="sun.png" WidthRequest="40"/>
@@ -76,7 +76,7 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" HorizontalOptions="CenterAndExpand">
                         <HorizontalStackLayout Margin="10" HorizontalOptions="Center">
-                            <Label x:Name="PlanetInZodiacLabel" TextColor="{StaticResource DarkBlueBackground}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Text="Paspauskite ant segmento jei norite sužinoti detalią informaciją"  x:Name="PlanetInZodiacLabel" TextColor="{StaticResource DarkBlueBackground}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label x:Name="LabelShowingStartDate" TextColor="{StaticResource DarkBlueBackground}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label x:Name="LabelShoingEndDate" TextColor="{StaticResource DarkBlueBackground}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </HorizontalStackLayout>

@@ -29,14 +29,16 @@ namespace AstroApp.UI.Tools
             {
                 newSelectedBorder.Shadow = new Shadow
                 {
-                    Brush = Brush.White,
+                    Brush = new SolidColorBrush(ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent)),
+                    Radius = 5,
                     Opacity = 1,
-                    Offset = new Point(0, 0),
-                    Radius = 10
+                    Offset = new Point(0, 5)
                 };
             }
 
             SelectedSegmentBorder = newSelectedBorder;
         }
+
+
     }
 }

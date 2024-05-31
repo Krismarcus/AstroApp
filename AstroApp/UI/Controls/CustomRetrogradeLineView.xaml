@@ -3,5 +3,5 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AstroApp.UI.Controls.CustomRetrogradeLineView"
              BackgroundColor="Transparent">
-    <Grid x:Name="MainGrid" HeightRequest="20" />
+    <Grid x:Name="MainGrid" HeightRequest="20" InputTransparent="True"/>
 </ContentView>
