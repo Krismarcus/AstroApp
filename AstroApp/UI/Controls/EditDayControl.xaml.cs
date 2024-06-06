@@ -1,6 +1,7 @@
 using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace AstroApp.UI.Controls;
 
@@ -100,118 +101,129 @@ public partial class EditDayControl : ContentView, INotifyPropertyChanged
     }
 
     private void MoonDayTitle_Tapped(object sender, TappedEventArgs e)
-    {        
-        if (DayAstroEvent.MoonPhase >= 4)
+    {
+        if (BindingContext is EditDayControl editDayControl)
         {
-            DayAstroEvent.MoonPhase = 1;
-        }
-        else
-        {            
-            DayAstroEvent.MoonPhase += 1;
+            if (editDayControl.DayAstroEvent.MoonPhase >= 4)
+            {
+                editDayControl.DayAstroEvent.MoonPhase = 1;
+            }
+            else
+            {
+                editDayControl.DayAstroEvent.MoonPhase += 1;
+            }
         }
     }
 
     private void CycleActivityQuality(Func<ActivityQuality> getQuality, Action<ActivityQuality> setQuality)
     {
         var currentQuality = getQuality();
-
-        
         var nextQuality = (int)currentQuality + 1;
 
-        
         if (nextQuality > (int)ActivityQuality.Bad)
         {
             nextQuality = (int)ActivityQuality.Neutral;
         }
 
-        
         setQuality((ActivityQuality)nextQuality);
     }
-    private void BarberIcon_Tapped(object sender, EventArgs e)
-    {
-        CycleActivityQuality(
-            () => dayAstroEvent.Barber,
-            (quality) => dayAstroEvent.Barber = quality
-        );
-    }
 
-    private void BeautyIcon_Tapped(object sender, EventArgs e)
+    private void ActivityIcon_Tapped(object sender, EventArgs e)
     {
-        CycleActivityQuality(
-            () => dayAstroEvent.Beauty, 
-            (quality) => dayAstroEvent.Beauty = quality 
-        );
-    }    
-
-    private void BuyStuffIcon_Tapped(object sender, EventArgs e)
-    {
-        CycleActivityQuality(
-            () => dayAstroEvent.Buystuff, 
-            (quality) => dayAstroEvent.Buystuff = quality 
-        );
+        var tappedElement = sender as Image;
+        if (tappedElement?.BindingContext is EditDayControl editDayControl && e is TappedEventArgs tappedEventArgs)
+        {
+            var activity = tappedEventArgs.Parameter as string;
+            if (activity != null)
+            {
+                switch (activity)
+                {
+                    case "Barber":
+                        CycleActivityQuality(
+                            () => editDayControl.DayAstroEvent.Barber,
+                            (quality) => editDayControl.DayAstroEvent.Barber = quality
+                        );
+                        OnPropertyChanged(nameof(editDayControl.DayAstroEvent.Barber));
+                        break;
+                    case "Beauty":
+                        CycleActivityQuality(
+                            () => editDayControl.DayAstroEvent.Beauty,
+                            (quality) => editDayControl.DayAstroEvent.Beauty = quality
+                        );
+                        OnPropertyChanged(nameof(editDayControl.DayAstroEvent.Beauty));
+                        break;
+                    case "Buystuff":
+                        CycleActivityQuality(
+                            () => editDayControl.DayAstroEvent.Buystuff,
+                            (quality) => editDayControl.DayAstroEvent.Buystuff = quality
+                        );
+                        OnPropertyChanged(nameof(editDayControl.DayAstroEvent.Buystuff));
+                        break;
+                    case "Contracts":
+                        CycleActivityQuality(
+                            () => editDayControl.DayAstroEvent.Contracts,
+                            (quality) => editDayControl.DayAstroEvent.Contracts = quality
+                        );
+                        OnPropertyChanged(nameof(editDayControl.DayAstroEvent.Contracts));
+                        break;
+                    case "ImportantTasks":
+                        CycleActivityQuality(
+                            () => editDayControl.DayAstroEvent.ImportantTasks,
+                            (quality) => editDayControl.DayAstroEvent.ImportantTasks = quality
+                        );
+                        OnPropertyChanged(nameof(editDayControl.DayAstroEvent.ImportantTasks));
+                        break;
+                    case "Gardening":
+                        CycleActivityQuality(
+                            () => editDayControl.DayAstroEvent.Gardening,
+                            (quality) => editDayControl.DayAstroEvent.Gardening = quality
+                        );
+                        OnPropertyChanged(nameof(editDayControl.DayAstroEvent.Gardening));
+                        break;
+                    case "Love":
+                        CycleActivityQuality(
+                            () => editDayControl.DayAstroEvent.Love,
+                            (quality) => editDayControl.DayAstroEvent.Love = quality
+                        );
+                        OnPropertyChanged(nameof(editDayControl.DayAstroEvent.Love));
+                        break;
+                    case "Meetings":
+                        CycleActivityQuality(
+                            () => editDayControl.DayAstroEvent.Meetings,
+                            (quality) => editDayControl.DayAstroEvent.Meetings = quality
+                        );
+                        OnPropertyChanged(nameof(editDayControl.DayAstroEvent.Meetings));
+                        break;
+                    case "NewIdeas":
+                        CycleActivityQuality(
+                            () => editDayControl.DayAstroEvent.NewIdeas,
+                            (quality) => editDayControl.DayAstroEvent.NewIdeas = quality
+                        );
+                        OnPropertyChanged(nameof(editDayControl.DayAstroEvent.NewIdeas));
+                        break;
+                    case "Tech":
+                        CycleActivityQuality(
+                            () => editDayControl.DayAstroEvent.Tech,
+                            (quality) => editDayControl.DayAstroEvent.Tech = quality
+                        );
+                        OnPropertyChanged(nameof(editDayControl.DayAstroEvent.Tech));
+                        break;
+                    case "Travel":
+                        CycleActivityQuality(
+                            () => editDayControl.DayAstroEvent.Travel,
+                            (quality) => editDayControl.DayAstroEvent.Travel = quality
+                        );
+                        OnPropertyChanged(nameof(editDayControl.DayAstroEvent.Travel));
+                        break;
+                    default:
+                        Debug.WriteLine("Unknown activity: " + activity);
+                        break;
+                }
+            }
+        }
+        else
+        {
+            Debug.WriteLine("DayAstroEvent is null or BindingContext is not set correctly");
+        }
     }
-
-    private void ContractsIcon_Tapped(object sender, EventArgs e)
-    {
-        CycleActivityQuality(
-            () => dayAstroEvent.Contracts,
-            (quality) => dayAstroEvent.Contracts = quality
-        );
-    }
-    private void ImportantTasksIcon_Tapped(object sender, EventArgs e)
-    {
-        CycleActivityQuality(
-            () => dayAstroEvent.ImportantTasks,
-            (quality) => dayAstroEvent.ImportantTasks = quality
-        );
-    }
-    private void GardeningIcon_Tapped(object sender, EventArgs e)
-    {
-        CycleActivityQuality(
-            () => dayAstroEvent.Gardening,
-            (quality) => dayAstroEvent.Gardening = quality
-        );
-    }
-
-    private void LoveIcon_Tapped(object sender, EventArgs e)
-    {
-        CycleActivityQuality(
-            () => dayAstroEvent.Love,
-            (quality) => dayAstroEvent.Love = quality
-        );
-    }
-
-    private void MeetingsIcon_Tapped(object sender, EventArgs e)
-    {
-        CycleActivityQuality(
-            () => dayAstroEvent.Meetings,
-            (quality) => dayAstroEvent.Meetings = quality
-        );
-    }
-
-    private void NewIdeasIcon_Tapped(object sender, EventArgs e)
-    {
-        CycleActivityQuality(
-            () => dayAstroEvent.NewIdeas,
-            (quality) => dayAstroEvent.NewIdeas = quality
-        );
-    }
-
-    private void TechIcon_Tapped(object sender, EventArgs e)
-    {
-        CycleActivityQuality(
-            () => dayAstroEvent.Tech, 
-            (quality) => dayAstroEvent.Tech = quality 
-        );
-    }
-
-    private void TravelIcon_Tapped(object sender, EventArgs e)
-    {
-        CycleActivityQuality(
-            () => dayAstroEvent.Travel,
-            (quality) => dayAstroEvent.Travel = quality
-        );
-    }
-
-
 }

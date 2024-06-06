@@ -226,6 +226,9 @@
 	  <MauiXaml Update="UI\Controls\DayControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\EditActivityQualityControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="UI\Controls\EditDayControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

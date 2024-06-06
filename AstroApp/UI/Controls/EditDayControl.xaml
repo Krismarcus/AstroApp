@@ -61,7 +61,7 @@
                                     Source="barber.png"
                                     WidthRequest="30">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="BarberIcon_Tapped" />
+                                    <TapGestureRecognizer Tapped="ActivityIcon_Tapped" CommandParameter="Barber"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Image
@@ -72,7 +72,7 @@
                                     Source="beauty.png"
                                     WidthRequest="30">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="BeautyIcon_Tapped" />
+                                    <TapGestureRecognizer Tapped="ActivityIcon_Tapped" CommandParameter="Beauty"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Image
@@ -83,7 +83,7 @@
                                     Source="buystuff.png"
                                     WidthRequest="30">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="BuyStuffIcon_Tapped" />
+                                    <TapGestureRecognizer Tapped="ActivityIcon_Tapped" CommandParameter="Buystuff"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Image
@@ -94,7 +94,7 @@
                                     Source="contracts.png"
                                     WidthRequest="30">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ContractsIcon_Tapped" />
+                                    <TapGestureRecognizer Tapped="ActivityIcon_Tapped" CommandParameter="Contracts"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Image
@@ -105,7 +105,7 @@
                                     Source="importanttasks.png"
                                     WidthRequest="30">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ImportantTasksIcon_Tapped" />
+                                    <TapGestureRecognizer Tapped="ActivityIcon_Tapped" CommandParameter="ImportantTasks"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Image
@@ -116,7 +116,7 @@
                                     Source="gardening.png"
                                     WidthRequest="30">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="GardeningIcon_Tapped" />
+                                    <TapGestureRecognizer Tapped="ActivityIcon_Tapped" CommandParameter="Gardening"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Image
@@ -127,7 +127,7 @@
                                     Source="love.png"
                                     WidthRequest="30">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="LoveIcon_Tapped" />
+                                    <TapGestureRecognizer Tapped="ActivityIcon_Tapped" CommandParameter="Love"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Image
@@ -138,7 +138,7 @@
                                     Source="meetings.png"
                                     WidthRequest="30">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="MeetingsIcon_Tapped" />
+                                    <TapGestureRecognizer Tapped="ActivityIcon_Tapped" CommandParameter="Meetings"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Image
@@ -149,7 +149,7 @@
                                     Source="newideas.png"
                                     WidthRequest="30">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="NewIdeasIcon_Tapped" />
+                                    <TapGestureRecognizer Tapped="ActivityIcon_Tapped" CommandParameter="NewIdeas"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Image
@@ -160,7 +160,7 @@
                                     Source="tech.png"
                                     WidthRequest="30">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TechIcon_Tapped" />
+                                    <TapGestureRecognizer Tapped="ActivityIcon_Tapped" CommandParameter="Tech"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Image
@@ -171,7 +171,7 @@
                                     Source="travel.png"
                                     WidthRequest="30">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TravelIcon_Tapped" />
+                                    <TapGestureRecognizer Tapped="ActivityIcon_Tapped" CommandParameter="Travel"/>
                                 </Image.GestureRecognizers>
                             </Image>
                         </Grid>
