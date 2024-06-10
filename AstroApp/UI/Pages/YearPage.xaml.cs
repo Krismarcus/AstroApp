@@ -20,18 +20,18 @@ public partial class YearPage : ContentPage
     public ObservableCollection<RetrogradeSegment> RetrogradeMarsSegments { get; set; }
     public ObservableCollection<ZodiacSegment> JupiterInZodiacSegments { get; set; }
     public ObservableCollection<RetrogradeSegment> RetrogradeJupiterSegments { get; set; }
-
     public ObservableCollection<ZodiacSegment> SaturnInZodiacSegments { get; set; }
     public ObservableCollection<RetrogradeSegment> RetrogradeSaturnSegments { get; set; }
-
     public ObservableCollection<ZodiacSegment> UranusInZodiacSegments { get; set; }
     public ObservableCollection<RetrogradeSegment> RetrogradeUranusSegments { get; set; }
-
     public ObservableCollection<ZodiacSegment> NeptuneInZodiacSegments { get; set; }
     public ObservableCollection<RetrogradeSegment> RetrogradeNeptuneSegments { get; set; }
-
     public ObservableCollection<ZodiacSegment> PlutoInZodiacSegments { get; set; }
     public ObservableCollection<RetrogradeSegment> RetrogradePlutoSegments { get; set; }
+    public ObservableCollection<ZodiacSegment> SelenaInZodiacSegments { get; set; }
+    public ObservableCollection<ZodiacSegment> LilithInZodiacSegments { get; set; }
+    public ObservableCollection<ZodiacSegment> RahuInZodiacSegments { get; set; }
+    public ObservableCollection<ZodiacSegment> KetuInZodiacSegments { get; set; }
 
     public YearPage()
     {
@@ -47,7 +47,7 @@ public partial class YearPage : ContentPage
         this.ActiveAstroEvents = App.AppData.AppDB.AstroEventsDB;
         var currentYear = DateTime.Now.Year;
 
-        // Filter entries from March to August of the current year
+        // Filter entries from January to December of the current year
         this.ActiveAstroEvents = new ObservableCollection<AstroEvent>(
             this.ActiveAstroEvents.Where(e => e.Date.Year == currentYear && e.Date.Month >= 1 && e.Date.Month <= 12)
         );
@@ -65,6 +65,11 @@ public partial class YearPage : ContentPage
         CustomZodiacLineViewUranus.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Uranus);
         CustomZodiacLineViewNeptune.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Neptune);
         CustomZodiacLineViewPluto.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Pluto);
+        // Add click handlers for Selena, Lilith, Rahu, and Ketu
+        CustomZodiacLineViewSelena.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Selena);
+        CustomZodiacLineViewLilith.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Lilith);
+        CustomZodiacLineViewRahu.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Rahu);
+        CustomZodiacLineViewKetu.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Ketu);
     }
 
     private void OnPlanetInZodiacSegmentClicked(object sender, ZodiacSegment segment, Planet planet)
@@ -100,6 +105,10 @@ public partial class YearPage : ContentPage
         this.RetrogradeUranusSegments = new ObservableCollection<RetrogradeSegment>();
         this.RetrogradeNeptuneSegments = new ObservableCollection<RetrogradeSegment>();
         this.RetrogradePlutoSegments = new ObservableCollection<RetrogradeSegment>();
+        this.SelenaInZodiacSegments = new ObservableCollection<ZodiacSegment>();
+        this.LilithInZodiacSegments = new ObservableCollection<ZodiacSegment>();
+        this.RahuInZodiacSegments = new ObservableCollection<ZodiacSegment>();
+        this.KetuInZodiacSegments = new ObservableCollection<ZodiacSegment>();
 
         // Initialize the start points for each planet
         DateTime lastMonthStart = this.ActiveAstroEvents.FirstOrDefault()?.Date ?? DateTime.Today;
@@ -112,6 +121,10 @@ public partial class YearPage : ContentPage
         ZodiacSign lastUranusInSign = this.ActiveAstroEvents.FirstOrDefault()?.UranusInZodiac.NewZodiacSign ?? ZodiacSign.Pisces;
         ZodiacSign lastNeptuneInSign = this.ActiveAstroEvents.FirstOrDefault()?.NeptuneInZodiac.NewZodiacSign ?? ZodiacSign.Pisces;
         ZodiacSign lastPlutoInSign = this.ActiveAstroEvents.FirstOrDefault()?.PlutoInZodiac.NewZodiacSign ?? ZodiacSign.Pisces;
+        ZodiacSign lastSelenaInSign = this.ActiveAstroEvents.FirstOrDefault()?.SelenaInZodiac.NewZodiacSign ?? ZodiacSign.Pisces;
+        ZodiacSign lastLilithInSign = this.ActiveAstroEvents.FirstOrDefault()?.LilithInZodiac.NewZodiacSign ?? ZodiacSign.Pisces;
+        ZodiacSign lastRahuInSign = this.ActiveAstroEvents.FirstOrDefault()?.RahuInZodiac.NewZodiacSign ?? ZodiacSign.Pisces;
+        ZodiacSign lastKetuInSign = this.ActiveAstroEvents.FirstOrDefault()?.KetuInZodiac.NewZodiacSign ?? ZodiacSign.Pisces;
 
         bool lastIsMercuryRetrograde = this.ActiveAstroEvents.FirstOrDefault()?.MercuryInZodiac.IsRetrograde ?? false;
         bool lastIsVenusRetrograde = this.ActiveAstroEvents.FirstOrDefault()?.VenusInZodiac.IsRetrograde ?? false;
@@ -131,6 +144,10 @@ public partial class YearPage : ContentPage
         DateTime? startUranusDate = null;
         DateTime? startNeptuneDate = null;
         DateTime? startPlutoDate = null;
+        DateTime? startSelenaDate = null;
+        DateTime? startLilithDate = null;
+        DateTime? startRahuDate = null;
+        DateTime? startKetuDate = null;
         DateTime? startRetrogradeMercuryDate = null;
         DateTime? startRetrogradeVenusDate = null;
         DateTime? startRetrogradeMarsDate = null;
@@ -151,6 +168,10 @@ public partial class YearPage : ContentPage
             ZodiacSign uranusInZodiac = astroEvent.UranusInZodiac.NewZodiacSign;
             ZodiacSign neptuneInZodiac = astroEvent.NeptuneInZodiac.NewZodiacSign;
             ZodiacSign plutoInZodiac = astroEvent.PlutoInZodiac.NewZodiacSign;
+            ZodiacSign selenaInZodiac = astroEvent.SelenaInZodiac.NewZodiacSign;
+            ZodiacSign lilitInZodiac = astroEvent.LilithInZodiac.NewZodiacSign;
+            ZodiacSign rahuInZodiac = astroEvent.RahuInZodiac.NewZodiacSign;
+            ZodiacSign ketuInZodiac = astroEvent.KetuInZodiac.NewZodiacSign;
 
             bool isMercuryRetrograde = astroEvent.MercuryInZodiac.IsRetrograde;
             bool isVenusRetrograde = astroEvent.VenusInZodiac.IsRetrograde;
@@ -325,6 +346,74 @@ public partial class YearPage : ContentPage
                 lastPlutoInSign = plutoInZodiac;
             }
 
+            // Create segments for Selena in Zodiac
+            if (selenaInZodiac != lastSelenaInSign || startSelenaDate == null)
+            {
+                if (startSelenaDate != null)
+                {
+                    SelenaInZodiacSegments.Add(new ZodiacSegment
+                    {
+                        ZodiacSign = lastSelenaInSign,
+                        ZodiacStartDate = startSelenaDate.Value,
+                        ZodiacEndDate = astroEvent.Date.AddDays(-1),
+                        Duration = (astroEvent.Date.AddDays(-1) - startSelenaDate.Value).Days
+                    });
+                }
+                startSelenaDate = astroEvent.Date;
+                lastSelenaInSign = selenaInZodiac;
+            }
+
+            // Create segments for Lilith in Zodiac
+            if (lilitInZodiac != lastLilithInSign || startLilithDate == null)
+            {
+                if (startLilithDate != null)
+                {
+                    LilithInZodiacSegments.Add(new ZodiacSegment
+                    {                   
+                        ZodiacSign = lastLilithInSign,
+                        ZodiacStartDate = startLilithDate.Value,
+                        ZodiacEndDate = astroEvent.Date.AddDays(-1),
+                        Duration = (astroEvent.Date.AddDays(-1) - startLilithDate.Value).Days
+                    });
+                }
+                startLilithDate = astroEvent.Date;
+                lastLilithInSign = lilitInZodiac;
+            }
+
+            // Create segments for Rahu in Zodiac
+            if (rahuInZodiac != lastRahuInSign || startRahuDate == null)
+            {
+                if (startRahuDate != null)
+                {
+                    RahuInZodiacSegments.Add(new ZodiacSegment
+                    {
+                        ZodiacSign = lastRahuInSign,
+                        ZodiacStartDate = startRahuDate.Value,
+                        ZodiacEndDate = astroEvent.Date.AddDays(-1),
+                        Duration = (astroEvent.Date.AddDays(-1) - startRahuDate.Value).Days
+                    });
+                }
+                startRahuDate = astroEvent.Date;
+                lastRahuInSign = rahuInZodiac;
+            }
+
+            // Create segments for Ketu in Zodiac
+            if (ketuInZodiac != lastKetuInSign || startKetuDate == null)
+            {
+                if (startKetuDate != null)
+                {
+                    KetuInZodiacSegments.Add(new ZodiacSegment
+                    {
+                        ZodiacSign = lastKetuInSign,
+                        ZodiacStartDate = startKetuDate.Value,
+                        ZodiacEndDate = astroEvent.Date.AddDays(-1),
+                        Duration = (astroEvent.Date.AddDays(-1) - startKetuDate.Value).Days
+                    });
+                }
+                startKetuDate = astroEvent.Date;
+                lastKetuInSign = ketuInZodiac;
+            }
+
             // Handle Retrograde for Mercury
             if (isMercuryRetrograde != lastIsMercuryRetrograde || startRetrogradeMercuryDate == null)
             {
@@ -482,6 +571,14 @@ public partial class YearPage : ContentPage
             NeptuneInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastNeptuneInSign, ZodiacStartDate = startNeptuneDate.Value, ZodiacEndDate = lastDate });
         if (startPlutoDate != null)
             PlutoInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastPlutoInSign, ZodiacStartDate = startPlutoDate.Value, ZodiacEndDate = lastDate });
+        if (startSelenaDate != null)
+            SelenaInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastSelenaInSign, ZodiacStartDate = startSelenaDate.Value, ZodiacEndDate = lastDate });
+        if (startLilithDate != null)
+            LilithInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastLilithInSign, ZodiacStartDate = startLilithDate.Value, ZodiacEndDate = lastDate });
+        if (startRahuDate != null)
+            RahuInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastRahuInSign, ZodiacStartDate = startRahuDate.Value, ZodiacEndDate = lastDate });
+        if (startKetuDate != null)
+            KetuInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastKetuInSign, ZodiacStartDate = startKetuDate.Value, ZodiacEndDate = lastDate });
 
         // Add the last segments for retrogrades
         if (startRetrogradeMercuryDate != null)
@@ -510,3 +607,4 @@ public partial class YearPage : ContentPage
             });
     }
 }
+

@@ -18,7 +18,7 @@
             <Border Margin="10" >
                 <Grid ColumnDefinitions="Auto,*">
                     <Label Grid.Column="0" Margin="10" FontSize="30" HorizontalOptions="CenterAndExpand" Text="{Binding DayAstroEvent.Date.Day}" VerticalOptions="CenterAndExpand" />
-                    <Grid Grid.Column="1" ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*,*,*">
+                    <Grid Grid.Column="1" ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*,*,*,*">
                         <controls:EditPlanetInZodiacControl Grid.Row="0" Grid.Column="0" BindingContext="{Binding DayAstroEvent.SunInZodiac}" />
                         <controls:EditPlanetInZodiacControl Grid.Row="0" Grid.Column="1" BindingContext="{Binding DayAstroEvent.MoonInZodiac}" />
                         <Grid Grid.Row="0" Grid.Column="2">
@@ -47,6 +47,10 @@
                         <controls:EditPlanetInZodiacControl Grid.Row="2" Grid.Column="2" BindingContext="{Binding DayAstroEvent.UranusInZodiac}" />
                         <controls:EditPlanetInZodiacControl Grid.Row="2" Grid.Column="3" BindingContext="{Binding DayAstroEvent.NeptuneInZodiac}" />
                         <controls:EditPlanetInZodiacControl Grid.Row="2" Grid.Column="4" BindingContext="{Binding DayAstroEvent.PlutoInZodiac}" />
+                        <controls:EditPlanetInZodiacControl Grid.Row="3" Grid.Column="0" BindingContext="{Binding DayAstroEvent.SelenaInZodiac}" />
+                        <controls:EditPlanetInZodiacControl Grid.Row="3" Grid.Column="1" BindingContext="{Binding DayAstroEvent.LilithInZodiac}" />
+                        <controls:EditPlanetInZodiacControl Grid.Row="3" Grid.Column="2" BindingContext="{Binding DayAstroEvent.RahuInZodiac}" />
+                        <controls:EditPlanetInZodiacControl Grid.Row="3" Grid.Column="3" BindingContext="{Binding DayAstroEvent.KetuInZodiac}" />
                         <Grid
                                 Grid.Row="1"
                                 Grid.Column="3"
@@ -191,7 +195,7 @@
                                         SelectedItem="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToStringConverter}, Mode=TwoWay}" />
                             </Grid>
                         </Grid>
-                        <Grid Grid.Row="3" Grid.ColumnSpan="5">
+                        <Grid Grid.Row="4" Grid.ColumnSpan="5">
                             <Grid
                             Grid.Column="0"
                             Margin="10"

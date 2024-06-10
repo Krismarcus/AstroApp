@@ -32,7 +32,7 @@
                     <Button Grid.Column="1" Text="Next" Clicked="NextButton_Clicked"/>
                 </Grid>
             <Label Grid.Row="2" Text="{Binding MonthName}" FontSize="Header" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*,*,*,*">
+            <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*,*,*,*,*,*">
                 <Label Grid.Column="0" Grid.Row="0" Text="Venus in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Picker Grid.Column="0" Grid.Row="1" x:Name="VenusInZodiacPicker" ItemsSource="{Binding ZodiacSigns}" SelectedItem="{Binding SelectedVenusZodiac}" Margin="10,0"/>
                 <Label Grid.Column="1" Grid.Row="0" Text="Mars in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -49,6 +49,14 @@
                 <Picker Grid.Column="3" Grid.Row="3" x:Name="NeptuneInZodiacPicker" ItemsSource="{Binding ZodiacSigns}" SelectedItem="{Binding SelectedNeptuneZodiac}" Margin="10,0"/>
                 <Label Grid.Column="4" Grid.Row="2" Text="Pluto in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Picker Grid.Column="4" Grid.Row="3" x:Name="PlutoInZodiacPicker" ItemsSource="{Binding ZodiacSigns}" SelectedItem="{Binding SelectedPlutoZodiac}" Margin="10,0"/>
+                <Label Grid.Column="0" Grid.Row="4" Text="Selena in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Picker Grid.Column="0" Grid.Row="5" x:Name="SelenaInZodiacPicker" ItemsSource="{Binding ZodiacSigns}" SelectedItem="{Binding SelectedSelenaZodiac}" Margin="10,0"/>
+                <Label Grid.Column="1" Grid.Row="4" Text="Lilit in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Picker Grid.Column="1" Grid.Row="5" x:Name="LilitInZodiacPicker" ItemsSource="{Binding ZodiacSigns}" SelectedItem="{Binding SelectedLilitZodiac}" Margin="10,0"/>
+                <Label Grid.Column="2" Grid.Row="4" Text="Rahu in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Picker Grid.Column="2" Grid.Row="5" x:Name="RahuInZodiacPicker" ItemsSource="{Binding ZodiacSigns}" SelectedItem="{Binding SelectedRahuZodiac}" Margin="10,0"/>
+                <Label Grid.Column="3" Grid.Row="4" Text="Ketu in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Picker Grid.Column="3" Grid.Row="5" x:Name="KetuInZodiacPicker" ItemsSource="{Binding ZodiacSigns}" SelectedItem="{Binding SelectedKetuZodiac}" Margin="10,0"/>
                 <Label Grid.Column="3" Grid.Row="0" Text="New Moon" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Entry Grid.Column="3" Grid.Row="1" Text="{Binding SkipDayIndex, Mode=TwoWay}" Keyboard="Numeric" Margin="10,0" HorizontalOptions="Center"/>
                 <HorizontalStackLayout Grid.Column="4" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" >

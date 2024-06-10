@@ -12,7 +12,7 @@
     
     <ScrollView>
         <VerticalStackLayout VerticalOptions="Center">
-            <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*" Margin="12.4,0">
+            <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*" Margin="12.4,0">
                 <controls:CustomMonthLineView x:Name="CustomMonthLineView" Grid.Row="0" Grid.Column="1" MonthSegments="{Binding MonthSegments}" Margin="40,0,0,0"/>
                 <Grid Grid.Row="1" RowDefinitions="*,*" ColumnDefinitions="Auto,*" Margin="0,20">
                     <Image Grid.Row="0" Grid.Column="0" Source="sun.png" WidthRequest="40"/>
@@ -65,7 +65,23 @@
                     <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewPluto" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding PlutoInZodiacSegments}"/>
                     <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
                     <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradePlutoSegments}" Margin="0,-20,0,0"/>
-                </Grid>                
+                </Grid>
+                <Grid Grid.Row="10" RowDefinitions="*,*" ColumnDefinitions="Auto,*" >
+                    <Image Grid.Row="0" Grid.Column="0" Source="selena.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewSelena" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding SelenaInZodiacSegments}"/>                   
+                </Grid>
+                <Grid Grid.Row="11" RowDefinitions="*,*" ColumnDefinitions="Auto,*" >
+                    <Image Grid.Row="0" Grid.Column="0" Source="lilith.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewLilith" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding LilithInZodiacSegments}"/>                    
+                </Grid>
+                <Grid Grid.Row="12" RowDefinitions="*,*" ColumnDefinitions="Auto,*" >
+                    <Image Grid.Row="0" Grid.Column="0" Source="rahu.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewRahu" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding RahuInZodiacSegments}"/>                    
+                </Grid>
+                <Grid Grid.Row="13" RowDefinitions="*,*" ColumnDefinitions="Auto,*" >
+                    <Image Grid.Row="0" Grid.Column="0" Source="ketu.png" WidthRequest="40"/>
+                    <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewKetu" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding KetuInZodiacSegments}"/>                    
+                </Grid>
             </Grid>
             <Frame Padding="10" CornerRadius="15" Margin="12.4,0"
        BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}"

@@ -35,6 +35,14 @@ namespace AstroApp.Data.Models
         [ObservableProperty]
         private PlanetInZodiac plutoInZodiac;
         [ObservableProperty]
+        private PlanetInZodiac selenaInZodiac;
+        [ObservableProperty]
+        private PlanetInZodiac lilithInZodiac;
+        [ObservableProperty]
+        private PlanetInZodiac rahuInZodiac;
+        [ObservableProperty]
+        private PlanetInZodiac ketuInZodiac;
+        [ObservableProperty]
         private MoonDay moonDay;
         [ObservableProperty]
         private int moonPhase;

@@ -17,6 +17,10 @@ namespace AstroApp.Data.Enums
         Saturn,
         Uranus,
         Neptune,
-        Pluto
+        Pluto,
+        Selena,
+        Lilith,
+        Rahu,
+        Ketu
     }
 }

@@ -76,6 +76,10 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
     public ZodiacSign? SelectedUranusZodiac { get; set; }
     public ZodiacSign? SelectedNeptuneZodiac { get; set; }
     public ZodiacSign? SelectedPlutoZodiac { get; set; }
+    public ZodiacSign? SelectedSelenaZodiac { get; set; }
+    public ZodiacSign? SelectedLilitZodiac { get; set; }
+    public ZodiacSign? SelectedRahuZodiac { get; set; }
+    public ZodiacSign? SelectedKetuZodiac { get; set; }
 
     public ObservableCollection<AstroEvent> ActiveAstroEvents { get; set; }
 
@@ -209,6 +213,10 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
                         UranusInZodiac = CreateBlankPlanetInZodiac(Planet.Uranus),
                         NeptuneInZodiac = CreateBlankPlanetInZodiac(Planet.Neptune),
                         PlutoInZodiac = CreateBlankPlanetInZodiac(Planet.Pluto),
+                        SelenaInZodiac = CreateBlankPlanetInZodiac(Planet.Selena),
+                        LilithInZodiac = CreateBlankPlanetInZodiac(Planet.Lilith),
+                        RahuInZodiac = CreateBlankPlanetInZodiac(Planet.Rahu),
+                        KetuInZodiac = CreateBlankPlanetInZodiac(Planet.Ketu),
                         MoonDay = new MoonDay() { NewMoonDay = 0, TransitionTime = DateTime.MinValue },
                         MoonPhase = (int)MoonPhaseSymbol.None,
                         SunEclipse = false,
@@ -383,6 +391,34 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
                     astroEvent.PlutoInZodiac.NewZodiacSign = (ZodiacSign)SelectedPlutoZodiac;
                 }
 
+                if (SelectedSelenaZodiac != null)
+                {
+                    astroEvent.SelenaInZodiac ??= new PlanetInZodiac();
+                    astroEvent.SelenaInZodiac.Planet = Planet.Selena;
+                    astroEvent.SelenaInZodiac.NewZodiacSign = (ZodiacSign)SelectedSelenaZodiac;
+                }
+
+                if (SelectedLilitZodiac != null)
+                {
+                    astroEvent.LilithInZodiac ??= new PlanetInZodiac();
+                    astroEvent.LilithInZodiac.Planet = Planet.Lilith;
+                    astroEvent.LilithInZodiac.NewZodiacSign = (ZodiacSign)SelectedLilitZodiac;
+                }
+
+                if (SelectedRahuZodiac != null)
+                {
+                    astroEvent.RahuInZodiac ??= new PlanetInZodiac();
+                    astroEvent.RahuInZodiac.Planet = Planet.Rahu;
+                    astroEvent.RahuInZodiac.NewZodiacSign = (ZodiacSign)SelectedRahuZodiac;
+                }
+
+                if (SelectedKetuZodiac != null)
+                {
+                    astroEvent.KetuInZodiac ??= new PlanetInZodiac();
+                    astroEvent.KetuInZodiac.Planet = Planet.Ketu;
+                    astroEvent.KetuInZodiac.NewZodiacSign = (ZodiacSign)SelectedKetuZodiac;
+                }
+
                 if (SelectedMoonDay != 0 && SkipDayIndex != 0)
                 {
                     astroEvent.MoonDay.IsTripleMoonDay = false;
@@ -409,6 +445,10 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
         UranusInZodiacPicker.SelectedItem = null;
         NeptuneInZodiacPicker.SelectedItem = null;
         PlutoInZodiacPicker.SelectedItem = null;
+        SelenaInZodiacPicker.SelectedItem = null;
+        LilitInZodiacPicker.SelectedItem = null;
+        RahuInZodiacPicker.SelectedItem = null;
+        KetuInZodiacPicker.SelectedItem = null;
         MoonDayPicker.SelectedIndex = 0;
         SkipDayIndex = 0;
     }

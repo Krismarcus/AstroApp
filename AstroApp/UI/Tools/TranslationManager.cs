@@ -115,6 +115,18 @@ namespace AstroApp.UI.Tools
                 case Planet.Pluto:
                     planetTranslation = "Plutonas";
                     break;
+                case Planet.Selena:
+                    planetTranslation = "Selena";
+                    break;
+                case Planet.Lilith:
+                    planetTranslation = "Lilit";
+                    break;
+                case Planet.Rahu:
+                    planetTranslation = "Rahu";
+                    break;
+                case Planet.Ketu:
+                    planetTranslation = "Ketu";
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(planet), planet, null);
             }
