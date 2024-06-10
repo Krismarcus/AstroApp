@@ -152,6 +152,7 @@
 	  <None Remove="Resources\Images\saturn.png" />
 	  <None Remove="Resources\Images\scorpio.png" />
 	  <None Remove="Resources\Images\scorpio_blue.png" />
+	  <None Remove="Resources\Images\selena.png" />
 	  <None Remove="Resources\Images\sextile.png" />
 	  <None Remove="Resources\Images\ship.png" />
 	  <None Remove="Resources\Images\snake.png" />
