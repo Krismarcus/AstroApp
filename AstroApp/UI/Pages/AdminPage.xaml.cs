@@ -63,12 +63,12 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
                 OnPropertyChanged(nameof(SkipDayIndex));
             }
         }
-    }   
+    }
 
-    public int SelectedMoonDay {  get; set; }    
+    public int SelectedMoonDay { get; set; }
     public bool Is29MoonDayCycle { get; set; }
 
-    public ZodiacSign? SelectedVenusZodiac {  get; set; }
+    public ZodiacSign? SelectedVenusZodiac { get; set; }
     public ZodiacSign? SelectedMarsZodiac { get; set; }
     public ZodiacSign? SelectedMercuryZodiac { get; set; }
     public ZodiacSign? SelectedJupiterZodiac { get; set; }
@@ -90,8 +90,8 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
     public ObservableCollection<ZodiacSign> ZodiacSigns { get; set; }
 
     public AdminPage()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         PopulatePickers();
         Initialize();
         this.BindingContext = this;
@@ -103,7 +103,7 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
         if (this.ActiveAstroEvents == null)
         {
             this.ActiveAstroEvents = new ObservableCollection<AstroEvent> { };
-        }        
+        }
         UpdateList(DateTime.Now.Year, DateTime.Now.Month);
     }
 
@@ -126,7 +126,7 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
         if (appDB != null)
         {
             App.AppData.AppDB = appDB;
-            this.ActiveAstroEvents = appDB.AstroEventsDB;            
+            this.ActiveAstroEvents = appDB.AstroEventsDB;
             UpdateList(DateTime.Now.Year, DateTime.Now.Month);
             await Application.Current.MainPage.DisplayAlert("Success", "Database loaded from URL successfully", "OK");
         }
@@ -171,7 +171,7 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
         App.AppData.AppDB.AstroEventsDB = ActiveAstroEvents;
         var appActions = new Services.AppActions();
         await appActions.SaveAstroEventsDBAsync(App.AppData.AppDB);
-        await Application.Current.MainPage.DisplayAlert("Success", "Calendar data saved succesfully", "OK");
+        await Application.Current.MainPage.DisplayAlert("Success", "Calendar data saved successfully", "OK");
     }
 
     private async void PopulateList(int days)
@@ -189,7 +189,7 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
                 TempDayList = new ObservableCollection<EditDayControl>();
             }
 
-            TempDayList.Clear();
+            TempDayList.Clear(); // Clear the list before populating new data
 
             var tempList = new List<EditDayControl>();
 
@@ -271,34 +271,29 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
         };
     }
 
-
     public ZodiacSign SunZodiacSignYearlyCalendar(DateTime date)
     {
-        // Define the zodiac sign start dates
         var zodiacSignStartDates = new Dictionary<ZodiacSign, DateTime>
-    {
-        {ZodiacSign.Aquarius, new DateTime(date.Year, 1, 20)},
-        {ZodiacSign.Pisces, new DateTime(date.Year, 2, 19)},
-        {ZodiacSign.Aries, new DateTime(date.Year, 3, 21)},
-        {ZodiacSign.Taurus, new DateTime(date.Year, 4, 20)},
-        {ZodiacSign.Gemini, new DateTime(date.Year, 5, 21)},
-        {ZodiacSign.Cancer, new DateTime(date.Year, 6, 21)},
-        {ZodiacSign.Leo, new DateTime(date.Year, 7, 23)},
-        {ZodiacSign.Virgo, new DateTime(date.Year, 8, 23)},
-        {ZodiacSign.Libra, new DateTime(date.Year, 9, 23)},
-        {ZodiacSign.Scorpio, new DateTime(date.Year, 10, 23)},
-        {ZodiacSign.Sagittarius, new DateTime(date.Year, 11, 22)},
-        // Handle Capricorn specially since it spans the new year
-        {ZodiacSign.Capricorn, new DateTime(date.Year, 12, 22)}
-    };
+        {
+            {ZodiacSign.Aquarius, new DateTime(date.Year, 1, 20)},
+            {ZodiacSign.Pisces, new DateTime(date.Year, 2, 19)},
+            {ZodiacSign.Aries, new DateTime(date.Year, 3, 21)},
+            {ZodiacSign.Taurus, new DateTime(date.Year, 4, 20)},
+            {ZodiacSign.Gemini, new DateTime(date.Year, 5, 21)},
+            {ZodiacSign.Cancer, new DateTime(date.Year, 6, 21)},
+            {ZodiacSign.Leo, new DateTime(date.Year, 7, 23)},
+            {ZodiacSign.Virgo, new DateTime(date.Year, 8, 23)},
+            {ZodiacSign.Libra, new DateTime(date.Year, 9, 23)},
+            {ZodiacSign.Scorpio, new DateTime(date.Year, 10, 23)},
+            {ZodiacSign.Sagittarius, new DateTime(date.Year, 11, 22)},
+            {ZodiacSign.Capricorn, new DateTime(date.Year, 12, 22)}
+        };
 
-        // Adjust for Capricorn spanning the year end and start
         if (date.Month == 1 && date.Day <= 19)
         {
-            return ZodiacSign.Capricorn; // For dates from January 1 to January 19
+            return ZodiacSign.Capricorn;
         }
 
-        // Determine the zodiac sign based on the date
         foreach (var signStartDate in zodiacSignStartDates.OrderByDescending(kv => kv.Value))
         {
             if (date >= signStartDate.Value)
@@ -307,9 +302,7 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
             }
         }
 
-        // Default to Capricorn if none found, handles dates after December 22
         return ZodiacSign.Capricorn;
-
     }
 
     public void PopulatePickers()
@@ -319,20 +312,17 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
         foreach (MoonDaySymbol moonDay in Enum.GetValues(typeof(MoonDaySymbol)))
         {
             this.MoonDayPicker.Items.Add(moonDay.ToString());
-        }        
+        }
     }
-    
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-
-        int currentMoonDayValue = SelectedMoonDay; // Initial moon day value to start incrementing from
+        int currentMoonDayValue = SelectedMoonDay;
         int newMoonDay = SkipDayIndex;
         int skipDay = SkipDayIndex - 1;
 
         foreach (var astroEvent in ActiveAstroEvents)
         {
-            // Check if the event is in the current month and year before updating.
             if (astroEvent.Date.Month == month && astroEvent.Date.Year == year)
             {
                 if (SelectedMarsZodiac != null)
@@ -427,15 +417,14 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
                     {
                         astroEvent.MoonDay.IsTripleMoonDay = true;
                     }
-                    // Now also passing is29DayCycle to the method.
                     currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, astroEvent.Date.Day, skipDay, Is29MoonDayCycle);
 
                     astroEvent.MoonPhase = CalculatePhaseForDay(astroEvent.Date, newMoonDay);
-                }                
+                }
             }
         }
 
-        UpdateList(year, month); // Assume this updates your list display
+        UpdateList(year, month);
 
         VenusInZodiacPicker.SelectedItem = null;
         MarsInZodiacPicker.SelectedItem = null;
@@ -455,7 +444,6 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
 
     private async void DeleteCurrentMonthEventsButton_Clicked(object sender, EventArgs e)
     {
-        // Show confirmation dialog
         bool isConfirmed = await Application.Current.MainPage.DisplayAlert(
             "Confirm Deletion",
             "Are you sure you want to delete all events for the current month?",
@@ -464,31 +452,25 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
 
         if (isConfirmed)
         {
-            // Get events to remove
             var eventsToRemove = ActiveAstroEvents.Where(e => e.Date.Month == month && e.Date.Year == year).ToList();
 
-            // Remove events from the collection
             foreach (var astroEvent in eventsToRemove)
             {
                 ActiveAstroEvents.Remove(astroEvent);
             }
 
-            // Save the updated and sorted collection to the JSON file
             var appActions = new Services.AppActions();
             App.AppData.AppDB.AstroEventsDB = ActiveAstroEvents;
             await appActions.SaveAstroEventsDBAsync(App.AppData.AppDB);
 
-            // Update the list view
             UpdateList(year, month);
 
-            // Show success message
             await Application.Current.MainPage.DisplayAlert("Success", "Events for the current month have been deleted.", "OK");
         }
     }
 
     private async void DeleteAllEventsButton_Clicked(object sender, EventArgs e)
     {
-        // Show confirmation dialog
         bool isConfirmed = await Application.Current.MainPage.DisplayAlert(
             "Confirm Deletion",
             "Are you sure you want to delete all events?",
@@ -497,34 +479,26 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
 
         if (isConfirmed)
         {
-            // Clear all events
             ActiveAstroEvents.Clear();
 
-            // Save the updated empty collection to the JSON file
             var appActions = new Services.AppActions();
             App.AppData.AppDB.AstroEventsDB = ActiveAstroEvents;
             await appActions.SaveAstroEventsDBAsync(App.AppData.AppDB);
 
-            // Update the list view
             UpdateList(year, month);
 
-            // Show success message
             await Application.Current.MainPage.DisplayAlert("Success", "All events have been deleted.", "OK");
         }
     }
 
     private int IncrementMoonDay(int currentMoonDay, int date, int skipDay, bool is29DayCycle)
     {
-        // Determine the max day based on whether it's a 29-day cycle
         int maxDay = is29DayCycle ? 29 : 30;
 
-        // Increment moon day by 1, reset to 1 if it reached the max day
         int nextMoonDay = currentMoonDay == maxDay ? 1 : currentMoonDay + 1;
 
-        // Check if the next moon day is the day to skip
         if (date == skipDay)
         {
-            // Skip the specified day by incrementing again, check for wrap-around
             nextMoonDay = nextMoonDay == maxDay ? 1 : nextMoonDay + 1;
         }
 
@@ -548,19 +522,24 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
         {
             phase = MoonPhaseSymbol.FullMoon;
         }
-        else if (dayOfMonth >= 22 && dayOfMonth <= 31) // Adjust according to lunar cycle length
+        else if (dayOfMonth >= 22 && dayOfMonth <= 31)
         {
             phase = MoonPhaseSymbol.ThirdQuarter;
         }
         else
         {
-            // This is a simplification. The exact phase might need more nuanced calculation
-            // especially for days close to the transition between phases or for handling lunar cycles
-            // slightly shorter or longer than 29 days.
-            phase = MoonPhaseSymbol.None; // Or some logic to handle edge cases
+            phase = MoonPhaseSymbol.None;
         }
 
         return (int)phase;
+    }
 
+    private void MonthPicker_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (sender is Picker picker && picker.SelectedIndex >= 0)
+        {
+            var selectedMonth = picker.SelectedIndex + 1;
+            UpdateList(year, selectedMonth);
+        }
     }
 }

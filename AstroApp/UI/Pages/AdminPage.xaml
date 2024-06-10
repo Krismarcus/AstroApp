@@ -12,27 +12,46 @@
         <converters:MoonPhaseIntToStringConverter x:Key="MoonPhaseIntToStringConverter"/>
         <converters:EnumToStringConverter x:Key="EnumToStringConverter"/>
     </ContentPage.Resources>
-        <ScrollView>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <ActivityIndicator Grid.Row="0" x:Name="loadingIndicator" IsRunning="False" IsVisible="False"/>
-            <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Text="Previous" Clicked="PrevButton_Clicked"/>
-                    <Button Grid.Column="1" Text="Next" Clicked="NextButton_Clicked"/>
-                </Grid>
-            <Label Grid.Row="2" Text="{Binding MonthName}" FontSize="Header" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*,*,*,*,*,*">
+            <Picker Grid.Row="1" HorizontalOptions="Center" SelectedIndexChanged="MonthPicker_SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>January</x:String>
+                        <x:String>February</x:String>
+                        <x:String>March</x:String>
+                        <x:String>April</x:String>
+                        <x:String>May</x:String>
+                        <x:String>June</x:String>
+                        <x:String>July</x:String>
+                        <x:String>August</x:String>
+                        <x:String>September</x:String>
+                        <x:String>October</x:String>
+                        <x:String>November</x:String>
+                        <x:String>December</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Text="Previous" Clicked="PrevButton_Clicked"/>
+                <Button Grid.Column="1" Text="Next" Clicked="NextButton_Clicked"/>
+            </Grid>
+            <Label Grid.Row="3" Text="{Binding MonthName}" FontSize="Header" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Grid Grid.Row="4" RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*,*">
                 <Label Grid.Column="0" Grid.Row="0" Text="Venus in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Picker Grid.Column="0" Grid.Row="1" x:Name="VenusInZodiacPicker" ItemsSource="{Binding ZodiacSigns}" SelectedItem="{Binding SelectedVenusZodiac}" Margin="10,0"/>
                 <Label Grid.Column="1" Grid.Row="0" Text="Mars in Zodiac" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -59,26 +78,26 @@
                 <Picker Grid.Column="3" Grid.Row="5" x:Name="KetuInZodiacPicker" ItemsSource="{Binding ZodiacSigns}" SelectedItem="{Binding SelectedKetuZodiac}" Margin="10,0"/>
                 <Label Grid.Column="3" Grid.Row="0" Text="New Moon" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Entry Grid.Column="3" Grid.Row="1" Text="{Binding SkipDayIndex, Mode=TwoWay}" Keyboard="Numeric" Margin="10,0" HorizontalOptions="Center"/>
-                <HorizontalStackLayout Grid.Column="4" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" >
+                <HorizontalStackLayout Grid.Column="4" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
                     <Label Text="29 Days" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0"/>
-                    <Switch Grid.Column="4" Grid.Row="0" IsToggled="{Binding Is29MoonDayCycle}" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Switch Grid.Column="4" Grid.Row="0" IsToggled="{Binding Is29MoonDayCycle}" HorizontalOptions="Center" VerticalOptions="Center"/>
                 </HorizontalStackLayout>
                 <Picker Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" x:Name="MoonDayPicker" SelectedItem="{Binding SelectedMoonDay, Converter={StaticResource IntToStringConverter}, Mode=TwoWay}" Margin="10,0"/>
-                <Button Text="Reload" Grid.Column="5" Clicked="Button_Clicked" Margin="10,0"></Button>                              
+                <Button Text="Reload" Grid.Column="5" Clicked="Button_Clicked" Margin="10,0"/>
             </Grid>
-            <CollectionView Grid.Row="4" ItemsSource="{Binding TempDayList}">
+            <CollectionView Grid.Row="5" ItemsSource="{Binding TempDayList}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <controls:EditDayControl/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-                <Grid Grid.Row="5" ColumnDefinitions="5*,2*,*,*">
-                    <Button Grid.Column="0" Text="Save" Clicked="SaveButton_Clicked"/>
+            <Grid Grid.Row="6" ColumnDefinitions="5*,2*,*,*">
+                <Button Grid.Column="0" Text="Save" Clicked="SaveButton_Clicked"/>
                 <Button Grid.Column="1" Text="Load Remote" BackgroundColor="Blue" Clicked="LoadFromUrlButton_Clicked"/>
                 <Button Grid.Column="2" Text="Delete" BackgroundColor="Red" Clicked="DeleteCurrentMonthEventsButton_Clicked"/>
                 <Button Grid.Column="3" Text="Delete All" BackgroundColor="Red" Clicked="DeleteAllEventsButton_Clicked"/>
-            </Grid>
-            </Grid>
-        </ScrollView>    
+            </Grid>            
+        </Grid>
+    </ScrollView>
 </ContentPage>
