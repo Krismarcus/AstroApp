@@ -171,12 +171,11 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
 
                     ActiveAstroEvents.Add(astroEventForDate);
                 }
-                TempDayList[i].IsActive = true;
+
                 TempDayList[i].AddAstroEvent(astroEventForDate);
             }
             else
             {
-                TempDayList[i].IsActive = false;
                 TempDayList[i].DayAstroEvent = null;
             }
         }
@@ -241,8 +240,174 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-        // Update astro events based on the selected values
+        int currentMoonDayValue = SelectedMoonDay;
+        int newMoonDay = SkipDayIndex;
+        int skipDay = SkipDayIndex - 1;
+
+        foreach (var astroEvent in ActiveAstroEvents)
+        {
+            if (astroEvent.Date.Month == month && astroEvent.Date.Year == year)
+            {
+                if (SelectedMarsZodiac != null)
+                {
+                    astroEvent.MarsInZodiac ??= new PlanetInZodiac();
+                    astroEvent.MarsInZodiac.Planet = Planet.Mars;
+                    astroEvent.MarsInZodiac.NewZodiacSign = (ZodiacSign)SelectedMarsZodiac;
+                }
+
+                if (SelectedVenusZodiac != null)
+                {
+                    astroEvent.VenusInZodiac ??= new PlanetInZodiac();
+                    astroEvent.VenusInZodiac.Planet = Planet.Venus;
+                    astroEvent.VenusInZodiac.NewZodiacSign = (ZodiacSign)SelectedVenusZodiac;
+                }
+
+                if (SelectedMercuryZodiac != null)
+                {
+                    astroEvent.MercuryInZodiac ??= new PlanetInZodiac();
+                    astroEvent.MercuryInZodiac.Planet = Planet.Mercury;
+                    astroEvent.MercuryInZodiac.NewZodiacSign = (ZodiacSign)SelectedMercuryZodiac;
+                }
+
+                if (SelectedJupiterZodiac != null)
+                {
+                    astroEvent.JupiterInZodiac ??= new PlanetInZodiac();
+                    astroEvent.JupiterInZodiac.Planet = Planet.Jupiter;
+                    astroEvent.JupiterInZodiac.NewZodiacSign = (ZodiacSign)SelectedJupiterZodiac;
+                }
+
+                if (SelectedSaturnZodiac != null)
+                {
+                    astroEvent.SaturnInZodiac ??= new PlanetInZodiac();
+                    astroEvent.SaturnInZodiac.Planet = Planet.Saturn;
+                    astroEvent.SaturnInZodiac.NewZodiacSign = (ZodiacSign)SelectedSaturnZodiac;
+                }
+
+                if (SelectedUranusZodiac != null)
+                {
+                    astroEvent.UranusInZodiac ??= new PlanetInZodiac();
+                    astroEvent.UranusInZodiac.Planet = Planet.Uranus;
+                    astroEvent.UranusInZodiac.NewZodiacSign = (ZodiacSign)SelectedUranusZodiac;
+                }
+
+                if (SelectedNeptuneZodiac != null)
+                {
+                    astroEvent.NeptuneInZodiac ??= new PlanetInZodiac();
+                    astroEvent.NeptuneInZodiac.Planet = Planet.Neptune;
+                    astroEvent.NeptuneInZodiac.NewZodiacSign = (ZodiacSign)SelectedNeptuneZodiac;
+                }
+
+                if (SelectedPlutoZodiac != null)
+                {
+                    astroEvent.PlutoInZodiac ??= new PlanetInZodiac();
+                    astroEvent.PlutoInZodiac.Planet = Planet.Pluto;
+                    astroEvent.PlutoInZodiac.NewZodiacSign = (ZodiacSign)SelectedPlutoZodiac;
+                }
+
+                if (SelectedSelenaZodiac != null)
+                {
+                    astroEvent.SelenaInZodiac ??= new PlanetInZodiac();
+                    astroEvent.SelenaInZodiac.Planet = Planet.Selena;
+                    astroEvent.SelenaInZodiac.NewZodiacSign = (ZodiacSign)SelectedSelenaZodiac;
+                }
+
+                if (SelectedLilitZodiac != null)
+                {
+                    astroEvent.LilithInZodiac ??= new PlanetInZodiac();
+                    astroEvent.LilithInZodiac.Planet = Planet.Lilith;
+                    astroEvent.LilithInZodiac.NewZodiacSign = (ZodiacSign)SelectedLilitZodiac;
+                }
+
+                if (SelectedRahuZodiac != null)
+                {
+                    astroEvent.RahuInZodiac ??= new PlanetInZodiac();
+                    astroEvent.RahuInZodiac.Planet = Planet.Rahu;
+                    astroEvent.RahuInZodiac.NewZodiacSign = (ZodiacSign)SelectedRahuZodiac;
+                }
+
+                if (SelectedKetuZodiac != null)
+                {
+                    astroEvent.KetuInZodiac ??= new PlanetInZodiac();
+                    astroEvent.KetuInZodiac.Planet = Planet.Ketu;
+                    astroEvent.KetuInZodiac.NewZodiacSign = (ZodiacSign)SelectedKetuZodiac;
+                }
+
+                if (SelectedMoonDay != 0 && SkipDayIndex != 0)
+                {
+                    astroEvent.MoonDay.IsTripleMoonDay = false;
+                    astroEvent.MoonDay.NewMoonDay = currentMoonDayValue;
+                    if (astroEvent.Date.Day == SkipDayIndex)
+                    {
+                        astroEvent.MoonDay.IsTripleMoonDay = true;
+                    }
+                    currentMoonDayValue = IncrementMoonDay(currentMoonDayValue, astroEvent.Date.Day, skipDay, Is29MoonDayCycle);
+
+                    astroEvent.MoonPhase = CalculatePhaseForDay(astroEvent.Date, newMoonDay);
+                }
+            }
+        }
+
+        UpdateList(year, month);
+
+        VenusInZodiacPicker.SelectedItem = null;
+        MarsInZodiacPicker.SelectedItem = null;
+        MercuryInZodiacPicker.SelectedItem = null;
+        JupiterInZodiacPicker.SelectedItem = null;
+        SaturnInZodiacPicker.SelectedItem = null;
+        UranusInZodiacPicker.SelectedItem = null;
+        NeptuneInZodiacPicker.SelectedItem = null;
+        PlutoInZodiacPicker.SelectedItem = null;
+        SelenaInZodiacPicker.SelectedItem = null;
+        LilitInZodiacPicker.SelectedItem = null;
+        RahuInZodiacPicker.SelectedItem = null;
+        KetuInZodiacPicker.SelectedItem = null;
+        MoonDayPicker.SelectedIndex = 0;
+        SkipDayIndex = 0;
     }
+
+    private int IncrementMoonDay(int currentMoonDay, int date, int skipDay, bool is29DayCycle)
+    {
+        int maxDay = is29DayCycle ? 29 : 30;
+
+        int nextMoonDay = currentMoonDay == maxDay ? 1 : currentMoonDay + 1;
+
+        if (date == skipDay)
+        {
+            nextMoonDay = nextMoonDay == maxDay ? 1 : nextMoonDay + 1;
+        }
+
+        return nextMoonDay;
+    }
+
+    private int CalculatePhaseForDay(DateTime currentDay, int newMoonDay)
+    {
+        int dayOfMonth = (currentDay.Day - newMoonDay + 30) % 29;
+        MoonPhaseSymbol phase;
+
+        if (dayOfMonth >= 1 && dayOfMonth < 7)
+        {
+            phase = MoonPhaseSymbol.NewMoon;
+        }
+        else if (dayOfMonth >= 7 && dayOfMonth < 15)
+        {
+            phase = MoonPhaseSymbol.FirstQuarter;
+        }
+        else if (dayOfMonth >= 15 && dayOfMonth < 22)
+        {
+            phase = MoonPhaseSymbol.FullMoon;
+        }
+        else if (dayOfMonth >= 22 && dayOfMonth <= 31)
+        {
+            phase = MoonPhaseSymbol.ThirdQuarter;
+        }
+        else
+        {
+            phase = MoonPhaseSymbol.None;
+        }
+
+        return (int)phase;
+    }
+
 
     private async void LoadFromUrlButton_Clicked(object sender, EventArgs e)
     {

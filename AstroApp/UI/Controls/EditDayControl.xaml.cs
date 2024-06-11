@@ -7,23 +7,6 @@ namespace AstroApp.UI.Controls;
 
 public partial class EditDayControl : ContentView, INotifyPropertyChanged
 {
-    private bool isActive;
-
-    public bool IsActive
-    {
-        get { return isActive; }
-        set
-        {
-            if (isActive != value)
-            {
-                isActive = value;
-                OnPropertyChanged(nameof(IsActive));
-
-            }
-        }
-    }
-
-
     private AstroEvent dayAstroEvent;
 
     public AstroEvent DayAstroEvent

@@ -13,7 +13,7 @@
         <converters:MoonPhaseEditIconToIntConverter x:Key="MoonPhaseEditIconToIntConverter" />
         <converters:ActivityQualityToColorConverter x:Key="ActivityQualityToColor" />
     </ContentView.Resources>
-    <Frame BorderColor="{StaticResource Primary}" IsVisible="{Binding IsActive}">
+    <Frame BorderColor="{StaticResource Primary}">
         <VerticalStackLayout>
             <Border Margin="10" >
                 <Grid ColumnDefinitions="Auto,*">
