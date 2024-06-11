@@ -97,7 +97,7 @@
                 <Button Grid.Column="1" Text="Load Remote" BackgroundColor="Blue" Clicked="LoadFromUrlButton_Clicked"/>
                 <Button Grid.Column="2" Text="Delete" BackgroundColor="Red" Clicked="DeleteCurrentMonthEventsButton_Clicked"/>
                 <Button Grid.Column="3" Text="Delete All" BackgroundColor="Red" Clicked="DeleteAllEventsButton_Clicked"/>
-            </Grid>            
+            </Grid>
         </Grid>
     </ScrollView>
 </ContentPage>
