@@ -10,39 +10,29 @@ namespace AstroApp.Services
 {
     public class AppActions
     {
-        private static readonly HttpClient httpClient = new HttpClient();
+        private static readonly HttpClient httpClient = new HttpClient();        
 
-        //public async Task SaveAstroEventsAsync(List<AstroEvent> astroEventsList)
+        //public async Task<AppDB> LoadDBAsync()
         //{
         //    try
         //    {
-        //        var localFolderPath = FileSystem.AppDataDirectory; // Gets the local app data folder
-        //        var filePath = Path.Combine(localFolderPath, "astroEvents.xml");
+        //        // Open the embedded astrodb.json file in the app package
+        //        using var stream = await FileSystem.OpenAppPackageFileAsync("astrodb.json");
+        //        using var reader = new StreamReader(stream);
 
-        //        XmlSerializer serializer = new XmlSerializer(typeof(List<AstroEvent>));
-        //        using (StreamWriter writer = new StreamWriter(filePath, false))
-        //        {
-        //            serializer.Serialize(writer, astroEventsList);
-        //        }
+        //        // Asynchronously read the contents of the file
+        //        var contents = await reader.ReadToEndAsync();
+
+        //        // Deserialize the JSON string into an AppDB object
+        //        var appDB = JsonSerializer.Deserialize<AppDB>(contents);
+
+        //        // Return the deserialized AppDB object
+        //        return appDB;
         //    }
         //    catch (Exception ex)
         //    {
-        //        // Handle or log the exception as needed
-        //    }
-        //}
-
-        //public async Task<List<AstroEvent>> LoadAstroEventsAsync()
-        //{
-        //    var localFolderPath = FileSystem.AppDataDirectory;
-        //    var filePath = Path.Combine(localFolderPath, "astroEvents.xml");
-
-        //    if (!File.Exists(filePath))
-        //        return new List<AstroEvent>();
-
-        //    XmlSerializer serializer = new XmlSerializer(typeof(List<AstroEvent>));
-        //    using (StreamReader reader = new StreamReader(filePath))
-        //    {
-        //        return (List<AstroEvent>)serializer.Deserialize(reader);
+        //        // If any exception occurs, return a new instance of AppDB
+        //        return new AppDB();
         //    }
         //}
 
@@ -50,22 +40,19 @@ namespace AstroApp.Services
         {
             try
             {
-                // Open the embedded astrodb.json file in the app package
-                using var stream = await FileSystem.OpenAppPackageFileAsync("astrodb.json");
-                using var reader = new StreamReader(stream);
+                var localFolderPath = FileSystem.AppDataDirectory;
+                var filePath = Path.Combine(localFolderPath, "astrodb.json");
 
-                // Asynchronously read the contents of the file
-                var contents = await reader.ReadToEndAsync();
+                if (!File.Exists(filePath))
+                    return new AppDB();
 
-                // Deserialize the JSON string into an AppDB object
-                var appDB = JsonSerializer.Deserialize<AppDB>(contents);
+                var jsonString = await File.ReadAllTextAsync(filePath);
 
-                // Return the deserialized AppDB object
+                var appDB = JsonSerializer.Deserialize<AppDB>(jsonString);
                 return appDB;
             }
             catch (Exception ex)
             {
-                // If any exception occurs, return a new instance of AppDB
                 return new AppDB();
             }
         }
