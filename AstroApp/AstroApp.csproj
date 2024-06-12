@@ -72,11 +72,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiAsset Remove="Resources\Raw\astrodb.json" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Remove="astrodb.json" />
+	  <None Remove="Resources\astrodb.json" />
 	  <None Remove="Resources\Images\aquarius.png" />
 	  <None Remove="Resources\Images\aquarius_blue.png" />
 	  <None Remove="Resources\Images\aries.png" />
@@ -84,6 +81,8 @@
 	  <None Remove="Resources\Images\arrow_transition.png" />
 	  <None Remove="Resources\Images\background.png" />
 	  <None Remove="Resources\Images\background2.png" />
+	  <None Remove="Resources\Images\background3.png" />
+	  <None Remove="Resources\Images\background4.png" />
 	  <None Remove="Resources\Images\barber.png" />
 	  <None Remove="Resources\Images\bat.png" />
 	  <None Remove="Resources\Images\bear.png" />
@@ -187,7 +186,6 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="astrodb.json" />
-	  <EmbeddedResource Include="Resources\Raw\astrodb.json" />
 	  <EmbeddedResource Include="Resources\Styles\astrodb.json" />
 	</ItemGroup>
 
@@ -214,6 +212,12 @@
 	  <Compile Update="UI\Pages\PlanetinZodiacEventsEditPage.xaml.cs">
 	    <DependentUpon>PlanetInZodiacEventsEditPage.xaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Update="Resources\Raw\astrodb.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </MauiAsset>
 	</ItemGroup>
 
 	<ItemGroup>

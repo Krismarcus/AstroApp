@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:AstroApp.UI.Controls"
              xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
              x:DataType="pages:YearPage"
-             BackgroundImageSource="background2.png"
+             BackgroundImageSource="background4.png"
              Title="YearPage">
     
     <ScrollView>

@@ -50,19 +50,22 @@ namespace AstroApp.Services
         {
             try
             {
-                var localFolderPath = FileSystem.AppDataDirectory;
-                var filePath = Path.Combine(localFolderPath, "astrodb.json");
+                // Open the embedded astrodb.json file in the app package
+                using var stream = await FileSystem.OpenAppPackageFileAsync("astrodb.json");
+                using var reader = new StreamReader(stream);
 
-                if (!File.Exists(filePath))
-                    return new AppDB();
+                // Asynchronously read the contents of the file
+                var contents = await reader.ReadToEndAsync();
 
-                var jsonString = await File.ReadAllTextAsync(filePath);
+                // Deserialize the JSON string into an AppDB object
+                var appDB = JsonSerializer.Deserialize<AppDB>(contents);
 
-                var appDB = JsonSerializer.Deserialize<AppDB>(jsonString);
+                // Return the deserialized AppDB object
                 return appDB;
             }
             catch (Exception ex)
             {
+                // If any exception occurs, return a new instance of AppDB
                 return new AppDB();
             }
         }

@@ -38,7 +38,7 @@
     </ContentPage.Background>-->
     <ContentPage.Content>
         <Grid>
-            <Image Source="background2.png" Aspect="AspectFill" Opacity="1"/>
+            <Image Source="background4.png" Aspect="Fill" Opacity="1"/>
             <FlexLayout>
                 <Grid VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
