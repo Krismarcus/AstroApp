@@ -6,7 +6,7 @@ namespace AstroApp.UI.Pages;
 
 public partial class MoonDaysEditPage : ContentPage
 {
-    public ObservableCollection<MoonDay> MoonDays { get; set; }
+    public ObservableCollection<MoonDayDetails> MoonDays { get; set; }
 
     public MoonDaysEditPage()
     {
@@ -23,14 +23,14 @@ public partial class MoonDaysEditPage : ContentPage
 
     private void PopulateMoonDaysList()
     {
-        this.MoonDays = App.AppData.AppDB.MoonDaysDB;
+        this.MoonDays = App.AppData.AppDB.MoonDayDetailsDB;
         if (this.MoonDays == null)
         {
-            this.MoonDays = new ObservableCollection<MoonDay>();
+            this.MoonDays = new ObservableCollection<MoonDayDetails>();
 
             for (int i = 1; i <= 30; i++)            
             {
-                MoonDay moonDay = new MoonDay { NewMoonDay = i };
+                MoonDayDetails moonDay = new MoonDayDetails { MoonDay = i };
                 MoonDays.Add(moonDay);
             }
         }
@@ -39,7 +39,7 @@ public partial class MoonDaysEditPage : ContentPage
         {
             EditMoonDaysControl editMoonDaysControl = new EditMoonDaysControl();
 
-            MoonDay moonDay = MoonDays[i];
+            MoonDayDetails moonDay = MoonDays[i];
             if (moonDay != null)
             {
                 editMoonDaysControl.AddMoonDayDetails(moonDay);

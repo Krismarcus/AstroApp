@@ -9,7 +9,7 @@
         <converters:MoonDayIntToStringConverter x:Key="EnumConverter"/>
     </ContentView.Resources>
     <Grid ColumnDefinitions="Auto,*">
-        <Label Grid.Column="0" Text="{Binding MoonDay.NewMoonDay, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />        
-        <Editor Grid.Column="1" Text="{Binding MoonDay.NewMoonDayInfo, Mode=TwoWay}" VerticalOptions="Center" AutoSize="TextChanges" Margin="10,0"/>
+        <Label Grid.Column="0" Text="{Binding MoonDayDetails.MoonDay, Converter={StaticResource EnumConverter}, Mode=TwoWay}" />        
+        <Editor Grid.Column="1" Text="{Binding MoonDayDetails.MoonDayInfo, Mode=TwoWay}" VerticalOptions="Center" AutoSize="TextChanges" Margin="10,0"/>
     </Grid>
 </ContentView>

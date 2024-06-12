@@ -43,6 +43,8 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
+    public AstroDayDetails AstroDayDetails { get; set; }
+
     public ObservableCollection<AstroEvent> AstroEvents { get; set; } = new ObservableCollection<AstroEvent>();
     public ObservableCollection<PlanetInRetrogradeDetails> PlanetInRetrogradeDetails { get; set; } = new ObservableCollection<PlanetInRetrogradeDetails>();
 
@@ -181,14 +183,10 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
     public void UpdateDayEventInfoList()
     {
-        if (App.AppData.AppDB.MoonDaysDB == null || App.AppData.AppDB.PlanetInZodiacsDB == null || DayAstroEvent == null)
+        if (App.AppData.AppDB.MoonDayDetailsDB == null || App.AppData.AppDB.PlanetInZodiacsDB == null || DayAstroEvent == null)
             return;
-
-        UpdatePlanetInZodiacInfo(DayAstroEvent.SunInZodiac);
-        UpdatePlanetInZodiacInfo(DayAstroEvent.MoonInZodiac);
-        UpdatePlanetInZodiacInfo(DayAstroEvent.VenusInZodiac);
-        UpdatePlanetInZodiacInfo(DayAstroEvent.MarsInZodiac);
-        UpdatePlanetInZodiacInfo(DayAstroEvent.MercuryInZodiac);
+        AstroDayDetails = new AstroDayDetails();        
+        UpdatePlanetInZodiacInfo();
         UpdateMoonDayInfo();
 
         if (App.AppData.AppDB.PlanetInRetrogradeDetailsDB != null)
@@ -197,49 +195,83 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
-    private void UpdatePlanetInZodiacInfo(PlanetInZodiac planetInZodiac)
+    private void UpdatePlanetInZodiacInfo()
     {
-        if (planetInZodiac == null) return;
+        if (DayAstroEvent == null) return;
 
-        var infoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
-            p.Planet == planetInZodiac.Planet && p.NewZodiacSign == planetInZodiac.NewZodiacSign);
-
-        if (infoSourceItem != null)
+        // Update Sun in Zodiac Details
+        var sunInfoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
+            p.Planet == Planet.Sun && p.ZodiacSign == DayAstroEvent.SunInZodiac.NewZodiacSign);
+        if (sunInfoSourceItem != null)
         {
-            planetInZodiac.PlanetInZodiacInfo = infoSourceItem.PlanetInZodiacInfo;
+            AstroDayDetails.SunInZodiacDetails = sunInfoSourceItem.PlanetInZodiacInfo;
         }
+
+        // Update Moon in Zodiac Details
+        var moonInfoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
+            p.Planet == Planet.Moon && p.ZodiacSign == DayAstroEvent.MoonInZodiac.NewZodiacSign);
+        if (moonInfoSourceItem != null)
+        {
+            AstroDayDetails.MoonInZodiacDetails = moonInfoSourceItem.PlanetInZodiacInfo;
+        }
+
+        // Update Mercury in Zodiac Details
+        var mercuryInfoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
+            p.Planet == Planet.Mercury && p.ZodiacSign == DayAstroEvent.MercuryInZodiac.NewZodiacSign);
+        if (mercuryInfoSourceItem != null)
+        {
+            AstroDayDetails.MercuryInZodiacDetails = mercuryInfoSourceItem.PlanetInZodiacInfo;
+        }
+
+        // Update Venus in Zodiac Details
+        var venusInfoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
+            p.Planet == Planet.Venus && p.ZodiacSign == DayAstroEvent.VenusInZodiac.NewZodiacSign);
+        if (venusInfoSourceItem != null)
+        {
+            AstroDayDetails.VenusInZodiacDetails = venusInfoSourceItem.PlanetInZodiacInfo;
+        }
+
+        // Update Mars in Zodiac Details
+        var marsInfoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
+            p.Planet == Planet.Mars && p.ZodiacSign == DayAstroEvent.MarsInZodiac.NewZodiacSign);
+        if (marsInfoSourceItem != null)
+        {
+            AstroDayDetails.MarsInZodiacDetails = marsInfoSourceItem.PlanetInZodiacInfo;
+        }
+
+        // Update any other planets similarly...
     }
 
     private void UpdateMoonDayInfo()
     {
-        if (DayAstroEvent?.MoonDay == null || App.AppData.AppDB.MoonDaysDB == null)
+        if (DayAstroEvent?.MoonDay == null || App.AppData.AppDB.MoonDayDetailsDB == null)
             return;
 
-        var infoSourceItem = App.AppData.AppDB.MoonDaysDB.FirstOrDefault(m =>
-            m.NewMoonDay == DayAstroEvent.MoonDay.NewMoonDay);
+        var infoSourceItem = App.AppData.AppDB.MoonDayDetailsDB.FirstOrDefault(m =>
+            m.MoonDay == DayAstroEvent.MoonDay.NewMoonDay);
         if (infoSourceItem != null)
         {
-            DayAstroEvent.MoonDay.NewMoonDayInfo = infoSourceItem.NewMoonDayInfo;
+            AstroDayDetails.NewMoonDayDetails = infoSourceItem.MoonDayInfo;
         }
 
         // Find and apply PreviousMoonDayInfo
-        var previousMoonDayItem = App.AppData.AppDB.MoonDaysDB.FirstOrDefault(m =>
-            m.NewMoonDay == DayAstroEvent.MoonDay.PreviousMoonDay);
+        var previousMoonDayItem = App.AppData.AppDB.MoonDayDetailsDB.FirstOrDefault(m =>
+            m.MoonDay == DayAstroEvent.MoonDay.PreviousMoonDay);
         if (previousMoonDayItem != null)
         {
             // Assuming the PreviousMoonDay's NewMoonDayInfo should be applied
             // to the current MoonDay's PreviousMoonDayInfo
-            DayAstroEvent.MoonDay.PreviousMoonDayInfo = previousMoonDayItem.NewMoonDayInfo;
+            AstroDayDetails.PreviousMoonDayDetails = previousMoonDayItem.MoonDayInfo;
         }
 
         if (DayAstroEvent.MoonDay.IsTripleMoonDay == true)
         {
-            var middleMoonDayItem = App.AppData.AppDB.MoonDaysDB.FirstOrDefault(m =>
-            m.NewMoonDay == DayAstroEvent.MoonDay.MiddleMoonDay);
+            var middleMoonDayItem = App.AppData.AppDB.MoonDayDetailsDB.FirstOrDefault(m =>
+            m.MoonDay == DayAstroEvent.MoonDay.MiddleMoonDay);
 
             if (middleMoonDayItem != null)
             {
-                DayAstroEvent.MoonDay.MiddleMoonDayInfo = middleMoonDayItem.NewMoonDayInfo;
+                AstroDayDetails.MiddleMoonDayDetails = middleMoonDayItem.MoonDayInfo;
             }
         }
     }
@@ -286,21 +318,21 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         if (sender == previousMoonDayImageGrid)
         {
             string moonDayLT = TranslationManager.TranslateMoonDay(DayAstroEvent.MoonDay.PreviousMoonDay);
-            string moonDayInfo = DayAstroEvent.MoonDay.PreviousMoonDayInfo;
+            string moonDayInfo = AstroDayDetails.PreviousMoonDayDetails;
             await ToggleMoonGridAnimation(previousMoonDayImageGrid, moonDayInfo, moonDayLT);               
             
         }
         else if (sender == newMoonDayImageGrid)
         {
             string moonDayLT = TranslationManager.TranslateMoonDay(DayAstroEvent.MoonDay.NewMoonDay);
-            string moonDayInfo = DayAstroEvent.MoonDay.NewMoonDayInfo;
+            string moonDayInfo = AstroDayDetails.NewMoonDayDetails;
             await ToggleMoonGridAnimation(newMoonDayImageGrid, moonDayInfo, moonDayLT);                
             
         }
         else if (sender == middleMoonDayMarkerGrid)
         {
             string moonDayLT = TranslationManager.TranslateMoonDay(DayAstroEvent.MoonDay.MiddleMoonDay);
-            string moonDayInfo = DayAstroEvent.MoonDay.MiddleMoonDayInfo;
+            string moonDayInfo = AstroDayDetails.MiddleMoonDayDetails;
             await ToggleMoonGridAnimation(middleMoonDayMarkerGrid, moonDayInfo, moonDayLT);
 
         }
@@ -386,7 +418,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             if (sunInZodiacGrid != null)
             {
                 string sunInZodiacHeader = TranslationManager.TranslatePlanetInZodiac(Planet.Sun, DayAstroEvent.SunInZodiac.NewZodiacSign);
-                string sunInZodiacInfo = DayAstroEvent.SunInZodiac.PlanetInZodiacInfo;                
+                string sunInZodiacInfo = AstroDayDetails.SunInZodiacDetails;                
                 await ToggleMoonGridAnimation(sunInZodiacGrid, sunInZodiacInfo, sunInZodiacHeader);
 
             }
@@ -397,7 +429,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             if (moonInZodiacGrid != null)
             {
                 string moonInZodiacHeader = TranslationManager.TranslatePlanetInZodiac(Planet.Moon, DayAstroEvent.MoonInZodiac.NewZodiacSign);
-                string moonInZodiacInfo = DayAstroEvent.MoonInZodiac.PlanetInZodiacInfo;
+                string moonInZodiacInfo = AstroDayDetails.MoonInZodiacDetails;
                 await ToggleMoonGridAnimation(moonInZodiacGrid, moonInZodiacInfo, moonInZodiacHeader);
 
             }
@@ -408,7 +440,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             if (venusInZodiacGrid != null)
             {
                 string venusInZodiacHeader = TranslationManager.TranslatePlanetInZodiac(Planet.Venus, DayAstroEvent.VenusInZodiac.NewZodiacSign);
-                string venusInZodiacInfo = DayAstroEvent.VenusInZodiac.PlanetInZodiacInfo;
+                string venusInZodiacInfo = AstroDayDetails.VenusInZodiacDetails;
 
                 if (DayAstroEvent.VenusInZodiac.IsRetrograde == true)
                 {
@@ -425,7 +457,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             if (marsInZodiacGrid != null)
             {
                 string marsInZodiacHeader = TranslationManager.TranslatePlanetInZodiac(Planet.Mars, DayAstroEvent.MarsInZodiac.NewZodiacSign);
-                string marsInZodiacInfo = DayAstroEvent.MarsInZodiac.PlanetInZodiacInfo;
+                string marsInZodiacInfo = AstroDayDetails.MarsInZodiacDetails;
 
                 if (DayAstroEvent.MarsInZodiac.IsRetrograde == true)
                 {
@@ -441,7 +473,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             if (mercuryInZodiacGrid != null)
             {
                 string mercuryInZodiacHeader = TranslationManager.TranslatePlanetInZodiac(Planet.Mercury, DayAstroEvent.MercuryInZodiac.NewZodiacSign);                
-                string mercuryInZodiacInfo = DayAstroEvent.MercuryInZodiac.PlanetInZodiacInfo;
+                string mercuryInZodiacInfo = AstroDayDetails.MercuryInZodiacDetails;
 
                 if (DayAstroEvent.MercuryInZodiac.IsRetrograde == true)
                 {

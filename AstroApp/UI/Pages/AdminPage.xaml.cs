@@ -189,8 +189,7 @@ public partial class AdminPage : ContentPage, INotifyPropertyChanged
             NewZodiacSign = planet == Planet.Sun && date.HasValue ? SunZodiacSignYearlyCalendar(date.Value) : ZodiacSign.Aries,
             IsRetrograde = false,
             IsZodiacTransitioning = false,
-            TransitionTime = DateTime.MinValue,
-            PlanetInZodiacInfo = string.Empty
+            TransitionTime = DateTime.MinValue,            
         };
     }
 

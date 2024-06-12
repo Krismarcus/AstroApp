@@ -4,17 +4,17 @@ namespace AstroApp.UI.Controls;
 
 public partial class EditMoonDaysControl : ContentView
 {
-    private MoonDay moonDay;
+    private MoonDayDetails moonDaydetails;
 
-    public MoonDay MoonDay
+    public MoonDayDetails MoonDayDetails
     {
-        get { return moonDay; }
+        get { return moonDaydetails; }
         set
         {
-            if (moonDay != value)
+            if (moonDaydetails != value)
             {
-                moonDay = value;
-                OnPropertyChanged(nameof(MoonDay));
+                moonDaydetails = value;
+                OnPropertyChanged(nameof(MoonDayDetails));
 
             }
         }
@@ -26,8 +26,8 @@ public partial class EditMoonDaysControl : ContentView
         BindingContext = this;
     }
 
-    internal void AddMoonDayDetails(MoonDay moonDay)
+    internal void AddMoonDayDetails(MoonDayDetails moonDay)
     {
-        this.MoonDay = moonDay;
+        this.MoonDayDetails = moonDay;
     }
 }

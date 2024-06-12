@@ -4,9 +4,9 @@ namespace AstroApp.UI.Controls;
 
 public partial class EditPlanetInZodiacDetailsControl : ContentView
 {
-    private PlanetInZodiac planetInZodiac;
+    private PlanetInZodiacDetails planetInZodiac;
 
-    public PlanetInZodiac PlanetInZodiac
+    public PlanetInZodiacDetails PlanetInZodiac
     {
         get { return planetInZodiac; }
         set
@@ -26,7 +26,7 @@ public partial class EditPlanetInZodiacDetailsControl : ContentView
         BindingContext = this;
     }
 
-    internal void AddPlanetInZodiacDetails(PlanetInZodiac planetZodiac)
+    internal void AddPlanetInZodiacDetails(PlanetInZodiacDetails planetZodiac)
     {
         this.PlanetInZodiac = planetZodiac;
     }

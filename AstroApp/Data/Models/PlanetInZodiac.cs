@@ -51,10 +51,7 @@ namespace AstroApp.Data.Models
         private bool isZodiacTransitioning;
 
         [ObservableProperty]
-        private DateTime transitionTime;
-
-        [ObservableProperty]
-        private string planetInZodiacInfo;
+        private DateTime transitionTime;        
 
         public PlanetInZodiac()
         {

@@ -9,7 +9,7 @@ namespace AstroApp.UI.Pages;
 public partial class YearPage : ContentPage
 {
     public ObservableCollection<AstroEvent> ActiveAstroEvents { get; set; }
-    public ObservableCollection<PlanetInZodiac> PlanetInZodiacInfo { get; set; }
+    public ObservableCollection<PlanetInZodiacDetails> PlanetInZodiacInfo { get; set; }
     public ObservableCollection<MonthSegment> MonthSegments { get; set; }
     public ObservableCollection<ZodiacSegment> SunInZodiacSegments { get; set; }
     public ObservableCollection<ZodiacSegment> MercuryInZodiacSegments { get; set; }
@@ -77,7 +77,7 @@ public partial class YearPage : ContentPage
         if (segment == null) return;
 
         var infoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
-            p.Planet == planet && p.NewZodiacSign == segment.ZodiacSign);
+            p.Planet == planet && p.ZodiacSign == segment.ZodiacSign);
 
         PlanetInZodiacLabel.Text = TranslationManager.TranslatePlanetInZodiac(planet, segment.ZodiacSign);
         LabelShowingStartDate.Text = " (nuo " + segment.ZodiacStartDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo);

@@ -110,7 +110,7 @@ namespace AstroApp.Services
             }
         }
 
-        public async Task SavePlanetinZodiacsAsync(ObservableCollection<PlanetInZodiac> planetInZodiacs)
+        public async Task SavePlanetinZodiacsAsync(ObservableCollection<PlanetInZodiacDetails> planetInZodiacs)
         {
             try
             {
@@ -147,7 +147,7 @@ namespace AstroApp.Services
             }
         }
 
-        public async Task SaveMoonDaysAsync(ObservableCollection<MoonDay> moonDays)
+        public async Task SaveMoonDaysAsync(ObservableCollection<MoonDayDetails> moonDays)
         {
             try
             {
@@ -165,12 +165,12 @@ namespace AstroApp.Services
                 // Update Moondays only
                 if (existingData != null)
                 {
-                    existingData.MoonDaysDB = moonDays;
+                    existingData.MoonDayDetailsDB = moonDays;
                 }
                 else
                 {
                     existingData = new AppDB();
-                    existingData.MoonDaysDB = moonDays; // In case there was no existing data
+                    existingData.MoonDayDetailsDB = moonDays; // In case there was no existing data
                 }
 
                 var options = new JsonSerializerOptions { WriteIndented = true };

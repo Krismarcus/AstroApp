@@ -1,0 +1,245 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
+
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Astrodaiva</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- Display name -->
+		<ApplicationTitle>Astrodaiva</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.astrodaiva</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
+	  <CodesignKey>Apple Development: Created via API (XQBB57Z6J6)</CodesignKey>
+	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\aquarius.png" />
+	  <None Remove="Resources\Images\aquarius_blue.png" />
+	  <None Remove="Resources\Images\aries.png" />
+	  <None Remove="Resources\Images\aries_blue.png" />
+	  <None Remove="Resources\Images\arrow_transition.png" />
+	  <None Remove="Resources\Images\background.png" />
+	  <None Remove="Resources\Images\background2.png" />
+	  <None Remove="Resources\Images\background3.png" />
+	  <None Remove="Resources\Images\background4.png" />
+	  <None Remove="Resources\Images\barber.png" />
+	  <None Remove="Resources\Images\bat.png" />
+	  <None Remove="Resources\Images\bear.png" />
+	  <None Remove="Resources\Images\beauty.png" />
+	  <None Remove="Resources\Images\blacklilith.png" />
+	  <None Remove="Resources\Images\bowl.png" />
+	  <None Remove="Resources\Images\buystuff.png" />
+	  <None Remove="Resources\Images\calendar.png" />
+	  <None Remove="Resources\Images\cancer.png" />
+	  <None Remove="Resources\Images\cancer_blue.png" />
+	  <None Remove="Resources\Images\capricorn.png" />
+	  <None Remove="Resources\Images\capricorn_blue.png" />
+	  <None Remove="Resources\Images\conjunction.png" />
+	  <None Remove="Resources\Images\contracts.png" />
+	  <None Remove="Resources\Images\crocodile.png" />
+	  <None Remove="Resources\Images\crown.png" />
+	  <None Remove="Resources\Images\dotnet_bot.png" />
+	  <None Remove="Resources\Images\dove.png" />
+	  <None Remove="Resources\Images\down_arrow.png" />
+	  <None Remove="Resources\Images\eagle.png" />
+	  <None Remove="Resources\Images\earth.png" />
+	  <None Remove="Resources\Images\elephant.png" />
+	  <None Remove="Resources\Images\firstquarter.png" />
+	  <None Remove="Resources\Images\firstquarter_small.png" />
+	  <None Remove="Resources\Images\fountain.png" />
+	  <None Remove="Resources\Images\fullmoon_small.png" />
+	  <None Remove="Resources\Images\gardening.png" />
+	  <None Remove="Resources\Images\gemini.png" />
+	  <None Remove="Resources\Images\gemini_blue.png" />
+	  <None Remove="Resources\Images\grapes.png" />
+	  <None Remove="Resources\Images\horse.png" />
+	  <None Remove="Resources\Images\importanttasks.png" />
+	  <None Remove="Resources\Images\jupiter.png" />
+	  <None Remove="Resources\Images\lantern.png" />
+	  <None Remove="Resources\Images\left_arrow.png" />
+	  <None Remove="Resources\Images\leo.png" />
+	  <None Remove="Resources\Images\leopard.png" />
+	  <None Remove="Resources\Images\leo_blue.png" />
+	  <None Remove="Resources\Images\libra.png" />
+	  <None Remove="Resources\Images\libra_blue.png" />
+	  <None Remove="Resources\Images\line.png" />
+	  <None Remove="Resources\Images\line2.png" />
+	  <None Remove="Resources\Images\lotus.png" />
+	  <None Remove="Resources\Images\love.png" />
+	  <None Remove="Resources\Images\mars.png" />
+	  <None Remove="Resources\Images\meetings.png" />
+	  <None Remove="Resources\Images\mercury.png" />
+	  <None Remove="Resources\Images\monkey.png" />
+	  <None Remove="Resources\Images\moon.png" />
+	  <None Remove="Resources\Images\neptune.png" />
+	  <None Remove="Resources\Images\newideas.png" />
+	  <None Remove="Resources\Images\newmoon.png" />
+	  <None Remove="Resources\Images\newmoon_small.png" />
+	  <None Remove="Resources\Images\none.png" />
+	  <None Remove="Resources\Images\octopus.png" />
+	  <None Remove="Resources\Images\opposition.png" />
+	  <None Remove="Resources\Images\other.png" />
+	  <None Remove="Resources\Images\phoenix.png" />
+	  <None Remove="Resources\Images\pisces.png" />
+	  <None Remove="Resources\Images\pisces_blue.png" />
+	  <None Remove="Resources\Images\pluto.png" />
+	  <None Remove="Resources\Images\rainbow.png" />
+	  <None Remove="Resources\Images\retrograde.png" />
+	  <None Remove="Resources\Images\right_arrow.png" />
+	  <None Remove="Resources\Images\rooster.png" />
+	  <None Remove="Resources\Images\sagittarius.png" />
+	  <None Remove="Resources\Images\sagittarius_blue.png" />
+	  <None Remove="Resources\Images\saturn.png" />
+	  <None Remove="Resources\Images\scorpio.png" />
+	  <None Remove="Resources\Images\scorpio_blue.png" />
+	  <None Remove="Resources\Images\selena.png" />
+	  <None Remove="Resources\Images\sextile.png" />
+	  <None Remove="Resources\Images\ship.png" />
+	  <None Remove="Resources\Images\snake.png" />
+	  <None Remove="Resources\Images\spider.png" />
+	  <None Remove="Resources\Images\square.png" />
+	  <None Remove="Resources\Images\star.png" />
+	  <None Remove="Resources\Images\sun.png" />
+	  <None Remove="Resources\Images\swan.png" />
+	  <None Remove="Resources\Images\taurus.png" />
+	  <None Remove="Resources\Images\taurus_blue.png" />
+	  <None Remove="Resources\Images\tech.png" />
+	  <None Remove="Resources\Images\text_gardening.png" />
+	  <None Remove="Resources\Images\text_love.png" />
+	  <None Remove="Resources\Images\thirdquarter.png" />
+	  <None Remove="Resources\Images\thirdquarter_small.png" />
+	  <None Remove="Resources\Images\toad.png" />
+	  <None Remove="Resources\Images\tortoise.png" />
+	  <None Remove="Resources\Images\travel.png" />
+	  <None Remove="Resources\Images\tree.png" />
+	  <None Remove="Resources\Images\trine.png" />
+	  <None Remove="Resources\Images\trumpet.png" />
+	  <None Remove="Resources\Images\unicorn.png" />
+	  <None Remove="Resources\Images\up_arrow.png" />
+	  <None Remove="Resources\Images\uranus.png" />
+	  <None Remove="Resources\Images\venus.png" />
+	  <None Remove="Resources\Images\virgo.png" />
+	  <None Remove="Resources\Images\virgo_blue.png" />
+	  <None Remove="Resources\Images\whale.png" />
+	  <None Remove="Resources\Images\wheel.png" />
+	  <None Remove="Resources\Raw\astrodb.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="UI\Controls\CustomMonthLineView.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="UI\Controls\CustomRetrogradeLineView.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="UI\Controls\CustomZodiacLineView.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="UI\Controls\DayControl.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="UI\Controls\PlanetEventControl.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="UI\Pages\EventDetailsPage.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="UI\Pages\MainPage.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="UI\Pages\YearPage.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Update="Resources\Images\dotnet_bot.png">
+	    <Resize>True</Resize>
+	    <BaseSize>300,185</BaseSize>
+	  </MauiImage>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="UI\Controls\CustomMonthLineView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\CustomRetrogradeLineView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\CustomZodiacLineView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\DayControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\PlanetEventControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Pages\EventDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Pages\MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Pages\YearPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+</Project>

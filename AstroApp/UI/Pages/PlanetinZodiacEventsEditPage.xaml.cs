@@ -7,7 +7,7 @@ namespace AstroApp.UI.Pages;
 
 public partial class PlanetInZodiacEventsEditPage : ContentPage
 {
-    public ObservableCollection<PlanetInZodiac> PlanetInZodiacs { get; set; }
+    public ObservableCollection<PlanetInZodiacDetails> PlanetInZodiacsDetails { get; set; }
 
     public ObservableCollection<PlanetInRetrogradeDetails> PlanetInRetrogradeDetails { get; set; }
 
@@ -27,10 +27,10 @@ public partial class PlanetInZodiacEventsEditPage : ContentPage
 
     private void PopulatePlanetsInZodiacsDetailsList()
     {
-        this.PlanetInZodiacs = App.AppData.AppDB.PlanetInZodiacsDB;
-        if (this.PlanetInZodiacs == null)
+        this.PlanetInZodiacsDetails = App.AppData.AppDB.PlanetInZodiacsDB;
+        if (this.PlanetInZodiacsDetails == null)
         {
-            this.PlanetInZodiacs = new ObservableCollection<PlanetInZodiac>();
+            this.PlanetInZodiacsDetails = new ObservableCollection<PlanetInZodiacDetails>();
 
             // Iterate over each value in the Planet enum
             foreach (Planet planet in Enum.GetValues(typeof(Planet)))
@@ -39,21 +39,20 @@ public partial class PlanetInZodiacEventsEditPage : ContentPage
                 foreach (ZodiacSign zodiacSign in Enum.GetValues(typeof(ZodiacSign)))
                 {
                     // Create a new PlanetInZodiac and add it to the collection
-                    this.PlanetInZodiacs.Add(new PlanetInZodiac
+                    this.PlanetInZodiacsDetails.Add(new PlanetInZodiacDetails
                     {
                         Planet = planet,
-                        NewZodiacSign = zodiacSign,
-                        PlanetInZodiacInfo = "",
+                        ZodiacSign = zodiacSign,                        
                     });
                 }
             }
         }
 
-        for (int i = 0; i < PlanetInZodiacs.Count; i++)
+        for (int i = 0; i < PlanetInZodiacsDetails.Count; i++)
         {
             EditPlanetInZodiacDetailsControl editPlanetInZodiacDetailsControl = new EditPlanetInZodiacDetailsControl();
 
-            PlanetInZodiac planetInZodiac = PlanetInZodiacs[i];
+            PlanetInZodiacDetails planetInZodiac = PlanetInZodiacsDetails[i];
             if (planetInZodiac != null)
             {
                 editPlanetInZodiacDetailsControl.AddPlanetInZodiacDetails(planetInZodiac);
@@ -99,7 +98,7 @@ public partial class PlanetInZodiacEventsEditPage : ContentPage
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
         var appActions = new Services.AppActions();
-        await appActions.SavePlanetinZodiacsAsync(PlanetInZodiacs);
+        await appActions.SavePlanetinZodiacsAsync(PlanetInZodiacsDetails);
         await appActions.SavePlanetInRetrogradeAsync(PlanetInRetrogradeDetails);
         await Application.Current.MainPage.DisplayAlert("Success", "Planets in Zodiacs saved succesfully", "OK");
     }
