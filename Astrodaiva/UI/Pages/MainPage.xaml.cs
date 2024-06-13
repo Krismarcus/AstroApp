@@ -510,6 +510,11 @@ namespace Astrodaiva.UI.Pages
             ToggleGridAndAnimateArrow();
         }
 
+        private async void OnMonthLabelTapped(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"//{nameof(YearPage)}");
+        }
+
         private async void HideGridWithAnimation()
         {
             // Animate both arrows up before hiding the grid

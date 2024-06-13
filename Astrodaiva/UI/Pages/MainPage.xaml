@@ -38,7 +38,11 @@
                         </Grid.GestureRecognizers>
                         <Image x:Name="leftArrow" Source="left_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
                     </Grid>
-                    <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" FontAttributes="Bold" />
+                    <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" FontAttributes="Bold" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMonthLabelTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                     <Grid Grid.Column="2" Padding="40,0">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="NextMonth_Clicked"/>

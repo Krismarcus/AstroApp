@@ -104,6 +104,7 @@
 	  <None Remove="Resources\Images\horse.png" />
 	  <None Remove="Resources\Images\importanttasks.png" />
 	  <None Remove="Resources\Images\jupiter.png" />
+	  <None Remove="Resources\Images\ketu.png" />
 	  <None Remove="Resources\Images\lantern.png" />
 	  <None Remove="Resources\Images\left_arrow.png" />
 	  <None Remove="Resources\Images\leo.png" />
@@ -111,6 +112,7 @@
 	  <None Remove="Resources\Images\leo_blue.png" />
 	  <None Remove="Resources\Images\libra.png" />
 	  <None Remove="Resources\Images\libra_blue.png" />
+	  <None Remove="Resources\Images\lilith.png" />
 	  <None Remove="Resources\Images\line.png" />
 	  <None Remove="Resources\Images\line2.png" />
 	  <None Remove="Resources\Images\lotus.png" />
@@ -132,6 +134,7 @@
 	  <None Remove="Resources\Images\pisces.png" />
 	  <None Remove="Resources\Images\pisces_blue.png" />
 	  <None Remove="Resources\Images\pluto.png" />
+	  <None Remove="Resources\Images\rahu.png" />
 	  <None Remove="Resources\Images\rainbow.png" />
 	  <None Remove="Resources\Images\retrograde.png" />
 	  <None Remove="Resources\Images\right_arrow.png" />
