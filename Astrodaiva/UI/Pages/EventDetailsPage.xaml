@@ -39,7 +39,7 @@
         <Grid>
             <Image Source="background4.png" Aspect="Fill" Opacity="1"/>
             <FlexLayout>
-                <Grid VerticalOptions="FillAndExpand">
+                <Grid VerticalOptions="Start">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
@@ -57,7 +57,7 @@
                                 <RowDefinition ></RowDefinition>
                                 <RowDefinition ></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="30" HorizontalOptions="CenterAndExpand"/>
+                            <Label Grid.Row="0"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="24" HorizontalOptions="CenterAndExpand"/>
                             <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />

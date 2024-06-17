@@ -8,6 +8,8 @@ using System.Globalization;
 
 namespace Astrodaiva.UI.Pages
 {
+    [QueryProperty(nameof(Month), "month")]
+    [QueryProperty(nameof(Year), "year")]
     public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
         private string monthName;
@@ -25,7 +27,36 @@ namespace Astrodaiva.UI.Pages
             }
         }
 
-        private int month, year;
+        private int month;
+        public int Month
+        {
+            get => month;
+            set
+            {
+                if (month != value)
+                {
+                    month = value;
+                    OnPropertyChanged(nameof(Month));
+                    UpdateCalendar(Year, Month);
+                }
+            }
+        }
+
+        private int year;
+        public int Year
+        {
+            get => year;
+            set
+            {
+                if (year != value)
+                {
+                    year = value;
+                    OnPropertyChanged(nameof(Year));
+                    UpdateCalendar(Year, Month);
+                }
+            }
+        }
+
         public ObservableCollection<AstroEvent> ActiveAstroEvents { get; set; }        
 
         private string activityProfile;

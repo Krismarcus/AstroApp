@@ -1,4 +1,5 @@
 using Astrodaiva.Data.Models;
+using Astrodaiva.UI.Pages;
 using Microsoft.Maui.Controls.Shapes;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -18,7 +19,7 @@ public partial class CustomMonthLineView : ContentView
     {
         get => (ObservableCollection<MonthSegment>)GetValue(MonthSegmentsProperty);
         set => SetValue(MonthSegmentsProperty, value);
-    }    
+    }
 
     public CustomMonthLineView()
     {
@@ -61,12 +62,12 @@ public partial class CustomMonthLineView : ContentView
         CultureInfo lithuanianCulture = new CultureInfo("lt-LT");
 
         var boxView = new Border
-        {            
+        {
             BackgroundColor = boxColor,
             StrokeThickness = 0,
             VerticalOptions = LayoutOptions.FillAndExpand,
             StrokeShape = new RoundRectangle { CornerRadius = new CornerRadius(10) }
-        };        
+        };
 
         var label = new Label
         {
@@ -77,18 +78,29 @@ public partial class CustomMonthLineView : ContentView
             VerticalOptions = LayoutOptions.Center,
             HorizontalTextAlignment = TextAlignment.Center,
             Margin = new Thickness(10, 0, 0, 0)
-        };        
+        };
 
         var cellGrid = new Grid
         {
             VerticalOptions = LayoutOptions.FillAndExpand,
             HorizontalOptions = LayoutOptions.FillAndExpand
-        };       
+        };
 
-        cellGrid.Add(boxView);        
-        cellGrid.Add(label);        
+        var tapGesture = new TapGestureRecognizer();
+        tapGesture.Tapped += (s, e) => OnMonthSegmentTapped(segment);
+        cellGrid.GestureRecognizers.Add(tapGesture);
+
+        cellGrid.Add(boxView);
+        cellGrid.Add(label);
 
         return cellGrid;
+    }
+
+    private async void OnMonthSegmentTapped(MonthSegment segment)
+    {
+        var month = segment.MonthStartDate.Month;
+        var year = segment.MonthStartDate.Year;
+        await Shell.Current.GoToAsync($"//{nameof(MainPage)}?month={month}&year={year}");
     }
 
     private Color GetResourceColor(string key)
@@ -100,27 +112,4 @@ public partial class CustomMonthLineView : ContentView
         }
         return textColor;
     }
-
-
-    //private Color GetColorForZodiacSign(ZodiacSign sign)
-    //{
-    //    // Define colors for each zodiac sign here
-    //    switch (sign)
-    //    {
-    //        case ZodiacSign.Aries: return Color.FromRgb(194, 41, 54);
-    //        case ZodiacSign.Taurus: return Color.FromRgb(198, 136, 19);
-    //        case ZodiacSign.Gemini: return Color.FromRgb(143, 145, 49);
-    //        case ZodiacSign.Cancer: return Color.FromRgb(52, 114, 136);
-    //        case ZodiacSign.Leo: return Color.FromRgb(194, 41, 54);
-    //        case ZodiacSign.Virgo: return Color.FromRgb(198, 136, 19);
-    //        case ZodiacSign.Libra: return Color.FromRgb(143, 145, 49);
-    //        case ZodiacSign.Scorpio: return Color.FromRgb(52, 114, 136);
-    //        case ZodiacSign.Sagittarius: return Color.FromRgb(194, 41, 54);
-    //        case ZodiacSign.Capricorn: return Color.FromRgb(198, 136, 19);
-    //        case ZodiacSign.Aquarius: return Color.FromRgb(143, 145, 49);
-    //        case ZodiacSign.Pisces: return Color.FromRgb(52, 114, 136);
-    //        // Add cases for other signs
-    //        default: return Colors.Gray;
-    //    }
-    //}    
 }
