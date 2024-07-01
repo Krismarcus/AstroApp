@@ -118,7 +118,7 @@
                HorizontalOptions="FillAndExpand" VerticalOptions="End">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" HorizontalOptions="Center">

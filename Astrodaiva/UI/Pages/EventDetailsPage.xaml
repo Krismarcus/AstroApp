@@ -85,15 +85,15 @@
                             <Frame  Grid.Row="3"  x:Name="expandableFrame" Padding="10,0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="12.4,6.2,12.4,6.2">
                                 <Grid ColumnDefinitions="auto,*, auto" Padding="0,0">
                                     <!--Thick gradient line-->
-                                    <BoxView x:Name="timeLine" Grid.Column="1" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                                        <BoxView.Background>
+                                    <Border BackgroundColor="AliceBlue" x:Name="timeLine" Grid.Column="1" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                        <Border.Background>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                                 <GradientStop Color="{StaticResource PrimaryBackground}" Offset="0.0"/>
                                                 <GradientStop Color="{StaticResource PrimaryLightText}" Offset="0.5"/>
                                                 <GradientStop Color="{StaticResource PrimaryBackground}" Offset="1.0"/>
                                             </LinearGradientBrush>
-                                        </BoxView.Background>
-                                    </BoxView>
+                                        </Border.Background>
+                                    </Border>
 
                                     <!-- AbsoluteLayout for the timeline and markers -->
                                     <Grid Grid.Column="1" x:Name="newMoonDayMarkerGrid" Margin="0,20" VerticalOptions="Center">
