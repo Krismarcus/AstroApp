@@ -1,20 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Astrodaiva.Data.Models
 {
-    public class MoonDay
+    public class MoonDay : INotifyPropertyChanged
     {
         private int newMoonDay;
         private int middleMoonDay;
         private int previousMoonDay;
+        private bool isTripleMoonDay;
+        private DateTime transitionTime;
+        private DateTime middleMoonDayTransitionTime;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public bool IsTripleMoonDay
         {
-            get;
-            set;
+            get => isTripleMoonDay;
+            set
+            {
+                if (isTripleMoonDay != value)
+                {
+                    isTripleMoonDay = value;
+                    OnPropertyChanged(nameof(IsTripleMoonDay));
+                    AdjustDaysForTripleMoonDay();
+                }
+            }
         }
 
         public int NewMoonDay
@@ -22,44 +42,83 @@ namespace Astrodaiva.Data.Models
             get => newMoonDay;
             set
             {
-                newMoonDay = value;
-                if (newMoonDay == 1)
+                if (newMoonDay != value)
                 {
-                    previousMoonDay = 30;
+                    newMoonDay = value;
+                    OnPropertyChanged(nameof(NewMoonDay));
+
+                    if (newMoonDay == 1)
+                    {
+                        PreviousMoonDay = 30;
+                    }
+                    else
+                    {
+                        PreviousMoonDay = newMoonDay - 1;
+                    }
+
+                    AdjustDaysForTripleMoonDay();
                 }
-                else
-                {
-                    previousMoonDay = newMoonDay - 1;
-                }
-                
-                AdjustDaysForTripleMoonDay();
             }
         }
 
         public int MiddleMoonDay
         {
             get => middleMoonDay;
-            private set => middleMoonDay = value;
+            private set
+            {
+                if (middleMoonDay != value)
+                {
+                    middleMoonDay = value;
+                    OnPropertyChanged(nameof(MiddleMoonDay));
+                }
+            }
         }
 
         public int PreviousMoonDay
         {
             get => previousMoonDay;
-            private set => previousMoonDay = value;
+            private set
+            {
+                if (previousMoonDay != value)
+                {
+                    previousMoonDay = value;
+                    OnPropertyChanged(nameof(PreviousMoonDay));
+                }
+            }
         }
 
-        public DateTime TransitionTime { get; set; }
-        public DateTime MiddleMoonDayTransitionTime { get; set; }
+        public DateTime TransitionTime
+        {
+            get => transitionTime;
+            set
+            {
+                if (transitionTime != value)
+                {
+                    transitionTime = value;
+                    OnPropertyChanged(nameof(TransitionTime));
+                }
+            }
+        }
+
+        public DateTime MiddleMoonDayTransitionTime
+        {
+            get => middleMoonDayTransitionTime;
+            set
+            {
+                if (middleMoonDayTransitionTime != value)
+                {
+                    middleMoonDayTransitionTime = value;
+                    OnPropertyChanged(nameof(MiddleMoonDayTransitionTime));
+                }
+            }
+        }
 
         private void AdjustDaysForTripleMoonDay()
         {
-            // Check if it is a Triple Moon Day to adjust the moon days accordingly
             if (IsTripleMoonDay)
             {
-                // Set middleMoonDay as the current previousMoonDay
                 MiddleMoonDay = PreviousMoonDay;
 
-                // Adjust previousMoonDay to be newMoonDay - 2, considering edge cases
                 if (NewMoonDay == 1)
                 {
                     PreviousMoonDay = 29; // Assuming a 30-day cycle

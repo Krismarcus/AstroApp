@@ -113,9 +113,9 @@
         </ScrollView>
 
         <!-- Fixed Frame at the bottom -->
-        <Frame Grid.Row="2" Padding="10" CornerRadius="15" Margin="12.4,0"
+        <Frame x:Name="BottomInfoFrame" Grid.Row="2" Padding="10" CornerRadius="15" Margin="12.4,0"
                BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}"
-               HorizontalOptions="FillAndExpand" VerticalOptions="End">
+               HorizontalOptions="FillAndExpand" VerticalOptions="End" IsVisible="False">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -123,7 +123,7 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" HorizontalOptions="Center">
                     <HorizontalStackLayout Margin="10" HorizontalOptions="Center">
-                        <Label Text="Paspauskite ant segmento jei norite sužinoti detalią informaciją" 
+                        <Label Text="Click on a segment to view detailed information" 
                                x:Name="PlanetInZodiacLabel" TextColor="{StaticResource DarkBlueBackground}" 
                                FontSize="20" FontAttributes="Bold" 
                                HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -136,7 +136,7 @@
                     </HorizontalStackLayout>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <Label x:Name="LabelShowingPlanetInZodiacInfo" FontSize="14" HorizontalOptions="CenterAndExpand"
+                    <Label x:Name="LabelShowingPlanetInZodiacInfo" FontSize="12" HorizontalOptions="CenterAndExpand"
                            TextColor="{StaticResource DarkBlueBackground}" />
                 </Grid>
             </Grid>

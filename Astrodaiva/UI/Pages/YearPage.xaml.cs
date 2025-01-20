@@ -40,6 +40,7 @@ public partial class YearPage : ContentPage
         GenerateCalendar();
         this.BindingContext = this;
         SetupSegmentClickHandlers();
+        SetupFrameGestureHandlers();
     }
 
     private void Initialize()
@@ -72,7 +73,44 @@ public partial class YearPage : ContentPage
         CustomZodiacLineViewKetu.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Ketu);
     }
 
-    private void OnPlanetInZodiacSegmentClicked(object sender, ZodiacSegment segment, Planet planet)
+    private void SetupFrameGestureHandlers()
+    {
+        var tapGesture = new TapGestureRecognizer();
+        tapGesture.Tapped += async (s, e) => {
+            // Hide the frame with animation
+            await BottomInfoFrame.TranslateTo(0, BottomInfoFrame.Height, 250, Easing.CubicIn);
+            BottomInfoFrame.IsVisible = false;
+        };
+        BottomInfoFrame.GestureRecognizers.Add(tapGesture);
+
+        var panGesture = new PanGestureRecognizer();
+        double yTranslation = 0;
+
+        panGesture.PanUpdated += async (s, e) => {
+            switch (e.StatusType)
+            {
+                case GestureStatus.Running:
+                    yTranslation = Math.Max(0, yTranslation + e.TotalY);
+                    BottomInfoFrame.TranslationY = yTranslation;
+                    break;
+                case GestureStatus.Completed:
+                    if (yTranslation > BottomInfoFrame.Height / 2)
+                    {
+                        await BottomInfoFrame.TranslateTo(0, BottomInfoFrame.Height, 250, Easing.CubicIn);
+                        BottomInfoFrame.IsVisible = false;
+                    }
+                    else
+                    {
+                        await BottomInfoFrame.TranslateTo(0, 0, 250, Easing.CubicOut);
+                    }
+                    yTranslation = 0;
+                    break;
+            }
+        };
+        BottomInfoFrame.GestureRecognizers.Add(panGesture);
+    }
+
+    private async void OnPlanetInZodiacSegmentClicked(object sender, ZodiacSegment segment, Planet planet)
     {
         if (segment == null) return;
 
@@ -80,10 +118,14 @@ public partial class YearPage : ContentPage
             p.Planet == planet && p.ZodiacSign == segment.ZodiacSign);
 
         PlanetInZodiacLabel.Text = TranslationManager.TranslatePlanetInZodiac(planet, segment.ZodiacSign);
-        LabelShowingStartDate.Text = " (nuo " + segment.ZodiacStartDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo);
-        LabelShoingEndDate.Text = " iki " + segment.ZodiacEndDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo) + ")";
+        LabelShowingStartDate.Text = " (from " + segment.ZodiacStartDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo);
+        LabelShoingEndDate.Text = " to " + segment.ZodiacEndDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo) + ")";
         LabelShowingPlanetInZodiacInfo.Text = infoSourceItem?.PlanetInZodiacInfo ?? "No information available.";
-    }
+
+        // Show the frame with animation
+        await BottomInfoFrame.TranslateTo(0, 0, 250, Easing.CubicOut);
+        BottomInfoFrame.IsVisible = true;
+    }    
 
     public void GenerateCalendar()
     {
