@@ -39,9 +39,9 @@
                             <Label Grid.Row="0" HorizontalOptions="Center" Text="Moon Eclipse" VerticalOptions="Center" />
                             <Switch Grid.Row="1" Margin="10" HorizontalOptions="Center" IsToggled="{Binding DayAstroEvent.MoonEclipse}" VerticalOptions="Center" />
                         </Grid>
-                        <controls:EditPlanetInZodiacControl Grid.Row="1" Grid.Column="0" BindingContext="{Binding DayAstroEvent.VenusInZodiac}" />
-                        <controls:EditPlanetInZodiacControl Grid.Row="1" Grid.Column="1" BindingContext="{Binding DayAstroEvent.MarsInZodiac}" />
-                        <controls:EditPlanetInZodiacControl Grid.Row="1" Grid.Column="2" BindingContext="{Binding DayAstroEvent.MercuryInZodiac}" />
+                        <controls:EditPlanetInZodiacControl Grid.Row="1" Grid.Column="0" BindingContext="{Binding DayAstroEvent.MercuryInZodiac}" />
+                        <controls:EditPlanetInZodiacControl Grid.Row="1" Grid.Column="1" BindingContext="{Binding DayAstroEvent.VenusInZodiac}" />
+                        <controls:EditPlanetInZodiacControl Grid.Row="1" Grid.Column="2" BindingContext="{Binding DayAstroEvent.MarsInZodiac}" />
                         <controls:EditPlanetInZodiacControl Grid.Row="2" Grid.Column="0" BindingContext="{Binding DayAstroEvent.JupiterInZodiac}" />
                         <controls:EditPlanetInZodiacControl Grid.Row="2" Grid.Column="1" BindingContext="{Binding DayAstroEvent.SaturnInZodiac}" />
                         <controls:EditPlanetInZodiacControl Grid.Row="2" Grid.Column="2" BindingContext="{Binding DayAstroEvent.UranusInZodiac}" />

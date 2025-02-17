@@ -5,8 +5,7 @@
              xmlns:pages="clr-namespace:AstroApp.UI.Pages"
              xmlns:controls="clr-namespace:AstroApp.UI.Controls"
              xmlns:model="clr-namespace:AstroApp.Data.Models"
-             xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"
-             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:converters="clr-namespace:AstroApp.UI.Tools.Converters"             
              x:DataType="pages:EventDetailsPage"
              Shell.NavBarIsVisible="False"
              Title="EventDetailsPage">
@@ -40,7 +39,7 @@
         <Grid>
             <Image Source="background4.png" Aspect="Fill" Opacity="1"/>
             <FlexLayout>
-                <Grid VerticalOptions="FillAndExpand">
+                <Grid VerticalOptions="Start">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
@@ -58,7 +57,7 @@
                                 <RowDefinition ></RowDefinition>
                                 <RowDefinition ></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="30" HorizontalOptions="CenterAndExpand"/>
+                            <Label Grid.Row="0"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="24" HorizontalOptions="CenterAndExpand"/>
                             <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -86,15 +85,15 @@
                             <Frame  Grid.Row="3"  x:Name="expandableFrame" Padding="10,0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="12.4,6.2,12.4,6.2">
                                 <Grid ColumnDefinitions="auto,*, auto" Padding="0,0">
                                     <!--Thick gradient line-->
-                                    <BoxView x:Name="timeLine" Grid.Column="1" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                                        <BoxView.Background>
+                                    <Border BackgroundColor="AliceBlue" x:Name="timeLine" Grid.Column="1" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                        <Border.Background>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                                 <GradientStop Color="{StaticResource PrimaryBackground}" Offset="0.0"/>
                                                 <GradientStop Color="{StaticResource PrimaryLightText}" Offset="0.5"/>
                                                 <GradientStop Color="{StaticResource PrimaryBackground}" Offset="1.0"/>
                                             </LinearGradientBrush>
-                                        </BoxView.Background>
-                                    </BoxView>
+                                        </Border.Background>
+                                    </Border>
 
                                     <!-- AbsoluteLayout for the timeline and markers -->
                                     <Grid Grid.Column="1" x:Name="newMoonDayMarkerGrid" Margin="0,20" VerticalOptions="Center">
@@ -357,7 +356,7 @@
                             <CollectionView  Grid.Row="8"  ItemsSource="{Binding DayAstroEvent.PlanetEvents}"  Margin="12.4, 0,12.4,0">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <controls:CalendarPlanetEventControl />
+                                        <controls:PlanetEventControl/>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
