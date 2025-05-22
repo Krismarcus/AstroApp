@@ -49,8 +49,9 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
-	  <CodesignKey>Apple Development: Created via API (XQBB57Z6J6)</CodesignKey>
-	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
+	  <CodesignKey>Apple Distribution: DAIVA KRISTINA MARKAUSKIENĖ (4SHV69JJT9)</CodesignKey>
+	  <CodesignProvision>astrodaivaprofile</CodesignProvision>
+	  <ProvisioningType>manual</ProvisioningType>
 	</PropertyGroup>
 
 	<ItemGroup>

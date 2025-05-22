@@ -40,7 +40,7 @@
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
 	  <CodesignKey>Apple Distribution: DAIVA KRISTINA MARKAUSKIENĖ (4SHV69JJT9)</CodesignKey>
-	  <CodesignProvision>AstrodaivaProfile</CodesignProvision>
+	  <CodesignProvision>astrodaivaprofile</CodesignProvision>
 	  <ProvisioningType>manual</ProvisioningType>
 	</PropertyGroup>
 
