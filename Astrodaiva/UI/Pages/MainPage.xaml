@@ -4,7 +4,7 @@
              xmlns:pages="clr-namespace:Astrodaiva.UI.Pages"
              xmlns:converters="clr-namespace:Astrodaiva.UI.Tools.Converters"
              x:DataType="pages:MainPage"
-             BackgroundColor="Transparent"
+             BackgroundColor="{StaticResource ShadedBackground}"
              Shell.NavBarIsVisible="False"
              x:Class="Astrodaiva.UI.Pages.MainPage">
     <ContentPage.Resources>
@@ -17,7 +17,7 @@
         </LinearGradientBrush>
     </ContentPage.Background>-->
     <Grid>
-        <Image Source="background4.png" Aspect="Fill"  Opacity="1"/>
+        <!--<Image Source="background4.png" Aspect="Fill"  Opacity="1"/>-->
         <FlexLayout  VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"> 
             <Grid VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
@@ -38,7 +38,7 @@
                         </Grid.GestureRecognizers>
                         <Image x:Name="leftArrow" Source="left_arrow.png" HeightRequest="24" HorizontalOptions="Center"/>
                     </Grid>
-                    <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="30" FontAttributes="Bold" >
+                    <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="30" FontAttributes="Bold" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnMonthLabelTapped"/>
                         </Label.GestureRecognizers>

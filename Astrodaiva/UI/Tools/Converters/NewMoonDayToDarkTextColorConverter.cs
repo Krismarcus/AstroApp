@@ -22,6 +22,14 @@ namespace Astrodaiva.UI.Tools.Converters
                         return myColor; // Return the color from resources
                     }
                 }
+
+                else
+                {
+                    if (Application.Current.Resources.TryGetValue("PrimaryDarkText", out var colorValue) && colorValue is Color myColor)
+                    {
+                        return myColor;
+                    }
+                }
             }
 
             // Attempt to retrieve the 'PrimaryBackground' color from resources if no eclipse

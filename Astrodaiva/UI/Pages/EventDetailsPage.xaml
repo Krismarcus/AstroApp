@@ -8,6 +8,7 @@
              xmlns:converters="clr-namespace:Astrodaiva.UI.Tools.Converters"             
              x:DataType="pages:EventDetailsPage"
              Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource ShadedBackground}"
              Title="EventDetailsPage">
     <ContentPage.Resources>
         <!--<ResourceDictionary>
@@ -37,7 +38,7 @@
     </ContentPage.Background>-->
     <ContentPage.Content>
         <Grid>
-            <Image Source="background4.png" Aspect="Fill" Opacity="1"/>
+            <!--<Image Source="background4.png" Aspect="Fill" Opacity="1"/>-->
             <FlexLayout>
                 <Grid VerticalOptions="Start">
                     <Grid.RowDefinitions>
@@ -82,7 +83,7 @@
                                 </Grid>
                             </Grid>
                             <Label Grid.Row="2"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToWeekdayConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="20" HorizontalOptions="CenterAndExpand" />
-                            <Frame  Grid.Row="3"  x:Name="expandableFrame" Padding="10,0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="12.4,6.2,12.4,6.2">
+                            <Frame  Grid.Row="3"  x:Name="expandableFrame" Padding="10,0" CornerRadius="20" BorderColor="{StaticResource PrimaryLightText}" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="12.4,6.2,12.4,6.2">
                                 <Grid ColumnDefinitions="auto,*, auto" Padding="0,0">
                                     <!--Thick gradient line-->
                                     <Border BackgroundColor="AliceBlue" x:Name="timeLine" Grid.Column="1" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
@@ -125,7 +126,7 @@
                                     </Grid>
                                 </Grid>
                             </Frame>
-                            <Frame  Grid.Row="5"  Padding="10" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="12.4, 6.2,12.4,6.2">
+                            <Frame  Grid.Row="5"  Padding="10" CornerRadius="20" BorderColor="{StaticResource PrimaryLightText}" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="12.4, 6.2,12.4,6.2">
                                 <Grid RowDefinitions="*,*">
                                     <Grid Grid.Row="0" ColumnDefinitions="*,*">
                                         <Grid x:Name="sunInZodiacGrid" Grid.Column="0" ColumnDefinitions="*,*"  HorizontalOptions="Center" VerticalOptions="Center">
@@ -206,7 +207,7 @@
                                     </Grid>
                                 </Grid>
                             </Frame>
-                            <Frame   Grid.Row="6" Padding="0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12.4, 6.2,12.4,6.2">
+                            <Frame   Grid.Row="6" Padding="0" CornerRadius="20" BorderColor="{StaticResource PrimaryLightText}" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12.4, 6.2,12.4,6.2">
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding DayAstroEvent.EventText}" Value="">
                                         <Setter Property="IsVisible" Value="False"/>
@@ -369,21 +370,21 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
                                     <Grid Grid.Row="0" ColumnDefinitions="7*,*">
-                                        <Label Grid.Column="0" x:Name="moonDayHeader" Text="{Binding InfoConteiner.Header}" TextColor="{StaticResource DarkBlueBackground}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Label Grid.Column="0" x:Name="moonDayHeader" Text="{Binding InfoConteiner.Header}" TextColor="{StaticResource PrimaryDarkText}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
                                         <Button Text="X" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Start"
                                     BackgroundColor="Transparent"
-                                    TextColor="{StaticResource DarkBlueBackground}" FontAttributes="Bold"
+                                    TextColor="{StaticResource PrimaryDarkText}" FontAttributes="Bold"
                                     Clicked="CloseMoonDayInfoScreen_Clicked"/>
                                     </Grid>
                                     <ScrollView Grid.Row="1">
                                         <Label x:Name="moonDayInfoScreenText" Text="{Binding InfoConteiner.InfoText}" FontSize="14" HorizontalOptions="CenterAndExpand"
-                                       TextColor="{StaticResource DarkBlueBackground}" />
+                                       TextColor="{StaticResource PrimaryDarkText}" />
                                     </ScrollView>
                                 </Grid>
                             </Frame>
                         </Grid>
                     </ScrollView>
-                    <Frame  Grid.Row="1" Padding="0"  CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HeightRequest="50"  Margin="12.4, 10,12.4,20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Frame  Grid.Row="1" Padding="0"  CornerRadius="20" BorderColor="{StaticResource PrimaryLightText}" BackgroundColor="{StaticResource PrimaryBackground}" HeightRequest="50"  Margin="12.4, 10,12.4,20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                         <Frame.Shadow>
                             <Shadow Brush="{StaticResource PrimaryLightText}"/>
                         </Frame.Shadow>

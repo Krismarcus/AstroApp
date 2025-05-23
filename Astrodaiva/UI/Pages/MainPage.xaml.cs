@@ -118,9 +118,9 @@ namespace Astrodaiva.UI.Pages
         public Color TechBackgroundColor { get; set; } = Colors.Transparent;
         public Color TravelBackgroundColor { get; set; } = Colors.Transparent;
 
-        private bool isProfileGridVisible = false;        
+        private bool isProfileGridVisible = false;
 
-        private Color weekdaysColor = Color.FromRgb(254, 234, 181); // Default color
+        private Color weekdaysColor = (Color)Application.Current.Resources["PrimaryDarkText"];
 
         public Color WeekdaysColor
         {
