@@ -248,20 +248,26 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
             }
         }
 
-        // Apply the shadow color
-        ApplyShadowColor(borderColor, fontColor);
+        ApplyBorderColor(borderColor, fontColor);
+
+        //ApplyShadowColor(borderColor);
+
     }    
 
-    private void ApplyShadowColor(Color borderColor, Color fontColor)
+    private void ApplyBorderColor(Color borderColor, Color fontColor)
     {
         dayLabel.TextColor = fontColor;
-        dayCard.Stroke = borderColor;
-        //dayCard.Shadow = new Shadow
-        //{
-        //    Brush = new SolidColorBrush(borderColor),
-        //    Radius = 5,
-        //    Opacity = 1,
-        //    Offset = new Point(0, 5)
-        //};
+        dayCard.Stroke = borderColor;        
+    }
+
+    private void ApplyShadowColor(Color borderColor)
+    {
+        dayCard.Shadow = new Shadow
+        {
+            Brush = new SolidColorBrush(borderColor),
+            Radius = 5,
+            Opacity = 1,
+            Offset = new Point(0, 5)
+        };
     }
 }
