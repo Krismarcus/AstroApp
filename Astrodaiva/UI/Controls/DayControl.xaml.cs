@@ -209,7 +209,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
     private void UpdateDayCardColor()
     {
 
-        Color shadowColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
+        Color borderColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
         Color fontColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
 
         if (DayAstroEvent != null)
@@ -218,13 +218,13 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
             {
                 if (DayAstroEvent.MoonDay.NewMoonDay == 1)
                 {
-                    shadowColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
+                    borderColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
                     fontColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
                 }
 
                 else if (DayAstroEvent.MoonEclipse || DayAstroEvent.SunEclipse)
                 {
-                    shadowColor = ColorManager.GetResourceColor("PrimaryDarkText", Colors.Transparent);
+                    borderColor = ColorManager.GetResourceColor("PrimaryDarkText", Colors.Transparent);
                     fontColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
                 }
             }
@@ -239,29 +239,29 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
                 };
 
                 // Set shadowColor based on activity profile, default to transparent for cases not good or bad
-                shadowColor = ActivityProfile switch
+                borderColor = ActivityProfile switch
                 {
-                    ActivityQuality.Good => Color.FromRgb(15, 255, 80),
-                    ActivityQuality.Bad => Colors.Red,
+                    ActivityQuality.Good => ColorManager.GetResourceColor("GreenGlowEffect", Colors.Transparent),
+                    ActivityQuality.Bad => ColorManager.GetResourceColor("RedGlowEffect", Colors.Transparent),
                     _ => Colors.Transparent, // Default to transparent if not good or bad
                 };
             }
         }
 
         // Apply the shadow color
-        ApplyShadowColor(shadowColor, fontColor);
+        ApplyShadowColor(borderColor, fontColor);
     }    
 
-    private void ApplyShadowColor(Color shadowColor, Color fontColor)
+    private void ApplyShadowColor(Color borderColor, Color fontColor)
     {
         dayLabel.TextColor = fontColor;
-        // Assuming `dayCard` is the x:Name of your Border control
-        dayCard.Shadow = new Shadow
-        {
-            Brush = new SolidColorBrush(shadowColor),
-            Radius = 5,
-            Opacity = 1,
-            Offset = new Point(0, 5)
-        };
+        dayCard.Stroke = borderColor;
+        //dayCard.Shadow = new Shadow
+        //{
+        //    Brush = new SolidColorBrush(borderColor),
+        //    Radius = 5,
+        //    Opacity = 1,
+        //    Offset = new Point(0, 5)
+        //};
     }
 }
