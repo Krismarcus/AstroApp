@@ -30,7 +30,7 @@ namespace Astrodaiva.UI.Tools.Converters
             }
 
             // Attempt to retrieve the 'PrimaryBackground' color from resources if no eclipse
-            if (Application.Current.Resources.TryGetValue("PrimaryBackground", out var colorValue) && colorValue is Color myColor)
+            if (Application.Current.Resources.TryGetValue("ShadedBackground", out var colorValue) && colorValue is Color myColor)
             {
                 return myColor; // Return the color from resources
             }

@@ -30,12 +30,12 @@
         <converters:BadActivityQualityToVisibilityConverter x:Key="BadActivityQualityToVisibilityConverter"/>
         <converters:MoonPhaseImageToIntConverter x:Key="MoonPhaseImageToIntConverter"/>
     </ContentPage.Resources>
-    <!--<ContentPage.Background>
+    <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
             <GradientStop Color="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToLightBackgroundColorConverter}}" Offset="0.1"/>
             <GradientStop Color="{StaticResource SecondaryBackground}" Offset="1.0"/>
         </LinearGradientBrush>
-    </ContentPage.Background>-->
+    </ContentPage.Background>
     <ContentPage.Content>
         <Grid>
             <!--<Image Source="background4.png" Aspect="Fill" Opacity="1"/>-->
