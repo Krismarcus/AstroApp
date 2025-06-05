@@ -250,7 +250,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
 
         ApplyBorderColor(borderColor, fontColor);
 
-        //ApplyShadowColor(borderColor);
+        ApplyShadowColor(borderColor);
 
     }    
 
@@ -265,9 +265,9 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
         dayCard.Shadow = new Shadow
         {
             Brush = new SolidColorBrush(borderColor),
-            Radius = 5,
+            Radius = 1,
             Opacity = 1,
-            Offset = new Point(0, 5)
+            Offset = new Point(0, 3)
         };
     }
 }
