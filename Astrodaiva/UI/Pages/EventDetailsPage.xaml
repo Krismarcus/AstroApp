@@ -215,14 +215,24 @@
                                 </Frame.Triggers>
                                 <Label Text="{Binding DayAstroEvent.EventText}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="16" Margin="20"/>
                             </Frame>
-                            <Grid  Grid.Row="7" RowDefinitions="Auto,Auto" Margin="7.4,0">
+                            <Grid  Grid.Row="7" RowDefinitions="Auto,Auto,Auto,Auto" Margin="7.4,0">
                                 <FlexLayout Wrap="Wrap" Grid.Row="0" AlignItems="Start" JustifyContent="SpaceBetween" Direction="Row">
-                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="40" >
+                                    <Border FlexLayout.Basis="100%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="40" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,5" Opacity="1" Radius="5"/>
                                         </Border.Shadow>
                                         <Label Text="Svarbūs darbai" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
+                                </FlexLayout>
+                                <FlexLayout Wrap="Wrap" Grid.Row="1" AlignItems="Start" JustifyContent="SpaceBetween" Direction="Row">
+                                    <Border FlexLayout.Basis="100%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="40" >
+                                        <Border.Shadow>
+                                            <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,5" Opacity="1" Radius="5"/>
+                                        </Border.Shadow>
+                                        <Label Text="Svarbūs darbai" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                    </Border>
+                                </FlexLayout>
+                                <FlexLayout Wrap="Wrap" Grid.Row="2" AlignItems="Start" JustifyContent="SpaceBetween" Direction="Row">                                    
                                     <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="40" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,5" Opacity="1" Radius="5"/>
@@ -284,13 +294,7 @@
                                         <Label Text="Sodininkystė" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                 </FlexLayout>
-                                <FlexLayout Wrap="Wrap" Grid.Row="1" AlignItems="Start" JustifyContent="SpaceBetween" Direction="Row">
-                                    <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="40" >
-                                        <Border.Shadow>
-                                            <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,5" Opacity="1" Radius="5"/>
-                                        </Border.Shadow>
-                                        <Label Text="Svarbūs darbai" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
-                                    </Border>
+                                <FlexLayout Wrap="Wrap" Grid.Row="3" AlignItems="Start" JustifyContent="SpaceBetween" Direction="Row">                                    
                                     <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10,10,10,10" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="40" >
                                         <Border.Shadow>
                                             <Shadow Brush="{StaticResource RedGlowEffect}" Offset="0,5" Opacity="1" Radius="5"/>
