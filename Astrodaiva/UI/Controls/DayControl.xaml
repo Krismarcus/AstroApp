@@ -22,14 +22,7 @@
         </Border.GestureRecognizers>
         <VerticalStackLayout >
             <Grid ColumnDefinitions="*,Auto,*">
-                <Label Grid.Column="1" x:Name="dayLabel" Text="{Binding DayNumber}" FontAttributes="Bold" HorizontalOptions="Center" Margin="0"/>
-                <Ellipse Grid.Column="2" x:Name="dayIndicator"
-             WidthRequest="8" 
-             HeightRequest="8" 
-             HorizontalOptions="Center"
-             VerticalOptions="Center"
-             Fill="Transparent" 
-             Margin="0,0,0,0"/>
+                <Label Grid.Column="1" x:Name="dayLabel" Text="{Binding DayNumber}" FontAttributes="Bold" HorizontalOptions="Center" Margin="0"/>                
             </Grid>            
             <Grid Padding="5" HorizontalOptions="Center" VerticalOptions="Start">
                 <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" WidthRequest="30" HeightRequest="30">
@@ -38,6 +31,13 @@
                     </Image.Shadow>                    
                 </Image>
             </Grid>
+            <Ellipse Grid.Column="2" x:Name="dayIndicator"
+WidthRequest="10" 
+HeightRequest="10" 
+HorizontalOptions="Center"
+VerticalOptions="Center"
+Fill="Transparent" 
+Margin="0,0,0,0"/>
         </VerticalStackLayout>
     </Border>
 </ContentView>

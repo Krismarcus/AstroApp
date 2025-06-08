@@ -32,18 +32,18 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0" Padding="40,0">
+                    <Grid Grid.Column="0" Padding="20,0,0,0">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="PrevMonth_Clicked"/>
                         </Grid.GestureRecognizers>
-                        <Image x:Name="leftArrow" Source="left_arrow.png" HeightRequest="24" HorizontalOptions="Center"/>
+                        <Image x:Name="leftArrow" Source="left_arrow.png" HeightRequest="30" HorizontalOptions="Center" />
                     </Grid>
-                    <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="30" FontAttributes="Bold" >
+                    <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{StaticResource PrimaryDarkText}" CharacterSpacing="4" HorizontalOptions="Center" VerticalOptions="Center" FontSize="30" FontAttributes="Bold" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnMonthLabelTapped"/>
                         </Label.GestureRecognizers>
                     </Label>
-                    <Grid Grid.Column="2" Padding="40,0">
+                    <Grid Grid.Column="2" Padding="0,0,20,0">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="NextMonth_Clicked"/>
                         </Grid.GestureRecognizers>
