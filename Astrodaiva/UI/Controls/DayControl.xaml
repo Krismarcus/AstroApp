@@ -30,13 +30,7 @@
              VerticalOptions="Center"
              Fill="Transparent" 
              Margin="0,0,0,0"/>
-            </Grid>
-            <Grid ColumnDefinitions="*,*">
-                <Image Grid.Column="0" Source="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToBluePlanetInSunIconsConverter}}" WidthRequest="20" HeightRequest="20">                    
-                </Image>
-                <Image Grid.Column="1" Source="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToBluePlanetInMoonIconsConverter}}" WidthRequest="20" HeightRequest="20">                    
-                </Image>
-            </Grid>
+            </Grid>            
             <Grid Padding="5" HorizontalOptions="Center" VerticalOptions="Start">
                 <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" WidthRequest="30" HeightRequest="30">
                     <Image.Shadow>
