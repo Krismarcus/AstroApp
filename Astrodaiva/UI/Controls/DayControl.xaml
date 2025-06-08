@@ -21,7 +21,16 @@
             <TapGestureRecognizer Tapped="OnDayTapped"  />
         </Border.GestureRecognizers>
         <VerticalStackLayout >
-            <Label x:Name="dayLabel" Text="{Binding DayNumber}" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Grid ColumnDefinitions="*,Auto,*">
+                <Label Grid.Column="1" x:Name="dayLabel" Text="{Binding DayNumber}" FontAttributes="Bold" HorizontalOptions="Center" Margin="0"/>
+                <Ellipse Grid.Column="2" x:Name="dayIndicator"
+             WidthRequest="8" 
+             HeightRequest="8" 
+             HorizontalOptions="Center"
+             VerticalOptions="Center"
+             Fill="Transparent" 
+             Margin="0,0,0,0"/>
+            </Grid>
             <Grid ColumnDefinitions="*,*">
                 <Image Grid.Column="0" Source="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToBluePlanetInSunIconsConverter}}" WidthRequest="20" HeightRequest="20">                    
                 </Image>

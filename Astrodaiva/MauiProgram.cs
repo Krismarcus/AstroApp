@@ -13,6 +13,8 @@ namespace Astrodaiva
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("GillSans.ttf", "GillSans");
+                    fonts.AddFont("GillSans-Bold.ttf", "GillSansBold");
                 });
 
 #if DEBUG

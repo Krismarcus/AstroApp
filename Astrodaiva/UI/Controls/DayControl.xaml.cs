@@ -209,7 +209,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
     private void UpdateDayCardColor()
     {
 
-        Color borderColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
+        Color activityColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
         Color fontColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
 
         if (DayAstroEvent != null)
@@ -218,13 +218,13 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
             {
                 if (DayAstroEvent.MoonDay.NewMoonDay == 1)
                 {
-                    borderColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
+                    activityColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
                     fontColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
                 }
 
                 else if (DayAstroEvent.MoonEclipse || DayAstroEvent.SunEclipse)
                 {
-                    borderColor = ColorManager.GetResourceColor("PrimaryDarkText", Colors.Transparent);
+                    activityColor = ColorManager.GetResourceColor("PrimaryDarkText", Colors.Transparent);
                     fontColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
                 }
             }
@@ -239,7 +239,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
                 };
 
                 // Set shadowColor based on activity profile, default to transparent for cases not good or bad
-                borderColor = ActivityProfile switch
+                activityColor = ActivityProfile switch
                 {
                     ActivityQuality.Good => ColorManager.GetResourceColor("GreenGlowEffect", Colors.Transparent),
                     ActivityQuality.Bad => ColorManager.GetResourceColor("RedGlowEffect", Colors.Transparent),
@@ -248,17 +248,28 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
             }
         }
 
-        ApplyBorderColor(borderColor, fontColor);
+        ApplyFontColor(fontColor);
+        ApplyIndicatorColor(activityColor);
+        //ApplyBorderColor(activityColor);
+        //ApplyShadowColor(activityColor);
 
-        ApplyShadowColor(borderColor);
+    }
 
-    }    
+    private void ApplyIndicatorColor(Color activityColor)
+    {
+        dayIndicator.Fill = activityColor;
+    }
 
-    private void ApplyBorderColor(Color borderColor, Color fontColor)
+    private void ApplyFontColor(Color fontColor)
     {
         dayLabel.TextColor = fontColor;
-        dayCard.Stroke = borderColor;        
     }
+
+    private void ApplyBorderColor(Color borderColor)
+    {
+        
+        dayCard.Stroke = borderColor;        
+    }    
 
     private void ApplyShadowColor(Color borderColor)
     {

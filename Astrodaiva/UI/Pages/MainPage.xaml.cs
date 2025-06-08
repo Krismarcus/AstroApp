@@ -271,7 +271,7 @@ namespace Astrodaiva.UI.Pages
             this.month = month;
             DateTime startOfMonth = new DateTime(year, month, 1);
             string monthnameLT = startOfMonth.ToString("MMMM", App.AppData.CultureInfo);
-            this.MonthName = char.ToUpperInvariant(monthnameLT[0]) + monthnameLT.Substring(1);
+            this.MonthName = monthnameLT.ToUpperInvariant();
             int days = DateTime.DaysInMonth(year, month);
             int dayOfWeek = ((int)startOfMonth.DayOfWeek + 6) % 7;
             PopulateCalendar(days, dayOfWeek);
