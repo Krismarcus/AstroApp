@@ -15,7 +15,7 @@ namespace Astrodaiva.UI.Tools.Converters
             {
                 // "lt-LT" is the culture code for Lithuanian
                 var weekDayLt = date.ToString("dddd", new CultureInfo("lt-LT"));
-                return char.ToUpperInvariant(weekDayLt[0]) + weekDayLt.Substring(1);
+                return weekDayLt.ToUpperInvariant();
             }
             return value;
         }

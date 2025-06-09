@@ -18,7 +18,7 @@
     <Color x:Key="SecondaryDarkText">#9880e5</Color>
     <Color x:Key="Tertiary">#2B0B98</Color>
     <Color x:Key="GreenGlowEffect">#04c8c7</Color>
-    <Color x:Key="RedGlowEffect">#C5C5C5</Color>
+    <Color x:Key="RedGlowEffect">#babcbb</Color>
 
 
     <Color x:Key="White">White</Color>

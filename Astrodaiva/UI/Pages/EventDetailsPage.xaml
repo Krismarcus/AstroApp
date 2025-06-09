@@ -39,12 +39,8 @@
     <ContentPage.Content>
         <Grid>
             <!--<Image Source="background4.png" Aspect="Fill" Opacity="1"/>-->
-            <FlexLayout>
-                <Grid VerticalOptions="Start">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+            <FlexLayout VerticalOptions="Start">
+               
                     <ScrollView Grid.Row="0">
                         <Grid >
                             <Grid.RowDefinitions>
@@ -57,8 +53,9 @@
                                 <RowDefinition ></RowDefinition>
                                 <RowDefinition ></RowDefinition>
                                 <RowDefinition ></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="24" HorizontalOptions="CenterAndExpand"/>
+                                <RowDefinition ></RowDefinition>
+                        </Grid.RowDefinitions>
+                            <Label Grid.Row="0"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="24" CharacterSpacing="4" HorizontalOptions="CenterAndExpand"/>
                             <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -82,8 +79,8 @@
                                     <Image x:Name="rightArrow" Source="right_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
                                 </Grid>
                             </Grid>
-                            <Label Grid.Row="2"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToWeekdayConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="20" HorizontalOptions="CenterAndExpand" />
-                            <Frame  Grid.Row="3"  x:Name="expandableFrame" Padding="10,0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="12.4,6.2,12.4,6.2">
+                            <Label Grid.Row="2"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToWeekdayConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="17" CharacterSpacing="4" HorizontalOptions="CenterAndExpand" />
+                            <Frame  Grid.Row="3"  x:Name="expandableFrame" Padding="10,0" CornerRadius="30" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="12.4,6.2,12.4,6.2">
                                 <Grid ColumnDefinitions="auto,*, auto" Padding="0,0">
                                     <!--Thick gradient line-->
                                     <Border BackgroundColor="AliceBlue" x:Name="timeLine" Grid.Column="1" HeightRequest="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
@@ -126,7 +123,7 @@
                                     </Grid>
                                 </Grid>
                             </Frame>
-                            <Frame  Grid.Row="5"  Padding="10" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="12.4, 6.2,12.4,6.2">
+                            <Frame  Grid.Row="5"  Padding="10" CornerRadius="30" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="12.4, 6.2,12.4,6.2">
                                 <Grid RowDefinitions="*,*">
                                     <Grid Grid.Row="0" ColumnDefinitions="*,*">
                                         <Grid x:Name="sunInZodiacGrid" Grid.Column="0" ColumnDefinitions="*,*"  HorizontalOptions="Center" VerticalOptions="Center">
@@ -207,7 +204,7 @@
                                     </Grid>
                                 </Grid>
                             </Frame>
-                            <Frame   Grid.Row="6" Padding="0" CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12.4, 6.2,12.4,6.2">
+                            <Frame   Grid.Row="6" Padding="0" CornerRadius="30" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12.4, 6.2,12.4,6.2">
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding DayAstroEvent.EventText}" Value="">
                                         <Setter Property="IsVisible" Value="False"/>
@@ -218,12 +215,12 @@
                             <Grid  Grid.Row="7" RowDefinitions="Auto,Auto,Auto,Auto" Margin="7.4,0">
                                 <FlexLayout Wrap="Wrap" Grid.Row="0" AlignItems="Start" JustifyContent="SpaceBetween" Direction="Row" Padding="50,0">
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource GreenGlowEffect}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Svarbūs darbai" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="SVARBŪS DARBAI" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                 </FlexLayout>
                                 <FlexLayout Wrap="Wrap" Grid.Row="1" AlignItems="Start" JustifyContent="SpaceBetween" Direction="Row" Padding="50,0">
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource RedGlowEffect}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Svarbūs darbai" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="SVARBŪS DARBAI" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                 </FlexLayout>
                                 <FlexLayout Wrap="Wrap" Grid.Row="2" AlignItems="Start" JustifyContent="SpaceBetween" Direction="Row" Padding="50,0">
@@ -231,54 +228,54 @@
                                         <!--<Border.Shadow>
                                             <Shadow Brush="{StaticResource GreenGlowEffect}" Offset="0,5" Opacity="1" Radius="5"/>
                                         </Border.Shadow>-->
-                                        <Label Text="Sutartys" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="SUTARTYS" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource GreenGlowEffect}" IsVisible="{Binding DayAstroEvent.Meetings, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Susitikimai" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="SUSITIKIMAI" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>                                   
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource GreenGlowEffect}" IsVisible="{Binding DayAstroEvent.Travel, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Kelionės" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="KELIONĖS" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>                                    
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource GreenGlowEffect}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Pirkiniai" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="PIRKINIAI" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource GreenGlowEffect}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Meilė" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="MEILĖ" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource GreenGlowEffect}" IsVisible="{Binding DayAstroEvent.Beauty, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Grožis" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="GROŽIS" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource GreenGlowEffect}" IsVisible="{Binding DayAstroEvent.Barber, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Kirpykla" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="KIRPYKLA" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource GreenGlowEffect}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource GoodActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Sodininkystė" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="SODININKYSTĖ" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                 </FlexLayout>
                                 <FlexLayout Wrap="Wrap" Grid.Row="3" AlignItems="Start" JustifyContent="SpaceBetween" Direction="Row" Padding="50,0">
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource RedGlowEffect}" IsVisible="{Binding DayAstroEvent.Contracts, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Sutartys" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="SUTARTYS" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource RedGlowEffect}" IsVisible="{Binding DayAstroEvent.Meetings, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Susitikimai" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="SUSITIKIMAI" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>                                    
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource RedGlowEffect}" IsVisible="{Binding DayAstroEvent.Travel, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Kelionės" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="KELIONĖS" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>                                    
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource RedGlowEffect}" IsVisible="{Binding DayAstroEvent.Buystuff, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Pirkiniai" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="PIRKINIAI" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource RedGlowEffect}" IsVisible="{Binding DayAstroEvent.Love, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Meilė" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="MEILE" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource RedGlowEffect}" IsVisible="{Binding DayAstroEvent.Beauty, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Grožis" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="GROŽIS" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource RedGlowEffect}" IsVisible="{Binding DayAstroEvent.Barber, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Kirpykla" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="KIRPYKLA" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                     <Border FlexLayout.Basis="100%" Padding="0" Margin="5" Stroke="Transparent" BackgroundColor="{StaticResource RedGlowEffect}" IsVisible="{Binding DayAstroEvent.Gardening, Converter={StaticResource BadActivityQualityToVisibilityConverter}}" HorizontalOptions="FillAndExpand" HeightRequest="35" >
-                                        <Label Text="Sodininkystė" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" Margin="10,5" FontAutoScalingEnabled="True"/>
+                                        <Label Text="SODININKYSTĖ" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" CharacterSpacing="4" Margin="10,5" FontAutoScalingEnabled="True"/>
                                     </Border>
                                 </FlexLayout>
                             </Grid>
@@ -290,7 +287,7 @@
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
-                            <Frame Grid.Row="4" x:Name="moonDayInfoScreen" Padding="10" CornerRadius="15" Margin="12.4,0"
+                            <Frame Grid.Row="4" x:Name="moonDayInfoScreen" Padding="10" CornerRadius="30" Margin="12.4,0"
                            BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}" MaximumHeightRequest="300"
                            IsVisible="False" >
                                 <Grid>
@@ -311,15 +308,14 @@
                                     </ScrollView>
                                 </Grid>
                             </Frame>
+                        <Grid Grid.Row="9"  Padding="0"  BackgroundColor="Transparent" HorizontalOptions="Center" HeightRequest="50" WidthRequest="50">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnPageTapped"/>
+                            </Grid.GestureRecognizers>
+                            <Image Grid.Column="0" x:Name="downArrowImage" Source="down_arrow.png" WidthRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent"/>
                         </Grid>
-                    </ScrollView>
-                    <Frame  Grid.Row="1" Padding="0"  CornerRadius="20" BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryBackground}" HeightRequest="50"  Margin="12.4, 10,12.4,20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">                       
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnPageTapped"/>
-                        </Frame.GestureRecognizers>
-                        <Label Text="Atgal į Kalendorių" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16"/>
-                    </Frame>
-                </Grid>
+                        </Grid>                        
+                    </ScrollView>               
                 <!--<Frame x:Name="PlanetInZodiacInfoScreen" Padding="10" CornerRadius="15"
 BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}"
 IsVisible="False" AbsoluteLayout.LayoutFlags="PositionProportional"

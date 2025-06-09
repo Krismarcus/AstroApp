@@ -15,7 +15,7 @@ namespace Astrodaiva.UI.Tools.Converters
             {
                 // "lt-LT" is the culture code for Lithuanian
                 var monthLt= date.ToString("MMMM", new CultureInfo("lt-LT"));
-                return char.ToUpperInvariant(monthLt[0]) + monthLt.Substring(1);
+                return monthLt.ToUpperInvariant();
             }
             return value;
         }

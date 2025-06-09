@@ -257,7 +257,7 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
 
     private void ApplyIndicatorColor(Color activityColor)
     {
-        dayIndicator.Fill = activityColor;
+        dayIndicator.BackgroundColor = activityColor;
     }
 
     private void ApplyFontColor(Color fontColor)

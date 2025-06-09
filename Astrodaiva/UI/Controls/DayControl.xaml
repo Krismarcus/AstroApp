@@ -16,13 +16,13 @@
         <converters:ActivityQualityToFontColorConverter x:Key="ActivityQualityToFontColorConverter"/>
         <converters:ActivityQualityToStrokeThicknessConverter x:Key="ActivityQualityToStrokeThicknessConverter"/>        
     </ContentView.Resources>
-    <Border x:Name="dayCard" Stroke="Transparent" BackgroundColor="{Binding DayAstroEvent, Converter={StaticResource DayBorderBackgroundColorToEclipseConverter}}" StrokeShape="RoundRectangle 10,10,10,10" Margin="2.4, 4">       
+    <Border x:Name="dayCard" Stroke="Transparent" BackgroundColor="{Binding DayAstroEvent, Converter={StaticResource DayBorderBackgroundColorToEclipseConverter}}" StrokeShape="RoundRectangle 10,10,10,10" Margin="2.4, 4" Padding="0,2,0,0">       
         <Border.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnDayTapped"  />
         </Border.GestureRecognizers>
         <VerticalStackLayout >
             <Grid ColumnDefinitions="*,Auto,*">
-                <Label Grid.Column="1" x:Name="dayLabel" Text="{Binding DayNumber}" FontAttributes="Bold" HorizontalOptions="Center" Margin="0"/>                
+                <Label Grid.Column="1" x:Name="dayLabel" Text="{Binding DayNumber}" FontAttributes="Bold" HorizontalOptions="Center"/>                
             </Grid>            
             <Grid Padding="5" HorizontalOptions="Center" VerticalOptions="Start">
                 <Image Grid.Column="0" Source="{Binding DayAstroEvent.MoonDay.NewMoonDay, Converter={StaticResource IntToImageConverter}}" WidthRequest="30" HeightRequest="30">
@@ -31,13 +31,23 @@
                     </Image.Shadow>                    
                 </Image>
             </Grid>
-            <Ellipse Grid.Column="2" x:Name="dayIndicator"
-WidthRequest="10" 
-HeightRequest="10" 
-HorizontalOptions="Center"
-VerticalOptions="Center"
-Fill="Transparent" 
-Margin="0,0,0,0"/>
+            <!--<Grid ColumnDefinitions="*,*">
+                <Image Grid.Column="0" Source="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToBluePlanetInSunIconsConverter}}" WidthRequest="20" HeightRequest="20">
+                </Image>
+                <Image Grid.Column="1" Source="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToBluePlanetInMoonIconsConverter}}" WidthRequest="20" HeightRequest="20">
+                </Image>
+            </Grid>-->
+            <BoxView Grid.Row="1" 
+                     x:Name="dayIndicator"
+                     HeightRequest="15"
+                     WidthRequest="15"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="End"                     
+                     BackgroundColor="Black"
+                     Margin="0"
+                     CornerRadius="15,15,0,0"
+                     TranslationY="6"
+                     />
         </VerticalStackLayout>
     </Border>
 </ContentView>

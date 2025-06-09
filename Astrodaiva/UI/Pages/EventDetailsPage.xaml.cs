@@ -144,13 +144,11 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
     private async void OnPageTapped(object sender, TappedEventArgs e)
     {
-        var frame = sender as Frame; // Cast sender to Border.
+        var frame = sender as Grid; // Cast sender to Border.
         if (frame == null) return; // Safety check.
 
-        // Scale the border to 1.1x size over 100 milliseconds.
-        await frame.ScaleTo(1.1, 100);
-        // Then scale it back to original size over 100 milliseconds.
-        await frame.ScaleTo(1.0, 100);
+        await downArrowImage.TranslateTo(0, 10, 100); // Move 10 units to the left over 100ms
+        await downArrowImage.TranslateTo(0, 0, 100); // Move back to original position
         await Navigation.PopModalAsync(); // Close the modal page
     }
 
