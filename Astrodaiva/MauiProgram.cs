@@ -8,12 +8,12 @@ namespace Astrodaiva
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiApp<App>()
+                .UseMauiApp<App>()                
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                    fonts.AddFont("GillSans.ttf", "GillSans");
+                    fonts.AddFont("GillSans.otf", "GillSans");
                     fonts.AddFont("GillSans-Bold.ttf", "GillSansBold");
                 });
 

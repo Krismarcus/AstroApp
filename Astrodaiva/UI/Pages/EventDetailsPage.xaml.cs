@@ -75,10 +75,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             }
         }
     }
-
-    private Grid currentlyEnlargedMoonGrid;
-    private bool isMoonGridEnlarged = false;   
-
+    
     public EventDetailsPage()
     {
         InitializeComponent();
@@ -93,8 +90,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         // Ensure UI operations happen on the main thread
         MainThread.BeginInvokeOnMainThread(() =>
         {            
-            timeLabel.Opacity = 0;
-            ResetToDefaultState();
+            timeLabel.Opacity = 0;            
             UpdateDayEventInfoList();
             Task.Delay(50).ContinueWith(t => AnimateMarkerToPosition(DayAstroEvent.MoonDay));
         });
@@ -274,34 +270,10 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
-    private async Task ToggleMoonGridAnimation(Grid moonGrid, string infoText, string header)
+    private async Task ToggleMoonGridAnimation(string infoText, string header)
     {
-        // Check if there's a previously enlarged grid and it's not the same as the current, shrink it
-        if (currentlyEnlargedMoonGrid != null && currentlyEnlargedMoonGrid != moonGrid && isMoonGridEnlarged)
-        {
-            await currentlyEnlargedMoonGrid.ScaleTo(1, 200, Easing.CubicIn);            
-            await HideMoonDayInfo(); // Assuming you have a method to hide details about the moon day
-        }
-
-        // Now handle the current grid
-        if (currentlyEnlargedMoonGrid != moonGrid || !isMoonGridEnlarged)
-        {
-            await moonGrid.ScaleTo(1.2, 400, Easing.CubicOut);
-            isMoonGridEnlarged = true;
-            currentlyEnlargedMoonGrid = moonGrid;
-
-            // Update the details about the moon day here
-
-            // Show the details after updating
-            await ShowMoonDayInfo(infoText, header); // Assuming you have a method to show details about the moon day
-        }
-        else
-        {
-            await moonGrid.ScaleTo(1, 400, Easing.CubicIn);
-            isMoonGridEnlarged = false;
-            // Optionally, hide the details if the same grid is tapped again
-            await HideMoonDayInfo();
-        }
+        await ShowMoonDayInfo(infoText, header); // Assuming you have a method to show details about the moon day
+        
     }
 
 
@@ -317,92 +289,46 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         {
             string moonDayLT = TranslationManager.TranslateMoonDay(DayAstroEvent.MoonDay.PreviousMoonDay);
             string moonDayInfo = AstroDayDetails.PreviousMoonDayDetails;
-            await ToggleMoonGridAnimation(previousMoonDayImageGrid, moonDayInfo, moonDayLT);               
+            await ToggleMoonGridAnimation(moonDayInfo, moonDayLT);               
             
         }
         else if (sender == newMoonDayImageGrid)
         {
             string moonDayLT = TranslationManager.TranslateMoonDay(DayAstroEvent.MoonDay.NewMoonDay);
             string moonDayInfo = AstroDayDetails.NewMoonDayDetails;
-            await ToggleMoonGridAnimation(newMoonDayImageGrid, moonDayInfo, moonDayLT);                
+            await ToggleMoonGridAnimation(moonDayInfo, moonDayLT);                
             
         }
         else if (sender == middleMoonDayMarkerGrid)
         {
             string moonDayLT = TranslationManager.TranslateMoonDay(DayAstroEvent.MoonDay.MiddleMoonDay);
             string moonDayInfo = AstroDayDetails.MiddleMoonDayDetails;
-            await ToggleMoonGridAnimation(middleMoonDayMarkerGrid, moonDayInfo, moonDayLT);
+            await ToggleMoonGridAnimation(moonDayInfo, moonDayLT);
 
         }
-    }   
+    }
 
     private async Task ShowMoonDayInfo(string infoText, string header)
     {
-        // Fade out existing content quickly if it's already visible
-        if (moonDayInfoScreen.IsVisible)
-        {
-            await moonDayInfoScreen.FadeTo(0, 200, Easing.CubicIn);
-        }
+        popupText.Text = infoText;
+        popupHeader.Text = header;
 
-        // Assuming chatBubble.Text is updated elsewhere in the MoonImage_Tapped handler
-        moonDayInfoScreen.Opacity = 0;
-        moonDayInfoScreen.Scale = 0.5;
-        moonDayInfoScreen.IsVisible = true;
-        UpdateChatBubbleContent(infoText, header);
+        popupOverlay.Opacity = 0;
+        popupOverlay.IsVisible = true;
+        popupOverlay.Scale = 1;
 
-        // Fade in new content
-        var fadeAnimation = moonDayInfoScreen.FadeTo(1, 200, Easing.CubicOut);
-        var scaleAnimation = moonDayInfoScreen.ScaleTo(1, 200, Easing.CubicOut);
-        await Task.WhenAll(fadeAnimation, scaleAnimation);
+        await Task.WhenAll(
+            popupOverlay.FadeTo(1, 200, Easing.CubicOut)            
+        );
     }
 
-    private async Task HideMoonDayInfo()
+    private async void HideInfoScreen(object sender, TappedEventArgs e)
     {
-        // Initiate fade out
-        await moonDayInfoScreen.FadeTo(0, 200, Easing.CubicIn);
-
-        // Scale down and hide
-        var scaleAnimation = moonDayInfoScreen.ScaleTo(0.5, 200, Easing.CubicIn);
-        await Task.WhenAll(scaleAnimation);
-        moonDayInfoScreen.IsVisible = false;
-    }
-
-    private void UpdateChatBubbleContent(string newContent, string newHeader)
-    {
-        // Directly update the chat bubble's text here
-        InfoConteiner.Header = newHeader;
-        InfoConteiner.InfoText = newContent;
-    }
-
-    private async Task ResetToDefaultState()
-    {
-        // Check if any moon image is currently enlarged and reset its scale if necessary
-        if (isMoonGridEnlarged && currentlyEnlargedMoonGrid != null)
-        {
-            await currentlyEnlargedMoonGrid.ScaleTo(1, 400, Easing.CubicIn);
-            isMoonGridEnlarged = false;
-            currentlyEnlargedMoonGrid = null; // Reset the reference to the currently enlarged moon image
-        }
-
-        // Hide the chat bubble with animation and then reset its properties
-        await HideMoonDayInfo();
-
-        // After the chat bubble is hidden, reset its text and other properties to default        
-        moonDayInfoScreen.Opacity = 1; // Reset opacity back to fully opaque
-        moonDayInfoScreen.Scale = 1; // Reset scale to its original size
-        moonDayInfoScreen.IsVisible = false; // Ensure it's hidden
-
-        // Reset any other states or properties related to your UI or data here
-        // For example, if you have a container or model that needs to be reset
-        // MoonDayConteiner.MoonDayInfo = null; // Reset or clear as appropriate for your application
-    }
-
-    private async void CloseMoonDayInfoScreen_Clicked(object sender, EventArgs e)
-    {
-        // Call the method to reset the UI elements to their original state
-        // This includes hiding the chat bubble and resetting any enlarged images
-        await ResetToDefaultState();
-    }
+        await Task.WhenAll(
+            popupOverlay.FadeTo(0, 200, Easing.CubicIn)          
+        );
+        popupOverlay.IsVisible = false;
+    }    
 
     private async void PlanetInZodiacGrid_Tapped(object sender, EventArgs e)
     {
@@ -417,7 +343,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             {
                 string sunInZodiacHeader = TranslationManager.TranslatePlanetInZodiac(Planet.Sun, DayAstroEvent.SunInZodiac.NewZodiacSign);
                 string sunInZodiacInfo = AstroDayDetails.SunInZodiacDetails;                
-                await ToggleMoonGridAnimation(sunInZodiacGrid, sunInZodiacInfo, sunInZodiacHeader);
+                await ToggleMoonGridAnimation(sunInZodiacInfo, sunInZodiacHeader);
 
             }
         }
@@ -428,7 +354,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             {
                 string moonInZodiacHeader = TranslationManager.TranslatePlanetInZodiac(Planet.Moon, DayAstroEvent.MoonInZodiac.NewZodiacSign);
                 string moonInZodiacInfo = AstroDayDetails.MoonInZodiacDetails;
-                await ToggleMoonGridAnimation(moonInZodiacGrid, moonInZodiacInfo, moonInZodiacHeader);
+                await ToggleMoonGridAnimation(moonInZodiacInfo, moonInZodiacHeader);
 
             }
         }
@@ -445,7 +371,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
                     string venusInRetrogradeInfo = PlanetInRetrogradeDetails.FirstOrDefault(r => r.PlanetInRetrograde == Planet.Venus).PlanetInRetrogradeInfo;
                     venusInZodiacInfo = venusInZodiacInfo + "\n" + venusInRetrogradeInfo;
                 }
-                await ToggleMoonGridAnimation(venusInZodiacGrid, venusInZodiacInfo, venusInZodiacHeader);
+                await ToggleMoonGridAnimation(venusInZodiacInfo, venusInZodiacHeader);
 
             }
         }
@@ -462,7 +388,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
                     string marsInRetrogradeInfo = PlanetInRetrogradeDetails.FirstOrDefault(r => r.PlanetInRetrograde == Planet.Mars).PlanetInRetrogradeInfo;
                     marsInZodiacInfo = marsInZodiacInfo + "\n" + marsInRetrogradeInfo;
                 }
-                await ToggleMoonGridAnimation(marsInZodiacGrid, marsInZodiacInfo, marsInZodiacHeader);
+                await ToggleMoonGridAnimation(marsInZodiacInfo, marsInZodiacHeader);
             }
         }
 
@@ -478,7 +404,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
                     string mercuryInRetrogradeInfo = PlanetInRetrogradeDetails.FirstOrDefault(r => r.PlanetInRetrograde == Planet.Mercury).PlanetInRetrogradeInfo;
                     mercuryInZodiacInfo = mercuryInZodiacInfo + "\n" + mercuryInRetrogradeInfo;
                 }
-                await ToggleMoonGridAnimation(mercuryInZodiacGrid, mercuryInZodiacInfo, mercuryInZodiacHeader);
+                await ToggleMoonGridAnimation(mercuryInZodiacInfo, mercuryInZodiacHeader);
 
             }
         }
