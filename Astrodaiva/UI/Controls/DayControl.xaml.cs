@@ -216,16 +216,17 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
         {
             if (!IsProfileActivated)
             {
-                if (DayAstroEvent.MoonDay.NewMoonDay == 1)
+                if (DayAstroEvent.MoonEclipse || DayAstroEvent.SunEclipse)
+                {
+                    activityColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
+                    fontColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
+                }
+
+                else if (DayAstroEvent.MoonDay.NewMoonDay == 1 || DayAstroEvent.MoonDay.MiddleMoonDay == 1)
+
                 {
                     activityColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
                     fontColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
-                }
-
-                else if (DayAstroEvent.MoonEclipse || DayAstroEvent.SunEclipse)
-                {
-                    activityColor = ColorManager.GetResourceColor("PrimaryDarkText", Colors.Transparent);
-                    fontColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
                 }
             }
             else

@@ -20,23 +20,17 @@ namespace Astrodaiva.UI.Tools.Converters
                 if (astroEvent.SunEclipse || astroEvent.MoonEclipse)
                 {
                     // Return a specific color if any eclipse is present
-                    return Color.FromRgb(4, 39, 77); // Example color
+                    return ColorManager.GetResourceColor("GreyBackground", Colors.Black);
                 }
 
                 else if (astroEvent.MoonDay.NewMoonDay == 1 || astroEvent.MoonDay.MiddleMoonDay == 1)
                 {
-                    return Color.FromRgb(240, 201, 134);
+                    return ColorManager.GetResourceColor("ShadedBackground", Colors.Black);
                 }
             }
 
-            // Attempt to retrieve the 'PrimaryBackground' color from resources if no eclipse
-            if (Application.Current.Resources.TryGetValue("ShadedBackground", out var colorValue) && colorValue is Color myColor)
-            {
-                return myColor; // Return the color from resources
-            }
-
-            // Return a fallback color if no condition is met
-            return Colors.Transparent; // Fallback colorrent; // Fallback color
+            return ColorManager.GetResourceColor("SecondaryBackground", Colors.Black);
+            
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

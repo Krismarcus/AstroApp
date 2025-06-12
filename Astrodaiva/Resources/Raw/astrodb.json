@@ -75870,7 +75870,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 1,
@@ -75973,7 +75973,7 @@
         "NewMoonDay": 6,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 5,
-        "TransitionTime": "2025-06-05T10:24:00",
+        "TransitionTime": "2025-06-09T10:24:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -76010,7 +76010,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T06:00:00"
+        "TransitionTime": "2025-06-09T06:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 1,
@@ -76113,7 +76113,7 @@
         "NewMoonDay": 7,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 6,
-        "TransitionTime": "2025-06-05T11:47:00",
+        "TransitionTime": "2025-06-09T11:47:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -76253,7 +76253,7 @@
         "NewMoonDay": 8,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 7,
-        "TransitionTime": "2025-06-05T13:06:00",
+        "TransitionTime": "2025-06-09T13:06:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -76290,7 +76290,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T16:38:00"
+        "TransitionTime": "2025-06-09T16:38:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 1,
@@ -76298,7 +76298,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 5,
@@ -76393,7 +76393,7 @@
         "NewMoonDay": 9,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 8,
-        "TransitionTime": "2025-06-05T14:21:00",
+        "TransitionTime": "2025-06-09T14:21:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -76533,7 +76533,7 @@
         "NewMoonDay": 10,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 9,
-        "TransitionTime": "2025-06-05T15:35:00",
+        "TransitionTime": "2025-06-09T15:35:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -76578,7 +76578,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T07:43:00"
+        "TransitionTime": "2025-06-09T07:43:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 5,
@@ -76673,7 +76673,7 @@
         "NewMoonDay": 11,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 10,
-        "TransitionTime": "2025-06-05T16:50:00",
+        "TransitionTime": "2025-06-09T16:50:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -76710,7 +76710,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T05:23:00"
+        "TransitionTime": "2025-06-09T05:23:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -76758,7 +76758,7 @@
         "IsRetrograde": false,
         "Planet": 7,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "NeptuneInZodiac": {
         "NewZodiacSign": 1,
@@ -76813,7 +76813,7 @@
         "NewMoonDay": 12,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 11,
-        "TransitionTime": "2025-06-05T18:06:00",
+        "TransitionTime": "2025-06-09T18:06:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -76953,7 +76953,7 @@
         "NewMoonDay": 13,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 12,
-        "TransitionTime": "2025-06-05T19:24:00",
+        "TransitionTime": "2025-06-09T19:24:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -76990,7 +76990,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T17:56:00"
+        "TransitionTime": "2025-06-09T17:56:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -77014,7 +77014,7 @@
         "IsRetrograde": false,
         "Planet": 2,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T01:58:00"
+        "TransitionTime": "2025-06-09T01:58:00"
       },
       "JupiterInZodiac": {
         "NewZodiacSign": 4,
@@ -77093,7 +77093,7 @@
         "NewMoonDay": 14,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 13,
-        "TransitionTime": "2025-06-05T20:43:00",
+        "TransitionTime": "2025-06-09T20:43:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -77106,7 +77106,7 @@
       "ImportantTasks": 2,
       "Gardening": 2,
       "Love": 2,
-      "Meetings": 2,
+      "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
@@ -77233,7 +77233,7 @@
         "NewMoonDay": 15,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 14,
-        "TransitionTime": "2025-06-05T21:59:00",
+        "TransitionTime": "2025-06-09T21:59:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -77270,7 +77270,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -77373,7 +77373,7 @@
         "NewMoonDay": 16,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 15,
-        "TransitionTime": "2025-06-05T23:03:00",
+        "TransitionTime": "2025-06-09T23:03:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -77410,7 +77410,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T04:55:00"
+        "TransitionTime": "2025-06-09T04:55:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -77513,7 +77513,7 @@
         "NewMoonDay": 17,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 16,
-        "TransitionTime": "2025-06-05T23:51:00",
+        "TransitionTime": "2025-06-09T23:51:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -77653,7 +77653,7 @@
         "NewMoonDay": 17,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 16,
-        "TransitionTime": "2025-06-05T00:00:00",
+        "TransitionTime": "2025-06-09T00:00:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -77690,7 +77690,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T14:00:00"
+        "TransitionTime": "2025-06-09T14:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -77793,7 +77793,7 @@
         "NewMoonDay": 18,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 17,
-        "TransitionTime": "2025-06-05T00:23:00",
+        "TransitionTime": "2025-06-09T00:23:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -77933,7 +77933,7 @@
         "NewMoonDay": 19,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 18,
-        "TransitionTime": "2025-06-05T00:44:00",
+        "TransitionTime": "2025-06-09T00:44:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -77970,7 +77970,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T21:09:00"
+        "TransitionTime": "2025-06-09T21:09:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -78073,7 +78073,7 @@
         "NewMoonDay": 20,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 19,
-        "TransitionTime": "2025-06-05T00:58:00",
+        "TransitionTime": "2025-06-09T00:58:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -78126,7 +78126,7 @@
         "IsRetrograde": false,
         "Planet": 4,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T11:35:00"
+        "TransitionTime": "2025-06-09T11:35:00"
       },
       "MercuryInZodiac": {
         "NewZodiacSign": 4,
@@ -78213,7 +78213,7 @@
         "NewMoonDay": 21,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 20,
-        "TransitionTime": "2025-06-05T01:09:00",
+        "TransitionTime": "2025-06-09T01:09:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -78250,7 +78250,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -78353,7 +78353,7 @@
         "NewMoonDay": 22,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 21,
-        "TransitionTime": "2025-06-05T01:17:00",
+        "TransitionTime": "2025-06-09T01:17:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -78390,7 +78390,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T02:04:00"
+        "TransitionTime": "2025-06-09T02:04:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -78493,7 +78493,7 @@
         "NewMoonDay": 23,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 22,
-        "TransitionTime": "2025-06-05T01:25:00",
+        "TransitionTime": "2025-06-09T01:25:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -78530,7 +78530,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -78633,7 +78633,7 @@
         "NewMoonDay": 24,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 23,
-        "TransitionTime": "2025-06-05T01:33:00",
+        "TransitionTime": "2025-06-09T01:33:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -78662,7 +78662,7 @@
         "IsRetrograde": false,
         "Planet": 0,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T05:42:00"
+        "TransitionTime": "2025-06-09T05:42:00"
       },
       "MoonInZodiac": {
         "NewZodiacSign": 2,
@@ -78670,7 +78670,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T04:53:00"
+        "TransitionTime": "2025-06-09T04:53:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -78773,7 +78773,7 @@
         "NewMoonDay": 25,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 24,
-        "TransitionTime": "2025-06-05T01:42:00",
+        "TransitionTime": "2025-06-09T01:42:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -78802,7 +78802,7 @@
         "IsRetrograde": false,
         "Planet": 0,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MoonInZodiac": {
         "NewZodiacSign": 2,
@@ -78810,7 +78810,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -78913,7 +78913,7 @@
         "NewMoonDay": 26,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 25,
-        "TransitionTime": "2025-06-05T01:55:00",
+        "TransitionTime": "2025-06-09T01:55:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -78950,7 +78950,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T05:57:00"
+        "TransitionTime": "2025-06-09T05:57:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -79053,7 +79053,7 @@
         "NewMoonDay": 27,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 26,
-        "TransitionTime": "2025-06-05T02:15:00",
+        "TransitionTime": "2025-06-09T02:15:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -79090,7 +79090,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -79193,8 +79193,8 @@
         "NewMoonDay": 28,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 27,
-        "TransitionTime": "2025-06-05T02:47:00",
-        "MiddleMoonDayTransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T02:47:00",
+        "MiddleMoonDayTransitionTime": "2025-06-09T00:00:00"
       },
       "MoonPhase": 0,
       "SunEclipse": false,
@@ -79230,7 +79230,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T06:44:00"
+        "TransitionTime": "2025-06-09T06:44:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -79333,8 +79333,8 @@
         "NewMoonDay": 1,
         "MiddleMoonDay": 30,
         "PreviousMoonDay": 29,
-        "TransitionTime": "2025-06-05T13:32:00",
-        "MiddleMoonDayTransitionTime": "2025-06-05T03:39:00"
+        "TransitionTime": "2025-06-09T13:32:00",
+        "MiddleMoonDayTransitionTime": "2025-06-09T03:39:00"
       },
       "MoonPhase": 1,
       "SunEclipse": false,
@@ -79370,7 +79370,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -79394,7 +79394,7 @@
         "IsRetrograde": false,
         "Planet": 2,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T22:09:00"
+        "TransitionTime": "2025-06-09T22:09:00"
       },
       "JupiterInZodiac": {
         "NewZodiacSign": 4,
@@ -79473,7 +79473,7 @@
         "NewMoonDay": 2,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 1,
-        "TransitionTime": "2025-06-05T04:55:00",
+        "TransitionTime": "2025-06-09T04:55:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -79510,7 +79510,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T09:05:00"
+        "TransitionTime": "2025-06-09T09:05:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -79613,7 +79613,7 @@
         "NewMoonDay": 3,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 2,
-        "TransitionTime": "2025-06-05T06:24:00",
+        "TransitionTime": "2025-06-09T06:24:00",
         "MiddleMoonDayTransitionTime": "2025-02-18T00:00:00"
       },
       "MoonPhase": 1,
@@ -79753,7 +79753,7 @@
         "NewMoonDay": 4,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 3,
-        "TransitionTime": "2025-06-05T07:56:00",
+        "TransitionTime": "2025-06-09T07:56:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -79790,7 +79790,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T14:49:00"
+        "TransitionTime": "2025-06-09T14:49:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -79893,7 +79893,7 @@
         "NewMoonDay": 5,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 4,
-        "TransitionTime": "2025-06-05T09:24:00",
+        "TransitionTime": "2025-06-09T09:24:00",
         "MiddleMoonDayTransitionTime": "2025-02-18T00:00:00"
       },
       "MoonPhase": 1,
@@ -80033,7 +80033,7 @@
         "NewMoonDay": 6,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 5,
-        "TransitionTime": "2025-06-05T10:47:00",
+        "TransitionTime": "2025-06-09T10:47:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -80070,7 +80070,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T00:16:00"
+        "TransitionTime": "2025-06-09T00:16:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -80173,7 +80173,7 @@
         "NewMoonDay": 7,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 6,
-        "TransitionTime": "2025-06-05T12:05:00",
+        "TransitionTime": "2025-06-09T12:05:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -80210,7 +80210,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 2,
@@ -80313,7 +80313,7 @@
         "NewMoonDay": 8,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 7,
-        "TransitionTime": "2025-06-05T13:20:00",
+        "TransitionTime": "2025-06-09T13:20:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -80453,7 +80453,7 @@
         "NewMoonDay": 9,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 8,
-        "TransitionTime": "2025-06-05T14:35:00",
+        "TransitionTime": "2025-06-09T14:35:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -80490,7 +80490,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T12:33:00"
+        "TransitionTime": "2025-06-09T12:33:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -80498,7 +80498,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T18:31:00"
+        "TransitionTime": "2025-06-09T18:31:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 6,
@@ -80593,7 +80593,7 @@
         "NewMoonDay": 10,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 9,
-        "TransitionTime": "2025-06-05T15:51:00",
+        "TransitionTime": "2025-06-09T15:51:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -80733,7 +80733,7 @@
         "NewMoonDay": 11,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 10,
-        "TransitionTime": "2025-06-05T17:18:00",
+        "TransitionTime": "2025-06-09T17:18:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -80778,7 +80778,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 6,
@@ -80873,7 +80873,7 @@
         "NewMoonDay": 12,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 11,
-        "TransitionTime": "2025-06-05T18:19:00",
+        "TransitionTime": "2025-06-09T18:19:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -80910,7 +80910,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T01:06:00"
+        "TransitionTime": "2025-06-09T01:06:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -80958,7 +80958,7 @@
         "IsRetrograde": false,
         "Planet": 7,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T10:47:00"
+        "TransitionTime": "2025-06-09T10:47:00"
       },
       "NeptuneInZodiac": {
         "NewZodiacSign": 1,
@@ -81013,7 +81013,7 @@
         "NewMoonDay": 13,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 12,
-        "TransitionTime": "2025-06-05T19:45:00",
+        "TransitionTime": "2025-06-09T19:45:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -81153,7 +81153,7 @@
         "NewMoonDay": 14,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 13,
-        "TransitionTime": "2025-06-05T20:54:00",
+        "TransitionTime": "2025-06-09T20:54:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -81190,7 +81190,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T11:55:00"
+        "TransitionTime": "2025-06-09T11:55:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -81214,7 +81214,7 @@
         "IsRetrograde": false,
         "Planet": 2,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "JupiterInZodiac": {
         "NewZodiacSign": 4,
@@ -81293,7 +81293,7 @@
         "NewMoonDay": 15,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 14,
-        "TransitionTime": "2025-06-05T21:48:00",
+        "TransitionTime": "2025-06-09T21:48:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -81433,7 +81433,7 @@
         "NewMoonDay": 16,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 15,
-        "TransitionTime": "2025-06-05T22:25:00",
+        "TransitionTime": "2025-06-09T22:25:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -81470,7 +81470,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T20:21:00"
+        "TransitionTime": "2025-06-09T20:21:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -81573,7 +81573,7 @@
         "NewMoonDay": 17,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 16,
-        "TransitionTime": "2025-06-05T22:50:00",
+        "TransitionTime": "2025-06-09T22:50:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -81610,7 +81610,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -81713,7 +81713,7 @@
         "NewMoonDay": 18,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 17,
-        "TransitionTime": "2025-06-05T23:06:00",
+        "TransitionTime": "2025-06-09T23:06:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -81853,7 +81853,7 @@
         "NewMoonDay": 19,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 18,
-        "TransitionTime": "2025-06-05T23:17:00",
+        "TransitionTime": "2025-06-09T23:17:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -81890,7 +81890,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T02:45:00"
+        "TransitionTime": "2025-06-09T02:45:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -81993,7 +81993,7 @@
         "NewMoonDay": 20,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 19,
-        "TransitionTime": "2025-06-05T23:26:00",
+        "TransitionTime": "2025-06-09T23:26:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -82133,7 +82133,7 @@
         "NewMoonDay": 21,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 20,
-        "TransitionTime": "2025-06-05T23:34:00",
+        "TransitionTime": "2025-06-09T23:34:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -82170,7 +82170,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T07:02:00"
+        "TransitionTime": "2025-06-09T07:02:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -82273,7 +82273,7 @@
         "NewMoonDay": 22,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 21,
-        "TransitionTime": "2025-06-05T23:41:00",
+        "TransitionTime": "2025-06-09T23:41:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -82326,7 +82326,7 @@
         "IsRetrograde": false,
         "Planet": 4,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MercuryInZodiac": {
         "NewZodiacSign": 5,
@@ -82413,7 +82413,7 @@
         "NewMoonDay": 23,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 22,
-        "TransitionTime": "2025-06-05T23:50:00",
+        "TransitionTime": "2025-06-09T23:50:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -82450,7 +82450,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T00:59:00"
+        "TransitionTime": "2025-06-09T00:59:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -82553,7 +82553,7 @@
         "NewMoonDay": 23,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 22,
-        "TransitionTime": "2025-06-05T00:00:00",
+        "TransitionTime": "2025-06-09T00:00:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -82590,7 +82590,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -82693,7 +82693,7 @@
         "NewMoonDay": 24,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 23,
-        "TransitionTime": "2025-06-05T00:01:00",
+        "TransitionTime": "2025-06-09T00:01:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -82730,7 +82730,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T13:15:00"
+        "TransitionTime": "2025-06-09T13:15:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -82833,7 +82833,7 @@
         "NewMoonDay": 25,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 24,
-        "TransitionTime": "2025-06-05T00:17:00",
+        "TransitionTime": "2025-06-09T00:17:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -82862,7 +82862,7 @@
         "IsRetrograde": false,
         "Planet": 0,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MoonInZodiac": {
         "NewZodiacSign": 3,
@@ -82870,7 +82870,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -82973,7 +82973,7 @@
         "NewMoonDay": 26,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 25,
-        "TransitionTime": "2025-06-05T00:43:00",
+        "TransitionTime": "2025-06-09T00:43:00",
         "MiddleMoonDayTransitionTime": "2025-02-18T00:00:00"
       },
       "MoonPhase": 4,
@@ -83002,7 +83002,7 @@
         "IsRetrograde": false,
         "Planet": 0,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T16:29:00"
+        "TransitionTime": "2025-06-09T16:29:00"
       },
       "MoonInZodiac": {
         "NewZodiacSign": 4,
@@ -83010,7 +83010,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T15:26:00"
+        "TransitionTime": "2025-06-09T15:26:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -83113,7 +83113,7 @@
         "NewMoonDay": 27,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 26,
-        "TransitionTime": "2025-06-05T01:25:00",
+        "TransitionTime": "2025-06-09T01:25:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -83150,7 +83150,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -83253,7 +83253,7 @@
         "NewMoonDay": 28,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 27,
-        "TransitionTime": "2025-06-05T02:30:00",
+        "TransitionTime": "2025-06-09T02:30:00",
         "MiddleMoonDayTransitionTime": "2025-06-05T00:00:00"
       },
       "MoonPhase": 4,
@@ -83290,7 +83290,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T18:28:00"
+        "TransitionTime": "2025-06-09T18:28:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -83393,8 +83393,8 @@
         "NewMoonDay": 1,
         "MiddleMoonDay": 30,
         "PreviousMoonDay": 29,
-        "TransitionTime": "2025-06-05T22:11:00",
-        "MiddleMoonDayTransitionTime": "2025-06-05T03:54:00"
+        "TransitionTime": "2025-06-09T22:11:00",
+        "MiddleMoonDayTransitionTime": "2025-06-09T03:54:00"
       },
       "MoonPhase": 1,
       "SunEclipse": false,
@@ -83430,7 +83430,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -83533,8 +83533,8 @@
         "NewMoonDay": 2,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 1,
-        "TransitionTime": "2025-06-05T05:26:00",
-        "MiddleMoonDayTransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T05:26:00",
+        "MiddleMoonDayTransitionTime": "2025-06-09T00:00:00"
       },
       "MoonPhase": 1,
       "SunEclipse": false,
@@ -83570,7 +83570,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T23:56:00"
+        "TransitionTime": "2025-06-09T23:56:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -83594,7 +83594,7 @@
         "IsRetrograde": true,
         "Planet": 2,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "JupiterInZodiac": {
         "NewZodiacSign": 4,
@@ -83673,7 +83673,7 @@
         "NewMoonDay": 3,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 2,
-        "TransitionTime": "2025-06-05T06:57:00",
+        "TransitionTime": "2025-06-09T06:57:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -83710,7 +83710,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -83813,7 +83813,7 @@
         "NewMoonDay": 4,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 3,
-        "TransitionTime": "2025-06-05T08:22:00",
+        "TransitionTime": "2025-06-09T08:22:00",
         "MiddleMoonDayTransitionTime": "2025-02-18T00:00:00"
       },
       "MoonPhase": 1,
@@ -83953,7 +83953,7 @@
         "NewMoonDay": 5,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 4,
-        "TransitionTime": "2025-06-05T09:43:00",
+        "TransitionTime": "2025-06-09T09:43:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -83990,7 +83990,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T08:43:00"
+        "TransitionTime": "2025-06-09T08:43:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 3,
@@ -84093,7 +84093,7 @@
         "NewMoonDay": 6,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 5,
-        "TransitionTime": "2025-06-05T11:01:00",
+        "TransitionTime": "2025-06-09T11:01:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -84233,7 +84233,7 @@
         "NewMoonDay": 7,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 6,
-        "TransitionTime": "2025-06-05T12:17:00",
+        "TransitionTime": "2025-06-09T12:17:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -84270,7 +84270,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T20:25:00"
+        "TransitionTime": "2025-06-09T20:25:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -84278,7 +84278,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T06:57:00"
+        "TransitionTime": "2025-06-09T06:57:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 6,
@@ -84373,7 +84373,7 @@
         "NewMoonDay": 8,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 7,
-        "TransitionTime": "2025-06-05T13:33:00",
+        "TransitionTime": "2025-06-09T13:33:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -84410,7 +84410,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -84513,7 +84513,7 @@
         "NewMoonDay": 9,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 8,
-        "TransitionTime": "2025-06-05T14:51:00",
+        "TransitionTime": "2025-06-09T14:51:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -84550,7 +84550,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -84574,7 +84574,7 @@
         "IsRetrograde": true,
         "Planet": 2,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "JupiterInZodiac": {
         "NewZodiacSign": 4,
@@ -84653,7 +84653,7 @@
         "NewMoonDay": 10,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 9,
-        "TransitionTime": "2025-06-05T16:09:00",
+        "TransitionTime": "2025-06-09T16:09:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -84690,7 +84690,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T09:06:00"
+        "TransitionTime": "2025-06-09T09:06:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -84793,7 +84793,7 @@
         "NewMoonDay": 11,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 10,
-        "TransitionTime": "2025-06-05T17:28:00",
+        "TransitionTime": "2025-06-09T17:28:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -84804,7 +84804,7 @@
       "Buystuff": 1,
       "Contracts": 1,
       "ImportantTasks": 1,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 1,
       "Meetings": 1,
       "NewIdeas": 1,
@@ -84830,7 +84830,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -84838,7 +84838,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 7,
@@ -84933,7 +84933,7 @@
         "NewMoonDay": 12,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 11,
-        "TransitionTime": "2025-06-05T18:41:00",
+        "TransitionTime": "2025-06-09T18:41:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -84944,7 +84944,7 @@
       "Buystuff": 1,
       "Contracts": 1,
       "ImportantTasks": 1,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 1,
       "Meetings": 1,
       "NewIdeas": 1,
@@ -84970,7 +84970,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T20:04:00"
+        "TransitionTime": "2025-06-09T20:04:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -85073,7 +85073,7 @@
         "NewMoonDay": 13,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 12,
-        "TransitionTime": "2025-06-05T19:41:00",
+        "TransitionTime": "2025-06-09T19:41:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -85084,7 +85084,7 @@
       "Buystuff": 2,
       "Contracts": 2,
       "ImportantTasks": 2,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 2,
       "Meetings": 0,
       "NewIdeas": 0,
@@ -85110,7 +85110,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -85213,7 +85213,7 @@
         "NewMoonDay": 14,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 13,
-        "TransitionTime": "2025-06-05T20:25:00",
+        "TransitionTime": "2025-06-09T20:25:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -85353,7 +85353,7 @@
         "NewMoonDay": 15,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 14,
-        "TransitionTime": "2025-06-05T20:53:00",
+        "TransitionTime": "2025-06-09T20:53:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -85366,7 +85366,7 @@
       "ImportantTasks": 1,
       "Gardening": 0,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 1,
       "NewIdeas": 1,
       "Tech": 1,
       "Travel": 0,
@@ -85390,7 +85390,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T04:18:00"
+        "TransitionTime": "2025-06-09T04:18:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -85493,7 +85493,7 @@
         "NewMoonDay": 16,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 15,
-        "TransitionTime": "2025-06-05T21:12:00",
+        "TransitionTime": "2025-06-09T21:12:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -85633,21 +85633,21 @@
         "NewMoonDay": 17,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 16,
-        "TransitionTime": "2025-06-05T21:25:00",
+        "TransitionTime": "2025-06-09T21:25:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 2,
       "Beauty": 2,
       "Buystuff": 2,
       "Contracts": 2,
       "ImportantTasks": 2,
       "Gardening": 0,
       "Love": 2,
-      "Meetings": 2,
-      "NewIdeas": 2,
+      "Meetings": 0,
+      "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
       "EventText": "Retrogradinis Merkurijus"
@@ -85670,7 +85670,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T09:50:00"
+        "TransitionTime": "2025-06-09T09:50:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -85773,14 +85773,14 @@
         "NewMoonDay": 18,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 17,
-        "TransitionTime": "2025-06-05T21:35:00",
+        "TransitionTime": "2025-06-09T21:35:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
       "SunEclipse": false,
       "MoonEclipse": false,
       "Barber": 0,
-      "Beauty": 0,
+      "Beauty": 1,
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
@@ -85913,7 +85913,7 @@
         "NewMoonDay": 19,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 18,
-        "TransitionTime": "2025-06-05T21:43:00",
+        "TransitionTime": "2025-06-09T21:43:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -85950,7 +85950,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T13:33:00"
+        "TransitionTime": "2025-06-09T13:33:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -86053,7 +86053,7 @@
         "NewMoonDay": 20,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 19,
-        "TransitionTime": "2025-06-05T21:50:00",
+        "TransitionTime": "2025-06-09T21:50:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -86064,7 +86064,7 @@
       "Buystuff": 1,
       "Contracts": 1,
       "ImportantTasks": 1,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 1,
       "Meetings": 1,
       "NewIdeas": 1,
@@ -86090,7 +86090,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -86193,7 +86193,7 @@
         "NewMoonDay": 21,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 20,
-        "TransitionTime": "2025-06-05T21:59:00",
+        "TransitionTime": "2025-06-09T21:59:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -86202,9 +86202,9 @@
       "Barber": 0,
       "Beauty": 0,
       "Buystuff": 0,
-      "Contracts": 2,
-      "ImportantTasks": 2,
-      "Gardening": 0,
+      "Contracts": 0,
+      "ImportantTasks": 0,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
@@ -86230,7 +86230,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T16:22:00"
+        "TransitionTime": "2025-06-09T16:22:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -86333,7 +86333,7 @@
         "NewMoonDay": 22,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 21,
-        "TransitionTime": "2025-06-05T22:09:00",
+        "TransitionTime": "2025-06-09T22:09:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -86344,7 +86344,7 @@
       "Buystuff": 1,
       "Contracts": 1,
       "ImportantTasks": 1,
-      "Gardening": 1,
+      "Gardening": 0,
       "Love": 1,
       "Meetings": 1,
       "NewIdeas": 1,
@@ -86370,7 +86370,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -86442,7 +86442,7 @@
         "IsRetrograde": false,
         "Planet": 10,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T08:25:00"
+        "TransitionTime": "2025-06-09T08:25:00"
       },
       "LilithInZodiac": {
         "NewZodiacSign": 8,
@@ -86473,7 +86473,7 @@
         "NewMoonDay": 23,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 22,
-        "TransitionTime": "2025-06-05T22:23:00",
+        "TransitionTime": "2025-06-09T22:23:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -86510,7 +86510,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T19:01:00"
+        "TransitionTime": "2025-06-09T19:01:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -86613,7 +86613,7 @@
         "NewMoonDay": 24,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 23,
-        "TransitionTime": "2025-06-05T22:45:00",
+        "TransitionTime": "2025-06-09T22:45:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -86622,7 +86622,7 @@
       "Barber": 0,
       "Beauty": 1,
       "Buystuff": 1,
-      "Contracts": 0,
+      "Contracts": 1,
       "ImportantTasks": 0,
       "Gardening": 1,
       "Love": 1,
@@ -86650,7 +86650,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -86753,7 +86753,7 @@
         "NewMoonDay": 25,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 24,
-        "TransitionTime": "2025-06-05T23:20:00",
+        "TransitionTime": "2025-06-09T23:20:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -86790,7 +86790,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T22:05:00"
+        "TransitionTime": "2025-06-09T22:05:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -86814,7 +86814,7 @@
         "IsRetrograde": false,
         "Planet": 2,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "JupiterInZodiac": {
         "NewZodiacSign": 4,
@@ -86893,7 +86893,7 @@
         "NewMoonDay": 25,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 24,
-        "TransitionTime": "2025-02-18T00:00:00",
+        "TransitionTime": "2025-06-09T00:00:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -86930,7 +86930,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -86938,7 +86938,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 7,
@@ -87033,7 +87033,7 @@
         "NewMoonDay": 26,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 25,
-        "TransitionTime": "2025-06-05T00:15:00",
+        "TransitionTime": "2025-06-09T00:15:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -87173,7 +87173,7 @@
         "NewMoonDay": 27,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 26,
-        "TransitionTime": "2025-06-05T01:32:00",
+        "TransitionTime": "2025-06-09T01:32:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -87210,7 +87210,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T02:17:00"
+        "TransitionTime": "2025-06-09T02:17:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -87313,8 +87313,8 @@
         "NewMoonDay": 28,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 27,
-        "TransitionTime": "2025-06-05T03:01:00",
-        "MiddleMoonDayTransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T03:01:00",
+        "MiddleMoonDayTransitionTime": "2025-06-09T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
@@ -87323,7 +87323,7 @@
       "Beauty": 1,
       "Buystuff": 1,
       "Contracts": 0,
-      "ImportantTasks": 0,
+      "ImportantTasks": 2,
       "Gardening": 2,
       "Love": 1,
       "Meetings": 1,
@@ -87342,7 +87342,7 @@
         "IsRetrograde": false,
         "Planet": 0,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T23:34:00"
+        "TransitionTime": "2025-06-09T23:34:00"
       },
       "MoonInZodiac": {
         "NewZodiacSign": 5,
@@ -87366,7 +87366,7 @@
         "IsRetrograde": false,
         "Planet": 4,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MercuryInZodiac": {
         "NewZodiacSign": 5,
@@ -87453,7 +87453,7 @@
         "NewMoonDay": 29,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 28,
-        "TransitionTime": "2025-06-05T04:31:00",
+        "TransitionTime": "2025-06-09T04:31:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -87490,7 +87490,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T08:24:00"
+        "TransitionTime": "2025-06-09T08:24:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -87593,8 +87593,8 @@
         "NewMoonDay": 1,
         "MiddleMoonDay": 30,
         "PreviousMoonDay": 29,
-        "TransitionTime": "2025-06-05T09:06:00",
-        "MiddleMoonDayTransitionTime": "2025-06-05T05:59:00"
+        "TransitionTime": "2025-06-09T09:06:00",
+        "MiddleMoonDayTransitionTime": "2025-06-09T05:59:00"
       },
       "MoonPhase": 1,
       "SunEclipse": false,
@@ -87602,11 +87602,11 @@
       "Barber": 2,
       "Beauty": 2,
       "Buystuff": 0,
-      "Contracts": 0,
+      "Contracts": 2,
       "ImportantTasks": 2,
       "Gardening": 2,
       "Love": 2,
-      "Meetings": 2,
+      "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
@@ -87630,7 +87630,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 4,
@@ -87733,7 +87733,7 @@
         "NewMoonDay": 2,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 1,
-        "TransitionTime": "2025-06-05T07:21:00",
+        "TransitionTime": "2025-06-09T07:21:00",
         "MiddleMoonDayTransitionTime": "2025-06-05T00:00:00"
       },
       "MoonPhase": 1,
@@ -87770,7 +87770,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T17:08:00"
+        "TransitionTime": "2025-06-09T17:08:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -87778,7 +87778,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T19:27:00"
+        "TransitionTime": "2025-06-09T19:27:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 7,
@@ -87873,7 +87873,7 @@
         "NewMoonDay": 3,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 2,
-        "TransitionTime": "2025-06-05T08:41:00",
+        "TransitionTime": "2025-06-09T08:41:00",
         "MiddleMoonDayTransitionTime": "2025-02-18T00:00:00"
       },
       "MoonPhase": 1,
@@ -87885,7 +87885,7 @@
       "Contracts": 0,
       "ImportantTasks": 0,
       "Gardening": 0,
-      "Love": 0,
+      "Love": 1,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
@@ -87910,7 +87910,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -88013,7 +88013,7 @@
         "NewMoonDay": 4,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 3,
-        "TransitionTime": "2025-06-05T09:58:00",
+        "TransitionTime": "2025-06-09T09:58:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -88050,7 +88050,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -88153,7 +88153,7 @@
         "NewMoonDay": 5,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 4,
-        "TransitionTime": "2025-06-05T11:14:00",
+        "TransitionTime": "2025-06-09T11:14:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -88190,7 +88190,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T04:27:00"
+        "TransitionTime": "2025-06-09T04:27:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -88293,7 +88293,7 @@
         "NewMoonDay": 6,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 5,
-        "TransitionTime": "2025-06-05T12:13:00",
+        "TransitionTime": "2025-06-09T12:13:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -88330,7 +88330,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -88433,7 +88433,7 @@
         "NewMoonDay": 7,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 6,
-        "TransitionTime": "2025-06-05T13:50:00",
+        "TransitionTime": "2025-06-09T13:50:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -88470,7 +88470,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-06-05T17:04:00"
+        "TransitionTime": "2025-06-09T17:04:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -88573,7 +88573,7 @@
         "NewMoonDay": 5,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 4,
-        "TransitionTime": "2025-06-05T15:09:00",
+        "TransitionTime": "2025-06-09T15:09:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -88584,7 +88584,7 @@
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 1,
       "NewIdeas": 1,
@@ -88610,7 +88610,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -88618,7 +88618,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-06-05T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 7,
@@ -88713,7 +88713,7 @@
         "NewMoonDay": 6,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 5,
-        "TransitionTime": "2025-06-05T16:24:00",
+        "TransitionTime": "2025-06-09T16:24:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -88853,24 +88853,24 @@
         "NewMoonDay": 10,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 9,
-        "TransitionTime": "2025-02-19T17:30:00",
+        "TransitionTime": "2025-06-09T17:30:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 1,
       "Beauty": 0,
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
-      "EventText": ""
+      "Travel": 1,
+      "EventText": "U\u017Etemimo zona. "
     },
     {
       "IsNewMonthStart": false,
@@ -88890,7 +88890,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T04:45:00"
+        "TransitionTime": "2025-06-09T04:45:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -88914,7 +88914,7 @@
         "IsRetrograde": false,
         "Planet": 2,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T16:23:00"
+        "TransitionTime": "2025-06-09T16:23:00"
       },
       "JupiterInZodiac": {
         "NewZodiacSign": 4,
@@ -88993,13 +88993,13 @@
         "NewMoonDay": 11,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 10,
-        "TransitionTime": "2025-02-19T18:21:00",
+        "TransitionTime": "2025-06-09T18:21:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 1,
       "Beauty": 0,
       "Buystuff": 0,
       "Contracts": 0,
@@ -89010,7 +89010,7 @@
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona"
     },
     {
       "IsNewMonthStart": false,
@@ -89030,7 +89030,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -89133,7 +89133,7 @@
         "NewMoonDay": 12,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 11,
-        "TransitionTime": "2025-02-19T18:55:00",
+        "TransitionTime": "2025-06-09T18:55:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -89150,7 +89150,7 @@
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -89170,7 +89170,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T13:02:00"
+        "TransitionTime": "2025-06-09T13:02:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -89273,7 +89273,7 @@
         "NewMoonDay": 13,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 12,
-        "TransitionTime": "2025-02-19T19:17:00",
+        "TransitionTime": "2025-06-09T19:17:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -89283,14 +89283,14 @@
       "Beauty": 0,
       "Buystuff": 0,
       "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "ImportantTasks": 1,
+      "Gardening": 2,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
-      "EventText": ""
+      "Travel": 1,
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -89310,7 +89310,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T18:54:00"
+        "TransitionTime": "2025-06-09T18:54:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -89413,24 +89413,24 @@
         "NewMoonDay": 14,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 13,
-        "TransitionTime": "2025-02-19T19:32:00",
+        "TransitionTime": "2025-06-09T19:32:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 2,
       "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Buystuff": 2,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 2,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
-      "EventText": ""
+      "Travel": 2,
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -89450,7 +89450,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T18:54:00"
+        "TransitionTime": "2025-06-09T18:54:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -89550,10 +89550,10 @@
       },
       "MoonDay": {
         "IsTripleMoonDay": false,
-        "NewMoonDay": 15,
+        "NewMoonDay": 14,
         "MiddleMoonDay": 0,
-        "PreviousMoonDay": 14,
-        "TransitionTime": "2025-02-19T19:43:00",
+        "PreviousMoonDay": 13,
+        "TransitionTime": "2025-06-09T19:43:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -89562,15 +89562,15 @@
       "Barber": 0,
       "Beauty": 0,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -89590,7 +89590,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -89638,7 +89638,7 @@
         "IsRetrograde": true,
         "Planet": 7,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "NeptuneInZodiac": {
         "NewZodiacSign": 1,
@@ -89693,23 +89693,23 @@
         "NewMoonDay": 16,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 15,
-        "TransitionTime": "2025-02-19T19:51:00",
+        "TransitionTime": "2025-06-09T19:51:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
       "SunEclipse": false,
       "MoonEclipse": true,
-      "Barber": 0,
-      "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
+      "Barber": 2,
+      "Beauty": 2,
+      "Buystuff": 2,
+      "Contracts": 2,
+      "ImportantTasks": 2,
       "Gardening": 0,
-      "Love": 0,
-      "Meetings": 0,
+      "Love": 2,
+      "Meetings": 2,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 2,
       "EventText": "M\u0117nulio u\u017Etemimas \u017Duvyse 21:12val."
     },
     {
@@ -89730,7 +89730,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T21:17:00"
+        "TransitionTime": "2025-06-09T21:17:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -89833,24 +89833,24 @@
         "NewMoonDay": 17,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 16,
-        "TransitionTime": "2025-02-19T19:59:00",
+        "TransitionTime": "2025-06-09T19:59:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
+      "Barber": 1,
+      "Beauty": 1,
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
-      "Meetings": 0,
+      "Gardening": 2,
+      "Love": 1,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -89870,7 +89870,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -89973,24 +89973,24 @@
         "NewMoonDay": 18,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 17,
-        "TransitionTime": "2025-02-19T20:07:00",
+        "TransitionTime": "2025-06-09T20:07:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 2,
       "Beauty": 0,
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
-      "EventText": ""
+      "Travel": 1,
+      "EventText": "U\u017Etemimo zona.\n"
     },
     {
       "IsNewMonthStart": false,
@@ -90010,7 +90010,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T23:03:00"
+        "TransitionTime": "2025-06-09T23:03:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -90113,7 +90113,7 @@
         "NewMoonDay": 19,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 18,
-        "TransitionTime": "2025-02-19T20:17:00",
+        "TransitionTime": "2025-06-09T20:17:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -90122,15 +90122,15 @@
       "Barber": 0,
       "Beauty": 0,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
+      "Contracts": 2,
+      "ImportantTasks": 2,
       "Gardening": 0,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -90150,7 +90150,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -90253,7 +90253,7 @@
         "NewMoonDay": 20,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 19,
-        "TransitionTime": "2025-02-19T20:30:00",
+        "TransitionTime": "2025-06-09T20:30:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -90262,15 +90262,15 @@
       "Barber": 0,
       "Beauty": 0,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
+      "Contracts": 2,
+      "ImportantTasks": 2,
       "Gardening": 0,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -90290,7 +90290,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -90393,24 +90393,24 @@
         "NewMoonDay": 21,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 20,
-        "TransitionTime": "2025-02-19T20:49:00",
+        "TransitionTime": "2025-06-09T20:49:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
+      "Barber": 1,
+      "Beauty": 1,
+      "Buystuff": 1,
+      "Contracts": 1,
+      "ImportantTasks": 1,
+      "Gardening": 1,
+      "Love": 1,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -90430,7 +90430,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T00:38:00"
+        "TransitionTime": "2025-06-09T00:38:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -90533,24 +90533,24 @@
         "NewMoonDay": 22,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 21,
-        "TransitionTime": "2025-02-19T21:20:00",
+        "TransitionTime": "2025-06-09T21:20:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
       "SunEclipse": false,
       "MoonEclipse": false,
       "Barber": 0,
-      "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
-      "Meetings": 0,
+      "Beauty": 1,
+      "Buystuff": 1,
+      "Contracts": 1,
+      "ImportantTasks": 1,
+      "Gardening": 2,
+      "Love": 1,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
-      "EventText": ""
+      "Travel": 1,
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -90570,7 +90570,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -90673,7 +90673,7 @@
         "NewMoonDay": 23,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 22,
-        "TransitionTime": "2025-02-19T22:08:00",
+        "TransitionTime": "2025-06-09T22:08:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -90682,15 +90682,15 @@
       "Barber": 0,
       "Beauty": 0,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -90710,7 +90710,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T03:30:00"
+        "TransitionTime": "2025-06-09T03:30:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -90782,7 +90782,7 @@
         "IsRetrograde": false,
         "Planet": 10,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "LilithInZodiac": {
         "NewZodiacSign": 8,
@@ -90813,7 +90813,7 @@
         "NewMoonDay": 24,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 23,
-        "TransitionTime": "2025-02-19T23:19:00",
+        "TransitionTime": "2025-06-09T23:19:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -90821,16 +90821,16 @@
       "MoonEclipse": false,
       "Barber": 0,
       "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Buystuff": 2,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 1,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -90850,7 +90850,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -90953,24 +90953,24 @@
         "NewMoonDay": 24,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 23,
-        "TransitionTime": "2025-02-19T00:00:00",
+        "TransitionTime": "2025-06-09T00:00:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
       "MoonEclipse": false,
       "Barber": 0,
-      "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
+      "Beauty": 1,
+      "Buystuff": 1,
+      "Contracts": 1,
+      "ImportantTasks": 1,
+      "Gardening": 1,
+      "Love": 1,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -90990,7 +90990,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T08:20:00"
+        "TransitionTime": "2025-06-09T08:20:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -91093,24 +91093,24 @@
         "NewMoonDay": 25,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 24,
-        "TransitionTime": "2025-02-19T00:44:00",
+        "TransitionTime": "2025-06-09T00:44:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
+      "Barber": 2,
+      "Beauty": 1,
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
+      "Gardening": 2,
+      "Love": 1,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -91130,7 +91130,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 5,
@@ -91154,7 +91154,7 @@
         "IsRetrograde": false,
         "Planet": 2,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T13:06:00"
+        "TransitionTime": "2025-06-09T13:06:00"
       },
       "JupiterInZodiac": {
         "NewZodiacSign": 4,
@@ -91233,24 +91233,24 @@
         "NewMoonDay": 26,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 25,
-        "TransitionTime": "2025-02-19T02:13:00",
+        "TransitionTime": "2025-06-09T02:13:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 2,
       "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Buystuff": 2,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona.\n"
     },
     {
       "IsNewMonthStart": false,
@@ -91270,7 +91270,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T15:23:00"
+        "TransitionTime": "2025-06-09T15:23:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -91278,7 +91278,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T15:39:00"
+        "TransitionTime": "2025-06-09T15:39:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 7,
@@ -91373,24 +91373,24 @@
         "NewMoonDay": 27,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 26,
-        "TransitionTime": "2025-02-19T03:40:00",
+        "TransitionTime": "2025-06-09T03:40:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 2,
       "Beauty": 0,
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona.\n"
     },
     {
       "IsNewMonthStart": false,
@@ -91410,7 +91410,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -91513,23 +91513,23 @@
         "NewMoonDay": 28,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 27,
-        "TransitionTime": "2025-02-19T05:03:00",
+        "TransitionTime": "2025-06-09T05:03:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 2,
       "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Buystuff": 2,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 2,
       "EventText": ""
     },
     {
@@ -91550,7 +91550,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -91653,24 +91653,24 @@
         "NewMoonDay": 1,
         "MiddleMoonDay": 30,
         "PreviousMoonDay": 29,
-        "TransitionTime": "2025-02-19T22:54:00",
-        "MiddleMoonDayTransitionTime": "2025-02-19T06:23:00"
+        "TransitionTime": "2025-06-09T22:54:00",
+        "MiddleMoonDayTransitionTime": "2025-06-09T06:23:00"
       },
       "MoonPhase": 1,
       "SunEclipse": true,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
-      "Meetings": 0,
+      "Barber": 2,
+      "Beauty": 2,
+      "Buystuff": 2,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
+      "Love": 2,
+      "Meetings": 2,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
-      "EventText": "Saul\u0117s u\u017Etemimas Mergel\u0117je 22:42val. "
+      "Travel": 2,
+      "EventText": "Saul\u0117s u\u017Etemimas 22:42val. Jaunatis Mergel\u0117je."
     },
     {
       "IsNewMonthStart": false,
@@ -91682,7 +91682,7 @@
         "IsRetrograde": false,
         "Planet": 0,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T21:41:00"
+        "TransitionTime": "2025-06-09T21:41:00"
       },
       "MoonInZodiac": {
         "NewZodiacSign": 7,
@@ -91690,7 +91690,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -91706,7 +91706,7 @@
         "IsRetrograde": false,
         "Planet": 4,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T10:55:00"
+        "TransitionTime": "2025-06-09T10:55:00"
       },
       "MercuryInZodiac": {
         "NewZodiacSign": 7,
@@ -91793,7 +91793,7 @@
         "NewMoonDay": 2,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 1,
-        "TransitionTime": "2025-02-19T07:40:00",
+        "TransitionTime": "2025-06-09T07:40:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -91802,9 +91802,9 @@
       "Barber": 0,
       "Beauty": 0,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
@@ -91830,7 +91830,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -91933,24 +91933,24 @@
         "NewMoonDay": 3,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 2,
-        "TransitionTime": "2025-02-19T08:57:00",
-        "MiddleMoonDayTransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T08:57:00",
+        "MiddleMoonDayTransitionTime": "2025-06-09T00:00:00"
       },
       "MoonPhase": 1,
       "SunEclipse": false,
       "MoonEclipse": false,
       "Barber": 0,
-      "Beauty": 0,
+      "Beauty": 2,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
+      "Love": 2,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona.\n"
     },
     {
       "IsNewMonthStart": false,
@@ -91970,7 +91970,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T12:00:00"
+        "TransitionTime": "2025-06-09T12:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -92073,24 +92073,24 @@
         "NewMoonDay": 4,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 3,
-        "TransitionTime": "2025-02-19T10:14:00",
-        "MiddleMoonDayTransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T10:14:00",
+        "MiddleMoonDayTransitionTime": "2025-06-09T00:00:00"
       },
       "MoonPhase": 1,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 2,
       "Beauty": 0,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
+      "Contracts": 2,
+      "ImportantTasks": 2,
       "Gardening": 0,
-      "Love": 0,
+      "Love": 2,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -92110,7 +92110,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -92118,7 +92118,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 8,
@@ -92213,7 +92213,7 @@
         "NewMoonDay": 5,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 4,
-        "TransitionTime": "2025-02-19T11:32:00",
+        "TransitionTime": "2025-06-09T11:32:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -92224,13 +92224,13 @@
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 1,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -92250,7 +92250,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:37:00"
+        "TransitionTime": "2025-06-09T00:37:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -92353,7 +92353,7 @@
         "NewMoonDay": 6,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 5,
-        "TransitionTime": "2025-02-19T12:51:00",
+        "TransitionTime": "2025-06-09T12:51:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -92364,13 +92364,13 @@
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 1,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -92390,7 +92390,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T00:37:00"
+        "TransitionTime": "2025-06-09T00:37:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -92493,7 +92493,7 @@
         "NewMoonDay": 7,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 6,
-        "TransitionTime": "2025-02-19T14:08:00",
+        "TransitionTime": "2025-06-09T14:08:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -92502,15 +92502,15 @@
       "Barber": 0,
       "Beauty": 0,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
+      "Contracts": 1,
+      "ImportantTasks": 1,
       "Gardening": 0,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
-      "EventText": ""
+      "Travel": 1,
+      "EventText": "U\u017Etemimo zona."
     },
     {
       "IsNewMonthStart": false,
@@ -92530,7 +92530,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -92633,7 +92633,7 @@
         "NewMoonDay": 8,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 7,
-        "TransitionTime": "2025-02-19T15:17:00",
+        "TransitionTime": "2025-06-09T15:17:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -92649,7 +92649,7 @@
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 1,
       "EventText": ""
     },
     {
@@ -92670,7 +92670,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T12:09:00"
+        "TransitionTime": "2025-06-09T12:09:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -92773,7 +92773,7 @@
         "NewMoonDay": 9,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 8,
-        "TransitionTime": "2025-02-19T16:13:00",
+        "TransitionTime": "2025-06-09T16:13:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -92784,9 +92784,9 @@
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
@@ -92810,7 +92810,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-18T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -92913,7 +92913,7 @@
         "NewMoonDay": 10,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 9,
-        "TransitionTime": "2025-02-19T16:53:00",
+        "TransitionTime": "2025-06-09T16:53:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -92924,7 +92924,7 @@
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 1,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
@@ -92950,7 +92950,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T17:20:00"
+        "TransitionTime": "2025-06-09T17:20:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -93053,7 +93053,7 @@
         "NewMoonDay": 11,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 10,
-        "TransitionTime": "2025-02-19T17:20:00",
+        "TransitionTime": "2025-06-09T17:20:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -93062,8 +93062,8 @@
       "Barber": 0,
       "Beauty": 0,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
+      "Contracts": 2,
+      "ImportantTasks": 2,
       "Gardening": 0,
       "Love": 0,
       "Meetings": 0,
@@ -93090,7 +93090,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -93114,7 +93114,7 @@
         "IsRetrograde": false,
         "Planet": 2,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "JupiterInZodiac": {
         "NewZodiacSign": 4,
@@ -93193,7 +93193,7 @@
         "NewMoonDay": 12,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 11,
-        "TransitionTime": "2025-02-19T17:37:00",
+        "TransitionTime": "2025-06-09T17:37:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -93204,12 +93204,12 @@
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 1,
       "EventText": ""
     },
     {
@@ -93333,7 +93333,7 @@
         "NewMoonDay": 13,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 12,
-        "TransitionTime": "2025-02-19T17:49:00",
+        "TransitionTime": "2025-06-09T17:49:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -93344,12 +93344,12 @@
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
-      "Meetings": 0,
+      "Gardening": 2,
+      "Love": 2,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 1,
       "EventText": ""
     },
     {
@@ -93370,7 +93370,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T05:07:00"
+        "TransitionTime": "2025-06-09T05:07:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -93473,20 +93473,20 @@
         "NewMoonDay": 14,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 13,
-        "TransitionTime": "2025-02-19T17:59:00",
+        "TransitionTime": "2025-06-09T17:59:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
-      "Meetings": 0,
+      "Barber": 1,
+      "Beauty": 1,
+      "Buystuff": 1,
+      "Contracts": 1,
+      "ImportantTasks": 1,
+      "Gardening": 1,
+      "Love": 1,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
@@ -93510,7 +93510,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -93613,20 +93613,20 @@
         "NewMoonDay": 15,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 14,
-        "TransitionTime": "2025-02-19T18:07:00",
+        "TransitionTime": "2025-06-09T18:07:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
+      "Barber": 1,
+      "Beauty": 1,
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
-      "Meetings": 0,
+      "Gardening": 1,
+      "Love": 1,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
@@ -93650,7 +93650,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T07:48:00"
+        "TransitionTime": "2025-06-09T07:48:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -93674,7 +93674,7 @@
         "IsRetrograde": false,
         "Planet": 2,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T19:41:00"
+        "TransitionTime": "2025-06-09T19:41:00"
       },
       "JupiterInZodiac": {
         "NewZodiacSign": 4,
@@ -93753,23 +93753,23 @@
         "NewMoonDay": 16,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 15,
-        "TransitionTime": "2025-02-19T18:15:00",
+        "TransitionTime": "2025-06-09T18:15:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 1,
       "Beauty": 0,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Contracts": 1,
+      "ImportantTasks": 1,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 1,
       "EventText": ""
     },
     {
@@ -93893,7 +93893,7 @@
         "NewMoonDay": 17,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 16,
-        "TransitionTime": "2025-02-19T18:25:00",
+        "TransitionTime": "2025-06-09T18:25:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -93901,12 +93901,12 @@
       "MoonEclipse": false,
       "Barber": 0,
       "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Buystuff": 2,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 2,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
@@ -93930,7 +93930,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T08:12:00"
+        "TransitionTime": "2025-06-09T08:12:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -94033,23 +94033,23 @@
         "NewMoonDay": 18,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 17,
-        "TransitionTime": "2025-02-19T18:36:00",
+        "TransitionTime": "2025-06-09T18:36:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
+      "Barber": 1,
+      "Beauty": 1,
+      "Buystuff": 1,
+      "Contracts": 1,
       "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
+      "Gardening": 1,
+      "Love": 1,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 1,
       "EventText": ""
     },
     {
@@ -94173,23 +94173,23 @@
         "NewMoonDay": 19,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 18,
-        "TransitionTime": "2025-02-19T18:53:00",
+        "TransitionTime": "2025-06-09T18:53:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
-      "Meetings": 0,
+      "Barber": 1,
+      "Beauty": 1,
+      "Buystuff": 1,
+      "Contracts": 1,
+      "ImportantTasks": 1,
+      "Gardening": 1,
+      "Love": 1,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 1,
       "EventText": ""
     },
     {
@@ -94210,7 +94210,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T08:12:00"
+        "TransitionTime": "2025-06-09T08:12:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -94313,23 +94313,23 @@
         "NewMoonDay": 20,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 19,
-        "TransitionTime": "2025-02-19T19:20:00",
+        "TransitionTime": "2025-06-09T19:20:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 1,
       "Beauty": 0,
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
       "Gardening": 0,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 1,
       "EventText": ""
     },
     {
@@ -94453,23 +94453,23 @@
         "NewMoonDay": 21,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 20,
-        "TransitionTime": "2025-02-19T20:03:00",
+        "TransitionTime": "2025-06-09T20:03:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
+      "Barber": 2,
+      "Beauty": 2,
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
       "Gardening": 0,
-      "Love": 0,
+      "Love": 2,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 1,
       "EventText": ""
     },
     {
@@ -94490,7 +94490,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T09:37:00"
+        "TransitionTime": "2025-06-09T09:37:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -94593,7 +94593,7 @@
         "NewMoonDay": 22,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 21,
-        "TransitionTime": "2025-02-19T21:08:00",
+        "TransitionTime": "2025-06-09T21:08:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 3,
@@ -94604,7 +94604,7 @@
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 1,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
@@ -94630,7 +94630,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 6,
@@ -94733,7 +94733,7 @@
         "NewMoonDay": 23,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 22,
-        "TransitionTime": "2025-02-19T22:31:00",
+        "TransitionTime": "2025-06-09T22:31:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
@@ -94744,7 +94744,7 @@
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 1,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
@@ -94770,7 +94770,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T13:41:00"
+        "TransitionTime": "2025-06-09T13:41:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 7,
@@ -94778,7 +94778,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T00:19:00"
+        "TransitionTime": "2025-06-09T00:19:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 8,
@@ -94873,19 +94873,19 @@
         "NewMoonDay": 23,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 22,
-        "TransitionTime": "2025-02-19T00:00:00",
+        "TransitionTime": "2025-06-09T00:00:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
+      "Barber": 1,
+      "Beauty": 1,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
+      "Contracts": 2,
+      "ImportantTasks": 2,
       "Gardening": 0,
-      "Love": 0,
+      "Love": 1,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
@@ -94910,7 +94910,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 7,
@@ -95013,19 +95013,19 @@
         "NewMoonDay": 24,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 23,
-        "TransitionTime": "2025-02-19T00:01:00",
+        "TransitionTime": "2025-06-09T00:01:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
+      "Barber": 2,
+      "Beauty": 1,
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
+      "Gardening": 2,
+      "Love": 1,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
@@ -95050,7 +95050,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T21:06:00"
+        "TransitionTime": "2025-06-09T21:06:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 7,
@@ -95153,18 +95153,18 @@
         "NewMoonDay": 25,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 24,
-        "TransitionTime": "2025-02-19T01:27:00",
+        "TransitionTime": "2025-06-09T01:27:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 2,
       "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Buystuff": 2,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
@@ -95190,7 +95190,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 7,
@@ -95293,20 +95293,20 @@
         "NewMoonDay": 26,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 25,
-        "TransitionTime": "2025-02-19T02:50:00",
+        "TransitionTime": "2025-06-09T02:50:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
+      "Barber": 2,
+      "Beauty": 2,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
-      "Meetings": 0,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
+      "Love": 2,
+      "Meetings": 2,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
@@ -95354,7 +95354,7 @@
         "IsRetrograde": false,
         "Planet": 2,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "JupiterInZodiac": {
         "NewZodiacSign": 4,
@@ -95433,23 +95433,23 @@
         "NewMoonDay": 27,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 26,
-        "TransitionTime": "2025-02-19T04:00:00",
+        "TransitionTime": "2025-06-09T04:00:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 2,
       "Beauty": 0,
-      "Buystuff": 0,
+      "Buystuff": 1,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 1,
       "EventText": ""
     },
     {
@@ -95470,7 +95470,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T07:01:00"
+        "TransitionTime": "2025-06-09T07:01:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 7,
@@ -95478,7 +95478,7 @@
         "IsRetrograde": false,
         "Planet": 3,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MarsInZodiac": {
         "NewZodiacSign": 8,
@@ -95573,20 +95573,20 @@
         "NewMoonDay": 28,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 27,
-        "TransitionTime": "2025-02-19T05:27:00",
+        "TransitionTime": "2025-06-09T05:27:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
+      "Barber": 2,
+      "Beauty": 1,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
-      "Meetings": 0,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
+      "Love": 1,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
@@ -95713,20 +95713,20 @@
         "NewMoonDay": 29,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 28,
-        "TransitionTime": "2025-02-19T06:42:00",
+        "TransitionTime": "2025-06-09T06:42:00",
         "MiddleMoonDayTransitionTime": "2025-02-19T00:00:00"
       },
       "MoonPhase": 4,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 2,
       "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Buystuff": 2,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 2,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
@@ -95750,7 +95750,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T18:42:00"
+        "TransitionTime": "2025-06-09T18:42:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 7,
@@ -95853,24 +95853,24 @@
         "NewMoonDay": 1,
         "MiddleMoonDay": 30,
         "PreviousMoonDay": 29,
-        "TransitionTime": "2025-02-19T15:25:00",
-        "MiddleMoonDayTransitionTime": "2025-02-19T07:59:00"
+        "TransitionTime": "2025-06-09T15:25:00",
+        "MiddleMoonDayTransitionTime": "2025-06-09T07:59:00"
       },
       "MoonPhase": 1,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 2,
       "Beauty": 0,
       "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
-      "EventText": ""
+      "EventText": "Jaunatis Svarstykl\u0117se 15:25val."
     },
     {
       "IsNewMonthStart": false,
@@ -95882,7 +95882,7 @@
         "IsRetrograde": false,
         "Planet": 0,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MoonInZodiac": {
         "NewZodiacSign": 8,
@@ -95906,7 +95906,7 @@
         "IsRetrograde": false,
         "Planet": 4,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "MercuryInZodiac": {
         "NewZodiacSign": 8,
@@ -95946,7 +95946,7 @@
         "IsRetrograde": true,
         "Planet": 8,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T12:51:00"
+        "TransitionTime": "2025-06-09T12:51:00"
       },
       "PlutoInZodiac": {
         "NewZodiacSign": 11,
@@ -95993,7 +95993,7 @@
         "NewMoonDay": 2,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 1,
-        "TransitionTime": "2025-02-19T09:16:00",
+        "TransitionTime": "2025-06-09T09:16:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
@@ -96022,7 +96022,7 @@
         "IsRetrograde": false,
         "Planet": 0,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T06:51:00"
+        "TransitionTime": "2025-06-09T06:51:00"
       },
       "MoonInZodiac": {
         "NewZodiacSign": 8,
@@ -96133,7 +96133,7 @@
         "NewMoonDay": 3,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 2,
-        "TransitionTime": "2025-02-19T10:35:00",
+        "TransitionTime": "2025-06-09T10:35:00",
         "MiddleMoonDayTransitionTime": "2025-02-18T00:00:00"
       },
       "MoonPhase": 1,
@@ -96144,7 +96144,7 @@
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 1,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
@@ -96170,7 +96170,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T07:19:00"
+        "TransitionTime": "2025-06-09T07:19:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 7,
@@ -96273,18 +96273,18 @@
         "NewMoonDay": 4,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 3,
-        "TransitionTime": "2025-02-19T11:52:00",
+        "TransitionTime": "2025-06-09T11:52:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 1,
       "Beauty": 0,
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
@@ -96413,23 +96413,23 @@
         "NewMoonDay": 5,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 4,
-        "TransitionTime": "2025-02-19T13:05:00",
+        "TransitionTime": "2025-06-09T13:05:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 1,
       "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
+      "Buystuff": 2,
+      "Contracts": 1,
       "ImportantTasks": 0,
-      "Gardening": 0,
-      "Love": 0,
-      "Meetings": 0,
+      "Gardening": 2,
+      "Love": 1,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 1,
       "EventText": ""
     },
     {
@@ -96450,7 +96450,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T19:59:00"
+        "TransitionTime": "2025-06-09T19:59:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 7,
@@ -96553,23 +96553,23 @@
         "NewMoonDay": 6,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 5,
-        "TransitionTime": "2025-02-19T13:06:00",
+        "TransitionTime": "2025-06-09T13:06:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 1,
       "Beauty": 0,
       "Buystuff": 0,
       "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "ImportantTasks": 1,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 1,
       "EventText": ""
     },
     {
@@ -96590,7 +96590,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T00:00:00"
+        "TransitionTime": "2025-06-09T00:00:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 7,
@@ -96693,20 +96693,20 @@
         "NewMoonDay": 7,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 6,
-        "TransitionTime": "2025-02-19T13:51:00",
+        "TransitionTime": "2025-06-09T13:51:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
+      "Barber": 1,
       "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Buystuff": 1,
+      "Contracts": 1,
+      "ImportantTasks": 1,
+      "Gardening": 1,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
       "Travel": 0,
@@ -96833,23 +96833,23 @@
         "NewMoonDay": 8,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 7,
-        "TransitionTime": "2025-02-19T14:21:00",
+        "TransitionTime": "2025-06-09T14:21:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 1,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Barber": 1,
+      "Beauty": 1,
+      "Buystuff": 1,
+      "Contracts": 1,
+      "ImportantTasks": 1,
+      "Gardening": 1,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 1,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 1,
       "EventText": ""
     },
     {
@@ -96870,7 +96870,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": false,
-        "TransitionTime": "2025-02-19T05:55:00"
+        "TransitionTime": "2025-06-09T05:55:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 7,
@@ -96894,7 +96894,7 @@
         "IsRetrograde": false,
         "Planet": 2,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T13:02:00"
+        "TransitionTime": "2025-06-09T13:02:00"
       },
       "JupiterInZodiac": {
         "NewZodiacSign": 4,
@@ -96973,7 +96973,7 @@
         "NewMoonDay": 9,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 8,
-        "TransitionTime": "2025-02-19T14:41:00",
+        "TransitionTime": "2025-06-09T14:41:00",
         "MiddleMoonDayTransitionTime": "2025-02-18T00:00:00"
       },
       "MoonPhase": 2,
@@ -96981,15 +96981,15 @@
       "MoonEclipse": false,
       "Barber": 0,
       "Beauty": 0,
-      "Buystuff": 0,
-      "Contracts": 0,
-      "ImportantTasks": 0,
-      "Gardening": 0,
+      "Buystuff": 2,
+      "Contracts": 2,
+      "ImportantTasks": 2,
+      "Gardening": 2,
       "Love": 0,
-      "Meetings": 0,
+      "Meetings": 2,
       "NewIdeas": 0,
       "Tech": 0,
-      "Travel": 0,
+      "Travel": 2,
       "EventText": ""
     },
     {
@@ -97113,7 +97113,7 @@
         "NewMoonDay": 10,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 9,
-        "TransitionTime": "2025-02-19T14:55:00",
+        "TransitionTime": "2025-06-09T14:55:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
@@ -97124,7 +97124,7 @@
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
-      "Gardening": 0,
+      "Gardening": 2,
       "Love": 0,
       "Meetings": 0,
       "NewIdeas": 0,
@@ -97150,7 +97150,7 @@
         "IsRetrograde": false,
         "Planet": 1,
         "IsZodiacTransitioning": true,
-        "TransitionTime": "2025-02-19T13:46:00"
+        "TransitionTime": "2025-06-09T13:46:00"
       },
       "VenusInZodiac": {
         "NewZodiacSign": 7,
@@ -97253,14 +97253,14 @@
         "NewMoonDay": 11,
         "MiddleMoonDay": 0,
         "PreviousMoonDay": 10,
-        "TransitionTime": "2025-02-19T15:06:00",
+        "TransitionTime": "2025-06-09T15:06:00",
         "MiddleMoonDayTransitionTime": "0001-01-01T00:00:00"
       },
       "MoonPhase": 2,
       "SunEclipse": false,
       "MoonEclipse": false,
-      "Barber": 0,
-      "Beauty": 0,
+      "Barber": 1,
+      "Beauty": 1,
       "Buystuff": 0,
       "Contracts": 0,
       "ImportantTasks": 0,
@@ -105817,62 +105817,62 @@
     {
       "Planet": 0,
       "ZodiacSign": 1,
-      "PlanetInZodiacInfo": "DR\u0104SA PRAD\u0116TI\nIniciatyvumas, dr\u0105sa, energingumas, kovingumas.\nPalanku  sportui, naujiems projektams, prad\u0117ti versl\u0105. \nImkite  sportuoti, aktyviau reik\u0161tis,  prad\u0117kite k\u0105 nors naujo.\nPalankus metas Avino, Li\u016Bto, \u0160aulio, Dvyni\u0173 ir Vandenio \u017Eenkl\u0173 atstovams. "
+      "PlanetInZodiacInfo": "DR\u0104SA PRAD\u0116TI\nIniciatyvumas, dr\u0105sa, energingumas, kovingumas.\nPalanku  sportui, naujiems projektams, prad\u0117ti versl\u0105. \nImkite  sportuoti, aktyviau reik\u0161tis,  prad\u0117kite k\u0105 nors naujo.\nPalankus metas Avino, Li\u016Bto, \u0160aulio, Dvyni\u0173 ir Vandenio \u017Eenklams. "
     },
     {
       "Planet": 0,
       "ZodiacSign": 2,
-      "PlanetInZodiacInfo": "GEROV\u0116S K\u016ARIMAS\nStabilumas, prakti\u0161kumas, gerov\u0117s k\u016Brimas, gro\u017Eio puosel\u0117jimas.\nPalanku finans\u0173 apskaitai, ekonomikai, sodininkystei, gro\u017Eio proced\u016Broms, statyboms. \nPasir\u016Bpinkite finansais, u\u017Edarbiu, subalansuokite biud\u017Eet\u0105, atnaujinkite \u012Fvaizd\u012F, pasemkite energijos i\u0161 gamtos, pasir\u016Bpinkite savo k\u016Bnu (masa\u017Eu, mityba, gro\u017Eio proced\u016Bromis). \nPalankus metas Jau\u010Dio, Mergel\u0117s, O\u017Eiaragio, V\u0117\u017Eio ir \u017Duv\u0173 \u017Eenkl\u0173 atstovams. "
+      "PlanetInZodiacInfo": "GEROV\u0116S K\u016ARIMAS\nStabilumas, prakti\u0161kumas, gerov\u0117s k\u016Brimas, gro\u017Eio puosel\u0117jimas.\nPalanku finans\u0173 apskaitai, ekonomikai, sodininkystei, gro\u017Eio proced\u016Broms, statyboms. \nPasir\u016Bpinkite finansais, u\u017Edarbiu, subalansuokite biud\u017Eet\u0105, atnaujinkite \u012Fvaizd\u012F, pasemkite energijos i\u0161 gamtos, pasir\u016Bpinkite savo k\u016Bnu (masa\u017Eu, mityba, gro\u017Eio proced\u016Bromis). \nPalankus metas Jau\u010Dio, Mergel\u0117s, O\u017Eiaragio, V\u0117\u017Eio ir \u017Duv\u0173 \u017Eenklams. "
     },
     {
       "Planet": 0,
       "ZodiacSign": 3,
-      "PlanetInZodiacInfo": "BENDRAVIMAS\nKomunikabilumas, lankstumas, smalsumas, dinamika. \nPalanku mokymuisi, kelion\u0117ms, reklamai, bendravimui, pa\u017Eintims, susirinkimams, informacin\u0117ms technologijoms, id\u0117j\u0173 generavimui, prekybai \nMokykit\u0117s nauj\u0173 dalyk\u0173, pl\u0117skite socialinius tinklus, kontaktus, daugiau jud\u0117kite, bendraukite. \nPalankus metas Dvyni\u0173, Svarstykli\u0173, Vandenio, Avino ir Li\u016Bto \u017Eenkl\u0173 atstovams. "
+      "PlanetInZodiacInfo": "BENDRAVIMAS\nKomunikabilumas, lankstumas, smalsumas, dinamika. \nPalanku mokymuisi, kelion\u0117ms, reklamai, bendravimui, pa\u017Eintims, susirinkimams, informacin\u0117ms technologijoms, id\u0117j\u0173 generavimui, prekybai \nMokykit\u0117s nauj\u0173 dalyk\u0173, pl\u0117skite socialinius tinklus, kontaktus, daugiau jud\u0117kite, bendraukite. \nPalankus metas Dvyni\u0173, Svarstykli\u0173, Vandenio, Avino ir Li\u016Bto \u017Eenklams. "
     },
     {
       "Planet": 0,
       "ZodiacSign": 4,
-      "PlanetInZodiacInfo": "JAUTRUMAS, \u0160EIMYNI\u0160KUMAS\nR\u016Bpestingumas, emocinis gilumas, intuicija, intraverti\u0161kumas\nPalanku bendravimui su \u0161eima, statyboms, remontams nekilnojamojo turto reikalams,  jaukumo namie k\u016Brimui. \nSkirkite laiko \u0161eimai ir kurkite namie jaukum\u0105, pails\u0117kite gamtoje, prie vandens. \nPalankus metas V\u0117\u017Eio, Skorpiono, \u017Duv\u0173, Jau\u010Dio ir Mergel\u0117s \u017Eenkl\u0173 atstovams. "
+      "PlanetInZodiacInfo": "JAUTRUMAS, \u0160EIMYNI\u0160KUMAS\nR\u016Bpestingumas, emocinis gilumas, intuicija, intraverti\u0161kumas\nPalanku bendravimui su \u0161eima, statyboms, remontams nekilnojamojo turto reikalams,  jaukumo namie k\u016Brimui. \nSkirkite laiko \u0161eimai ir kurkite namie jaukum\u0105, pails\u0117kite gamtoje, prie vandens. \nPalankus metas V\u0117\u017Eio, Skorpiono, \u017Duv\u0173, Jau\u010Dio ir Mergel\u0117s \u017Eenklams. "
     },
     {
       "Planet": 0,
       "ZodiacSign": 5,
-      "PlanetInZodiacInfo": "D\u017DIAUGSMAS, K\u016ARYBA\nK\u016Brybingumas, d\u017Eiugumas, pakilumas.\nPalankios veiklos: k\u016Bryba, menai, vadyba,  pramog\u0173 verslas, \u0161ven\u010Di\u0173 organizavimas\nTai metas atostogoms, poilsiui, pramogoms, k\u016Brybai, bendravimui su vaikais, i\u0161reik\u0161kite savo talentus, skirkite laiko m\u0117gstamai veiklai. \nPalankus metas Li\u016Bto, \u0160aulio, Avino, Dvyni\u0173 ir Svarstykli\u0173 \u017Eenkl\u0173 atstovams. "
+      "PlanetInZodiacInfo": "D\u017DIAUGSMAS, K\u016ARYBA\nK\u016Brybingumas, d\u017Eiugumas, pakilumas.\nPalankios veiklos: k\u016Bryba, menai, vadyba,  pramog\u0173 verslas, \u0161ven\u010Di\u0173 organizavimas\nTai metas atostogoms, poilsiui, pramogoms, k\u016Brybai, bendravimui su vaikais, i\u0161reik\u0161kite savo talentus, skirkite laiko m\u0117gstamai veiklai. \nPalankus metas Li\u016Bto, \u0160aulio, Avino, Dvyni\u0173 ir Svarstykli\u0173 \u017Eenklams. "
     },
     {
       "Planet": 0,
       "ZodiacSign": 6,
-      "PlanetInZodiacInfo": "R\u016APESTINGUMAS\nBlaivumas, atsakomyb\u0117, prakti\u0161kumas.\nPalanku planavimui, dokument\u0173 tvarkymui, sveikatos prie\u017Ei\u016Brai, administravimui, farmacija.\nSutvarkykite namus bei darbo viet\u0105, planuokit\u0117s veiklas, susidarykite darbo grafikus, pasir\u016Bpinkite sveikata.\nPalankus metas Mergel\u0117s, O\u017Eiaragio, Jau\u010Dio, V\u0117\u017Eio ir Skorpiono \u017Eenkl\u0173 atstovams. "
+      "PlanetInZodiacInfo": "R\u016APESTINGUMAS\nBlaivumas, atsakomyb\u0117, prakti\u0161kumas.\nPalanku planavimui, dokument\u0173 tvarkymui, sveikatos prie\u017Ei\u016Brai, administravimui, farmacija.\nSutvarkykite namus bei darbo viet\u0105, planuokit\u0117s veiklas, susidarykite darbo grafikus, pasir\u016Bpinkite sveikata.\nPalankus metas Mergel\u0117s, O\u017Eiaragio, Jau\u010Dio, V\u0117\u017Eio ir Skorpiono \u017Eenklams. "
     },
     {
       "Planet": 0,
       "ZodiacSign": 7,
-      "PlanetInZodiacInfo": "DIPLOMATIJA\nDiplomatija, saikingumas, teisingumo, harmonijos poreikis. \nPalanku menams, teisiniams reikalams,,  tarpininkavimui, reprezentacija, partnerystei,  susitarimams, gro\u017Eio proced\u016Broms.\nPasir\u016Bpinkite \u012Fvaizd\u017Eiu, laikykit\u0117s etiketo, bendradarbiaukite.\nPalankus metas Svarstykli\u0173, Vandenio, Dvyni\u0173, Li\u016Bto ir \u0160aulio \u017Eenkl\u0173 atstovams. "
+      "PlanetInZodiacInfo": "DIPLOMATIJA\nDiplomatija, saikingumas, teisingumo, harmonijos poreikis. \nPalanku menams, teisiniams reikalams,,  tarpininkavimui, reprezentacija, partnerystei,  susitarimams, gro\u017Eio proced\u016Broms.\nPasir\u016Bpinkite \u012Fvaizd\u017Eiu, laikykit\u0117s etiketo, bendradarbiaukite.\nPalankus metas Svarstykli\u0173, Vandenio, Dvyni\u0173, Li\u016Bto ir \u0160aulio \u017Eenklams. "
     },
     {
       "Planet": 0,
       "ZodiacSign": 8,
-      "PlanetInZodiacInfo": "\nDR\u0104SA IR GELM\u0116\nAistringumas, gilumas, i\u0161\u0161\u016Bkiai, transformacija.\nPalanku psichoterapijai, bioenergetikai, ezoterikai, verslui, investavimui, gilinimuisi \u012F finansus, kov\u0173 menams,\nKaupkite vidin\u0119 j\u0117g\u0105, kurkite verslo planus, priimkite i\u0161\u0161\u016Bkius, pasidom\u0117kite finans\u0173 valdymu, investicijomis, verslo organizavimu. \nPalankus metas Skorpiono, \u017Duv\u0173, V\u0117\u017Eio, Mergel\u0117s, O\u017Eiaragio \u017Eenkl\u0173 atstovams. "
+      "PlanetInZodiacInfo": "\nDR\u0104SA IR GELM\u0116\nAistringumas, gilumas, i\u0161\u0161\u016Bkiai, transformacija.\nPalanku psichoterapijai, bioenergetikai, ezoterikai, verslui, investavimui, gilinimuisi \u012F finansus, kov\u0173 menams,\nKaupkite vidin\u0119 j\u0117g\u0105, kurkite verslo planus, priimkite i\u0161\u0161\u016Bkius, pasidom\u0117kite finans\u0173 valdymu, investicijomis, verslo organizavimu. \nPalankus metas Skorpiono, \u017Duv\u0173, V\u0117\u017Eio, Mergel\u0117s, O\u017Eiaragio \u017Eenklams. "
     },
     {
       "Planet": 0,
       "ZodiacSign": 9,
-      "PlanetInZodiacInfo": "TIK\u0116JIMAS\nOptimizmas, tik\u0117jimas, plat\u016Bs u\u017Emojai, horizont\u0173 pl\u0117timas\nPalanku kelion\u0117ms, turizmui,  studijoms, tarptautiniams santykiams, teisiniams reikalams, \u012Fstatym\u0173 studijoms, visuomeninei veiklai, mentorystei, kou\u010Dingui. \nKeliaukite ar kurkite kelioni\u0173 planus, imkit\u0117s studij\u0173 - \u012Fsitraukite \u012F veiklas, kurios ple\u010Dia j\u016Bs\u0173 akirat\u012F.\nPalankus metas \u0160aulio Avino, Li\u016Bto, Svarstykli\u0173, Vandenio \u017Eenkl\u0173 atstovams. "
+      "PlanetInZodiacInfo": "TIK\u0116JIMAS\nOptimizmas, tik\u0117jimas, plat\u016Bs u\u017Emojai, horizont\u0173 pl\u0117timas\nPalanku kelion\u0117ms, turizmui,  studijoms, tarptautiniams santykiams, teisiniams reikalams, \u012Fstatym\u0173 studijoms, visuomeninei veiklai, mentorystei, kou\u010Dingui. \nKeliaukite ar kurkite kelioni\u0173 planus, imkit\u0117s studij\u0173 - \u012Fsitraukite \u012F veiklas, kurios ple\u010Dia j\u016Bs\u0173 akirat\u012F.\nPalankus metas \u0160aulio Avino, Li\u016Bto, Svarstykli\u0173, Vandenio \u017Eenklams. "
     },
     {
       "Planet": 0,
       "ZodiacSign": 10,
-      "PlanetInZodiacInfo": "\nTVIRTYB\u0116\nRimtis, atsakomyb\u0117, disciplina, tvarka, strategija.\nPalanku karjeros planavimui, kvalifikacijos k\u0117liimui, strategijos k\u016Brimui, administravimui, reikal\u0173 institucijose tvarkymui, gr\u016Bdinimuisi. \nSkirkite  d\u0117mesio karjerai, kurkite strategij\u0105 esminiams tikslams pasiekti. Gr\u016Bdinkite ir k\u016Bn\u0105, ir dvasi\u0105. Atsirinkite, kas svarbiausia.\nPalankus metas O\u017Eiaragio, Jau\u010Dio, Mergel\u0117s, Skorpiono, \u017Duv\u0173 \u017Eenkl\u0173 atstovams. \n"
+      "PlanetInZodiacInfo": "\nTVIRTYB\u0116\nRimtis, atsakomyb\u0117, disciplina, tvarka, strategija.\nPalanku karjeros planavimui, kvalifikacijos k\u0117liimui, strategijos k\u016Brimui, administravimui, reikal\u0173 institucijose tvarkymui, gr\u016Bdinimuisi. \nSkirkite  d\u0117mesio karjerai, kurkite strategij\u0105 esminiams tikslams pasiekti. Gr\u016Bdinkite ir k\u016Bn\u0105, ir dvasi\u0105. Atsirinkite, kas svarbiausia.\nPalankus metas O\u017Eiaragio, Jau\u010Dio, Mergel\u0117s, Skorpiono, \u017Duv\u0173 \u017Eenklams. \n"
     },
     {
       "Planet": 0,
       "ZodiacSign": 11,
-      "PlanetInZodiacInfo": "LAISV\u0116, DRAUGYST\u0116\nInovatyvacijos, individualizmas, laisv\u0117 ir draugi\u0161kumas.\nPalanku projektiniam,  komandiniam darbui, i\u0161maniosioms technologijoms, socialiniams tinklams, i\u0161radimams, programuotojams, inflenceriams, freelanceriams socialiniuose tinkluose.\nPereikite prie laisvesnio darbo grafiko, projektinio  ar laisvai samdomo darbo, ie\u0161kokite savo komandos, organizuokite susitikimus, \u012Fvaldykite IT.\nPalankus   metas Vandenio, Dvyni\u0173, Svarstykli\u0173, Avino, \u0160aulio \u017Eenkl\u0173 atstovams. "
+      "PlanetInZodiacInfo": "LAISV\u0116, DRAUGYST\u0116\nInovatyvacijos, individualizmas, laisv\u0117 ir draugi\u0161kumas.\nPalanku projektiniam,  komandiniam darbui, IT, socialiniams tinklams, i\u0161radimams, programuotojams, influenceriams.\nPereikite prie laisvesnio darbo grafiko, projektinio  ar laisvai samdomo darbo, ie\u0161kokite savo komandos, organizuokite susitikimus, \u012Fvaldykite IT.\nPalankus   metas Vandenio, Dvyni\u0173, Svarstykli\u0173, Avino, \u0160aulio \u017Eenklvams. "
     },
     {
       "Planet": 0,
       "ZodiacSign": 12,
-      "PlanetInZodiacInfo": "\nDVASINGUMAS, K\u016ARYBA\nIntuicija, empatija, subtilumas, k\u016Brybi\u0161kumas, dvasios gelm\u0117.\nPalanku menams, dvasin\u0117ms praktikoms,  psichoterapijai, jogai, rekreacijai.\nAtraskite vietos meilei, \u012Fkv\u0117ptai k\u016Brybai, dvasin\u0117ms praktikoms, (jogai, meditacijai),  labdarai, \u012Fsigilinimui \u012F savo vidin\u012F pasaul\u012F.\nPalankus metas \u017Duv\u0173, V\u0117\u017Eio, Skorpiono, Jau\u010Dio ir O\u017Eiaragio \u017Eenkl\u0173 atstovams. "
+      "PlanetInZodiacInfo": "\nDVASINGUMAS, K\u016ARYBA\nIntuicija, empatija, subtilumas, k\u016Brybi\u0161kumas, dvasios gelm\u0117.\nPalanku menams, dvasin\u0117ms praktikoms,  psichoterapijai, jogai, rekreacijai.\nAtraskite vietos meilei, \u012Fkv\u0117ptai k\u016Brybai, dvasin\u0117ms praktikoms, (jogai, meditacijai),  labdarai, gilinkit\u0117s \u012F vidin\u012F pasaul\u012F.\nPalankus metas \u017Duv\u0173, V\u0117\u017Eio, Skorpiono, Jau\u010Dio ir O\u017Eiaragio \u017Eenklams. "
     },
     {
       "Planet": 1,
@@ -105882,7 +105882,7 @@
     {
       "Planet": 1,
       "ZodiacSign": 2,
-      "PlanetInZodiacInfo": "STABILUMAS, STIPRI POZICIJA\nEmocijos stabilios, traukia komfortas, pastovumas ir prakti\u0161kumas. \nGeras laikas  pirkiniams, investicijoms, pasir\u016Bpinti u\u017Edarbiu, biud\u017Eeto papildymu. \nSantykiai patikimi, taik\u016Bs,  svarbus fizinis artumas ir bendras laikas. Palanku meil\u0117s santykiams, pasimatymams. \nJautri gerkl\u0117 ir skydliauk\u0117s, netinka jas operuoti.\nTvarkykite  finansinius reikalus, pasir\u016Bpinkite u\u017Edarbiu, puikus metas meil\u0117s pasimatymams, ry\u0161iams stiprinti,  gurmani\u0161kiems pom\u0117giams,  sodininkystei, gro\u017Eio proced\u016Broms. "
+      "PlanetInZodiacInfo": "STABILUMAS, STIPRI POZICIJA\nEmocijos stabilios, traukia komfortas, pastovumas ir prakti\u0161kumas. \nGeras laikas  pirkiniams, investicijoms, pasir\u016Bpinti u\u017Edarbiu, biud\u017Eeto papildymu. \nSantykiai patikimi, taik\u016Bs,  svarbus fizinis artumas ir bendras laikas. Palanku meil\u0117s santykiams, pasimatymams. \nJautri gerkl\u0117 ir skydliauk\u0117s, netinka jas operuoti.\nTvarkykite  finansinius reikalus, pasir\u016Bpinkite u\u017Edarbiu, puikus metas meil\u0117s ry\u0161iams,,  gurmani\u0161kiems pom\u0117giams,  sodininkystei, gro\u017Eio proced\u016Broms. "
     },
     {
       "Planet": 1,
@@ -105907,12 +105907,12 @@
     {
       "Planet": 1,
       "ZodiacSign": 7,
-      "PlanetInZodiacInfo": "TAIKUMAS\nEmocijos sant\u016Brios, \u017Eavios.\nPalanku deryboms, pirkti meno dirbinius, investuoti \u012F gro\u017E\u012F.\nSantykiuose svarbu takti\u0161kumas, \u017Eavesys ir geros manieros.\nSaugokite str\u0117nas, neoperuokite inkst\u0173, \u0161lapimo sistmos.\nPuikus metas gro\u017Eio proced\u016Broms, pasimatymams, reprezentacijai, deryboms, harmonijai, pusiausvyrai atkurti."
+      "PlanetInZodiacInfo": "TAIKUMAS\nEmocijos sant\u016Brios, \u017Eavios.\nPalanku deryboms, sutartims, pirkti meno dirbinius, investuoti \u012F gro\u017E\u012F.\nSantykiuose svarbu takti\u0161kumas, \u017Eavesys ir geros manieros.\nSaugokite str\u0117nas, neoperuokite inkst\u0173, \u0161lapimo sistmos.\nPuikus metas gro\u017Eio proced\u016Broms, pasimatymams, reprezentacijai, deryboms, harmonijai, pusiausvyrai atkurti."
     },
     {
       "Planet": 1,
       "ZodiacSign": 8,
-      "PlanetInZodiacInfo": "AISTRINGUMAS. SILPNA POZICIJA\nEmocijos intensyvios  ir slaptos, aistringos, traukia i\u0161\u0161\u016Bkiai, paslaptys, galia.\nSusidom\u0117jimas finansais, j\u0173 \u012Fvaldymu,  verslau creditai,s draudimu. \nSantykiuose svarbu  aistra, seksualumas, venkite dramatizmo, provokacij\u0173.\nSaugokite lyties organus, negalima j\u0173 operuoti. Kaupkite vidin\u0119 j\u0117g\u0105. \nPalanku verslui, kov\u0173 menams, ezoterikai, i\u0161\u0161\u016Bkiams priimti.  \u012Evaldykite j\u0117g\u0105 - tiek dvasin\u0119, tiek  finansin\u0119."
+      "PlanetInZodiacInfo": "AISTRINGUMAS. SILPNA POZICIJA\nEmocijos intensyvios  ir slaptos, aistringos, traukia i\u0161\u0161\u016Bkiai, paslaptys, galia.\nSusidom\u0117jimas finansais, j\u0173 \u012Fvaldymu,  verslu, kreditais draudimu. Pasverkite rizikas. \nSantykiuose svarbu  aistra, seksualumas, venkite dramatizmo, provokacij\u0173.\nSaugokite lyties organus, negalima j\u0173 operuoti. Kaupkite vidin\u0119 j\u0117g\u0105. \nPalanku verslui, kov\u0173 menams, ezoterikai, i\u0161\u0161\u016Bkiams priimti.  \u012Evaldykite j\u0117g\u0105 - tiek dvasin\u0119, tiek  finansin\u0119. Bet nepasinerkite \u012F ni\u016Brum\u0105. "
     },
     {
       "Planet": 1,
@@ -105922,17 +105922,17 @@
     {
       "Planet": 1,
       "ZodiacSign": 10,
-      "PlanetInZodiacInfo": "SANT\u016ARUMAS. SILPNA POZICIJA\nEmocijos sant\u016Brios, rimtos, gali b\u016Bti u\u017Espaustos, traukia karjeros reikalai. \nGeras laikas iilgalaik\u0117ms investicijoms, rimtiems pirkiniams.\nSantykiai sant\u016Br\u016Bs, bet patikimi, vertinamas lojalumas ir  atsakomyb\u0117.\nSaugokite kaulus ir s\u0105narius sistem\u0105, negalina j\u0173 operuoti.\nPalanku rimtiems sprendimams, reikalams  bei pirkiniams, strateginiam planavimui."
+      "PlanetInZodiacInfo": "SANT\u016ARUMAS. SILPNA POZICIJA\nEmocijos sant\u016Brios, rimtos, gali b\u016Bti u\u017Espaustos, traukia karjeros reikalai. \nGeras laikas ilgalaik\u0117ms investicijoms, rimtiems pirkiniams.\nSantykiai sant\u016Br\u016Bs, bet patikimi, vertinamas lojalumas ir  atsakomyb\u0117.\nSaugokite kaulus ir s\u0105narius sistem\u0105, negalina j\u0173 operuoti.\nPalanku rimtiems sprendimams, reikalams  bei pirkiniams, strateginiam planavimui. Vis d\u0117lto pernelyg neu\u017Espauskite sav\u0119s pareigomis."
     },
     {
       "Planet": 1,
       "ZodiacSign": 11,
-      "PlanetInZodiacInfo": "NEPRISIRI\u0160IMAS\nEmocijos neutralios, svarbu i\u0161saugoti nepriklausomyb\u0119.\nPalanku technikos pirkimui, ypa\u010D kompiuteri\u0173, IT, investavimui \u012F kripto valiutas, naujas technologijas\nSantykiuose svarbi asmenin\u0117 erdv\u0117, bendradarbiavimas, laisv\u0117, draugyst\u0117.\nSaugoti kojas, ven\u0173 sistem\u0105, negalima j\u0173 operuoti.\nDalykit\u0117s id\u0117jomis, burkit\u0117s \u012F komandas, mokykit\u0117s,  tyrin\u0117kite, puosel\u0117kite laisv\u0119."
+      "PlanetInZodiacInfo": "NEPRISIRI\u0160IMAS\nEmocijos neutralios, svarbu i\u0161saugoti nepriklausomyb\u0119.\nGeras laikas technikos pirkimui, investavimui \u012F kripto valiutas, informacij\u0105.\nSantykiuose svarbi asmenin\u0117 erdv\u0117, bendradarbiavimas, laisv\u0117, draugyst\u0117.\nSaugokite kojas, ven\u0173 sistem\u0105, negalima j\u0173 operuoti.\nDalykit\u0117s id\u0117jomis, burkit\u0117s \u012F komandas, mokykit\u0117s,  tyrin\u0117kite, puosel\u0117kite laisv\u0119."
     },
     {
       "Planet": 1,
       "ZodiacSign": 12,
-      "PlanetInZodiacInfo": "FANTAZIJA\nEmocijos permainingos ir slaptos, didesnis jautrumas ir intuicija.\nSantykiuose  svarbu subtilumas, dvasinis ry\u0161ys, \u012Fkv\u0117pimas. Palanku meilei, jei yra dvasinis ry\u0161ys.\nPaugokite p\u0117das, negalima j\u0173 operuoti.\nSkirkite laiko k\u016Brybai, dvasin\u0117ms praktikoms, rekreacijai, \u012Fsigilinti \u012F save."
+      "PlanetInZodiacInfo": "FANTAZIJA\nEmocijos permainingos ir slaptos, didesnis jautrumas ir intuicija.\nGeras laikas menams, k\u016Brybai, ta\u010Diau neprakti\u0161kas. Palanku investuoti \u012F gro\u017E\u012F.\nSantykiuose  svarbu subtilumas, dvasinis ry\u0161ys, \u012Fkv\u0117pimas. Palanku meilei, jei yra dvasinis ry\u0161ys.\nPasaugokite p\u0117das (masa\u017Eas, patogi avalyn\u0117), negalima j\u0173 operuoti.\nSkirkite laiko k\u016Brybai, dvasin\u0117ms praktikoms, rekreacijai, \u012Fsigilinti \u012F save."
     },
     {
       "Planet": 2,
@@ -105962,12 +105962,12 @@
     {
       "Planet": 2,
       "ZodiacSign": 6,
-      "PlanetInZodiacInfo": "ANALITI\u0160KAS, PRAKTI\u0160KAS M\u0104STYMAS.\n M\u0105stymas analiti\u0161kas, kruop\u0161tus, logi\u0161kas, orientuotas \u012F detales.\nBendravimas konkretus, dalyki\u0161kas, bet kriti\u0161kas.\nYpa\u010D palanki pozicija mentaliniam darbui, informaicjos tvarkymui, skai\u010Diavimams, kontaktams, mokymuisi, dokument\u0173 tvarkymui, dalykiniams pokalbiams."
+      "PlanetInZodiacInfo": "ANALITI\u0160KAS, PRAKTI\u0160KAS M\u0104STYMAS.\n M\u0105stymas analiti\u0161kas, kruop\u0161tus, logi\u0161kas, orientuotas \u012F detales.\nBendravimas konkretus, dalyki\u0161kas, bet kriti\u0161kas.\nPalanku mentaliniam darbui, informaicjos tvarkymui, skai\u010Diavimams, kontaktams, mokymuisi, dokument\u0173 tvarkymui, dalykiniams pokalbiams."
     },
     {
       "Planet": 2,
       "ZodiacSign": 7,
-      "PlanetInZodiacInfo": "DIPLOMATI\u0160KAS M\u0104STYMAS.\nM\u0105stymas  orientuotas \u012F palyginimus, teisingum\u0105 ir estetik\u0105.\nBendravimas takti\u0161kas, diplomati\u0161kas, malonus. Svarbi kalbos estetika ir etiketas.\nPalanki pozicija socialiniams mokslams, teisei, menams, bendradarbiavimui, deryboms, sutartims, reprezentacijai"
+      "PlanetInZodiacInfo": "DIPLOMATI\u0160KAS M\u0104STYMAS.\nM\u0105stymas  orientuotas \u012F palyginimus, teisingum\u0105 ir estetik\u0105.\nBendravimas takti\u0161kas, diplomati\u0161kas, malonus. Svarbi kalbos estetika ir etiketas.\nPalanku socialiniams mokslams, teisei, menams, bendradarbiavimui, deryboms, sutartims, reprezentacijai"
     },
     {
       "Planet": 2,
@@ -105977,7 +105977,7 @@
     {
       "Planet": 2,
       "ZodiacSign": 9,
-      "PlanetInZodiacInfo": "\u012EKVEPIANTIS IR FILOSOFI\u0160KAS M\u0104STYMAS.\nM\u0105stymas filosofi\u0161kas, orientuotas \u012F prasm\u0119 ir d\u0117snius, plati pasaul\u0117\u017Ei\u016Bra.\nBendravimas atviras, \u012Fkvepiantis, nuo\u0161irdus. Sieja bendros id\u0117jos, pasaul\u0117\u017Ei\u016Bra, filosofin\u0117s diskusijos, kelion\u0117s.\nPalanki pozicija pasaul\u0117\u017Ei\u016Brai pl\u0117sti, mokytis kalb\u0173,  studijuoti filosofij\u0105, \u012Fstatymus, kitas kult\u016Bras."
+      "PlanetInZodiacInfo": "\u012EKVEPIANTIS IR FILOSOFI\u0160KAS M\u0104STYMAS.\nM\u0105stymas filosofi\u0161kas, orientuotas \u012F prasm\u0119 ir d\u0117snius, plati pasaul\u0117\u017Ei\u016Bra.\nBendravimas atviras, \u012Fkvepiantis, nuo\u0161irdus. Sieja bendros id\u0117jos, pasaul\u0117\u017Ei\u016Bra, filosofin\u0117s diskusijos, kelion\u0117s.\nPalanku pasaul\u0117\u017Ei\u016Brai pl\u0117sti, mokytis kalb\u0173,  studijuoti filosofij\u0105, \u012Fstatymus, kitas kult\u016Bras. Vis d\u0117lto nepasinerkite \u012F abstrakcijas. "
     },
     {
       "Planet": 2,
@@ -105987,12 +105987,12 @@
     {
       "Planet": 2,
       "ZodiacSign": 11,
-      "PlanetInZodiacInfo": "MOKSLINIS, ORIGINALUS M\u0104STYMAS.\nM\u0105stymas inovatyvus, abstraktus, mokslinis. \nBendravimas atviras, draugi\u0161kas,  laisvas, toleranti\u0161kas.\nPalanku savarankiai veiklai (freelanceriams\u201C), moksliniams tyrin\u0117jimams, komandiniam darbui vie\u0161inimui soc. Tiknluose (\u201Einfluencerimas\u201C). Diekite inovacijas, generuokite id\u0117jas, \u012Fvaldykite IT."
+      "PlanetInZodiacInfo": "MOKSLINIS, ORIGINALUS M\u0104STYMAS.\nM\u0105stymas inovatyvus, abstraktus, mokslinis. \nBendravimas atviras, draugi\u0161kas,  laisvas, toleranti\u0161kas.\nPalanku savarankiai veiklai  moksliniams tyrin\u0117jimams, komandiniam darbui, influenceriams. Diekite inovacijas, generuokite id\u0117jas, \u012Fvaldykite IT."
     },
     {
       "Planet": 2,
       "ZodiacSign": 12,
-      "PlanetInZodiacInfo": "INTUITYVUS, VAIZDINIS M\u0104STYMAS.\nTinkamas metas meninei k\u016Brybai, dvasiniams apm\u0105stymams, intuicijos lavinimui, sapn\u0173 analizei, subtiliam \u012Fsijautimui \u012F kit\u0105 \u017Emog\u0173.\nM\u0105stymas vaizdinis, intuityvus, \u012Fkv\u0117ptas,k\u016Brybi\u0161kas. Remiasi \u012Fkv\u0117pimu, nuojauta daugiau nei logika. Laki fantazija.\nBendravimas intuityvus, \u012Fkvepiantis. Svarbiau vidinis bendrumas, bendra k\u016Bryba nei \u017Eod\u017Eiai.\nPuikus metas meninei k\u016Brybai, dvasin\u0117ms praktikoms, intuicijos lavinimui, \u012Fsigilinimui \u012F save, psichoterapijai."
+      "PlanetInZodiacInfo": "INTUITYVUS, VAIZDINIS M\u0104STYMAS. SILPNA POZICIJA\nM\u0105stymas vaizdinis, intuityvus, \u012Fkv\u0117ptas,k\u016Brybi\u0161kas. Remiasi \u012Fkv\u0117pimu, nuojauta daugiau nei logika. Laki fantazija.\nBendravimas intuityvus, \u012Fkvepiantis. Svarbiau vidinis bendrumas, bendra k\u016Bryba nei \u017Eod\u017Eiai. Nirisi patyl\u0117ti, pab\u016Bti vienam. \nPalanku meninei k\u016Brybai, dvasin\u0117ms praktikoms, intuicijos lavinimui, \u012Fsigilinimui \u012F save, \u012Fsiklausymui \u012F sielos poreikius. Vis d\u0117lto pernelyg neyitr\u016Bkite nuo realyb\u0117s,"
     },
     {
       "Planet": 3,
@@ -106017,12 +106017,12 @@
     {
       "Planet": 3,
       "ZodiacSign": 5,
-      "PlanetInZodiacInfo": "ORI,  PRABANGI MEIL\u0116, GEROV\u0116\nSkatina dosnum\u0105, \u0161ilum\u0105, k\u016Brybi\u0161kum\u0105 ir nor\u0105 b\u016Bti matomiems.\nMeil\u0117 \u2013 \u0161ilta, teatrali\u0161ka, dosni\nGro\u017Eis - prabangus, geriau ma\u017Eiau, bet tai, kas vertinga, i\u0161skirtinio.\nGerov\u0117 \u2013 per k\u016Brybingum\u0105, lyderyst\u0119, pramog\u0173 srit\u012F\nPalanku romanti\u0161kiems pasimatymams, pa\u017Eintims, vedyboms, menui, k\u016Brybai, pramog\u0173 verslui, \u0161vent\u0117ms, gro\u017Eio proced\u016Broms, stiliaus ir prekinio \u017Eenklo formavimui. "
+      "PlanetInZodiacInfo": "ORI,  PRABANGI MEIL\u0116, GEROV\u0116\nSkatina dosnum\u0105, \u0161ilum\u0105, k\u016Brybi\u0161kum\u0105 ir nor\u0105 b\u016Bti matomiems.\nMeil\u0117 \u2013 \u0161ilta, teatrali\u0161ka, dosni\nGro\u017Eis - prabangus, geriau ma\u017Eiau, bet tai, kas vertinga, i\u0161skirtinio.\nGerov\u0117 \u2013 per k\u016Brybingum\u0105, lyderyst\u0119, pramog\u0173 srit\u012F\nPalanku romanti\u0161kiems pasimatymams, pa\u017Eintims, vedyboms, menui, k\u016Brybai, pramog\u0173 verslui, prezentacijoms, \u0161vent\u0117ms, gro\u017Eio proced\u016Broms, stiliaus  formavimui. "
     },
     {
       "Planet": 3,
       "ZodiacSign": 6,
-      "PlanetInZodiacInfo": "R\u016APESTINGA, PRAKTI\u0160KA MEIL\u0116, GEROV\u0116. SILPNA POZICIJA\nSud\u0117tingesn\u0117 emocijoms, bet palanki atsakomybei, prakti\u0161kai, blaivia i meilei,  kruop\u0161\u010Diam gro\u017Eio bei gerov\u0117s k\u016Brimui.\nMeil\u0117 \u2013 racionali, blaivi, r\u016Bpestinga.\nGro\u017Eis \u2013 \u0161varus, funkcionalus, sant\u016Brus, prakti\u0161kas.\nGerov\u0117 \u2013 per darb\u0161tum\u0105, planavim\u0105, taupym\u0105, prakti\u0161kas id\u0117jas.\nPalanku tvarkymuisi, sveikatingumui, sveikatos proced\u016Broms, buities ir darbo efektyvinimui, rutininiams darbams. "
+      "PlanetInZodiacInfo": "R\u016APESTINGA, PRAKTI\u0160KA MEIL\u0116, GEROV\u0116. SILPNA POZICIJA\nSud\u0117tingesn\u0117 emocijoms, bet palanki atsakomybei, prakti\u0161kai, blaivia i meilei,  kruop\u0161\u010Diam gro\u017Eio bei gerov\u0117s k\u016Brimui.\nMeil\u0117 \u2013 racionali, blaivi, r\u016Bpestinga.\nGro\u017Eis \u2013 \u0161varus, funkcionalus, sant\u016Brus, prakti\u0161kas.\nGerov\u0117 \u2013 per darb\u0161tum\u0105, planavim\u0105, taupym\u0105, prakti\u0161kas id\u0117jas.\nPalanku tvarkymuisi, sveikatingumui, sveikatos proced\u016Broms, buities ir darbo efektyvinimui, rutininiams darbams. Venkite persidirbimo, perd\u0117to reiklumo sau ir kitiems."
     },
     {
       "Planet": 3,
@@ -106127,12 +106127,12 @@
     {
       "Planet": 5,
       "ZodiacSign": 3,
-      "PlanetInZodiacInfo": "Pl\u0117tra ir s\u0117km\u0117 ateina  per komunikacij\u0105, greit\u0105 reakcij\u0105, panaudojant technologijas,  mokantis nauj\u0173 dalyk\u0173, \u012Fdiegiant inovacijas.  Palanku logistikos,  IT, ry\u0161i\u0173, transporto, \u017Einiasklaidos, \u0161vietimo sritims. "
+      "PlanetInZodiacInfo": "2024 06- 2025 06. Pl\u0117tra ir s\u0117km\u0117 ateina  per komunikacij\u0105, greit\u0105 reakcij\u0105, panaudojant technologijas,  mokantis nauj\u0173 dalyk\u0173, \u012Fdiegiant inovacijas.  Palanku logistikos,  IT, ry\u0161i\u0173, transporto, \u017Einiasklaidos, \u0161vietimo sritims. Palankus laikotarpis Dvyniams."
     },
     {
       "Planet": 5,
       "ZodiacSign": 4,
-      "PlanetInZodiacInfo": "Pl\u0117tra ir s\u0117km\u0117 ateina per ituityvum\u0105, empatij\u0105, \u0161eimos, gimin\u0117s palaikym\u0105, atsi\u017Evelgim\u0105 \u012F psichologinius  faktorius.  Palanku NT, statyb\u0173,  maitinimo, vie\u0161bu\u010Di\u0173, restoran\u0173 verslams, namo statybai, b\u016Bsto renovacijai, \u0161eimos k\u016Brimui. "
+      "PlanetInZodiacInfo": "2025 06- 2026 06. Stipri  Jupiter pozicija. Pl\u0117tra ir s\u0117km\u0117 ateina per ituityvum\u0105, empatij\u0105, \u0161eimos, gimin\u0117s palaikym\u0105, atsi\u017Evelgim\u0105 \u012F psichologinius  faktorius.  Palanku NT, statyb\u0173,  maitinimo, vie\u0161bu\u010Di\u0173, restoran\u0173 verslams, namo statybai, b\u016Bsto renovacijai, \u0161eimos k\u016Brimui. Palankus laikotarpis V\u0117\u017Eiui."
     },
     {
       "Planet": 5,
@@ -106177,7 +106177,7 @@
     {
       "Planet": 6,
       "ZodiacSign": 1,
-      "PlanetInZodiacInfo": ""
+      "PlanetInZodiacInfo": "2025-2028m. Savisdisciplina veikiant,  apribojimai - nei\u0161eina veikti vienu \u0161uoliu, reikia pasitelkti atkaklum\u0105, strategij\u0105, ilgalaik\u012F planavim\u0105. Apribojimai,  bet ir \u012Fgyta tvirtyb\u0117, i\u0161radingumas, u\u017Etarnautos galimyb\u0117s Avino \u017Eenklo atstovams. "
     },
     {
       "Planet": 6,
@@ -106232,7 +106232,7 @@
     {
       "Planet": 6,
       "ZodiacSign": 12,
-      "PlanetInZodiacInfo": ""
+      "PlanetInZodiacInfo": "2023-2026m. Savisdisciplina dvasiniame gyvenime, strategijos b\u016Btinyb\u0117  k\u016Brybos srityje, reikia pasitelkti atkaklum\u0105, atsakomyb\u0119 k\u016Bryboje, dvasiniame gyvenime, vien \u012Fkv\u0117pimo neu\u017Etenka. . Apribojimai, bet ir \u012Fgyta tvirtyb\u0117, u\u017Etarnautos galimyb\u0117s \u017Duv\u0173 \u017Eenklo atstovams. "
     },
     {
       "Planet": 7,
@@ -106242,12 +106242,12 @@
     {
       "Planet": 7,
       "ZodiacSign": 2,
-      "PlanetInZodiacInfo": ""
+      "PlanetInZodiacInfo": "2018-2026m.Ekonomikos pertvarka, reformos, virtual\u016Bs pinigai, sutrikdo stabi\u0105 tvark\u0105.  Svarbu suvokti ekonomikos poky\u010Dius, laiku persikvalifikuoti, \u012Fvaldyti technologijas darbo srityje. Dideli staig\u016Bs poky\u010Diai Jau\u010Di\u0173  gyvenime. "
     },
     {
       "Planet": 7,
       "ZodiacSign": 3,
-      "PlanetInZodiacInfo": ""
+      "PlanetInZodiacInfo": "2025-2033m. Did\u0117ja dinamika, technologij\u0173 sparti pl\u0117tra, virtuali erdv\u0117 tampa ypa\u010D svarbi, mokslo atradimai kei\u010Dia pasaul\u012F. Ypa\u010D svarbu \u012Fvaldyti technologijas, komunikacij\u0105, spar\u010Diai diegti naujoves. Dideli staig\u016Bs poky\u010Diai Dvyni\u0173 gyvenime."
     },
     {
       "Planet": 7,
@@ -106297,7 +106297,7 @@
     {
       "Planet": 8,
       "ZodiacSign": 1,
-      "PlanetInZodiacInfo": ""
+      "PlanetInZodiacInfo": "2025- 2043m. Revoliucingas \u012Fkv\u0117pimas, savarankumo siekis dvasiniame kelyje, dvasingumo i\u0161rei\u0161kimas veiksmais, aktyvi k\u016Bryba, menas ry\u0161kus. Teigiama: daugiaus savarankumo, ma\u017Eiau aukos pozicijos. Neigiama: anarchizmas, daugiau agresyvumo, savavaliavimo. Kyla metal\u0173 akcijos.  Neai\u0161kumo laikotarpis apkvai\u0161imas Avinams, arba dvasingumo atv\u0117rimas, \u012Fkv\u0117ptak\u016Bryba. "
     },
     {
       "Planet": 8,
@@ -106352,7 +106352,7 @@
     {
       "Planet": 8,
       "ZodiacSign": 12,
-      "PlanetInZodiacInfo": ""
+      "PlanetInZodiacInfo": "2011- 2026m. Dvasingumas, labd\u00E1ra, joga, meditacija tampa \u012Fprastiniais dalykais, stipr\u0117ja atjauta, vienio tarp \u017Emoni\u0173 ir su pasauliu i\u0161gyvenimas. Suklesti kinas, video, Natos pramon\u0117, farmacija. Neigiama: slapti susitarimai, aukos pozicija. Teigiama: dvasingumas, atjauta. Neai\u0161kumo laikotarpis, apkvai\u0161imas \u017Duvims arba dvasingumo atv\u0117rimas, \u012Fkv\u0117pta k\u016Bryba. "
     },
     {
       "Planet": 9,
@@ -106407,7 +106407,7 @@
     {
       "Planet": 9,
       "ZodiacSign": 11,
-      "PlanetInZodiacInfo": ""
+      "PlanetInZodiacInfo": "2023-2043m. Did\u0117ja bendruomeni\u0173, kolektyv\u0173 \u012Ftaka, visuomen\u0117 transformuojasi i\u0161 esm\u0117s: trinasi rasi\u0173, taut\u0173, relgij\u0173 ribos,  virtuali erdv\u0117 tampa ypa\u010D svarbi, valstybi\u0173 pilie\u010Diai tampa pasaulio pilie\u010Diais. Neigiama: lygiavos principas gali tapti neokomunizmu. Teigiama: daugiau tolerancijos, lygyb\u0117s, pasirinkimo galimybi\u0173, laisv\u0117s, bendraarbiavimo.  Esmin\u0117s transformacijos, i\u0161\u0161\u016Bki\u0173 laikotarpis Vandeniams, ezoterikos, verslo arba stambi\u0173 finans\u0173 suvaldymas."
     },
     {
       "Planet": 9,
@@ -106592,7 +106592,7 @@
     {
       "Planet": 12,
       "ZodiacSign": 12,
-      "PlanetInZodiacInfo": ""
+      "PlanetInZodiacInfo": "2025-2026 m. Evoliucine prasme svarbu ugdytis atjaut\u0105, dvasingum\u0105,  mokytis i\u0161gyventi vien\u012F su visomis gyvomis b\u016Btyb\u0117mis. Rasti laiko \u012Fsiklausymui \u012F sielos poreikius, dvasin\u0117ms praktikoms, \u012Fkv\u0117ptai k\u016Brybai. "
     },
     {
       "Planet": 13,
@@ -106666,7 +106666,7 @@
     },
     {
       "PlanetInRetrograde": 2,
-      "PlanetInRetrogradeInfo": "Sul\u0117t\u0117ja bendravimas, gali kilti nesusipratim\u0173, v\u0117luoti ar neateiti lai\u0161kai, siuntiniai, gesti automobiliai.\rNETINKA sutartims pasira\u0161yti,  svarbiems sprendimams, reklamos kampanijoms, mokslo prad\u017Eiai, asira\u0161yti, svarbiems pirkiniams, ypa\u010D transporto priemon\u0117ms, telefonams, kompiuteriams pirkiti.\rTINKA per\u017Ei\u016Br\u0117ti, sisteminti turimai informacijai, per\u017Ei\u016Br\u0117ti padarytus sprendimus, atsirinkiti kontaktus, taisyti padarytas klaidas. "
+      "PlanetInRetrogradeInfo": "Sul\u0117t\u0117ja bendravimas, gali kilti nesusipratim\u0173, v\u0117luoti ar neateiti lai\u0161kai, siuntiniai, gesti automobiliai.\rNetinka sutartims pasira\u0161yti,  svarbiems sprendimams, reklamos kampanijoms, mokslo prad\u017Eiai, asira\u0161yti, svarbiems pirkiniams, ypa\u010D transporto priemon\u0117ms, telefonams, kompiuteriams pirkiti.\rTinka per\u017Ei\u016Br\u0117ti, sisteminti turimai informacijai, per\u017Ei\u016Br\u0117ti padarytus sprendimus, atsirinkiti kontaktus, taisyti padarytas klaidas. "
     },
     {
       "PlanetInRetrograde": 3,

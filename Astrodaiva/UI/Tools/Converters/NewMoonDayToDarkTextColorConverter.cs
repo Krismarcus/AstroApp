@@ -15,7 +15,8 @@ namespace Astrodaiva.UI.Tools.Converters
             // Expecting the value to be an AstroEvent object
             if (value is AstroEvent astroEvent)
             {
-                if (astroEvent.MoonDay.NewMoonDay == 1 || astroEvent.MoonDay.MiddleMoonDay == 1)
+                if ((astroEvent.MoonDay.NewMoonDay == 1 || astroEvent.MoonDay.MiddleMoonDay == 1)
+                && (!astroEvent.SunEclipse || !astroEvent.MoonEclipse))
                 {
                     if (Application.Current.Resources.TryGetValue("PrimaryBackground", out var colorValue) && colorValue is Color myColor)
                     {

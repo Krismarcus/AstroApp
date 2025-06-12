@@ -2,6 +2,8 @@
 using Astrodaiva.Data.Models;
 using Astrodaiva.UI.Tools;
 using Microsoft.Maui.Controls;
+using SkiaSharp;
+using SkiaSharp.Views.Maui;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.Intrinsics.X86;
@@ -75,17 +77,24 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             }
         }
     }
-    
+
+    private SKBitmap _blurredBitmap;
+
     public EventDetailsPage()
     {
         InitializeComponent();
         BindingContext = this;
+        if (InfoConteiner == null)
+        {
+            InfoConteiner = new InfoScreen();
+        }
     }
 
     public async Task InitializeDataAsync(DateTime date)
     {        
         CurrentDate = date;
         DayAstroEvent = AstroEvents.FirstOrDefault(e => e.Date == date);
+
 
         // Ensure UI operations happen on the main thread
         MainThread.BeginInvokeOnMainThread(() =>
@@ -280,11 +289,6 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
     private async void MoonImage_Tapped(object sender, EventArgs e)
     {
-        if (InfoConteiner == null)
-        {
-            InfoConteiner = new InfoScreen();
-        }
-
         if (sender == previousMoonDayImageGrid)
         {
             string moonDayLT = TranslationManager.TranslateMoonDay(DayAstroEvent.MoonDay.PreviousMoonDay);
@@ -312,31 +316,29 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     {
         popupText.Text = infoText;
         popupHeader.Text = header;
-
+        await CaptureAndBlurAsync();
+        //Show the overlay and popup
         popupOverlay.Opacity = 0;
         popupOverlay.IsVisible = true;
-        popupOverlay.Scale = 1;
 
         await Task.WhenAll(
-            popupOverlay.FadeTo(1, 200, Easing.CubicOut)            
+            popupOverlay.FadeTo(1, 200, Easing.CubicOut)
         );
     }
 
     private async void HideInfoScreen(object sender, TappedEventArgs e)
     {
         await Task.WhenAll(
-            popupOverlay.FadeTo(0, 200, Easing.CubicIn)          
+            popupOverlay.FadeTo(0, 200, Easing.CubicIn)
         );
+
         popupOverlay.IsVisible = false;
-    }    
+        _blurredBitmap = null;
+
+    }
 
     private async void PlanetInZodiacGrid_Tapped(object sender, EventArgs e)
     {
-        if (InfoConteiner == null)
-        {
-            InfoConteiner = new InfoScreen();
-        }
-
         if (sender == sunInZodiacGrid)
         {            
             if (sunInZodiacGrid != null)
@@ -408,7 +410,64 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
             }
         }
-    }    
+    }
+
+    private async Task CaptureAndBlurAsync()
+    {
+        // If already blurred and no update needed, reuse
+        if (_blurredBitmap != null)
+        {
+            blurCanvas.IsVisible = true;
+            blurCanvas.InvalidateSurface();
+            return;
+        }
+
+        var screenshot = await Screenshot.CaptureAsync();
+        if (screenshot == null) return;
+
+        using var stream = await screenshot.OpenReadAsync();
+
+        // Process in background thread
+        _blurredBitmap = await Task.Run(() =>
+        {
+            using var skStream = new SKManagedStream(stream);
+            var original = SKBitmap.Decode(skStream);
+            if (original == null) return null;
+
+            // Create a new bitmap with the same dimensions as original
+            var blurred = new SKBitmap(original.Width, original.Height);
+
+            // Apply blur directly to the full-size image
+            var filter = SKImageFilter.CreateBlur(4f, 4f);
+            var paint = new SKPaint { ImageFilter = filter };
+
+            using (var canvas = new SKCanvas(blurred))
+            {
+                canvas.Clear();
+                canvas.DrawBitmap(original, 0, 0, paint);
+            }
+
+            return blurred;
+        });
+
+        if (_blurredBitmap != null)
+        {
+            blurCanvas.IsVisible = true;
+            blurCanvas.InvalidateSurface();
+        }
+    }
+
+    private void OnBlurCanvasPaintSurface(object sender, SKPaintSurfaceEventArgs e)
+    {
+        if (_blurredBitmap == null) return;
+
+        var canvas = e.Surface.Canvas;
+        canvas.Clear();
+
+        var dest = new SKRect(0, 0, e.Info.Width, e.Info.Height);
+        canvas.DrawBitmap(_blurredBitmap, dest);
+    }
+
 }
 
 

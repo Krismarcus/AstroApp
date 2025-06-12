@@ -25,7 +25,7 @@ namespace Astrodaiva.UI.Tools.Converters
 
                 else if (astroEvent.MoonDay.NewMoonDay == 1 || astroEvent.MoonDay.MiddleMoonDay == 1)
                 {
-                    return Color.FromRgb(240, 201, 134);
+                    return ColorManager.GetResourceColor("LightOrangeBackground", Colors.Black);
                 }
             }
 

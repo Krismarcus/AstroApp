@@ -5,9 +5,10 @@
              xmlns:pages="clr-namespace:Astrodaiva.UI.Pages"
              xmlns:controls="clr-namespace:Astrodaiva.UI.Controls"
              xmlns:model="clr-namespace:Astrodaiva.Data.Models"
-             xmlns:converters="clr-namespace:Astrodaiva.UI.Tools.Converters"             
+             xmlns:converters="clr-namespace:Astrodaiva.UI.Tools.Converters"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Maui.Controls;assembly=SkiaSharp.Views.Maui.Controls"
              x:DataType="pages:EventDetailsPage"
-             Shell.NavBarIsVisible="False"
+             Shell.NavBarIsVisible="False"             
              BackgroundColor="{StaticResource ShadedBackground}"
              Title="EventDetailsPage">
     <ContentPage.Resources>
@@ -32,12 +33,12 @@
     </ContentPage.Resources>
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToLightBackgroundColorConverter}}" Offset="0.1"/>
-            <GradientStop Color="{StaticResource SecondaryBackground}" Offset="1.0"/>
+            <GradientStop Color="{StaticResource ShadedBackground}" Offset="0.1"/>
+            <GradientStop Color="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToLightBackgroundColorConverter}}" Offset="1.0"/>
         </LinearGradientBrush>
     </ContentPage.Background>
     <ContentPage.Content>
-        <Grid>
+        <Grid>            
             <!--<Image Source="background4.png" Aspect="Fill" Opacity="1"/>-->
             <FlexLayout VerticalOptions="Start">
                 <ScrollView Grid.Row="0">
@@ -283,31 +284,36 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                        <Grid Grid.Row="9"  Padding="0"  BackgroundColor="Transparent" HorizontalOptions="Center" HeightRequest="50" WidthRequest="50">
+                        <Grid Grid.Row="9"  Padding="0,0,0,20"  BackgroundColor="Transparent" HorizontalOptions="Center" HeightRequest="100" WidthRequest="50">
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnPageTapped"/>
                             </Grid.GestureRecognizers>
-                            <Image Grid.Column="0" x:Name="downArrowImage" Source="down_arrow.png" WidthRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent"/>
+                            <Image Grid.Column="0" x:Name="downArrowImage" Source="down_arrow.png" HorizontalOptions="Center" BackgroundColor="Transparent"/>
                         </Grid>
                     </Grid>
                 </ScrollView>
             </FlexLayout>
             <Grid x:Name="popupOverlay"
-IsVisible="False"
-BackgroundColor="#80000000"
-
-HorizontalOptions="FillAndExpand"
-VerticalOptions="FillAndExpand"
-RowSpacing="0"
-ColumnSpacing="0"
-InputTransparent="False"
-ZIndex="100">
+                IsVisible="False"
+                BackgroundColor="#80000000"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                RowSpacing="0"
+                ColumnSpacing="0"
+                InputTransparent="False"
+                ZIndex="100">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="HideInfoScreen"/>
                 </Grid.GestureRecognizers>
-
+                <skia:SKCanvasView x:Name="blurCanvas"
+                       PaintSurface="OnBlurCanvasPaintSurface"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       IsVisible="True"
+                       InputTransparent="True" />
                 <Frame x:Name="popupFrame"
      Padding="20"
+     BorderColor="Transparent"
      BackgroundColor="{StaticResource PrimaryLightText}"
      CornerRadius="25"
      HorizontalOptions="Center"
@@ -316,31 +322,30 @@ ZIndex="100">
      MaximumHeightRequest="400"
      HasShadow="True"
      IsClippedToBounds="True">
+                    <Frame.GestureRecognizers>                        
+                            <TapGestureRecognizer Tapped="HideInfoScreen"/>                        
+                    </Frame.GestureRecognizers>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" ColumnDefinitions="7*,*">
-                            <Label x:Name="popupHeader"
-                 Grid.Column="0"
-                 FontSize="20"
-                 TextColor="{StaticResource PrimaryDarkText}"
+                        <Grid Grid.Row="0">
+                            <Label x:Name="popupHeader"                 
+                 FontSize="18"
+                 TextColor="{StaticResource PrimaryDarkText}"                 
+                 HorizontalTextAlignment="Center"
+                 TextTransform="Uppercase"
                  FontAttributes="Bold"
                  CharacterSpacing="2"
+                 Margin="0,0,0,20"
                  HorizontalOptions="Center"
-                 VerticalOptions="Center"/>
-                            <Button Grid.Column="1"
-                  Text="✕"
-                  BackgroundColor="Transparent"
-                  FontSize="18"
-                  TextColor="{StaticResource PrimaryDarkText}"
-                 
-                  HorizontalOptions="End"/>
+                 VerticalOptions="Center"/>                            
                         </Grid>
-                        <ScrollView Grid.Row="1">
+                        <ScrollView Grid.Row="1" InputTransparent="True">
                             <Label x:Name="popupText"
-                 FontSize="14"
+                 FontSize="12"                 
+                 HorizontalTextAlignment="Center"
                  CharacterSpacing="1.5"
                  TextColor="{StaticResource PrimaryDarkText}"/>
                         </ScrollView>
