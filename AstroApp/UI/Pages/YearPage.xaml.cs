@@ -2,12 +2,20 @@ using AstroApp.Data.Enums;
 using AstroApp.Data.Models;
 using AstroApp.UI.Tools;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace AstroApp.UI.Pages;
 
 public partial class YearPage : ContentPage
 {
+    public int CurrentYear
+    {
+        get => (int)GetValue(CurrentYearProperty);
+        set => SetValue(CurrentYearProperty, value);
+    }
+
+    public static readonly BindableProperty CurrentYearProperty =
+        BindableProperty.Create(nameof(CurrentYear), typeof(int), typeof(YearPage), 
+            DateTime.Now.Year, propertyChanged: OnCurrentYearChanged);
     public ObservableCollection<AstroEvent> ActiveAstroEvents { get; set; }
     public ObservableCollection<PlanetInZodiacDetails> PlanetInZodiacInfo { get; set; }
     public ObservableCollection<MonthSegment> MonthSegments { get; set; }
@@ -43,17 +51,59 @@ public partial class YearPage : ContentPage
         SetupFrameGestureHandlers();
     }
 
+    private static void OnCurrentYearChanged(BindableObject bindable, object oldValue, object newValue)
+    {
+        if (bindable is YearPage yearPage && newValue is int newYear)
+        {
+            yearPage.LoadYearData(newYear);
+        }
+    }
+
     private void Initialize()
     {
         this.ActiveAstroEvents = App.AppData.AppDB.AstroEventsDB;
-        var currentYear = DateTime.Now.Year;
-
-        // Filter entries from January to December of the current year
-        this.ActiveAstroEvents = new ObservableCollection<AstroEvent>(
-            this.ActiveAstroEvents.Where(e => e.Date.Year == currentYear && e.Date.Month >= 1 && e.Date.Month <= 12)
-        );
         this.PlanetInZodiacInfo = App.AppData.AppDB.PlanetInZodiacsDB;
+        
+        // Initial load for current year
+        LoadYearData(CurrentYear);
     }
+
+    private void LoadYearData(int year)
+    {
+        // Filter entries from January to December of the specified year
+        this.ActiveAstroEvents = new ObservableCollection<AstroEvent>(
+            App.AppData.AppDB.AstroEventsDB.Where(e => e.Date.Year == year && e.Date.Month >= 1 && e.Date.Month <= 12)
+        );
+        
+        // Regenerate calendar with new data
+        GenerateCalendar();
+        
+        // Update bindings
+        OnPropertyChanged(nameof(ActiveAstroEvents));
+        OnPropertyChanged(nameof(MonthSegments));
+        OnPropertyChanged(nameof(SunInZodiacSegments));
+        OnPropertyChanged(nameof(MercuryInZodiacSegments));
+        OnPropertyChanged(nameof(RetrogradeMercurySegments));
+        OnPropertyChanged(nameof(VenusInZodiacSegments));
+        OnPropertyChanged(nameof(RetrogradeVenusSegments));
+        OnPropertyChanged(nameof(MarsInZodiacSegments));
+        OnPropertyChanged(nameof(RetrogradeMarsSegments));
+        OnPropertyChanged(nameof(JupiterInZodiacSegments));
+        OnPropertyChanged(nameof(RetrogradeJupiterSegments));
+        OnPropertyChanged(nameof(SaturnInZodiacSegments));
+        OnPropertyChanged(nameof(RetrogradeSaturnSegments));
+        OnPropertyChanged(nameof(UranusInZodiacSegments));
+        OnPropertyChanged(nameof(RetrogradeUranusSegments));
+        OnPropertyChanged(nameof(NeptuneInZodiacSegments));
+        OnPropertyChanged(nameof(RetrogradeNeptuneSegments));
+        OnPropertyChanged(nameof(PlutoInZodiacSegments));
+        OnPropertyChanged(nameof(RetrogradePlutoSegments));
+        OnPropertyChanged(nameof(SelenaInZodiacSegments));
+        OnPropertyChanged(nameof(LilithInZodiacSegments));
+        OnPropertyChanged(nameof(RahuInZodiacSegments));
+        OnPropertyChanged(nameof(KetuInZodiacSegments));
+    }
+
 
     private void SetupSegmentClickHandlers()
     {
@@ -647,6 +697,16 @@ public partial class YearPage : ContentPage
                 MonthStartDate = lastMonthStart,
                 MonthEndDate = lastDate
             });
+    }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        CurrentYear--;
+    }
+
+    private void Button_Clicked1(object sender, EventArgs e)
+    {
+        CurrentYear++;
     }
 }
 

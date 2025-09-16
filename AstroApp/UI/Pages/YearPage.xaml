@@ -15,15 +15,50 @@
         <!-- Define Row Definitions for the Grid -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0" Margin="12.4,10,12.4,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Text="←" 
+                    Clicked="Button_Clicked"
+                    BackgroundColor="Transparent"
+                    TextColor="{StaticResource PrimaryLightText}"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    WidthRequest="50"
+                    HeightRequest="40"/>
+
+            <Label Grid.Column="1" 
+                   Text="{Binding CurrentYear}"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource PrimaryLightText}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+
+            <Button Grid.Column="2" Text="→" 
+                    Clicked="Button_Clicked1"
+                    BackgroundColor="Transparent"
+                    TextColor="{StaticResource PrimaryLightText}"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    WidthRequest="50"
+                    HeightRequest="40"/>
+        </Grid>
+
         <!-- Month Line at the top -->
-        <controls:CustomMonthLineView x:Name="CustomMonthLineView" Grid.Row="0" MonthSegments="{Binding MonthSegments}" Margin="52.4,0,12.4,0"/>
+        <controls:CustomMonthLineView x:Name="CustomMonthLineView" Grid.Row="1" MonthSegments="{Binding MonthSegments}" Margin="52.4,0,12.4,0"/>
 
         <!-- Scrollable Zodiac Segments -->
-        <ScrollView Grid.Row="1">
+        <ScrollView Grid.Row="2">
             <VerticalStackLayout VerticalOptions="StartAndExpand">
                 <!-- Zodiac and Retrograde Lines -->
                 <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*" Margin="12.4,0">
@@ -113,7 +148,7 @@
         </ScrollView>
 
         <!-- Fixed Frame at the bottom -->
-        <Frame x:Name="BottomInfoFrame" Grid.Row="2" Padding="10" CornerRadius="15" Margin="12.4,0"
+        <Frame x:Name="BottomInfoFrame" Grid.Row="3" Padding="10" CornerRadius="15" Margin="12.4,0"
                BorderColor="Transparent" BackgroundColor="{StaticResource PrimaryLightText}"
                HorizontalOptions="FillAndExpand" VerticalOptions="End" IsVisible="False">
             <Grid>
