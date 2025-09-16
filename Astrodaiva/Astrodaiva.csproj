@@ -36,6 +36,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<AndroidSigningKeyStore>App1-release.keystore</AndroidSigningKeyStore>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
@@ -46,7 +47,11 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
 	  <ApplicationId>com.companyname.astrodaiva</ApplicationId>
-	  <ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.0.2</ApplicationDisplayVersion>
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningStorePass>lotabonamila8</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>app1key</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>lotabonamila8</AndroidSigningKeyPass>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
@@ -66,7 +71,12 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
 	  <ApplicationId>com.companyname.astrodaiva</ApplicationId>
-	  <ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.0.2</ApplicationDisplayVersion>
+	  <DebugSymbols>False</DebugSymbols>
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningStorePass>lotabonamila8</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>app1key</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>lotabonamila8</AndroidSigningKeyPass>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
