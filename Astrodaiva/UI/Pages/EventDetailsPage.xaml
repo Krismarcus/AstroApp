@@ -312,44 +312,44 @@
                        IsVisible="True"
                        InputTransparent="True" />
                 <Frame x:Name="popupFrame"
-     Padding="20"
-     BorderColor="Transparent"
-     BackgroundColor="{StaticResource PrimaryLightText}"
-     CornerRadius="25"
-     HorizontalOptions="Center"
-     VerticalOptions="Center"
-     Margin="12.4,6.2,12.4,6.2"
-     MaximumHeightRequest="400"
-     HasShadow="True"
-     IsClippedToBounds="True">
-                    <Frame.GestureRecognizers>                        
-                            <TapGestureRecognizer Tapped="HideInfoScreen"/>                        
+       Padding="20"
+       BorderColor="Transparent"
+       BackgroundColor="{StaticResource PrimaryLightText}"
+       CornerRadius="25"
+       HorizontalOptions="Center"
+       VerticalOptions="Center"
+       Margin="12.4,6.2,12.4,6.2"
+       HasShadow="True"
+       IsClippedToBounds="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="HideInfoScreen"/>
                     </Frame.GestureRecognizers>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <Label x:Name="popupHeader"                 
-                 FontSize="18"
-                 TextColor="{StaticResource PrimaryDarkText}"                 
-                 HorizontalTextAlignment="Center"
-                 TextTransform="Uppercase"
-                 FontAttributes="Bold"
-                 CharacterSpacing="2"
-                 Margin="0,0,0,20"
-                 HorizontalOptions="Center"
-                 VerticalOptions="Center"/>                            
-                        </Grid>
-                        <ScrollView Grid.Row="1" InputTransparent="True">
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                        <!-- Header -->
+                        <Label x:Name="popupHeader"                 
+               FontSize="18"
+               TextColor="{StaticResource PrimaryDarkText}"                 
+               HorizontalTextAlignment="Center"
+               TextTransform="Uppercase"
+               FontAttributes="Bold"
+               CharacterSpacing="2"
+               Margin="0,0,0,10"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               LineBreakMode="WordWrap"/>
+
+                        <!-- Content -->
+                        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                             <Label x:Name="popupText"
-                 FontSize="12"                 
-                 HorizontalTextAlignment="Center"
-                 CharacterSpacing="1.5"
-                 TextColor="{StaticResource PrimaryDarkText}"/>
+                   FontSize="14"                 
+                   HorizontalTextAlignment="Center"
+                   CharacterSpacing="1.5"
+                   TextColor="{StaticResource PrimaryDarkText}"
+                   LineBreakMode="WordWrap"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Start"/>
                         </ScrollView>
-                    </Grid>
+                    </StackLayout>
                 </Frame>
             </Grid>
         </Grid>

@@ -1,7 +1,9 @@
 ﻿using Astrodaiva.Data;
 using Astrodaiva.Data.Enums;
 using Astrodaiva.Data.Models;
+using Astrodaiva.Services;
 using Astrodaiva.UI.Controls;
+using Astrodaiva.UI.Tools;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
@@ -12,6 +14,8 @@ namespace Astrodaiva.UI.Pages
     [QueryProperty(nameof(Year), "year")]
     public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
+        private readonly IOrientationService _orientation;
+
         private string monthName;
 
         public string MonthName
@@ -75,7 +79,7 @@ namespace Astrodaiva.UI.Pages
             }
         }
 
-        private string activityProfileLt = "Palankios/Nepalankios Dienos";
+        private string activityProfileLt = "Svarbūs darbai";
 
         public string ActivityProfileLt
         {
@@ -192,13 +196,27 @@ namespace Astrodaiva.UI.Pages
         public MainPage()
         {         
             InitializeComponent();
-            Initialize();
             BindingContext = this;
+            _orientation = ServiceHelper.GetRequiredService<IOrientationService>();
+            Initialize();
+            
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _orientation?.LockPortrait();
+        }
+
+        protected override void OnDisappearing()
+        {
+            _orientation?.Unlock();
+            base.OnDisappearing();
         }
 
         private async Task Initialize()
         {
-            ActivityProfile = "nopreset";
+            ActivityProfile = "importanttasks";
             App.AppData = new AppData();
             var appActions = new Services.AppActions();
             App.AppData.AppDB = await appActions.LoadDBAsync();           
@@ -269,9 +287,11 @@ namespace Astrodaiva.UI.Pages
         {            
             this.year = year;
             this.month = month;
+            OnPropertyChanged(nameof(Year));
+            OnPropertyChanged(nameof(Month));
             DateTime startOfMonth = new DateTime(year, month, 1);
             string monthnameLT = startOfMonth.ToString("MMMM", App.AppData.CultureInfo);
-            this.MonthName = monthnameLT.ToUpperInvariant();
+            this.MonthName = monthnameLT.ToUpperInvariant();            
             int days = DateTime.DaysInMonth(year, month);
             int dayOfWeek = ((int)startOfMonth.DayOfWeek + 6) % 7;
             PopulateCalendar(days, dayOfWeek);
@@ -312,9 +332,8 @@ namespace Astrodaiva.UI.Pages
                 {
                     CalendarGrid.Children.Add(dayCard);
                 }
-                dayCard.OnOffProfile(ActivityProfile != "nopreset");
-                dayCard.ChangeActivityProfile(ActivityProfile);
-                // Update property or trigger binding refresh if necessary
+                dayCard.OnOffProfile(ActivityProfile != "");
+                dayCard.ChangeActivityProfile(ActivityProfile);                
 
                 // Move to the next cell
                 currentColumn++;
@@ -375,8 +394,8 @@ namespace Astrodaiva.UI.Pages
 
             if (month == 1)
             {
-                year--;
-                month = 12;
+                //year--;
+                //month = 12;
             }
             else
             {
@@ -393,8 +412,8 @@ namespace Astrodaiva.UI.Pages
 
             if (month == 12)
             {
-                year++;
-                month = 1;
+                //year++;
+                //month = 1;
             }
             else
             {
@@ -482,8 +501,8 @@ namespace Astrodaiva.UI.Pages
 
         private void NoPresetRecognizer_Tapped(object sender, TappedEventArgs e)
         {
-            ActivityProfile = "nopreset";
-            ActivityProfileLt = "Palankios/Nepalankios Dienos";
+            ActivityProfile = "importanttasks";
+            ActivityProfileLt = "Svarbūs darbai";
             UpdateCalendar(year, month);
         }
 
@@ -541,8 +560,15 @@ namespace Astrodaiva.UI.Pages
             ToggleGridAndAnimateArrow();
         }
 
-        private async void OnMonthLabelTapped(object sender, EventArgs e)
+        private async void OnYearLabelTapped(object sender, EventArgs e)
         {
+            var border = sender as Border; // Cast sender to Border.
+            if (border == null) return; // Safety check.
+
+            // Scale the border to 1.1x size over 100 milliseconds.
+            await border.ScaleTo(1.1, 100);
+            // Then scale it back to original size over 100 milliseconds.
+            await border.ScaleTo(1.0, 100);
             await Shell.Current.GoToAsync($"//{nameof(YearPage)}");
         }
 

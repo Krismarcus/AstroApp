@@ -57,15 +57,15 @@ public partial class CustomMonthLineView : ContentView
 
     private Grid CreateSegmentCell(MonthSegment segment)
     {
-        var boxColor = GetResourceColor("PrimaryLightText");
-        var textColor = GetResourceColor("PrimaryBackground");
+        var boxColor = GetResourceColor("PrimaryBackground");
+        var textColor = GetResourceColor("ShadedBackground");
         CultureInfo lithuanianCulture = new CultureInfo("lt-LT");
 
         var boxView = new Border
         {
             BackgroundColor = boxColor,
             StrokeThickness = 0,
-            VerticalOptions = LayoutOptions.FillAndExpand,
+            VerticalOptions = LayoutOptions.FillAndExpand,            
             StrokeShape = new RoundRectangle { CornerRadius = new CornerRadius(10) }
         };
 
@@ -77,7 +77,7 @@ public partial class CustomMonthLineView : ContentView
             HorizontalOptions = LayoutOptions.Center,
             VerticalOptions = LayoutOptions.Center,
             HorizontalTextAlignment = TextAlignment.Center,
-            Margin = new Thickness(10, 0, 0, 0)
+            Margin = new Thickness(0, 0, 0, 0)
         };
 
         var cellGrid = new Grid

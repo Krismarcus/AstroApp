@@ -27,6 +27,8 @@
 		<ApplicationId>com.companyname.astrodaiva</ApplicationId>
 
 		<!-- Versions -->
+		<PackageVersion>1.1.0</PackageVersion>
+		<Version>1.1.0</Version>
 		<ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 

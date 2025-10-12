@@ -1,5 +1,6 @@
 using Astrodaiva.Data.Enums;
 using Astrodaiva.Data.Models;
+using Astrodaiva.Services;
 using Astrodaiva.UI.Tools;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace Astrodaiva.UI.Pages;
 
 public partial class YearPage : ContentPage
 {
+    private readonly IOrientationService _orientation;
     public ObservableCollection<AstroEvent> ActiveAstroEvents { get; set; }
     public ObservableCollection<PlanetInZodiacDetails> PlanetInZodiacInfo { get; set; }
     public ObservableCollection<MonthSegment> MonthSegments { get; set; }
@@ -36,11 +38,24 @@ public partial class YearPage : ContentPage
     public YearPage()
     {
         InitializeComponent();
+        _orientation = ServiceHelper.GetRequiredService<IOrientationService>();
         Initialize();
         GenerateCalendar();
         this.BindingContext = this;
         SetupSegmentClickHandlers();
         SetupFrameGestureHandlers();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _orientation?.LockLandscape();
+    }
+
+    protected override void OnDisappearing()
+    {
+        _orientation?.Unlock();
+        base.OnDisappearing();
     }
 
     private void Initialize()
@@ -118,14 +133,18 @@ public partial class YearPage : ContentPage
             p.Planet == planet && p.ZodiacSign == segment.ZodiacSign);
 
         PlanetInZodiacLabel.Text = TranslationManager.TranslatePlanetInZodiac(planet, segment.ZodiacSign);
-        LabelShowingStartDate.Text = " (from " + segment.ZodiacStartDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo);
-        LabelShoingEndDate.Text = " to " + segment.ZodiacEndDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo) + ")";
+        LabelShowingStartDate.Text = " (nuo " + segment.ZodiacStartDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo);
+        LabelShoingEndDate.Text = " iki " + segment.ZodiacEndDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo) + ")";
         LabelShowingPlanetInZodiacInfo.Text = infoSourceItem?.PlanetInZodiacInfo ?? "No information available.";
 
-        // Show the frame with animation
-        await BottomInfoFrame.TranslateTo(0, 0, 250, Easing.CubicOut);
-        BottomInfoFrame.IsVisible = true;
-    }    
+        // Show the overlay frame with animation
+        if (!BottomInfoFrame.IsVisible)
+        {
+            BottomInfoFrame.IsVisible = true;
+            BottomInfoFrame.TranslationY = BottomInfoFrame.Height;
+            await BottomInfoFrame.TranslateTo(0, 0, 250, Easing.CubicOut);
+        }
+    }
 
     public void GenerateCalendar()
     {

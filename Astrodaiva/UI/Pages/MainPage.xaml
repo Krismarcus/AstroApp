@@ -22,11 +22,18 @@
             <Grid VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0, 20, 0, 0">
+                <Border HorizontalOptions="Center" BackgroundColor="{StaticResource PrimaryBackground}" StrokeShape="RoundRectangle 10,10,10,10" Padding="7" Margin="5">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnYearLabelTapped"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="{Binding Year}" TextColor="{StaticResource ShadedBackground}"/>
+                </Border>
+                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0, 0, 0, 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
@@ -38,11 +45,7 @@
                         </Grid.GestureRecognizers>
                         <Image x:Name="leftArrow" Source="left_arrow.png" HeightRequest="30" HorizontalOptions="Center" />
                     </Grid>
-                    <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{StaticResource PrimaryDarkText}" CharacterSpacing="4" HorizontalOptions="Center" VerticalOptions="Center" FontSize="30" FontAttributes="Bold" >
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnMonthLabelTapped"/>
-                        </Label.GestureRecognizers>
-                    </Label>
+                    <Label Grid.Column="1" Text="{Binding MonthName}" TextColor="{StaticResource PrimaryDarkText}" CharacterSpacing="4" HorizontalOptions="Center" VerticalOptions="Center" FontSize="30" FontAttributes="Bold"/>
                     <Grid Grid.Column="2" Padding="0,0,20,0">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="NextMonth_Clicked"/>
@@ -50,7 +53,7 @@
                         <Image x:Name="rightArrow" Source="right_arrow.png" HeightRequest="30" HorizontalOptions="Center"/>
                     </Grid>
                 </Grid>
-                <Grid Grid.Row="1" x:Name="CalendarGrid" VerticalOptions="Center" Margin="10" >
+                <Grid Grid.Row="2" x:Name="CalendarGrid" VerticalOptions="Center" Margin="10" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50" />
                         <RowDefinition Height="Auto"/>
@@ -70,88 +73,153 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                 </Grid>
-                <Grid Grid.Row="2" ColumnDefinitions="auto,*,auto" Margin="10,0" Padding="0,20" BackgroundColor="Transparent">
+                <Grid Grid.Row="3" ColumnDefinitions="auto,*,auto" Margin="10,0" Padding="0,20" BackgroundColor="Transparent">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnArrowTapped"/>
                     </Grid.GestureRecognizers>
                     <Image Grid.Column="0" x:Name="leftArrowImage" Source="up_arrow.png" WidthRequest="30" HorizontalOptions="Center" BackgroundColor="Transparent"/>
-                    <Label Grid.Column="1" Text="{Binding ActivityProfileLt}" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Grid ColumnDefinitions="*,Auto,*" Grid.Column="1" Grid.Row="0">
+                        <VerticalStackLayout Grid.Column="0" HorizontalOptions="Start" Margin="10,0">
+                        <Ellipse WidthRequest="20" HeightRequest="20" Fill="{StaticResource GreenGlowEffect}" Stroke="Transparent">
+                            <Ellipse.Clip>
+                                <!-- show upper half (y:0..100 of the 200px circle) -->
+                                    <RectangleGeometry Rect="0,0,20,10" />
+                            </Ellipse.Clip>
+                        </Ellipse>
+                            <Label Text="Palanku" TextColor="{StaticResource PrimaryDarkText}"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1"  Text="{Binding ActivityProfileLt}" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" FontSize="18" Margin="5"/>
+                        <VerticalStackLayout Grid.Column="2" HorizontalOptions="End" Margin="10,0">
+                            <Ellipse WidthRequest="20" HeightRequest="20" Fill="{StaticResource RedGlowEffect}"  Stroke="Transparent">
+                                <Ellipse.Clip>
+                                    <!-- show upper half (y:0..100 of the 200px circle) -->
+                                    <RectangleGeometry Rect="0,0,20,10" />
+                                </Ellipse.Clip>
+                            </Ellipse>
+                            <Label Text="Nepalanku" TextColor="{StaticResource PrimaryDarkText}"/>
+                        </VerticalStackLayout>
+                    </Grid>                                        
                     <Image Grid.Column="2" x:Name="rightArrowImage" Source="up_arrow.png" WidthRequest="30"/>
                 </Grid>
-                <Grid x:Name="profileGrid" Grid.Row="3" ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*,*" VerticalOptions="End" Margin="12.4,6.2,12.4,0" IsVisible="False">
-                    <Frame Grid.Row="0" Grid.Column="0" BorderColor="{StaticResource PrimaryBackground}" BackgroundColor="{Binding NoPresetBackgroundColor}" Margin="0, 5 ,5, 0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="NoPresetRecognizer_Tapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="calendar.png" HeightRequest="20" Margin="-10"/>
-                    </Frame>
-                    <Frame Grid.Row="0" Grid.Column="1" BorderColor="{StaticResource PrimaryBackground}" BackgroundColor="{Binding ImportantTasksBackgroundColor}" Margin="0 ,5 ,5, 0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ImportantTasksRecognizer_Tapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="importanttasks.png" HeightRequest="20" Margin="-10"/>
-                    </Frame>
-                    <Frame Grid.Row="0" Grid.Column="2" BorderColor="{StaticResource PrimaryBackground}" BackgroundColor="{Binding ContractsBackgroundColor}" Margin="0 ,5, 5 ,0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ContractsRecognizer_Tapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="contracts.png" HeightRequest="20" Margin="-10"/>
-                    </Frame>
-                    <Frame Grid.Row="0" Grid.Column="3" BorderColor="{StaticResource PrimaryBackground}" BackgroundColor="{Binding MeetingsBackgroundColor}" Margin="0, 5, 5, 0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="MeetingsRecognizer_Tapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="meetings.png" HeightRequest="20" Margin="-10"/>
-                    </Frame>
-                    <Frame Grid.Row="0" Grid.Column="4" BorderColor="{StaticResource PrimaryBackground}" BackgroundColor="{Binding NewIdeasBackgroundColor}" Margin="0 ,5 ,5, 0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="NewIdeasRecognizer_Tapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="newideas.png" HeightRequest="20" Margin="-10"/>
-                    </Frame>
-                    <Frame Grid.Row="0" Grid.Column="5" BorderColor="{StaticResource PrimaryBackground}" BackgroundColor="{Binding TravelBackgroundColor}" Margin="0 ,5 ,5, 0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TravelRecognizer_Tapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="travel.png" HeightRequest="20" Margin="-10"/>
-                    </Frame>
-                    <Frame Grid.Row="1" Grid.Column="0" BorderColor="{StaticResource PrimaryBackground}" BackgroundColor="{Binding TechBackgroundColor}" Margin="0 ,5, 5, 0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TechnologiesRecognizer_Tapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="tech.png" HeightRequest="20" Margin="-10"/>
-                    </Frame>
-                    <Frame Grid.Row="1" Grid.Column="1" BorderColor="{StaticResource PrimaryBackground}" BackgroundColor="{Binding BuyStuffBackgroundColor}" Margin="0 ,5 ,5 ,0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="BuyStuffRecognizer_Tapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="buystuff.png" HeightRequest="20" Margin="-10"/>
-                    </Frame>
-                    <Frame Grid.Row="1" Grid.Column="2" BorderColor="{StaticResource PrimaryBackground}" BackgroundColor="{Binding LoveBackgroundColor}" Margin="0 ,5, 5 ,0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="LoveRecognizer_Tapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="love.png" HeightRequest="20" Margin="-10"/>
-                    </Frame>
-                    <Frame Grid.Row="1" Grid.Column="3" BorderColor="{StaticResource PrimaryBackground}" BackgroundColor="{Binding BeautyBackgroundColor}" Margin="0, 5, 5 ,0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="BeautyRecognizer_Tapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="beauty.png" HeightRequest="20" Margin="-10"/>
-                    </Frame>
-                    <Frame Grid.Row="1" Grid.Column="4" BorderColor="{StaticResource PrimaryBackground}" BackgroundColor="{Binding BarberBackgroundColor}" Margin="0, 5,5, 0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="BarberRecognizer_Tapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="barber.png" HeightRequest="20" Margin="-10"/>
-                    </Frame>
-                    <Frame Grid.Row="1" Grid.Column="5" BorderColor="{StaticResource PrimaryBackground}" BackgroundColor="{Binding GardeningBackgroundColor}" Margin="0, 5,5, 0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="GardeningRecognizer_Tapped"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="gardening.png" HeightRequest="20" Margin="-10"/>
-                    </Frame>
-                </Grid>
+                <ContentView  x:Name="profileGrid" Grid.Row="4" Margin="12.4,6.2,12.4,0" IsVisible="False" TranslationY="0">
+                    <ScrollView Orientation="Vertical">
+                        <FlexLayout x:Name="profileLayout"
+                    Direction="Row"
+                    Wrap="Wrap"
+                    AlignItems="Center"
+                    JustifyContent="SpaceBetween">
+                            
+                            <!--<Frame BorderColor="{StaticResource PrimaryBackground}"
+                   BackgroundColor="{Binding NoPresetBackgroundColor}"
+                   FlexLayout.Basis="25%" Padding="0" Margin="4">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="NoPresetRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="calendar.png" HeightRequest="20" Margin="-10"/>
+                            </Frame>-->
+
+                            <Frame BorderColor="{StaticResource PrimaryBackground}"
+                   BackgroundColor="{Binding ImportantTasksBackgroundColor}"
+                   FlexLayout.Basis="20%" Padding="0" Margin="4">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ImportantTasksRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="importanttasks.png" HeightRequest="20" Margin="0"/>
+                            </Frame>
+
+                            <Frame BorderColor="{StaticResource PrimaryBackground}"
+                   BackgroundColor="{Binding ContractsBackgroundColor}"
+                   FlexLayout.Basis="20%" Padding="0" Margin="4">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ContractsRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="contracts.png" HeightRequest="20" Margin="0"/>
+                            </Frame>
+
+                            <Frame BorderColor="{StaticResource PrimaryBackground}"
+                   BackgroundColor="{Binding MeetingsBackgroundColor}"
+                   FlexLayout.Basis="20%" Padding="0" Margin="4">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="MeetingsRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="meetings.png" HeightRequest="20" Margin="0"/>
+                            </Frame>
+
+                            <!--<Frame BorderColor="{StaticResource PrimaryBackground}"
+                   BackgroundColor="{Binding NewIdeasBackgroundColor}"
+                   FlexLayout.Basis="25%" Padding="0" Margin="4">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="NewIdeasRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="newideas.png" HeightRequest="20" Margin="0"/>
+                            </Frame>-->
+
+                            <Frame BorderColor="{StaticResource PrimaryBackground}"
+                   BackgroundColor="{Binding TravelBackgroundColor}"
+                   FlexLayout.Basis="20%" Padding="0" Margin="4">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TravelRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="travel.png" HeightRequest="20" Margin="0"/>
+                            </Frame>
+
+                            <Frame BorderColor="{StaticResource PrimaryBackground}"
+                   BackgroundColor="{Binding TechBackgroundColor}"
+                   FlexLayout.Basis="20%" Padding="0" Margin="4">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TechnologiesRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="tech.png" HeightRequest="20" Margin="0"/>
+                            </Frame>
+
+                            <Frame BorderColor="{StaticResource PrimaryBackground}"
+                   BackgroundColor="{Binding BuyStuffBackgroundColor}"
+                   FlexLayout.Basis="20%" Padding="0" Margin="4">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="BuyStuffRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="buystuff.png" HeightRequest="20" Margin="0"/>
+                            </Frame>
+
+                            <Frame BorderColor="{StaticResource PrimaryBackground}"
+                   BackgroundColor="{Binding LoveBackgroundColor}"
+                   FlexLayout.Basis="20%" Padding="0" Margin="4">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="LoveRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="love.png" HeightRequest="20" Margin="0"/>
+                            </Frame>
+
+                            <Frame BorderColor="{StaticResource PrimaryBackground}"
+                   BackgroundColor="{Binding BeautyBackgroundColor}"
+                   FlexLayout.Basis="20%" Padding="0" Margin="4">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="BeautyRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="beauty.png" HeightRequest="20" Margin="0"/>
+                            </Frame>
+
+                            <Frame BorderColor="{StaticResource PrimaryBackground}"
+                   BackgroundColor="{Binding BarberBackgroundColor}"
+                   FlexLayout.Basis="20%" Padding="0" Margin="4">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="BarberRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="barber.png" HeightRequest="20" Margin="0"/>
+                            </Frame>
+
+                            <Frame BorderColor="{StaticResource PrimaryBackground}"
+                   BackgroundColor="{Binding GardeningBackgroundColor}"
+                   FlexLayout.Basis="20%" Padding="0" Margin="4">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="GardeningRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="gardening.png" HeightRequest="20" Margin="-10"/>
+                            </Frame>
+
+                        </FlexLayout>
+                    </ScrollView>
+                </ContentView>
             </Grid>
         </FlexLayout>
     </Grid>

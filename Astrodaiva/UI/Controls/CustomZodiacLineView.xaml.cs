@@ -94,7 +94,8 @@ public partial class CustomZodiacLineView : ContentView
         var cellGrid = new Grid
         {
             VerticalOptions = LayoutOptions.FillAndExpand,
-            HorizontalOptions = LayoutOptions.FillAndExpand
+            HorizontalOptions = LayoutOptions.FillAndExpand,
+            Padding = new Thickness(0)
         };
 
         var tapGestureRecognizer = new TapGestureRecognizer();
@@ -103,7 +104,7 @@ public partial class CustomZodiacLineView : ContentView
         label.GestureRecognizers.Add(tapGestureRecognizer);
         image.GestureRecognizers.Add(tapGestureRecognizer);
 
-        if (segment.Duration > 15)
+        if (segment.Duration > 40)
         {
 
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
@@ -117,7 +118,7 @@ public partial class CustomZodiacLineView : ContentView
             return cellGrid;
         }
 
-        else if (7 < segment.Duration && segment.Duration <= 15)
+        else if (25 < segment.Duration && segment.Duration <= 40)
         {
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.5, GridUnitType.Star) });
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.5, GridUnitType.Star) });            
@@ -129,15 +130,15 @@ public partial class CustomZodiacLineView : ContentView
             return cellGrid;
         }
 
-        else if (5 < segment.Duration && segment.Duration <= 7)
+        else if (10 < segment.Duration && segment.Duration <= 25)
         {
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             cellGrid.Add(border, 0, 0);
             cellGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }); // Row for the image
-            cellGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }); // Row for the label            
+            cellGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }); // Row for the label          
             Grid.SetRowSpan(border, 2);
             cellGrid.Add(image, 0, 1);
-            label.HorizontalTextAlignment = TextAlignment.Center;
+            label.HorizontalTextAlignment = TextAlignment.Start;
             label.VerticalTextAlignment = TextAlignment.Center;            
             cellGrid.Add(label, 0, 0);
 
@@ -149,7 +150,7 @@ public partial class CustomZodiacLineView : ContentView
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             cellGrid.Add(border, 0, 0);
             Grid.SetColumnSpan(border, 1);            
-            cellGrid.Add(image, 0, 0);
+            cellGrid.Add(label, 0, 0);
 
             return cellGrid;
         }
