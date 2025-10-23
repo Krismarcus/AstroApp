@@ -8,8 +8,20 @@ namespace Astrodaiva.Services
 {
     public interface IOrientationService
     {
+        event EventHandler<AppDisplayOrientation> OrientationChanged;
+        AppDisplayOrientation CurrentOrientation { get; }
+        void StartListening();
+        void StopListening();
         void LockLandscape();
         void LockPortrait();
         void Unlock();
     }
+
+    public enum AppDisplayOrientation
+    {
+        Unknown,
+        Portrait,
+        Landscape
+    }
+
 }

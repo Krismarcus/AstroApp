@@ -16,11 +16,4 @@ namespace Astrodaiva.UI.Tools
         public static T GetRequiredService<T>() where T : notnull =>
             Services.GetRequiredService<T>();
     }
-    public class NoopOrientationService : IOrientationService
-    {
-        public void LockLandscape() { }
-        public void LockPortrait() { }
-        public void Unlock() { }
-    }
-
 }

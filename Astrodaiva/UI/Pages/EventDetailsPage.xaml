@@ -55,7 +55,12 @@
                             <RowDefinition ></RowDefinition>
                             <RowDefinition ></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0"  Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="24" CharacterSpacing="4" HorizontalOptions="CenterAndExpand"/>
+                        <Grid Grid.Row="0">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnMonthTapped"/>
+                            </Grid.GestureRecognizers>
+                            <Label x:Name="monthLabel" Text="{Binding DayAstroEvent.Date, Converter={StaticResource DateTimeToMonthNameConverter}}" TextColor="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToDarkTextColorConverter}, Mode=OneWay}" FontSize="24" CharacterSpacing="4" HorizontalOptions="CenterAndExpand"/>                            
+                        </Grid>
                         <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />

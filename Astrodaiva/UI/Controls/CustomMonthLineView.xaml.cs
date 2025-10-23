@@ -100,7 +100,7 @@ public partial class CustomMonthLineView : ContentView
     {
         var month = segment.MonthStartDate.Month;
         var year = segment.MonthStartDate.Year;
-        await Shell.Current.GoToAsync($"//{nameof(MainPage)}?month={month}&year={year}");
+        await Shell.Current.GoToAsync($"//main?month={month}&year={year}");
     }
 
     private Color GetResourceColor(string key)

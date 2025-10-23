@@ -103,7 +103,15 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             UpdateDayEventInfoList();
             Task.Delay(50).ContinueWith(t => AnimateMarkerToPosition(DayAstroEvent.MoonDay));
         });
-    }    
+    }
+
+    private async void OnMonthTapped(object sender, TappedEventArgs e)
+    {        
+        await monthLabel.ScaleTo(1.1, 100);
+        // Then scale it back to original size over 100 milliseconds.
+        await monthLabel.ScaleTo(1.0, 100);
+        await Navigation.PopModalAsync(); // Close the modal page
+    }
 
     private async void AnimateMarkerToPosition(MoonDay moonDay)
     {

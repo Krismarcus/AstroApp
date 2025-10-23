@@ -569,7 +569,7 @@ namespace Astrodaiva.UI.Pages
             await border.ScaleTo(1.1, 100);
             // Then scale it back to original size over 100 milliseconds.
             await border.ScaleTo(1.0, 100);
-            await Shell.Current.GoToAsync($"//{nameof(YearPage)}");
+            await Shell.Current.GoToAsync($"//year");
         }
 
         private async void HideGridWithAnimation()
