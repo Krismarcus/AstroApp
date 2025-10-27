@@ -106,11 +106,10 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     }
 
     private async void OnMonthTapped(object sender, TappedEventArgs e)
-    {        
-        await monthLabel.ScaleTo(1.1, 100);
-        // Then scale it back to original size over 100 milliseconds.
-        await monthLabel.ScaleTo(1.0, 100);
-        await Navigation.PopModalAsync(); // Close the modal page
+    {
+        await downArrowImage.TranslateTo(0, 10, 100); 
+        await downArrowImage.TranslateTo(0, 0, 100);
+        await Navigation.PopModalAsync(); // Close the modal page        
     }
 
     private async void AnimateMarkerToPosition(MoonDay moonDay)
@@ -153,16 +152,6 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
         await Task.Delay(300); // Delay for visibility transition
         await label.FadeTo(1, 200); // Fade in the label after the delay
-    }
-
-    private async void OnPageTapped(object sender, TappedEventArgs e)
-    {
-        var frame = sender as Grid; // Cast sender to Border.
-        if (frame == null) return; // Safety check.
-
-        await downArrowImage.TranslateTo(0, 10, 100); // Move 10 units to the left over 100ms
-        await downArrowImage.TranslateTo(0, 0, 100); // Move back to original position
-        await Navigation.PopModalAsync(); // Close the modal page
     }
 
     public async Task InitializeAstroEventList()

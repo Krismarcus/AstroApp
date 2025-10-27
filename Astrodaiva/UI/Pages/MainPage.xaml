@@ -3,9 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:Astrodaiva.UI.Pages"
              xmlns:converters="clr-namespace:Astrodaiva.UI.Tools.Converters"
-             x:DataType="pages:MainPage"
-             BackgroundColor="{StaticResource ShadedBackground}"
-             Shell.NavBarIsVisible="False"             
+             x:DataType="pages:MainPage"             
+             Shell.NavBarIsVisible="False"
              x:Class="Astrodaiva.UI.Pages.MainPage">
     <ContentPage.Resources>
         <converters:DateTimeToMonthNameConverter x:Key="DateTimeToMonthNameConverter"/>
