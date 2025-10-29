@@ -2,15 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Astrodaiva.UI.Pages.EventDetailsPage"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:pages="clr-namespace:Astrodaiva.UI.Pages"
              xmlns:controls="clr-namespace:Astrodaiva.UI.Controls"
              xmlns:model="clr-namespace:Astrodaiva.Data.Models"
              xmlns:converters="clr-namespace:Astrodaiva.UI.Tools.Converters"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Maui.Controls;assembly=SkiaSharp.Views.Maui.Controls"
-             x:DataType="pages:EventDetailsPage"
-             Shell.NavBarIsVisible="False"             
-             BackgroundColor="{StaticResource ShadedBackground}"
+             Shell.NavBarIsVisible="False"
+             x:DataType="pages:EventDetailsPage"             
              Title="EventDetailsPage">
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="Transparent" StatusBarStyle="DarkContent" />
+    </ContentPage.Behaviors>
     <ContentPage.Resources>
         <!--<ResourceDictionary>
             <LinearGradientBrush x:Key="PageBackgroundGradient"
@@ -36,9 +39,8 @@
             <GradientStop Color="{StaticResource ShadedBackground}" Offset="0.1"/>
             <GradientStop Color="{Binding DayAstroEvent, Converter={StaticResource NewMoonDayToLightBackgroundColorConverter}}" Offset="1.0"/>
         </LinearGradientBrush>
-    </ContentPage.Background>
-    <ContentPage.Content>
-        <Grid>            
+    </ContentPage.Background>    
+        <Grid x:Name="PageRoot">            
             <!--<Image Source="background4.png" Aspect="Fill" Opacity="1"/>-->
 
             <Grid >
@@ -227,7 +229,7 @@
                     </Frame.Triggers>
                     <Label Text="{Binding DayAstroEvent.EventText}" TextColor="{StaticResource PrimaryLightText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="16" CharacterSpacing="5" Margin="20"/>
                 </Frame>
-                <ScrollView Grid.Row="7" Padding="0,0,0,70" Margin="7.4,0"
+                <ScrollView Grid.Row="7" Padding="0,0,0,0" Margin="7.4,0"
                     VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                     <Grid  RowDefinitions="Auto,Auto,Auto,Auto" Margin="7.4,0">
                         <FlexLayout Wrap="Wrap" Grid.Row="0" AlignItems="Start" JustifyContent="SpaceBetween" Direction="Row" Padding="50,0">
@@ -305,7 +307,7 @@
             </Grid>
             <Grid x:Name="popupOverlay"
                 IsVisible="False"
-                BackgroundColor="#80000000"
+                
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand"
                 RowSpacing="0"
@@ -362,6 +364,5 @@
                     </StackLayout>
                 </Frame>
             </Grid>
-        </Grid>
-    </ContentPage.Content>
+        </Grid>    
 </ContentPage>

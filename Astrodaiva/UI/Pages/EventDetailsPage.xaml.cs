@@ -1,12 +1,11 @@
 ﻿using Astrodaiva.Data.Enums;
 using Astrodaiva.Data.Models;
 using Astrodaiva.UI.Tools;
-using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
 using SkiaSharp;
 using SkiaSharp.Views.Maui;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Runtime.Intrinsics.X86;
 
 namespace Astrodaiva.UI.Pages;
 
@@ -87,7 +86,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
         if (InfoConteiner == null)
         {
             InfoConteiner = new InfoScreen();
-        }
+        }        
     }
 
     public async Task InitializeDataAsync(DateTime date)
@@ -411,7 +410,7 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 
     private async Task CaptureAndBlurAsync()
     {
-        // If already blurred and no update needed, reuse
+        // Reuse existing blurred bitmap if we already have it
         if (_blurredBitmap != null)
         {
             blurCanvas.IsVisible = true;
@@ -419,30 +418,30 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
             return;
         }
 
-        var screenshot = await Screenshot.CaptureAsync();
-        if (screenshot == null) return;
+        // Ensure layout is complete so the capture has correct size
+        await MainThread.InvokeOnMainThreadAsync(async () => await Task.Delay(16));
 
-        using var stream = await screenshot.OpenReadAsync();
+        // ⬇️ IMPORTANT: capture the page's root view, not the whole screen
+        IScreenshotResult result = await PageRoot.CaptureAsync(); // returns IScreenshotResult in .NET 9
 
-        // Process in background thread
+        if (result == null)
+            return;
+
+        await using var stream = await result.OpenReadAsync(); // <-- use OpenReadAsync() instead of Save()
+
         _blurredBitmap = await Task.Run(() =>
         {
             using var skStream = new SKManagedStream(stream);
             var original = SKBitmap.Decode(skStream);
             if (original == null) return null;
 
-            // Create a new bitmap with the same dimensions as original
             var blurred = new SKBitmap(original.Width, original.Height);
 
-            // Apply blur directly to the full-size image
-            var filter = SKImageFilter.CreateBlur(4f, 4f);
-            var paint = new SKPaint { ImageFilter = filter };
+            using var canvas = new SKCanvas(blurred);
+            using var paint = new SKPaint { ImageFilter = SKImageFilter.CreateBlur(4f, 4f) };
 
-            using (var canvas = new SKCanvas(blurred))
-            {
-                canvas.Clear();
-                canvas.DrawBitmap(original, 0, 0, paint);
-            }
+            canvas.Clear();
+            canvas.DrawBitmap(original, 0, 0, paint);
 
             return blurred;
         });

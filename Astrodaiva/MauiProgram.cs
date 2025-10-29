@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using Astrodaiva.Services;
 using Astrodaiva.UI.Tools;
+using CommunityToolkit.Maui;
 
 namespace Astrodaiva
 {
@@ -13,6 +14,7 @@ namespace Astrodaiva
 
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .UseSkiaSharp()
                 .ConfigureFonts(fonts =>
                 {
