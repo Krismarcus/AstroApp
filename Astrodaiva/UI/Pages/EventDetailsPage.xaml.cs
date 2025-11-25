@@ -1,5 +1,6 @@
 ﻿using Astrodaiva.Data.Enums;
 using Astrodaiva.Data.Models;
+using Astrodaiva.Services;
 using Astrodaiva.UI.Tools;
 using Microsoft.Maui.Graphics;
 using SkiaSharp;
@@ -11,6 +12,7 @@ namespace Astrodaiva.UI.Pages;
 
 public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
 {
+    private readonly IOrientationService _orientation;
 
     private DateTime currentDate;
 
@@ -83,10 +85,23 @@ public partial class EventDetailsPage : ContentPage, INotifyPropertyChanged
     {
         InitializeComponent();
         BindingContext = this;
+        _orientation = ServiceHelper.GetRequiredService<IOrientationService>();
         if (InfoConteiner == null)
         {
             InfoConteiner = new InfoScreen();
         }        
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _orientation?.LockPortrait();
+    }
+
+    protected override void OnDisappearing()
+    {
+        _orientation?.Unlock();
+        base.OnDisappearing();
     }
 
     public async Task InitializeDataAsync(DateTime date)
