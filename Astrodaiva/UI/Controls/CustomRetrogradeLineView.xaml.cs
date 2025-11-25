@@ -1,4 +1,6 @@
 using Astrodaiva.Data.Models;
+using Astrodaiva.UI.Tools;
+using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
 using System.Collections.ObjectModel;
 
@@ -19,6 +21,13 @@ public partial class CustomRetrogradeLineView : ContentView
         set => SetValue(RetrogradeSegmentsProperty, value);
     }
 
+    public event EventHandler<RetrogradeSegment> SegmentClicked;
+
+    public CustomRetrogradeLineView()
+    {
+        InitializeComponent();
+    }
+
     private static void OnRetrogradeSegmentsChanged(BindableObject bindable, object oldValue, object newValue)
     {
         var control = (CustomRetrogradeLineView)bindable;
@@ -26,42 +35,44 @@ public partial class CustomRetrogradeLineView : ContentView
         
     }
 
-    public event EventHandler<RetrogradeSegment> SegmentClicked;
-
-    public CustomRetrogradeLineView()
-	{
-		InitializeComponent();
-	}
-
     private void BuildSegments()
     {
         MainGrid.ColumnDefinitions.Clear();
         MainGrid.Children.Clear();
 
+        if (RetrogradeSegments == null || RetrogradeSegments.Count == 0)
+            return;
+
         // Calculate the total duration in days
         DateTime minDate = RetrogradeSegments.Min(s => s.RetrogradeStartDate);
         DateTime maxDate = RetrogradeSegments.Max(s => s.RetrogradeEndDate);
         double totalDays = (maxDate - minDate).TotalDays;
+        if (totalDays <= 0)
+            totalDays = 1;
 
         foreach (var segment in RetrogradeSegments)
         {
             double segmentDuration = (segment.RetrogradeEndDate - segment.RetrogradeStartDate).TotalDays;
+            if (segmentDuration < 0)
+                segmentDuration = 0;
             double widthFraction = segmentDuration / totalDays;
 
-            var columnDefinition = new ColumnDefinition { Width = new GridLength(widthFraction, GridUnitType.Star) };            
+            var columnDefinition = new ColumnDefinition
+            {
+                Width = new GridLength(widthFraction, GridUnitType.Star)
+            };
             MainGrid.ColumnDefinitions.Add(columnDefinition);
 
-            if (segment.IsRetrograde == true)
+            if (segment.IsRetrograde)
             {
                 var cellGrid = CreateSegmentCell(segment);
                 MainGrid.Add(cellGrid, MainGrid.ColumnDefinitions.Count - 1, 0);
             }
         }
     }
-
     private Grid CreateSegmentCell(RetrogradeSegment segment)
     {        
-            var boxView = new Border
+            var border = new Border
             {
                 BackgroundColor = GetColorForZodiacSign(segment.IsRetrograde),
                 StrokeThickness = 0,
@@ -108,15 +119,17 @@ public partial class CustomRetrogradeLineView : ContentView
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-            var tapGestureRecognizer = new TapGestureRecognizer();
-            tapGestureRecognizer.Tapped += (s, e) => OnSegmentTapped(segment);
-            boxView.GestureRecognizers.Add(tapGestureRecognizer);
+        var tapGestureRecognizer = new TapGestureRecognizer();
+        tapGestureRecognizer.Tapped += (s, e) => OnSegmentTapped(segment, border);
+        border.GestureRecognizers.Add(tapGestureRecognizer);
+        label.GestureRecognizers.Add(tapGestureRecognizer);
+        image.GestureRecognizers.Add(tapGestureRecognizer);
 
-            cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
+        cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.2, GridUnitType.Star) });
             cellGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.4, GridUnitType.Star) });
-            cellGrid.Add(boxView, 0, 0);
-            Grid.SetColumnSpan(boxView, 3);
+            cellGrid.Add(border, 0, 0);
+            Grid.SetColumnSpan(border, 3);
             cellGrid.Add(label, 0, 0);
             cellGrid.Add(image, 1, 0);
             cellGrid.Add(label2, 2, 0);
@@ -144,8 +157,9 @@ public partial class CustomRetrogradeLineView : ContentView
         return textColor;
     }
 
-    private void OnSegmentTapped(RetrogradeSegment segment)
+    private void OnSegmentTapped(RetrogradeSegment segment, Border border)
     {
+        SegmentSelectionManager.Instance.SelectSegment(border);
         SegmentClicked?.Invoke(this, segment);
     }
 }

@@ -46,56 +46,56 @@
                         <Image Grid.Row="0" Grid.Column="0" Source="mercury.png" WidthRequest="40"/>
                         <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewMercury" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding MercuryInZodiacSegments}"/>
                         <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
-                        <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeMercurySegments}" Margin="0,-20,0,0"/>
+                        <controls:CustomRetrogradeLineView x:Name="CustomRetrogradeLineViewMercury" Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeMercurySegments}" Margin="0,-20,0,0"/>
                     </Grid>
                     <!-- Venus -->
                     <Grid Grid.Row="3" RowDefinitions="*,*" ColumnDefinitions="Auto,*">
                         <Image Grid.Row="0" Grid.Column="0" Source="venus.png" WidthRequest="40"/>
                         <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewVenus" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding VenusInZodiacSegments}"/>
                         <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
-                        <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeVenusSegments}" Margin="0,-20,0,0"/>
+                        <controls:CustomRetrogradeLineView x:Name="CustomRetrogradeLineViewVenus" Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeVenusSegments}" Margin="0,-20,0,0"/>
                     </Grid>
                     <!-- Mars -->
                     <Grid Grid.Row="4" RowDefinitions="*,*" ColumnDefinitions="Auto,*">
                         <Image Grid.Row="0" Grid.Column="0" Source="mars.png" WidthRequest="40"/>
                         <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewMars" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding MarsInZodiacSegments}"/>
                         <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
-                        <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeMarsSegments}" Margin="0,-20,0,0"/>
+                        <controls:CustomRetrogradeLineView x:Name="CustomRetrogradeLineViewMars" Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeMarsSegments}" Margin="0,-20,0,0"/>
                     </Grid>
                     <!-- Jupiter -->
                     <Grid Grid.Row="5" RowDefinitions="*,*" ColumnDefinitions="Auto,*">
                         <Image Grid.Row="0" Grid.Column="0" Source="jupiter.png" WidthRequest="40"/>
                         <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewJupiter" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding JupiterInZodiacSegments}"/>
                         <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
-                        <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeJupiterSegments}" Margin="0,-20,0,0"/>
+                        <controls:CustomRetrogradeLineView x:Name="CustomRetrogradeLineViewJupiter" Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeJupiterSegments}" Margin="0,-20,0,0"/>
                     </Grid>
                     <!-- Saturn -->
                     <Grid Grid.Row="6" RowDefinitions="*,*" ColumnDefinitions="Auto,*">
                         <Image Grid.Row="0" Grid.Column="0" Source="saturn.png" WidthRequest="40"/>
                         <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewSaturn" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding SaturnInZodiacSegments}"/>
                         <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
-                        <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeSaturnSegments}" Margin="0,-20,0,0"/>
+                        <controls:CustomRetrogradeLineView x:Name="CustomRetrogradeLineViewSaturn" Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeSaturnSegments}" Margin="0,-20,0,0"/>
                     </Grid>
                     <!-- Uranus -->
                     <Grid Grid.Row="7" RowDefinitions="*,*" ColumnDefinitions="Auto,*">
                         <Image Grid.Row="0" Grid.Column="0" Source="uranus.png" WidthRequest="40"/>
                         <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewUranus" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding UranusInZodiacSegments}"/>
                         <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
-                        <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeUranusSegments}" Margin="0,-20,0,0"/>
+                        <controls:CustomRetrogradeLineView x:Name="CustomRetrogradeLineViewUranus" Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeUranusSegments}" Margin="0,-20,0,0"/>
                     </Grid>
                     <!-- Neptune -->
                     <Grid Grid.Row="8" RowDefinitions="*,*" ColumnDefinitions="Auto,*">
                         <Image Grid.Row="0" Grid.Column="0" Source="neptune.png" WidthRequest="40"/>
                         <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewNeptune" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding NeptuneInZodiacSegments}"/>
                         <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
-                        <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeNeptuneSegments}" Margin="0,-20,0,0"/>
+                        <controls:CustomRetrogradeLineView x:Name="CustomRetrogradeLineViewNeptune" Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradeNeptuneSegments}" Margin="0,-20,0,0"/>
                     </Grid>
                     <!-- Pluto -->
                     <Grid Grid.Row="9" RowDefinitions="*,*" ColumnDefinitions="Auto,*">
                         <Image Grid.Row="0" Grid.Column="0" Source="pluto.png" WidthRequest="40"/>
                         <controls:CustomZodiacLineView x:Name="CustomZodiacLineViewPluto" Grid.Row="0" Grid.Column="1" ZodiacSegments="{Binding PlutoInZodiacSegments}"/>
                         <Image Grid.Row="1" Grid.Column="0" Source="retrograde.png" WidthRequest="20"/>
-                        <controls:CustomRetrogradeLineView Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradePlutoSegments}" Margin="0,-20,0,0"/>
+                        <controls:CustomRetrogradeLineView x:Name="CustomRetrogradeLineViewPluto" Grid.Row="1" Grid.Column="1" RetrogradeSegments="{Binding RetrogradePlutoSegments}" Margin="0,-20,0,0"/>
                     </Grid>
                     <!-- Selena -->
                     <Grid Grid.Row="10" RowDefinitions="*,*" ColumnDefinitions="Auto,*" Margin="0,0,0,10">

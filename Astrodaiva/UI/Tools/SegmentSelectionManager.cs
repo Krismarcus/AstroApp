@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Astrodaiva.UI.Tools
 {
-    internal class SegmentSelectionManager
+    public class SegmentSelectionManager
     {
         private static SegmentSelectionManager _instance;
 
         public static SegmentSelectionManager Instance => _instance ??= new SegmentSelectionManager();
 
-        public Border SelectedSegmentBorder { get; set; }
+        public Border SelectedSegmentBorder { get; set; }       
 
         private SegmentSelectionManager() { }
 
         public void SelectSegment(Border newSelectedBorder)
-        {
+        {            
             // Remove shadow from the previously selected segment
             if (SelectedSegmentBorder != null && SelectedSegmentBorder != newSelectedBorder)
             {
@@ -37,6 +37,14 @@ namespace Astrodaiva.UI.Tools
             }
 
             SelectedSegmentBorder = newSelectedBorder;
+        }
+
+        public void ClearSelection()
+        {
+            if (SelectedSegmentBorder != null)
+            {
+                SelectedSegmentBorder.Shadow = new Shadow { Brush = Brush.Black, Opacity = 0, Offset = new Point(0, 0), Radius = 10 };
+            }
         }
 
 

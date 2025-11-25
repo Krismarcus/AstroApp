@@ -177,5 +177,58 @@ namespace Astrodaiva.UI.Tools
             return $"{planetTranslation} {zodiacTranslation}";
         }
 
+        public static string TranslatePlanetInRetrograde(Planet planet)
+        {
+            string planetTranslation;
+            switch (planet)
+            {
+                case Planet.Sun:
+                    planetTranslation = "Saulė";
+                    break;
+                case Planet.Moon:
+                    planetTranslation = "Mėnulis";
+                    break;
+                case Planet.Mercury:
+                    planetTranslation = "Merkurijus";
+                    break;
+                case Planet.Venus:
+                    planetTranslation = "Venera";
+                    break;
+                case Planet.Mars:
+                    planetTranslation = "Marsas";
+                    break;
+                case Planet.Jupiter:
+                    planetTranslation = "Jupiteris";
+                    break;
+                case Planet.Saturn:
+                    planetTranslation = "Saturnas";
+                    break;
+                case Planet.Uranus:
+                    planetTranslation = "Uranas";
+                    break;
+                case Planet.Neptune:
+                    planetTranslation = "Neptūnas";
+                    break;
+                case Planet.Pluto:
+                    planetTranslation = "Plutonas";
+                    break;
+                case Planet.Selena:
+                    planetTranslation = "Selena";
+                    break;
+                case Planet.Lilith:
+                    planetTranslation = "Lilit";
+                    break;
+                case Planet.Rahu:
+                    planetTranslation = "Rahu";
+                    break;
+                case Planet.Ketu:
+                    planetTranslation = "Ketu";
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(planet), planet, null);
+            }          
+
+            return $"{planetTranslation} retrogradinis";
+        }
     }
 }

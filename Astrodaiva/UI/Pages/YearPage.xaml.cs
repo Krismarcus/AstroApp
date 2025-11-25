@@ -1,6 +1,7 @@
 using Astrodaiva.Data.Enums;
 using Astrodaiva.Data.Models;
 using Astrodaiva.Services;
+using Astrodaiva.UI.Controls;
 using Astrodaiva.UI.Tools;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -81,12 +82,23 @@ public partial class YearPage : ContentPage
         CustomZodiacLineViewUranus.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Uranus);
         CustomZodiacLineViewNeptune.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Neptune);
         CustomZodiacLineViewPluto.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Pluto);
-        // Add click handlers for Selena, Lilith, Rahu, and Ketu
+
+        // Selena, Lilith, Rahu, Ketu
         CustomZodiacLineViewSelena.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Selena);
         CustomZodiacLineViewLilith.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Lilith);
         CustomZodiacLineViewRahu.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Rahu);
         CustomZodiacLineViewKetu.SegmentClicked += (sender, segment) => OnPlanetInZodiacSegmentClicked(sender, segment, Planet.Ketu);
-    }
+
+        // Retrogrades
+        CustomRetrogradeLineViewMercury.SegmentClicked += (sender, segment) => OnPlanetInRetrogradeSegmentClicked(sender, segment, Planet.Mercury);
+        CustomRetrogradeLineViewVenus.SegmentClicked += (sender, segment) => OnPlanetInRetrogradeSegmentClicked(sender, segment, Planet.Venus);
+        CustomRetrogradeLineViewMars.SegmentClicked += (sender, segment) => OnPlanetInRetrogradeSegmentClicked(sender, segment, Planet.Mars);
+        CustomRetrogradeLineViewJupiter.SegmentClicked += (sender, segment) => OnPlanetInRetrogradeSegmentClicked(sender, segment, Planet.Jupiter);
+        CustomRetrogradeLineViewSaturn.SegmentClicked += (sender, segment) => OnPlanetInRetrogradeSegmentClicked(sender, segment, Planet.Saturn);
+        CustomRetrogradeLineViewUranus.SegmentClicked += (sender, segment) => OnPlanetInRetrogradeSegmentClicked(sender, segment, Planet.Uranus);
+        CustomRetrogradeLineViewNeptune.SegmentClicked += (sender, segment) => OnPlanetInRetrogradeSegmentClicked(sender, segment, Planet.Neptune);
+        CustomRetrogradeLineViewPluto.SegmentClicked += (sender, segment) => OnPlanetInRetrogradeSegmentClicked(sender, segment, Planet.Pluto);
+    }    
 
     private void SetupFrameGestureHandlers()
     {
@@ -94,7 +106,7 @@ public partial class YearPage : ContentPage
         tapGesture.Tapped += async (s, e) => {
             // Hide the frame with animation
             await BottomInfoFrame.TranslateTo(0, BottomInfoFrame.Height, 250, Easing.CubicIn);
-            BottomInfoFrame.IsVisible = false;
+            BottomInfoFrame.IsVisible = false;            
         };
         BottomInfoFrame.GestureRecognizers.Add(tapGesture);
 
@@ -113,6 +125,7 @@ public partial class YearPage : ContentPage
                     {
                         await BottomInfoFrame.TranslateTo(0, BottomInfoFrame.Height, 250, Easing.CubicIn);
                         BottomInfoFrame.IsVisible = false;
+                        SegmentSelectionManager.Instance.ClearSelection();
                     }
                     else
                     {
@@ -136,6 +149,27 @@ public partial class YearPage : ContentPage
         LabelShowingStartDate.Text = " (nuo " + segment.ZodiacStartDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo);
         LabelShoingEndDate.Text = " iki " + segment.ZodiacEndDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo) + ")";
         LabelShowingPlanetInZodiacInfo.Text = infoSourceItem?.PlanetInZodiacInfo ?? "No information available.";
+
+        // Show the overlay frame with animation
+        if (!BottomInfoFrame.IsVisible)
+        {
+            BottomInfoFrame.IsVisible = true;
+            BottomInfoFrame.TranslationY = BottomInfoFrame.Height;
+            await BottomInfoFrame.TranslateTo(0, 0, 250, Easing.CubicOut);
+        }
+    }
+
+    private async void OnPlanetInRetrogradeSegmentClicked(object sender, RetrogradeSegment segment, Planet planet)
+    {       
+        if (segment == null) return;
+
+        var infoSourceItem = App.AppData.AppDB.PlanetInRetrogradeDetailsDB.FirstOrDefault(p =>
+            p.PlanetInRetrograde == planet);
+
+        PlanetInZodiacLabel.Text = TranslationManager.TranslatePlanetInRetrograde(planet);
+        LabelShowingStartDate.Text = " (nuo " + segment.RetrogradeStartDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo);
+        LabelShoingEndDate.Text = " iki " + segment.RetrogradeEndDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo) + ")";
+        LabelShowingPlanetInZodiacInfo.Text = infoSourceItem?.PlanetInRetrogradeInfo ?? "No information available.";
 
         // Show the overlay frame with animation
         if (!BottomInfoFrame.IsVisible)
@@ -482,6 +516,7 @@ public partial class YearPage : ContentPage
                 {
                     RetrogradeMercurySegments.Add(new RetrogradeSegment
                     {
+                        Planet = Planet.Mercury,
                         IsRetrograde = lastIsMercuryRetrograde,
                         RetrogradeStartDate = startRetrogradeMercuryDate.Value,
                         RetrogradeEndDate = astroEvent.Date.AddDays(-1),
@@ -499,6 +534,7 @@ public partial class YearPage : ContentPage
                 {
                     RetrogradeVenusSegments.Add(new RetrogradeSegment
                     {
+                        Planet = Planet.Venus,
                         IsRetrograde = lastIsVenusRetrograde,
                         RetrogradeStartDate = startRetrogradeVenusDate.Value,
                         RetrogradeEndDate = astroEvent.Date.AddDays(-1),
@@ -516,6 +552,7 @@ public partial class YearPage : ContentPage
                 {
                     RetrogradeMarsSegments.Add(new RetrogradeSegment
                     {
+                        Planet = Planet.Mars,
                         IsRetrograde = lastIsMarsRetrograde,
                         RetrogradeStartDate = startRetrogradeMarsDate.Value,
                         RetrogradeEndDate = astroEvent.Date.AddDays(-1),
@@ -533,6 +570,7 @@ public partial class YearPage : ContentPage
                 {
                     RetrogradeJupiterSegments.Add(new RetrogradeSegment
                     {
+                        Planet = Planet.Jupiter,
                         IsRetrograde = lastIsJupiterRetrograde,
                         RetrogradeStartDate = startRetrogradeJupiterDate.Value,
                         RetrogradeEndDate = astroEvent.Date.AddDays(-1),
@@ -550,6 +588,7 @@ public partial class YearPage : ContentPage
                 {
                     RetrogradeSaturnSegments.Add(new RetrogradeSegment
                     {
+                        Planet = Planet.Saturn,
                         IsRetrograde = lastIsSaturnRetrograde,
                         RetrogradeStartDate = startRetrogradeSaturnDate.Value,
                         RetrogradeEndDate = astroEvent.Date.AddDays(-1),
@@ -567,6 +606,7 @@ public partial class YearPage : ContentPage
                 {
                     RetrogradeUranusSegments.Add(new RetrogradeSegment
                     {
+                        Planet = Planet.Uranus,
                         IsRetrograde = lastIsUranusRetrograde,
                         RetrogradeStartDate = startRetrogradeUranusDate.Value,
                         RetrogradeEndDate = astroEvent.Date.AddDays(-1),
@@ -584,6 +624,7 @@ public partial class YearPage : ContentPage
                 {
                     RetrogradeNeptuneSegments.Add(new RetrogradeSegment
                     {
+                        Planet = Planet.Neptune,
                         IsRetrograde = lastIsNeptuneRetrograde,
                         RetrogradeStartDate = startRetrogradeNeptuneDate.Value,
                         RetrogradeEndDate = astroEvent.Date.AddDays(-1),
@@ -601,6 +642,7 @@ public partial class YearPage : ContentPage
                 {
                     RetrogradePlutoSegments.Add(new RetrogradeSegment
                     {
+                        Planet = Planet.Pluto,
                         IsRetrograde = lastIsPlutoRetrograde,
                         RetrogradeStartDate = startRetrogradePlutoDate.Value,
                         RetrogradeEndDate = astroEvent.Date.AddDays(-1),
@@ -643,23 +685,79 @@ public partial class YearPage : ContentPage
 
         // Add the last segments for retrogrades
         if (startRetrogradeMercuryDate != null)
-            RetrogradeMercurySegments.Add(new RetrogradeSegment { IsRetrograde = lastIsMercuryRetrograde, RetrogradeStartDate = startRetrogradeMercuryDate.Value, RetrogradeEndDate = lastDate });
+            RetrogradeMercurySegments.Add(new RetrogradeSegment
+            {
+                Planet = Planet.Mercury,
+                IsRetrograde = lastIsMercuryRetrograde,
+                RetrogradeStartDate = startRetrogradeMercuryDate.Value,
+                RetrogradeEndDate = lastDate,
+                Duration = (lastDate - startRetrogradeMercuryDate.Value).Days
+            });
         if (startRetrogradeVenusDate != null)
-            RetrogradeVenusSegments.Add(new RetrogradeSegment { IsRetrograde = lastIsVenusRetrograde, RetrogradeStartDate = startRetrogradeVenusDate.Value, RetrogradeEndDate = lastDate });
+            RetrogradeVenusSegments.Add(new RetrogradeSegment
+            {
+                Planet = Planet.Venus,
+                IsRetrograde = lastIsVenusRetrograde,
+                RetrogradeStartDate = startRetrogradeVenusDate.Value,
+                RetrogradeEndDate = lastDate,
+                Duration = (lastDate - startRetrogradeVenusDate.Value).Days
+            });
         if (startRetrogradeMarsDate != null)
-            RetrogradeMarsSegments.Add(new RetrogradeSegment { IsRetrograde = lastIsMarsRetrograde, RetrogradeStartDate = startRetrogradeMarsDate.Value, RetrogradeEndDate = lastDate });
+            RetrogradeMarsSegments.Add(new RetrogradeSegment
+            {
+                Planet = Planet.Mars,
+                IsRetrograde = lastIsMarsRetrograde,
+                RetrogradeStartDate = startRetrogradeMarsDate.Value,
+                RetrogradeEndDate = lastDate,
+                Duration = (lastDate - startRetrogradeMarsDate.Value).Days
+            });
         if (startRetrogradeJupiterDate != null)
-            RetrogradeJupiterSegments.Add(new RetrogradeSegment { IsRetrograde = lastIsJupiterRetrograde, RetrogradeStartDate = startRetrogradeJupiterDate.Value, RetrogradeEndDate = lastDate });
+            RetrogradeJupiterSegments.Add(new RetrogradeSegment
+            {
+                Planet = Planet.Jupiter,
+                IsRetrograde = lastIsJupiterRetrograde,
+                RetrogradeStartDate = startRetrogradeJupiterDate.Value,
+                RetrogradeEndDate = lastDate,
+                Duration = (lastDate - startRetrogradeJupiterDate.Value).Days
+            });
         if (startRetrogradeSaturnDate != null)
-            RetrogradeSaturnSegments.Add(new RetrogradeSegment { IsRetrograde = lastIsSaturnRetrograde, RetrogradeStartDate = startRetrogradeSaturnDate.Value, RetrogradeEndDate = lastDate });
+            RetrogradeSaturnSegments.Add(new RetrogradeSegment
+            {
+                Planet = Planet.Saturn,
+                IsRetrograde = lastIsSaturnRetrograde,
+                RetrogradeStartDate = startRetrogradeSaturnDate.Value,
+                RetrogradeEndDate = lastDate,
+                Duration = (lastDate - startRetrogradeSaturnDate.Value).Days
+            });
         if (startRetrogradeUranusDate != null)
-            RetrogradeUranusSegments.Add(new RetrogradeSegment { IsRetrograde = lastIsUranusRetrograde, RetrogradeStartDate = startRetrogradeUranusDate.Value, RetrogradeEndDate = lastDate });
+            RetrogradeUranusSegments.Add(new RetrogradeSegment
+            {
+                Planet = Planet.Uranus,
+                IsRetrograde = lastIsUranusRetrograde,
+                RetrogradeStartDate = startRetrogradeUranusDate.Value,
+                RetrogradeEndDate = lastDate,
+                Duration = (lastDate - startRetrogradeUranusDate.Value).Days
+            });
         if (startRetrogradeNeptuneDate != null)
-            RetrogradeNeptuneSegments.Add(new RetrogradeSegment { IsRetrograde = lastIsNeptuneRetrograde, RetrogradeStartDate = startRetrogradeNeptuneDate.Value, RetrogradeEndDate = lastDate });
+            RetrogradeNeptuneSegments.Add(new RetrogradeSegment
+            {
+                Planet = Planet.Neptune,
+                IsRetrograde = lastIsNeptuneRetrograde,
+                RetrogradeStartDate = startRetrogradeNeptuneDate.Value,
+                RetrogradeEndDate = lastDate,
+                Duration = (lastDate - startRetrogradeNeptuneDate.Value).Days
+            });
         if (startRetrogradePlutoDate != null)
-            RetrogradePlutoSegments.Add(new RetrogradeSegment { IsRetrograde = lastIsPlutoRetrograde, RetrogradeStartDate = startRetrogradePlutoDate.Value, RetrogradeEndDate = lastDate });
+            RetrogradePlutoSegments.Add(new RetrogradeSegment
+            {
+                Planet = Planet.Pluto,
+                IsRetrograde = lastIsPlutoRetrograde,
+                RetrogradeStartDate = startRetrogradePlutoDate.Value,
+                RetrogradeEndDate = lastDate,
+                Duration = (lastDate - startRetrogradePlutoDate.Value).Days
+            });
 
-        // Handle the last month segment
+// Handle the last month segment
         if (lastMonthStart != null)
             this.MonthSegments.Add(new MonthSegment
             {
@@ -668,4 +766,3 @@ public partial class YearPage : ContentPage
             });
     }
 }
-

@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Astrodaiva.Data.Enums;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace Astrodaiva.Data.Models
 {
     public partial class RetrogradeSegment : ObservableObject
     {
+        [ObservableProperty]
+        Planet planet;
         [ObservableProperty]
         bool isRetrograde;
         [ObservableProperty]
