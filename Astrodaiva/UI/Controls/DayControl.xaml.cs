@@ -10,6 +10,36 @@ namespace Astrodaiva.UI.Controls;
 
 public partial class DayControl : ContentView, INotifyPropertyChanged
 {
+    private bool isToday;
+    public bool IsToday
+    {
+        get => isToday;
+        set
+        {
+            if (isToday != value)
+            {
+                isToday = value;
+                OnPropertyChanged(nameof(IsToday));
+                UpdateDayCardColor(); 
+            }
+        }
+    }
+
+    private DateTime currentDate;
+    public DateTime CurrentDate
+    {
+        get => currentDate;
+        set
+        {
+            if (currentDate != value)
+            {
+                currentDate = value;
+                OnPropertyChanged(nameof(CurrentDate));
+                CheckIfToday(); // Check if this date is today
+            }
+        }
+    }
+
     private int dayNumber;
 
     public int DayNumber
@@ -115,11 +145,24 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
         InitializeComponent();        
         BindingContext = this;
         
-    }    
+    }
+    private void CheckIfToday()
+    {
+        IsToday = CurrentDate.Date == DateTime.Today;
+    }
+
+    public void RefreshTodayStatus()
+    {
+        CheckIfToday();
+    }
 
     public void AddAstroEvent(AstroEvent astroEventForDate)
     {
         this.DayAstroEvent = astroEventForDate;
+        if (astroEventForDate != null)
+        {
+            this.CurrentDate = astroEventForDate.Date;
+        }
     }
    
     public void AddDayCardDayNumber(int dayNumber)
@@ -211,9 +254,17 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
 
         Color activityColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
         Color fontColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
+        Color borderColor = Colors.Transparent;
+        float borderThickness = 0;
 
         if (DayAstroEvent != null)
         {
+            if (IsToday)
+            {
+                borderColor = ColorManager.GetResourceColor("AccentColor", Color.FromArgb("#FFD700"));
+                borderThickness = 1;
+            }
+
             if (!IsProfileActivated)
             {
                 if (DayAstroEvent.MoonEclipse || DayAstroEvent.SunEclipse)
@@ -251,9 +302,18 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
 
         ApplyFontColor(fontColor);
         ApplyIndicatorColor(activityColor);
-        //ApplyBorderColor(activityColor);
-        //ApplyShadowColor(activityColor);
+        ApplyBorderColor(borderColor, borderThickness);
+    }
 
+    private void ApplyBorderColor(Color borderColor, float thickness)
+    {
+        dayCard.Stroke = borderColor;
+        dayCard.StrokeThickness = thickness;
+    }
+
+    public void SetDate(DateTime date)
+    {
+        this.CurrentDate = date;
     }
 
     private void ApplyIndicatorColor(Color activityColor)
@@ -264,22 +324,5 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
     private void ApplyFontColor(Color fontColor)
     {
         dayLabel.TextColor = fontColor;
-    }
-
-    private void ApplyBorderColor(Color borderColor)
-    {
-        
-        dayCard.Stroke = borderColor;        
-    }    
-
-    private void ApplyShadowColor(Color borderColor)
-    {
-        dayCard.Shadow = new Shadow
-        {
-            Brush = new SolidColorBrush(borderColor),
-            Radius = 1,
-            Opacity = 1,
-            Offset = new Point(0, 3)
-        };
     }
 }

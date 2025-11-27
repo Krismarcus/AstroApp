@@ -206,12 +206,32 @@ namespace Astrodaiva.UI.Pages
         {
             base.OnAppearing();
             _orientation?.LockPortrait();
+            CheckAndUpdateTodayBorder();
         }
 
         protected override void OnDisappearing()
         {
             _orientation?.Unlock();
             base.OnDisappearing();
+        }
+
+        private void CheckAndUpdateTodayBorder()
+        {
+            var today = DateTime.Today;
+            if (this.Year == today.Year && this.Month == today.Month)
+            {
+                // Update all day cards to refresh their "today" status
+                foreach (var child in CalendarGrid.Children)
+                {
+                    if (child is DayControl dayControl)
+                    {
+                        dayControl.RefreshTodayStatus();
+                    }
+                }
+
+                // Optional: Debug to verify it's working
+                System.Diagnostics.Debug.WriteLine($"Today border refreshed for {today:yyyy-MM-dd}");
+            }
         }
 
         private async Task Initialize()
@@ -301,15 +321,14 @@ namespace Astrodaiva.UI.Pages
         private void PopulateCalendar(int days, int startColumn)
         {
             CalendarGrid.Children.Clear();
-            // Assuming you have already called InitializeWeekdayLabels elsewhere and it properly sets up the first row for weekday labels
-            // Start adding row definitions for days, assuming the first row is reserved for weekday labels
-            for (int i = 0; i < 6; i++) // 6 rows for days
+
+            for (int i = 0; i < 6; i++)
             {
                 CalendarGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             }
 
-            int currentRow = 1; // Start from row 1 to leave space for weekday labels at row 0
-            int currentColumn = startColumn; // Start column based on the first day of the month
+            int currentRow = 1;
+            int currentColumn = startColumn;
 
             for (int day = 1; day <= days; day++)
             {
@@ -318,13 +337,15 @@ namespace Astrodaiva.UI.Pages
 
                 DayControl dayCard = new DayControl
                 {
-                    // Initialize with relevant data
                     DayAstroEvent = astroEventForDate,
                     DayNumber = day
                 };
+
+                // Set the current date for today detection
+                dayCard.SetDate(currentDate);
+
                 dayCard.LocateDayCardGrid(currentDate);
 
-                // Assuming LocateDayCardGrid correctly updates CalendarRow and CalendarColumn
                 Grid.SetRow(dayCard, dayCard.CalendarRow);
                 Grid.SetColumn(dayCard, dayCard.CalendarColumn);
 
@@ -332,19 +353,18 @@ namespace Astrodaiva.UI.Pages
                 {
                     CalendarGrid.Children.Add(dayCard);
                 }
-                dayCard.OnOffProfile(ActivityProfile != "");
-                dayCard.ChangeActivityProfile(ActivityProfile);                
 
-                // Move to the next cell
+                dayCard.OnOffProfile(ActivityProfile != "");
+                dayCard.ChangeActivityProfile(ActivityProfile);
+
                 currentColumn++;
-                if (currentColumn > 6) // End of the week, move to next row
+                if (currentColumn > 6)
                 {
                     currentColumn = 0;
                     currentRow++;
                 }
             }
 
-            // Ensure there's enough row definitions based on how many days and start day
             while (CalendarGrid.RowDefinitions.Count < currentRow + 1)
             {
                 CalendarGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
