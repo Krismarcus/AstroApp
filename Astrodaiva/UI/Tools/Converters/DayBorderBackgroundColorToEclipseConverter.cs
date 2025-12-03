@@ -25,18 +25,12 @@ namespace Astrodaiva.UI.Tools.Converters
 
                 else if (astroEvent.MoonDay.NewMoonDay == 1 || astroEvent.MoonDay.MiddleMoonDay == 1)
                 {
-                    return ColorManager.GetResourceColor("LightOrangeBackground", Colors.Black);
+                    return ColorManager.GetResourceColor("ShadedBackground", Colors.Black);
                 }
             }
 
             // Attempt to retrieve the 'PrimaryBackground' color from resources if no eclipse
-            if (Application.Current.Resources.TryGetValue("PrimaryBackground", out var colorValue) && colorValue is Color myColor)
-            {
-                return myColor; // Return the color from resources
-            }
-
-            // Return a fallback color if no condition is met
-            return Colors.Transparent; // Fallback color
+            return Colors.Transparent;           
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

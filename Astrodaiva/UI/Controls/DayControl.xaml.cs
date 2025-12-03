@@ -254,53 +254,42 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
 
         Color activityColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
         Color fontColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
-        Color borderColor = Colors.Transparent;
-        float borderThickness = 0;
+        Color backgroundColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
+        Color borderColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
+        float borderThickness = 2;
 
         if (DayAstroEvent != null)
         {
-            if (IsToday)
+            
+            if (isToday)
             {
-                borderColor = ColorManager.GetResourceColor("AccentColor", Color.FromArgb("#FFD700"));
-                borderThickness = 1;
+                backgroundColor = backgroundColor.WithAlpha(0.7f);                
+            }               
+            
+            if (DayAstroEvent.MoonEclipse || DayAstroEvent.SunEclipse)
+            {
+                borderColor = ColorManager.GetResourceColor("Black", Colors.Transparent);
+                borderThickness = 2;
             }
 
-            if (!IsProfileActivated)
+            if (DayAstroEvent.MoonDay.NewMoonDay == 1)
             {
-                if (DayAstroEvent.MoonEclipse || DayAstroEvent.SunEclipse)
-                {
-                    activityColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
-                    fontColor = ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent);
-                }
-
-                else if (DayAstroEvent.MoonDay.NewMoonDay == 1 || DayAstroEvent.MoonDay.MiddleMoonDay == 1)
-
-                {
-                    activityColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
-                    fontColor = ColorManager.GetResourceColor("PrimaryBackground", Colors.Transparent);
-                }
+                borderColor = ColorManager.GetResourceColor("ShadedBackground", Colors.Transparent);
+                borderThickness = 2;
             }
-            else
-            {
-                // Set fontColor based on activity profile
-                fontColor = ActivityProfile switch
-                {
-                    ActivityQuality.Good => ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent),
-                    ActivityQuality.Bad => ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent),
-                    _ => ColorManager.GetResourceColor("PrimaryLightText", Colors.Transparent),
-                };
 
-                // Set shadowColor based on activity profile, default to transparent for cases not good or bad
-                activityColor = ActivityProfile switch
+            // Set shadowColor based on activity profile, default to transparent for cases not good or bad
+            activityColor = ActivityProfile switch
                 {
                     ActivityQuality.Good => ColorManager.GetResourceColor("GreenGlowEffect", Colors.Transparent),
                     ActivityQuality.Bad => ColorManager.GetResourceColor("RedGlowEffect", Colors.Transparent),
                     _ => Colors.Transparent, // Default to transparent if not good or bad
                 };
-            }
+            
         }
 
         ApplyFontColor(fontColor);
+        ApplyDaycardBackgroundColor(backgroundColor);
         ApplyIndicatorColor(activityColor);
         ApplyBorderColor(borderColor, borderThickness);
     }
@@ -324,5 +313,10 @@ public partial class DayControl : ContentView, INotifyPropertyChanged
     private void ApplyFontColor(Color fontColor)
     {
         dayLabel.TextColor = fontColor;
+    }
+
+    private void ApplyDaycardBackgroundColor(Color backgroundColor)
+    {
+        dayCard.BackgroundColor = backgroundColor;
     }
 }

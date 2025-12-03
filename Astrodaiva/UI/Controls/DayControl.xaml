@@ -16,7 +16,7 @@
         <converters:ActivityQualityToFontColorConverter x:Key="ActivityQualityToFontColorConverter"/>
         <converters:ActivityQualityToStrokeThicknessConverter x:Key="ActivityQualityToStrokeThicknessConverter"/>        
     </ContentView.Resources>
-    <Border x:Name="dayCard" Stroke="Transparent" BackgroundColor="{Binding DayAstroEvent, Converter={StaticResource DayBorderBackgroundColorToEclipseConverter}}" StrokeShape="RoundRectangle 10,10,10,10" Margin="2.4, 4" Padding="0,2,0,0">       
+    <Border x:Name="dayCard" StrokeShape="RoundRectangle 10,10,10,10" Margin="2.4, 4" Padding="0,2,0,0">       
         <Border.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnDayTapped"  />
         </Border.GestureRecognizers>
