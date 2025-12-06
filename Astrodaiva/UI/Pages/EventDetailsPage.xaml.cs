@@ -245,6 +245,10 @@ namespace Astrodaiva.UI.Pages
             timeLabel.Opacity = 0;
             secondTimeLabel.Opacity = 0;
 
+            // Prevent going before January 1st of the current year
+            if (CurrentDate.AddDays(-1).Year < CurrentDate.Year)
+                return;
+
             CurrentDate = CurrentDate.AddDays(-1);
             await InitializeDataAsync(CurrentDate);
         }
@@ -256,6 +260,11 @@ namespace Astrodaiva.UI.Pages
             timeLabel.Opacity = 0;
             secondTimeLabel.Opacity = 0;
 
+            // Prevent moving to next year
+            if (CurrentDate.AddDays(1).Year > CurrentDate.Year)
+                return;
+
+            // Only then update
             CurrentDate = CurrentDate.AddDays(1);
             await InitializeDataAsync(CurrentDate);
         }
