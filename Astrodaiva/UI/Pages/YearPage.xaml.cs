@@ -1,10 +1,12 @@
-using Astrodaiva.Data.Enums;
+﻿using Astrodaiva.Data.Enums;
 using Astrodaiva.Data.Models;
 using Astrodaiva.Services;
 using Astrodaiva.UI.Controls;
 using Astrodaiva.UI.Tools;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 
 namespace Astrodaiva.UI.Pages;
 
@@ -14,6 +16,7 @@ public partial class YearPage : ContentPage
     public ObservableCollection<AstroEvent> ActiveAstroEvents { get; set; }
     public ObservableCollection<PlanetInZodiacDetails> PlanetInZodiacInfo { get; set; }
     public ObservableCollection<MonthSegment> MonthSegments { get; set; }
+    public ObservableCollection<EclipseSegment> EclipseSegments { get; set; }
     public ObservableCollection<ZodiacSegment> SunInZodiacSegments { get; set; }
     public ObservableCollection<ZodiacSegment> MercuryInZodiacSegments { get; set; }
     public ObservableCollection<RetrogradeSegment> RetrogradeMercurySegments { get; set; }
@@ -41,8 +44,9 @@ public partial class YearPage : ContentPage
         InitializeComponent();
         _orientation = ServiceHelper.GetRequiredService<IOrientationService>();
         Initialize();
-        GenerateCalendar();
+        GenerateCalendar();        
         this.BindingContext = this;
+        EclipseView.Segments = EclipseSegments;
         SetupSegmentClickHandlers();
         SetupFrameGestureHandlers();
     }
@@ -98,7 +102,11 @@ public partial class YearPage : ContentPage
         CustomRetrogradeLineViewUranus.SegmentClicked += (sender, segment) => OnPlanetInRetrogradeSegmentClicked(sender, segment, Planet.Uranus);
         CustomRetrogradeLineViewNeptune.SegmentClicked += (sender, segment) => OnPlanetInRetrogradeSegmentClicked(sender, segment, Planet.Neptune);
         CustomRetrogradeLineViewPluto.SegmentClicked += (sender, segment) => OnPlanetInRetrogradeSegmentClicked(sender, segment, Planet.Pluto);
-    }    
+
+        EclipseView.EclipseLineTapped += OnEclipseLineTapped;
+        EclipseView.MarkerTapped += OnEclipseClicked;       
+
+    }
 
     private void SetupFrameGestureHandlers()
     {
@@ -140,11 +148,12 @@ public partial class YearPage : ContentPage
 
     private async void OnPlanetInZodiacSegmentClicked(object sender, ZodiacSegment segment, Planet planet)
     {
-        if (segment == null) return;
+        if (segment == null) return;        
 
         var infoSourceItem = App.AppData.AppDB.PlanetInZodiacsDB.FirstOrDefault(p =>
             p.Planet == planet && p.ZodiacSign == segment.ZodiacSign);
 
+        LabelDateRangeRow.IsVisible = true;
         PlanetInZodiacLabel.Text = TranslationManager.TranslatePlanetInZodiac(planet, segment.ZodiacSign);
         LabelShowingStartDate.Text = " (nuo " + segment.ZodiacStartDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo);
         LabelShoingEndDate.Text = " iki " + segment.ZodiacEndDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo) + ")";
@@ -166,6 +175,7 @@ public partial class YearPage : ContentPage
         var infoSourceItem = App.AppData.AppDB.PlanetInRetrogradeDetailsDB.FirstOrDefault(p =>
             p.PlanetInRetrograde == planet);
 
+        LabelDateRangeRow.IsVisible = true;
         PlanetInZodiacLabel.Text = TranslationManager.TranslatePlanetInRetrograde(planet);
         LabelShowingStartDate.Text = " (nuo " + segment.RetrogradeStartDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo);
         LabelShoingEndDate.Text = " iki " + segment.RetrogradeEndDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo) + ")";
@@ -180,9 +190,52 @@ public partial class YearPage : ContentPage
         }
     }
 
+    private async void OnEclipseLineTapped(List<EclipseSegment> list)
+    {
+        SegmentSelectionManager.Instance.SelectSegment(null); // optional un-highlight markers if desired
+
+        LabelDateRangeRow.IsVisible = false;
+        PlanetInZodiacLabel.Text = $"Užtemimai {DateTime.Now.Year} metams";
+        LabelShowingStartDate.Text = "";
+        LabelShoingEndDate.Text = "";
+
+        LabelShowingPlanetInZodiacInfo.Text =
+            string.Join("\n", list.Select(e =>
+                (e.IsSolar ? "☀" : "🌑") + " " + e.StartDate.ToString("MMMM d", App.AppData.CultureInfo)
+            ));
+
+        if (!BottomInfoFrame.IsVisible)
+        {
+            BottomInfoFrame.IsVisible = true;
+            BottomInfoFrame.TranslationY = BottomInfoFrame.Height;
+            await BottomInfoFrame.TranslateTo(0, 0, 250, Easing.CubicOut);
+        }
+    }
+
+    private async void OnEclipseClicked(EclipseSegment seg)
+    {
+        LabelDateRangeRow.IsVisible = true;
+        PlanetInZodiacLabel.Text = seg.IsSolar ? "☀ Saulės užtemimas" : "🌑 Mėnulio užtemimas";
+
+        LabelShowingStartDate.Text = " (" + seg.EndDate.ToString("MMMM d, dddd", App.AppData.CultureInfo) + ")";
+        LabelShoingEndDate.Text = "";
+
+        LabelShowingPlanetInZodiacInfo.Text =
+            $"Užtemimo periodas. Poveikis jaučiamas ~7 d. prieš ir po.";
+
+        if (!BottomInfoFrame.IsVisible)
+        {
+            BottomInfoFrame.IsVisible = true;
+            BottomInfoFrame.TranslationY = BottomInfoFrame.Height;
+            await BottomInfoFrame.TranslateTo(0, 0, 250, Easing.CubicOut);
+        }
+    }
+
+
     public void GenerateCalendar()
     {
         this.MonthSegments = new ObservableCollection<MonthSegment>();
+        this.EclipseSegments = new ObservableCollection<EclipseSegment>();
         this.SunInZodiacSegments = new ObservableCollection<ZodiacSegment>();
         this.MercuryInZodiacSegments = new ObservableCollection<ZodiacSegment>();
         this.VenusInZodiacSegments = new ObservableCollection<ZodiacSegment>();
@@ -203,7 +256,7 @@ public partial class YearPage : ContentPage
         this.SelenaInZodiacSegments = new ObservableCollection<ZodiacSegment>();
         this.LilithInZodiacSegments = new ObservableCollection<ZodiacSegment>();
         this.RahuInZodiacSegments = new ObservableCollection<ZodiacSegment>();
-        this.KetuInZodiacSegments = new ObservableCollection<ZodiacSegment>();
+        this.KetuInZodiacSegments = new ObservableCollection<ZodiacSegment>();        
 
         // Initialize the start points for each planet
         DateTime lastMonthStart = this.ActiveAstroEvents.FirstOrDefault()?.Date ?? DateTime.Today;
@@ -230,6 +283,10 @@ public partial class YearPage : ContentPage
         bool lastIsNeptuneRetrograde = this.ActiveAstroEvents.FirstOrDefault()?.NeptuneInZodiac.IsRetrograde ?? false;
         bool lastIsPlutoRetrograde = this.ActiveAstroEvents.FirstOrDefault()?.PlutoInZodiac.IsRetrograde ?? false;
 
+        DateTime? eclipseStart = null;
+        bool eclipseActive = false;
+        bool eclipseSolar = false;
+        bool eclipseLunar = false;
         DateTime? startSunDate = null;
         DateTime? startMercuryDate = null;
         DateTime? startVenusDate = null;
@@ -286,6 +343,32 @@ public partial class YearPage : ContentPage
                     MonthEndDate = new DateTime(astroEvent.Date.Year, astroEvent.Date.Month, 1).AddDays(-1)
                 });
                 lastMonthStart = new DateTime(astroEvent.Date.Year, astroEvent.Date.Month, 1);
+            }
+
+            bool todaySolar = astroEvent.SunEclipse;
+            bool todayLunar = astroEvent.MoonEclipse;
+
+            // Eclipse START
+            if ((todaySolar || todayLunar) && !eclipseActive)
+            {
+                eclipseActive = true;
+                eclipseStart = astroEvent.Date;
+                eclipseSolar = todaySolar;
+                eclipseLunar = todayLunar;
+            }
+
+            // Eclipse END
+            if (!(todaySolar || todayLunar) && eclipseActive)
+            {
+                EclipseSegments.Add(new EclipseSegment
+                {
+                    StartDate = eclipseStart.Value,
+                    EndDate = astroEvent.Date.AddDays(-1),
+                    IsSolar = eclipseSolar,
+                    IsLunar = eclipseLunar
+                });
+
+                eclipseActive = false;
             }
 
             // Create segments for Sun in Zodiac
@@ -656,6 +739,16 @@ public partial class YearPage : ContentPage
 
         // Add the last segments for each tracking
         var lastDate = this.ActiveAstroEvents.LastOrDefault()?.Date ?? DateTime.Today;
+        if (eclipseActive && eclipseStart.HasValue)
+        {
+            EclipseSegments.Add(new EclipseSegment
+            {
+                StartDate = eclipseStart.Value,
+                EndDate = lastDate,
+                IsSolar = eclipseSolar,
+                IsLunar = eclipseLunar
+            });
+        }
         if (startSunDate != null)
             SunInZodiacSegments.Add(new ZodiacSegment { ZodiacSign = lastSunInSign, ZodiacStartDate = startSunDate.Value, ZodiacEndDate = lastDate });
         if (startMercuryDate != null)

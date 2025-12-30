@@ -253,6 +253,9 @@
 	  <Compile Update="UI\Controls\DayControl.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
+	  <Compile Update="UI\Controls\CustomEclipseLineView.xaml.cs">
+	    <DependentUpon>CustomEclipseLineView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="UI\Controls\PlanetEventControl.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
@@ -285,6 +288,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UI\Controls\DayControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\CustomEclipseLineView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UI\Controls\PlanetEventControl.xaml">
