@@ -1,7 +1,5 @@
-﻿using Android.Graphics.Fonts;
-using Astrodaiva.Data.Models;
+﻿using Astrodaiva.Data.Models;
 using Astrodaiva.UI.Tools;
-using Java.Time.Format;
 using Microsoft.Maui.Controls.Shapes;
 using Microsoft.Maui.Layouts;
 using System.Collections.ObjectModel;
@@ -10,7 +8,7 @@ namespace Astrodaiva.UI.Controls;
 
 public partial class CustomEclipseLineView : ContentView
 {
-    public event Action<List<EclipseSegment>> EclipseLineTapped;
+    public event Action<List<EclipseSegment>>? EclipseLineTapped;
     public event Action<EclipseSegment>? MarkerTapped;
 
     public static readonly BindableProperty SegmentsProperty =
@@ -18,52 +16,87 @@ public partial class CustomEclipseLineView : ContentView
             nameof(Segments),
             typeof(ObservableCollection<EclipseSegment>),
             typeof(CustomEclipseLineView),
-            propertyChanged: (b, o, n) => ((CustomEclipseLineView)b).Redraw());
+            defaultValue: null,
+            propertyChanged: (b, o, n) => ((CustomEclipseLineView)b).RequestBuild());
 
-    public ObservableCollection<EclipseSegment> Segments
+    public ObservableCollection<EclipseSegment>? Segments
     {
-        get => (ObservableCollection<EclipseSegment>)GetValue(SegmentsProperty);
+        get => (ObservableCollection<EclipseSegment>?)GetValue(SegmentsProperty);
         set => SetValue(SegmentsProperty, value);
     }
+
+    // Keep baseline geometry in ONE place so markers always align
+    const double LineY = 17;
+    const double LineH = 10;
+    const double MarkerSize = 28;
+
+    bool _buildQueued;
 
     public CustomEclipseLineView()
     {
         InitializeComponent();
-        Loaded += (_, __) => Redraw();
-        SizeChanged += (_, __) => Redraw();
+
+        SizeChanged += (_, __) => RequestBuild();
+        HandlerChanged += (_, __) => RequestBuild();
     }
 
-    async void Redraw()
+    protected override void OnParentSet()
     {
-        if (Segments == null) return;
+        base.OnParentSet();
+        RequestBuild();
+    }
 
-        int t = 0;
-        while (SegmentContainer.Width < 10 && t < 30)
+    void RequestBuild()
+    {
+        if (_buildQueued) return;
+        _buildQueued = true;
+
+        Dispatcher.Dispatch(() =>
         {
-            await Task.Delay(30);
-            t++;
+            _buildQueued = false;
+            BuildSegments();
+        });
+    }
+
+    void BuildSegments()
+    {
+        if (SegmentContainer == null)
+            return;
+
+        if (Segments == null || Segments.Count == 0)
+        {
+            SegmentContainer.Children.Clear();
+            return;
+        }
+
+        // If not measured yet, try again next UI tick
+        if (SegmentContainer.Width <= 0 || SegmentContainer.Height <= 0)
+        {
+            RequestBuild();
+            return;
         }
 
         SegmentContainer.Children.Clear();
-        DrawBaseLine();
 
-        foreach (var seg in Segments)
-            DrawMarker(seg);
+        // 1) baseline (always re-added after clear)
+        var baselineBorder = CreateBaseLine();
+        SegmentContainer.Children.Add(baselineBorder);
+
+        // 2) markers (always re-added after clear)
+        foreach (var seg in Segments.OrderBy(s => s.StartDate))
+            SegmentContainer.Children.Add(CreateMarker(seg));
     }
 
-    // -------------------------
-    // BASE YELLOW LINE (tappable)
-    // -------------------------
-    void DrawBaseLine()
+    Border CreateBaseLine()
     {
         var line = new BoxView
         {
             Color = ColorManager.GetResourceColor("ShadedBackground", Colors.Black),
-            HeightRequest = 10,
+            HeightRequest = LineH,
             CornerRadius = 2
         };
 
-        var eclipseLineBorder = new Border
+        var border = new Border
         {
             StrokeThickness = 0,
             Padding = 0,
@@ -74,39 +107,35 @@ public partial class CustomEclipseLineView : ContentView
         var tap = new TapGestureRecognizer();
         tap.Tapped += (s, e) =>
         {
-            // highlight the whole line
-            SegmentSelectionManager.Instance.SelectSegment(eclipseLineBorder);
-
-            // send all eclipses to YearPage
+            SegmentSelectionManager.Instance.SelectSegment(border);
             OnEclipseLineTapped();
         };
-        eclipseLineBorder.GestureRecognizers.Add(tap);
+        border.GestureRecognizers.Add(tap);
 
-        // IMPORTANT: width = 1 with WidthProportional
-        AbsoluteLayout.SetLayoutBounds(eclipseLineBorder, new Rect(0, 17, 1, 10));
-        AbsoluteLayout.SetLayoutFlags(eclipseLineBorder, AbsoluteLayoutFlags.WidthProportional);
+        // Full width baseline using WidthProportional
+        AbsoluteLayout.SetLayoutBounds(border, new Rect(0, LineY, 1, LineH));
+        AbsoluteLayout.SetLayoutFlags(border, AbsoluteLayoutFlags.WidthProportional);
 
-        SegmentContainer.Children.Add(eclipseLineBorder);
+        return border;
     }
 
-    // -------------------------
-    // CIRCLES FOR EACH ECLIPSE DAY
-    // -------------------------
-    void DrawMarker(EclipseSegment seg)
+    View CreateMarker(EclipseSegment seg)
     {
         int yearDays = DateTime.IsLeapYear(seg.StartDate.Year) ? 366 : 365;
-        double pos = (double)seg.StartDate.DayOfYear / yearDays;
 
-        double size = 28;
+        // 0..1 inclusive range, stable at edges
+        double pos = (double)(seg.StartDate.DayOfYear - 1) / (yearDays - 1);
 
-        // border so we can highlight via SegmentSelectionManager
+        // Center marker vertically on the baseline
+        double markerY = LineY + (LineH / 2) - (MarkerSize / 2);
+
         var border = new Border
         {
-            WidthRequest = size,
-            HeightRequest = size,
+            WidthRequest = MarkerSize,
+            HeightRequest = MarkerSize,
             StrokeThickness = 0,
             Stroke = new SolidColorBrush(Colors.DarkBlue),
-            StrokeShape = new RoundRectangle { CornerRadius = size / 2 },
+            StrokeShape = new RoundRectangle { CornerRadius = MarkerSize / 2 },
             Background = new SolidColorBrush(ColorManager.GetResourceColor("GreyBackground", Colors.Black)),
             Padding = 0,
             Content = new Label
@@ -123,30 +152,28 @@ public partial class CustomEclipseLineView : ContentView
         var tap = new TapGestureRecognizer();
         tap.Tapped += (s, e) =>
         {
-            // highlight just this marker
             SegmentSelectionManager.Instance.SelectSegment(border);
-
-            // notify YearPage
             MarkerTapped?.Invoke(seg);
         };
         border.GestureRecognizers.Add(tap);
 
-        // place in the middle above the line
-        AbsoluteLayout.SetLayoutBounds(
-            border,
-            new Rect(pos * SegmentContainer.Width - size / 2, 5, size, size));
-        AbsoluteLayout.SetLayoutFlags(border, AbsoluteLayoutFlags.None);
+        // IMPORTANT:
+        // X is proportional, Y is absolute -> perfect alignment
+        AbsoluteLayout.SetLayoutBounds(border, new Rect(pos, markerY, MarkerSize, MarkerSize));
+        AbsoluteLayout.SetLayoutFlags(border, AbsoluteLayoutFlags.XProportional);
 
-        SegmentContainer.Children.Add(border);
+        // Center the marker around the X proportional position
+        border.AnchorX = 0.5;
+        border.AnchorY = 0;
+
+        return border;
     }
 
-    // called when baseline is tapped
     void OnEclipseLineTapped()
     {
         if (Segments == null || Segments.Count == 0)
             return;
 
-        var list = Segments.OrderBy(s => s.StartDate).ToList();
-        EclipseLineTapped?.Invoke(list);
+        EclipseLineTapped?.Invoke(Segments.OrderBy(s => s.StartDate).ToList());
     }
 }

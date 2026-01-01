@@ -49,6 +49,7 @@ public partial class YearPage : ContentPage
         EclipseView.Segments = EclipseSegments;
         SetupSegmentClickHandlers();
         SetupFrameGestureHandlers();
+        CustomMonthLineView.SegmentTapped += OnMonthSegmentTapped;
     }
 
     protected override void OnAppearing()
@@ -155,8 +156,8 @@ public partial class YearPage : ContentPage
 
         LabelDateRangeRow.IsVisible = true;
         PlanetInZodiacLabel.Text = TranslationManager.TranslatePlanetInZodiac(planet, segment.ZodiacSign);
-        LabelShowingStartDate.Text = " (nuo " + segment.ZodiacStartDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo);
-        LabelShoingEndDate.Text = " iki " + segment.ZodiacEndDate.ToString("MMMM d, HH:mm", App.AppData.CultureInfo) + ")";
+        LabelShowingStartDate.Text = " (nuo " + segment.ZodiacStartDate.ToString("MMMM d", App.AppData.CultureInfo);
+        LabelShoingEndDate.Text = " iki " + segment.ZodiacEndDate.ToString("MMMM d", App.AppData.CultureInfo) + ")";
         LabelShowingPlanetInZodiacInfo.Text = infoSourceItem?.PlanetInZodiacInfo ?? "No information available.";
 
         // Show the overlay frame with animation
@@ -857,5 +858,14 @@ public partial class YearPage : ContentPage
                 MonthStartDate = lastMonthStart,
                 MonthEndDate = lastDate
             });
+    }
+
+    private async void OnMonthSegmentTapped(object? sender, MonthSegment segment)
+    {
+    var y = segment.MonthStartDate.Year;
+    var m = segment.MonthStartDate.Month;
+
+    // switch to Calendar tab + pass state
+    await Shell.Current.GoToAsync($"//main?year={y}&month={m}");
     }
 }

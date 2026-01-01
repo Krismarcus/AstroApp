@@ -15,6 +15,8 @@ public partial class CustomMonthLineView : ContentView
             new ObservableCollection<MonthSegment>(),
             propertyChanged: OnMonthSegmentsChanged);
 
+    public event EventHandler<MonthSegment>? SegmentTapped;
+
     public ObservableCollection<MonthSegment> MonthSegments
     {
         get => (ObservableCollection<MonthSegment>)GetValue(MonthSegmentsProperty);
@@ -59,7 +61,7 @@ public partial class CustomMonthLineView : ContentView
     {
         var boxColor = GetResourceColor("PrimaryBackground");
         var textColor = GetResourceColor("ShadedBackground");
-        CultureInfo lithuanianCulture = new CultureInfo("lt-LT");
+        CultureInfo lithuanianCulture = new CultureInfo("lt-LT");        
 
         var boxView = new Border
         {
@@ -86,21 +88,14 @@ public partial class CustomMonthLineView : ContentView
             HorizontalOptions = LayoutOptions.FillAndExpand
         };
 
-        var tapGesture = new TapGestureRecognizer();
-        tapGesture.Tapped += (s, e) => OnMonthSegmentTapped(segment);
-        cellGrid.GestureRecognizers.Add(tapGesture);
+        var tap = new TapGestureRecognizer();
+        tap.Tapped += (s, e) => SegmentTapped?.Invoke(this, segment);
+        boxView.GestureRecognizers.Add(tap);
 
         cellGrid.Add(boxView);
         cellGrid.Add(label);
 
         return cellGrid;
-    }
-
-    private async void OnMonthSegmentTapped(MonthSegment segment)
-    {
-        var month = segment.MonthStartDate.Month;
-        var year = segment.MonthStartDate.Year;
-        await Shell.Current.GoToAsync($"//main?month={month}&year={year}");
     }
 
     private Color GetResourceColor(string key)
