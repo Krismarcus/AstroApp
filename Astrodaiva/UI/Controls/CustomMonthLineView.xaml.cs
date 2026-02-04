@@ -59,14 +59,16 @@ public partial class CustomMonthLineView : ContentView
 
     private Grid CreateSegmentCell(MonthSegment segment)
     {
-        var boxColor = GetResourceColor("PrimaryBackground");
-        var textColor = GetResourceColor("ShadedBackground");
+        var boxBackgroundColor = Colors.Transparent;
+        var boxBorderColor = GetResourceColor("PrimaryBackground");
+        var textColor = GetResourceColor("PrimaryBackground");
         CultureInfo lithuanianCulture = new CultureInfo("lt-LT");        
 
         var boxView = new Border
         {
-            BackgroundColor = boxColor,
-            StrokeThickness = 0,
+            BackgroundColor = boxBackgroundColor,
+            Stroke = boxBorderColor,
+            StrokeThickness = 1,
             VerticalOptions = LayoutOptions.FillAndExpand,            
             StrokeShape = new RoundRectangle { CornerRadius = new CornerRadius(10) }
         };

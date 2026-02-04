@@ -172,18 +172,18 @@ public partial class CustomZodiacLineView : ContentView
         // Define colors for each zodiac sign here
         switch (sign)
         {
-            case ZodiacSign.Aries: return Color.FromRgb(194, 41, 54);
-            case ZodiacSign.Taurus: return Color.FromRgb(198, 136, 19);
-            case ZodiacSign.Gemini: return Color.FromRgb(143, 145, 49);
-            case ZodiacSign.Cancer: return Color.FromRgb(52, 114, 136);
-            case ZodiacSign.Leo: return Color.FromRgb(194, 41, 54);
-            case ZodiacSign.Virgo: return Color.FromRgb(198, 136, 19);
-            case ZodiacSign.Libra: return Color.FromRgb(143, 145, 49);
-            case ZodiacSign.Scorpio: return Color.FromRgb(52, 114, 136);
-            case ZodiacSign.Sagittarius: return Color.FromRgb(194, 41, 54);
-            case ZodiacSign.Capricorn: return Color.FromRgb(198, 136, 19);
-            case ZodiacSign.Aquarius: return Color.FromRgb(143, 145, 49);
-            case ZodiacSign.Pisces: return Color.FromRgb(52, 114, 136);            
+            case ZodiacSign.Aries: return Color.FromRgb(190, 86, 86);
+            case ZodiacSign.Taurus: return Color.FromRgb(201, 191, 101);
+            case ZodiacSign.Gemini: return Color.FromRgb(119, 172, 98);
+            case ZodiacSign.Cancer: return Color.FromRgb(36, 152, 154);
+            case ZodiacSign.Leo: return Color.FromRgb(190, 86, 86);
+            case ZodiacSign.Virgo: return Color.FromRgb(201, 191, 101);
+            case ZodiacSign.Libra: return Color.FromRgb(119, 172, 98);
+            case ZodiacSign.Scorpio: return Color.FromRgb(36, 152, 154);
+            case ZodiacSign.Sagittarius: return Color.FromRgb(190, 86, 86);
+            case ZodiacSign.Capricorn: return Color.FromRgb(201, 191, 101);
+            case ZodiacSign.Aquarius: return Color.FromRgb(119, 172, 98);
+            case ZodiacSign.Pisces: return Color.FromRgb(36, 152, 154);
             // Add cases for other signs
             default: return Colors.Gray;
         }
